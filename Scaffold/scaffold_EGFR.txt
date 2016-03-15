@@ -1,0 +1,137 @@
+EGFR_TAP, Samples report created on 12/08/2015																																												
+Experiment: EGFR_TAP																																												
+	Peak List Generator: unknown																																											
+		Version: unknown																																										
+		Charge States Calculated: unknown																																										
+		Deisotoped: unknown																																										
+		Textual Annotation: unknown																																										
+	Database Set: 1 Database																																											
+		Database Name: the SwissProt_2015_09 database																																										
+			Version: unknown																																									
+			Taxonomy: Homo sapiens																																									
+			Number of Proteins: 20205																																									
+		Does database contain common contaminants?: unknown																																										
+	Search Engine Set: 1 Search Engine																																											
+		Search Engine: Mascot																																										
+			Version: 2.4.1																																									
+			Samples: All Samples																																									
+			Fragment Tolerance: 0.80 Da (Monoisotopic)																																									
+			Parent Tolerance: 1.2 Da (Monoisotopic)																																									
+			Fixed Modifications: 																																									
+			Variable Modifications: +16 on M (Oxidation), +57 on C (Carbamidomethyl)																																									
+			Database: the SwissProt_2015_09 database (selected for Homo sapiens, unknown version, 20205 entries)																																									
+			Digestion Enzyme: Trypsin																																									
+			Max Missed Cleavages: 2																																									
+			Probability Model: 																																									
+				04112012_JL_HCC827_EGFR_TAP_1_run1.RAW (F001988): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_EGFR_TAP_1_run2.RAW (F001989): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_EGFR_TAP_2_run1.RAW (F001990): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_EGFR_TAP_2_run2.RAW (F001991): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_ERBB3_TAP_1_run1.RAW (F001992): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_ERBB3_TAP_1_run2.RAW (F001993): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_ERBB3_TAP_2_run1.RAW (F001994): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_ERBB3_TAP_2_run2.RAW (F001995): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_GFP_TAP_1_run1.RAW (F001996): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_GFP_TAP_1_run2.RAW (F001997): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_GFP_TAP_2_run1.RAW (F001998): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_GFP_TAP_2_run2.RAW (F001999): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_GRB2_TAP_1_run1.RAW (F002000): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_GRB2_TAP_1_run2.RAW (F002001): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_GRB2_TAP_2_run1.RAW (F002002): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_GRB2_TAP_2_run2.RAW (F002003_1): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_P85B_TAP_1_run1.RAW (F002004): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_P85B_TAP_1_run2.RAW (F002005): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_P85B_TAP_2_run1.RAW (F002006): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827_P85B_TAP_2_run2.RAW (F002007): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_EGFR_TAP_1_run1.RAW (F002008): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_EGFR_TAP_1_run2.RAW (F002009): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_EGFR_TAP_2_run1.RAW (F002010): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_EGFR_TAP_2_run2.RAW (F002011): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_ERBB3_TAP_1_run1.RAW (F002012): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_ERBB3_TAP_1_run2.RAW (F002013): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_ERBB3_TAP_2_run1.RAW (F002014): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_ERBB3_TAP_2_run2.RAW (F002015): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_GRB2_TAP_1_run1.RAW (F002016): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_GRB2_TAP_1_run2.RAW (F002017): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_GRB2_TAP_2_run1_120430121913.RAW (F002018): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_GRB2_TAP_2_run2.RAW (F002019): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_P85B_TAP_1_run1.RAW (F002020): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_P85B_TAP_1_run2.RAW (F002021): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_P85B_TAP_2_run1.RAW (F002022): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+				04112012_JL_HCC827ER_P85B_TAP_2_run2.RAW (F002023): Peptide Prophet with Delta Mass Correction (No decoys found) [all charge states]																																								
+	Scaffold: Version: Scaffold_4.3.4																																											
+		Modification Metadata Set: 0 modifications																																										
+			Source: None																																									
+			Comment: 																																									
+		Protein Grouping Strategy: Experiment-wide grouping with protein cluster analysis																																										
+		Peptide Thresholds: 95.0% minimum 																																										
+		Protein Thresholds: 95.0% minimum and 2 peptides minimum																																										
+		Peptide FDR: 0.7% (Prophet)																																										
+		Protein FDR: 0.1% (Prophet)																																										
+		GO Annotation Source(s): 																																										
+																																												
+EGFR_TAP	Displaying:Total Spectrum Count								Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample	Uncategorized Sample
+									WT_EGFR1_1	WT_EGFR1_2	WT_EGFR2_1	WT_EGFR2_2	WT_ERBB31_1	WT_ERBB31_2	WT_ERBB32_1	WT_ERBB32_2	WT_GFP1_1	WT_GFP1_2	WT_GFP2_1	WT_GFP2_2	WT_GRB21_1	WT_GRB21_2	WT_GRB22_1	WT_GRB22_2	WT_P85B1_1	WT_P85B1_2	WT_P85B2_1	WT_P85B2_2	ER_EGFR1_1	ER_EGFR1_2	ER_EGFR2_1	ER_EGFR2_2	ER_ERBB31_1	ER_ERBB31_2	ER_ERBB32_1	ER_ERBB32_2	ER_GRB21_1	ER_GRB21_2	ER_GRB22_1	ER_GRB22_2	ER_P85B1_1	ER_P85B1_2	ER_P85B2_1	ER_P85B2_2
+#	Visible?	Starred?	Identified Proteins (60)	Accession Number	Molecular Weight	Protein Grouping Ambiguity	Quantitative Variance	Taxonomy	WT_EGFR1_1	WT_EGFR1_2	WT_EGFR2_1	WT_EGFR2_2	WT_ERBB31_1	WT_ERBB31_2	WT_ERBB32_1	WT_ERBB32_2	WT_GFP1_1	WT_GFP1_2	WT_GFP2_1	WT_GFP2_2	WT_GRB21_1	WT_GRB21_2	WT_GRB22_1	WT_GRB22_2	WT_P85B1_1	WT_P85B1_2	WT_P85B2_1	WT_P85B2_2	ER_EGFR1_1	ER_EGFR1_2	ER_EGFR2_1	ER_EGFR2_2	ER_ERBB31_1	ER_ERBB31_2	ER_ERBB32_1	ER_ERBB32_2	ER_GRB21_1	ER_GRB21_2	ER_GRB22_1	ER_GRB22_2	ER_P85B1_1	ER_P85B1_2	ER_P85B2_1	ER_P85B2_2
+1.1	TRUE	Empty	Epidermal growth factor receptor OS=Homo sapiens GN=EGFR PE=1 SV=2	EGFR_HUMAN	134 kDa	TRUE		unknown	67	52	45	55	5	3	4	5	0	0	0	0	19	18	36	36	7	6	12	7	36	29	12	9	0	0	3	3	5	8	0	0	1	1	1	2
+1.2	TRUE	Empty	Receptor tyrosine-protein kinase erbB-2 OS=Homo sapiens GN=ERBB2 PE=1 SV=1	ERBB2_HUMAN	138 kDa	TRUE		unknown	4	5	3	5	0	0	0	0	0	0	0	0	0	0	3	1	0	0	0	0	2	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+2.1	TRUE	Empty	Phosphatidylinositol 3-kinase regulatory subunit beta OS=Homo sapiens GN=PIK3R2 PE=1 SV=2	P85B_HUMAN	82 kDa	TRUE		unknown	0	0	0	0	4	4	4	3	0	0	0	0	2	0	3	3	26	41	47	39	0	0	0	0	0	0	3	4	0	0	0	0	15	13	16	17
+2.2	TRUE	Empty	Phosphatidylinositol 3-kinase regulatory subunit gamma OS=Homo sapiens GN=PIK3R3 PE=1 SV=2	P55G_HUMAN	54 kDa	TRUE		unknown	0	0	0	0	2	2	3	3	0	0	0	0	0	0	0	0	3	4	2	3	0	0	0	0	0	0	1	1	0	0	0	0	2	2	3	2
+2.3	TRUE	Empty	Phosphatidylinositol 3-kinase regulatory subunit alpha OS=Homo sapiens GN=PIK3R1 PE=1 SV=2	P85A_HUMAN	84 kDa	TRUE		unknown	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	3	2	4	3
+3	TRUE	Empty	Keratin, type II cytoskeletal 1 OS=Homo sapiens GN=KRT1 PE=1 SV=6	K2C1_HUMAN	66 kDa	TRUE		unknown	3	4	6	5	8	8	6	6	10	10	7	7	10	7	13	10	16	14	9	7	17	17	1	1	5	5	6	5	6	5	0	0	5	4	10	8
+4.1	TRUE	Empty	Keratin, type I cytoskeletal 10 OS=Homo sapiens GN=KRT10 PE=1 SV=6	K1C10_HUMAN	59 kDa	TRUE		unknown	2	0	3	3	5	5	3	2	1	2	4	3	3	3	9	9	11	8	2	3	10	11	1	1	3	3	2	2	0	2	0	0	0	1	5	4
+4.2	TRUE	Empty	Keratin, type I cytoskeletal 16 OS=Homo sapiens GN=KRT16 PE=1 SV=4	K1C16_HUMAN	51 kDa	TRUE		unknown	0	0	2	1	0	1	0	0	1	1	2	2	0	0	0	0	2	1	0	0	0	0	0	0	0	0	0	0	1	2	0	0	1	0	3	3
+5	TRUE	Empty	Growth factor receptor-bound protein 2 OS=Homo sapiens GN=GRB2 PE=1 SV=1	GRB2_HUMAN	25 kDa			unknown	2	0	2	2	0	0	0	0	0	0	0	0	9	6	10	11	0	1	1	1	1	1	0	0	0	0	0	0	7	7	0	0	0	0	0	0
+6	TRUE	Empty	78 kDa glucose-regulated protein OS=Homo sapiens GN=HSPA5 PE=1 SV=2	GRP78_HUMAN	72 kDa	TRUE		unknown	16	14	11	12	4	3	6	3	0	0	0	0	0	0	0	0	0	0	0	0	9	9	2	1	0	0	2	2	0	0	0	0	0	0	0	0
+7.1	TRUE	Empty	Keratin, type II cytoskeletal 2 epidermal OS=Homo sapiens GN=KRT2 PE=1 SV=2	K22E_HUMAN	65 kDa	TRUE		unknown	2	3	6	4	5	5	4	4	4	4	1	1	4	5	4	4	8	8	3	4	7	5	1	1	3	3	4	3	2	1	0	0	1	1	5	4
+7.2	TRUE	Empty	Keratin, type II cytoskeletal 8 OS=Homo sapiens GN=KRT8 PE=1 SV=7	K2C8_HUMAN	54 kDa	TRUE		unknown	1	1	2	2	0	0	0	1	0	0	0	0	0	0	2	0	0	0	0	0	3	2	0	0	0	0	0	0	0	0	0	0	0	0	2	0
+7.3	TRUE	Empty	Keratin, type II cytoskeletal 5 OS=Homo sapiens GN=KRT5 PE=1 SV=3	K2C5_HUMAN	62 kDa	TRUE		unknown	1	1	3	2	3	2	2	2	1	1	2	0	2	2	2	1	0	2	0	0	3	2	0	0	0	0	1	1	0	0	0	0	0	0	2	2
+7.4	TRUE	Empty	Keratin, type II cytoskeletal 4 OS=Homo sapiens GN=KRT4 PE=1 SV=4	K2C4_HUMAN	57 kDa	TRUE		unknown	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	4	3	0	0	2	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0
+7.5	TRUE	Empty	Keratin, type II cytoskeletal 6B OS=Homo sapiens GN=KRT6B PE=1 SV=5	K2C6B_HUMAN	60 kDa	TRUE		unknown	1	2	4	4	3	3	3	3	2	2	2	1	2	2	3	2	4	4	2	0	5	3	0	0	1	0	2	1	0	0	0	0	0	0	3	2
+7.6	TRUE	Empty	Keratin, type II cytoskeletal 7 OS=Homo sapiens GN=KRT7 PE=1 SV=5	K2C7_HUMAN	51 kDa	TRUE		unknown	0	0	0	2	0	0	0	1	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0
+8	TRUE	Empty	Heat shock cognate 71 kDa protein OS=Homo sapiens GN=HSPA8 PE=1 SV=1	HSP7C_HUMAN	71 kDa	TRUE		unknown	15	10	12	11	5	4	6	5	0	0	1	1	2	2	1	1	1	0	0	0	10	15	2	2	0	1	1	2	1	0	0	0	1	1	0	0
+9	TRUE	Empty	Phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit alpha isoform OS=Homo sapiens GN=PIK3CA PE=1 SV=2	PK3CA_HUMAN	124 kDa			unknown	0	0	0	0	3	2	3	3	0	0	0	0	0	0	0	0	6	7	11	10	0	0	0	0	0	0	1	1	0	0	0	0	3	3	6	6
+10	TRUE	Empty	Receptor tyrosine-protein kinase erbB-3 OS=Homo sapiens GN=ERBB3 PE=1 SV=1	ERBB3_HUMAN	148 kDa			unknown	0	0	0	0	4	5	7	6	0	0	0	0	0	0	0	0	2	2	4	4	0	0	0	0	1	2	2	3	0	0	0	0	1	0	2	1
+11.1	TRUE	Empty	ADP/ATP translocase 2 OS=Homo sapiens GN=SLC25A5 PE=1 SV=7	ADT2_HUMAN	33 kDa	TRUE		unknown	5	3	5	5	2	1	2	1	0	0	0	0	2	3	3	3	1	0	1	0	3	2	0	0	0	0	1	1	1	0	0	0	0	0	0	0
+11.2	TRUE	Empty	ADP/ATP translocase 3 OS=Homo sapiens GN=SLC25A6 PE=1 SV=4	ADT3_HUMAN	33 kDa	TRUE		unknown	5	4	5	5	1	0	2	1	0	0	0	0	1	2	2	2	0	0	1	0	3	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+12	TRUE	Empty	Keratin, type I cytoskeletal 9 OS=Homo sapiens GN=KRT9 PE=1 SV=3	K1C9_HUMAN	62 kDa			unknown	1	1	1	0	1	2	0	1	0	0	1	0	3	1	2	1	4	2	0	1	3	5	0	0	3	2	1	1	1	1	0	0	1	0	1	0
+13.1	TRUE	Empty	Tubulin alpha-1A chain OS=Homo sapiens GN=TUBA1A PE=1 SV=1	TBA1A_HUMAN	50 kDa	TRUE		unknown	5	3	5	3	1	1	2	2	0	0	0	0	0	0	2	0	0	0	0	0	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+13.2	TRUE	Empty	Tubulin alpha-4A chain OS=Homo sapiens GN=TUBA4A PE=1 SV=1	TBA4A_HUMAN	50 kDa	TRUE		unknown	3	2	3	1	0	0	1	1	0	0	0	0	0	0	2	1	0	0	0	0	1	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+14	TRUE	Empty	Rho guanine nucleotide exchange factor 5 OS=Homo sapiens GN=ARHGEF5 PE=1 SV=3	ARHG5_HUMAN	177 kDa			unknown	0	0	0	0	0	0	0	0	0	0	0	0	5	7	12	11	0	0	0	0	0	0	0	0	0	0	0	0	1	1	0	0	0	0	0	0
+15	TRUE	Empty	Phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit beta isoform OS=Homo sapiens GN=PIK3CB PE=1 SV=1	PK3CB_HUMAN	123 kDa	TRUE		unknown	0	0	0	0	0	1	1	1	0	0	0	0	0	0	0	0	4	2	5	4	0	0	0	0	0	0	0	0	0	0	0	0	1	1	4	2
+16	TRUE	Empty	Insulin receptor substrate 1 OS=Homo sapiens GN=IRS1 PE=1 SV=1	IRS1_HUMAN	132 kDa			unknown	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	3	2	6	3	0	0	0	0	0	0	0	0	0	0	0	0	2	3	3	4
+17.1	TRUE	Empty	Tubulin beta chain OS=Homo sapiens GN=TUBB PE=1 SV=2	TBB5_HUMAN	50 kDa	TRUE		unknown	8	6	5	2	0	1	2	1	0	0	0	0	1	1	2	1	0	0	0	0	3	1	0	0	0	0	0	1	0	0	0	0	0	0	0	0
+17.2	TRUE	Empty	Tubulin beta-3 chain OS=Homo sapiens GN=TUBB3 PE=1 SV=2	TBB3_HUMAN	50 kDa	TRUE		unknown	2	2	3	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+18.1	TRUE	Empty	Heat shock 70 kDa protein 1A OS=Homo sapiens GN=HSPA1A PE=1 SV=1	HS71A_HUMAN (+1)	70 kDa	TRUE		unknown	5	3	5	5	0	1	1	1	0	0	0	0	0	1	1	1	0	0	0	0	2	3	1	1	0	0	1	1	0	0	0	0	0	0	0	0
+19.1	TRUE	Empty	Heat shock protein HSP 90-alpha OS=Homo sapiens GN=HSP90AA1 PE=1 SV=5	HS90A_HUMAN	85 kDa	TRUE		unknown	3	3	1	2	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	2	2	0	0	0	0	1	1	0	0	0	0	0	0	0	0
+19.2	TRUE	Empty	Heat shock protein HSP 90-beta OS=Homo sapiens GN=HSP90AB1 PE=1 SV=4	HS90B_HUMAN	83 kDa	TRUE		unknown	4	2	1	2	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	1	1	0	0	0	0	1	1	0	0	0	0	0	0	0	0
+20.1	TRUE	Empty	14-3-3 protein epsilon OS=Homo sapiens GN=YWHAE PE=1 SV=1	1433E_HUMAN	29 kDa	TRUE		unknown	1	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0	2	2	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1
+20.2	TRUE	Empty	14-3-3 protein theta OS=Homo sapiens GN=YWHAQ PE=1 SV=1	1433T_HUMAN	28 kDa	TRUE		unknown	1	0	0	0	0	0	0	0	0	0	0	0	0	0	2	1	1	1	2	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1
+21	TRUE	Empty	Leucine-rich PPR motif-containing protein, mitochondrial OS=Homo sapiens GN=LRPPRC PE=1 SV=3	LPPRC_HUMAN	158 kDa			unknown	1	3	3	3	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+22	TRUE	Empty	ERBB receptor feedback inhibitor 1 OS=Homo sapiens GN=ERRFI1 PE=1 SV=1	ERRFI_HUMAN	51 kDa			unknown	1	2	1	1	0	0	0	0	0	0	0	0	0	0	2	1	0	0	0	0	1	2	0	0	0	0	0	0	0	1	0	0	0	0	0	0
+23.1	TRUE	Empty	AP-2 complex subunit alpha-1 OS=Homo sapiens GN=AP2A1 PE=1 SV=3	AP2A1_HUMAN	108 kDa	TRUE		unknown	1	1	1	1	0	0	0	0	0	0	0	0	3	3	2	3	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+24	TRUE	Empty	Growth factor receptor-bound protein 7 OS=Homo sapiens GN=GRB7 PE=1 SV=2	GRB7_HUMAN	60 kDa			unknown	0	0	0	0	0	1	1	1	0	0	0	0	0	0	0	0	1	1	5	3	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	0
+25	TRUE	Empty	Signal transducer and activator of transcription 3 OS=Homo sapiens GN=STAT3 PE=1 SV=2	STAT3_HUMAN	88 kDa			unknown	4	5	3	3	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+26	TRUE	Empty	Annexin A2 OS=Homo sapiens GN=ANXA2 PE=1 SV=2	ANXA2_HUMAN	39 kDa			unknown	3	4	0	1	0	0	0	0	0	0	0	0	0	0	3	3	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+27	TRUE	Empty	Receptor-type tyrosine-protein phosphatase alpha OS=Homo sapiens GN=PTPRA PE=1 SV=2	PTPRA_HUMAN	91 kDa			unknown	0	0	0	0	0	0	0	0	0	0	0	0	0	3	3	3	0	0	0	0	0	0	0	0	0	0	0	0	3	2	0	0	0	0	0	0
+28	TRUE	Empty	Complement component 1 Q subcomponent-binding protein, mitochondrial OS=Homo sapiens GN=C1QBP PE=1 SV=1	C1QBP_HUMAN	31 kDa			unknown	0	0	0	0	0	0	0	0	7	5	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+29	TRUE	Empty	SHC-transforming protein 1 OS=Homo sapiens GN=SHC1 PE=1 SV=4	SHC1_HUMAN	63 kDa			unknown	0	0	0	0	0	0	0	0	0	0	0	0	2	3	3	2	0	0	1	0	0	0	0	0	0	0	0	0	1	1	0	0	0	0	0	0
+30	TRUE	Empty	Tyrosine-protein phosphatase non-receptor type 11 OS=Homo sapiens GN=PTPN11 PE=1 SV=2	PTN11_HUMAN	68 kDa			unknown	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	2	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+31	TRUE	Empty	Serum paraoxonase/arylesterase 2 OS=Homo sapiens GN=PON2 PE=1 SV=3	PON2_HUMAN	39 kDa			unknown	1	2	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	1	2	0	0	0	0	1	0	0	0	0	0	0	0	0	0
+32	TRUE	Empty	Hepatocyte growth factor receptor OS=Homo sapiens GN=MET PE=1 SV=4	MET_HUMAN	156 kDa			unknown	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	0	0	0	0	1	1	0	0	0	0	1	0	2	2	0	0	0	0	1	1
+33	TRUE	Empty	Crk-like protein OS=Homo sapiens GN=CRKL PE=1 SV=1	CRKL_HUMAN	34 kDa			unknown	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	1	1	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+34	TRUE	Empty	E3 ubiquitin-protein ligase CBL OS=Homo sapiens GN=CBL PE=1 SV=2	CBL_HUMAN	100 kDa			unknown	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	2	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+35	TRUE	Empty	Pleckstrin homology-like domain family A member 2 OS=Homo sapiens GN=PHLDA2 PE=1 SV=2	PHLA2_HUMAN	17 kDa			unknown	1	1	0	1	2	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+36	TRUE	Empty	28S ribosomal protein S27, mitochondrial OS=Homo sapiens GN=MRPS27 PE=1 SV=3	RT27_HUMAN	48 kDa			unknown	0	0	0	0	1	2	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	0	0	0	0	0	0	0	0
+37	TRUE	Empty	Mitochondrial 2-oxoglutarate/malate carrier protein OS=Homo sapiens GN=SLC25A11 PE=1 SV=3	M2OM_HUMAN	34 kDa			unknown	1	0	1	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+38	TRUE	Empty	Signal transducer and activator of transcription 1-alpha/beta OS=Homo sapiens GN=STAT1 PE=1 SV=2	STAT1_HUMAN	87 kDa			unknown	3	2	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+39	TRUE	Empty	SRA stem-loop-interacting RNA-binding protein, mitochondrial OS=Homo sapiens GN=SLIRP PE=1 SV=1	SLIRP_HUMAN	12 kDa			unknown	2	1	2	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+40	TRUE	Empty	Phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit delta isoform OS=Homo sapiens GN=PIK3CD PE=1 SV=2	PK3CD_HUMAN	119 kDa	TRUE		unknown	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	2	2	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+41	TRUE	Empty	Stress-70 protein, mitochondrial OS=Homo sapiens GN=HSPA9 PE=1 SV=2	GRP75_HUMAN	74 kDa			unknown	1	2	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+42	TRUE	Empty	Apoptosis-inducing factor 1, mitochondrial OS=Homo sapiens GN=AIFM1 PE=1 SV=1	AIFM1_HUMAN	67 kDa			unknown	0	0	0	0	1	1	1	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+43	TRUE	Empty	Prohibitin OS=Homo sapiens GN=PHB PE=1 SV=1	PHB_HUMAN	30 kDa			unknown	2	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+44	TRUE	Empty	Heterogeneous nuclear ribonucleoprotein K OS=Homo sapiens GN=HNRNPK PE=1 SV=1	HNRPK_HUMAN	51 kDa			unknown	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	2	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+45	TRUE	Empty	Transmembrane protein 33 OS=Homo sapiens GN=TMEM33 PE=1 SV=2	TMM33_HUMAN	28 kDa			unknown	2	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+46	TRUE	Empty	28S ribosomal protein S34, mitochondrial OS=Homo sapiens GN=MRPS34 PE=1 SV=2	RT34_HUMAN	26 kDa			unknown	0	0	0	0	1	0	1	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+																																												
+END OF FILE																																												

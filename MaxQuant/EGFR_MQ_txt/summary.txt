@@ -1,0 +1,72 @@
+Raw File	Protease	Protease first search	Use protease first search	Fixed modifications	Variable modifications	Variable modifications first search	Use variable modifications first search	Multiplicity	Max. missed cleavages	Labels0	LC-MS run type	Time-dependent recalibration	MS	MS/MS	MS/MS Submitted	MS/MS Submitted (SIL)	MS/MS Submitted (ISO)	MS/MS Submitted (PEAK)	MS/MS on Polymers	MS/MS Identified	MS/MS Identified (SIL)	MS/MS Identified (ISO)	MS/MS Identified (PEAK)	MS/MS Identified [%]	MS/MS Identified (SIL) [%]	MS/MS Identified (ISO) [%]	MS/MS Identified (PEAK) [%]	Peptide Sequences Identified	Peaks	Peaks Sequenced	Peaks Sequenced [%]	Peaks Repeatedly Sequenced	Peaks Repeatedly Sequenced [%]	Isotope Patterns	Isotope Patterns Sequenced	Isotope Patterns Sequenced (z>1)	Isotope Patterns Sequenced [%]	Isotope Patterns Sequenced (z>1) [%]	Isotope Patterns Repeatedly Sequenced	Isotope Patterns Repeatedly Sequenced [%]	Recalibrated	Av. Absolute Mass Deviation	Mass Standard Deviation	Label free norm param
+04112012_JL_HCC827_EGFR_TAP_1_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5393	3712	4703	2709	0	1994	0	230	218	0	12	4.89	8.05	NaN	0.6	185	180148	3017	1.67	319	10.57	8969	2205	1784	24.58	24.68	247	11.2	+	0.30247	0.38829	
+04112012_JL_HCC827_EGFR_TAP_1_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5397	3819	4956	2668	0	2288	0	207	197	0	10	4.18	7.38	NaN	0.44	164	178921	3109	1.74	355	11.42	8872	2192	1731	24.71	24.45	267	12.18	+	0.3339	0.44542	
+04112012_JL_HCC827_EGFR_TAP_2_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5425	3301	4415	2183	0	2232	0	214	202	0	12	4.85	9.25	NaN	0.54	167	127947	2619	2.05	321	12.26	5396	1756	1349	32.54	33.46	202	11.5	+	0.33811	0.4401	
+04112012_JL_HCC827_EGFR_TAP_2_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5405	3181	4192	2164	0	2028	0	208	191	0	17	4.96	8.83	NaN	0.84	165	127158	2560	2.01	303	11.84	5358	1776	1382	33.15	33.96	197	11.09	+	0.35003	0.4505	
+04112012_JL_HCC827_ERBB3_TAP_1_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5405	1606	2334	870	0	1464	0	73	69	0	4	3.13	7.93	NaN	0.27	70	75491	1149	1.52	210	18.28	1513	609	274	40.25	40.47	119	19.54	+	0.27169	0.34436	
+04112012_JL_HCC827_ERBB3_TAP_1_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5388	1609	2334	878	0	1456	0	67	67	0	0	2.87	7.63	NaN	0	65	76781	1180	1.54	202	17.12	1623	631	297	38.88	39.55	120	19.02	+	0.22634	0.30753	
+04112012_JL_HCC827_ERBB3_TAP_2_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5439	2769	3865	1665	0	2200	0	70	70	0	0	1.81	4.2	NaN	0	67	128713	2095	1.63	310	14.8	4416	1273	877	28.83	29.56	198	15.55	+	0.35546	0.45917	
+04112012_JL_HCC827_ERBB3_TAP_2_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5442	2894	4209	1575	0	2634	0	78	75	0	3	1.85	4.76	NaN	0.11	74	128204	2122	1.66	280	13.2	4467	1235	873	27.65	30.42	162	13.12	+	0.29141	0.41008	
+04112012_JL_HCC827_GFP_TAP_1_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5420	2797	3953	1637	0	2316	0	29	29	0	0	0.73	1.77	NaN	0	28	146257	2125	1.45	312	14.68	5025	1264	885	25.15	24.86	197	15.59	+	0.34671	0.42507	
+04112012_JL_HCC827_GFP_TAP_1_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5473	2812	3999	1623	0	2376	0	29	28	0	1	0.73	1.73	NaN	0.04	24	148135	2101	1.42	297	14.14	4986	1235	868	24.77	24.96	204	16.52	+	0.38952	0.45556	
+04112012_JL_HCC827_GFP_TAP_2_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5373	1487	2215	747	0	1468	0	21	21	0	0	0.95	2.81	NaN	0	21	76426	1066	1.39	178	16.7	1491	507	209	34	40.74	108	21.3	+	0.38272	0.49016	
+04112012_JL_HCC827_GFP_TAP_2_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5380	1473	2188	748	0	1440	0	28	24	0	4	1.28	3.21	NaN	0.28	28	76230	1058	1.39	185	17.49	1485	521	211	35.08	39.15	108	20.73	+	0.41739	0.46536	
+04112012_JL_HCC827_GRB2_TAP_1_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5450	1909	2675	1129	0	1546	0	110	103	0	7	4.11	9.12	NaN	0.45	97	88466	1484	1.68	201	13.54	2412	915	589	37.94	38.9	113	12.35	+	0.26906	0.35159	
+04112012_JL_HCC827_GRB2_TAP_1_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5455	2010	2782	1228	0	1554	0	119	115	0	4	4.28	9.36	NaN	0.26	105	92005	1546	1.68	223	14.42	2575	977	648	37.94	39.11	125	12.79	+	0.34532	0.46546	
+04112012_JL_HCC827_GRB2_TAP_2_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5415	3299	4289	2297	0	1992	0	158	147	0	11	3.68	6.4	NaN	0.55	130	163290	2674	1.64	325	12.15	7101	1859	1454	26.18	26.43	241	12.96	+	0.29438	0.37439	
+04112012_JL_HCC827_GRB2_TAP_2_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5429	3386	4503	2261	0	2242	0	164	148	0	16	3.64	6.55	NaN	0.71	136	160887	2654	1.65	323	12.17	7042	1774	1390	25.19	25.75	232	13.08	+	0.31288	0.44039	
+04112012_JL_HCC827_P85B_TAP_1_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5428	2494	3407	1575	0	1832	0	144	134	0	10	4.23	8.51	NaN	0.55	128	118650	2001	1.69	254	12.69	4211	1289	971	30.61	30.83	158	12.26	+	0.30512	0.40582	
+04112012_JL_HCC827_P85B_TAP_1_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5436	2641	3632	1646	0	1986	0	135	130	0	5	3.72	7.9	NaN	0.25	109	119562	2010	1.68	276	13.73	4270	1300	949	30.44	30.82	170	13.08	+	0.29372	0.47159	
+04112012_JL_HCC827_P85B_TAP_2_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5404	3662	4864	2444	0	2420	0	135	132	0	3	2.78	5.4	NaN	0.12	108	191216	2940	1.54	346	11.77	8310	1972	1602	23.73	24.88	276	14	+	0.33503	0.44063	
+04112012_JL_HCC827_P85B_TAP_2_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5427	3380	4509	2243	0	2266	0	126	117	0	9	2.79	5.22	NaN	0.4	105	189838	2782	1.47	287	10.32	7885	1864	1501	23.64	24.97	216	11.59	+	0.3237	0.38953	
+04112012_JL_HCC827ER_EGFR_TAP_1_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5439	3666	4910	2418	0	2492	0	145	133	0	12	2.95	5.5	NaN	0.48	122	181383	2936	1.62	329	11.21	8365	1977	1512	23.63	23.82	236	11.94	+	0.2903	0.44814	
+04112012_JL_HCC827ER_EGFR_TAP_1_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5424	3398	4515	2267	0	2248	0	140	132	0	8	3.1	5.82	NaN	0.36	121	168594	2801	1.66	318	11.35	7751	1882	1467	24.28	24.26	227	12.06	+	0.31318	0.38112	
+04112012_JL_HCC827ER_EGFR_TAP_2_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5331	1168	1677	647	0	1030	0	24	21	0	3	1.43	3.25	NaN	0.29	24	55578	747	1.34	164	21.95	899	401	113	44.61	51.13	94	23.44	+	0.24048	0.29952	
+04112012_JL_HCC827ER_EGFR_TAP_2_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5324	1145	1695	591	0	1104	0	23	22	0	1	1.36	3.72	NaN	0.09	22	54871	724	1.32	157	21.69	809	362	115	44.75	51.34	84	23.2	+	0.49293	0.56631	
+04112012_JL_HCC827ER_ERBB3_TAP_1_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5329	1160	1762	552	0	1210	0	9	7	0	2	0.51	1.27	NaN	0.17	9	57428	781	1.36	165	21.13	861	360	94	41.81	41.23	91	25.28	+	0.40999	0.4646	
+04112012_JL_HCC827ER_ERBB3_TAP_1_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5322	1215	1821	607	0	1214	0	19	17	0	2	1.04	2.8	NaN	0.16	18	57432	808	1.41	187	23.14	917	396	98	43.18	39.36	114	28.79	+	0.24634	0.30999	
+04112012_JL_HCC827ER_ERBB3_TAP_2_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5432	2932	4281	1579	0	2702	0	45	40	0	5	1.05	2.53	NaN	0.19	46	141708	2206	1.56	328	14.87	4789	1232	850	25.73	27.31	175	14.2	+	0.42434	0.48747	
+04112012_JL_HCC827ER_ERBB3_TAP_2_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5434	2638	3766	1506	0	2260	0	38	36	0	2	1.01	2.39	NaN	0.09	37	128428	2076	1.62	281	13.54	4387	1202	830	27.4	28.62	172	14.31	+	0.53304	0.81406	
+04112012_JL_HCC827ER_GRB2_TAP_1_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5387	1398	2113	675	0	1438	0	46	43	0	3	2.18	6.37	NaN	0.21	46	69487	1008	1.45	174	17.26	1228	509	230	41.45	43.07	88	17.29	+	0.26598	0.32961	
+04112012_JL_HCC827ER_GRB2_TAP_1_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5381	1441	2097	777	0	1320	0	49	48	0	1	2.34	6.18	NaN	0.08	45	71204	1030	1.45	190	18.45	1305	551	258	42.22	43.88	111	20.15	+	0.23195	0.2948	
+04112012_JL_HCC827ER_GRB2_TAP_2_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5420	3490	4697	2273	0	2424	0	114	110	0	4	2.43	4.84	NaN	0.17	101	170738	2710	1.59	373	13.76	7082	1752	1337	24.74	25.35	274	15.64	+	0.27403	0.35509	
+04112012_JL_HCC827ER_P85B_TAP_1_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5397	1888	2828	942	0	1886	0	56	54	0	2	1.98	5.73	NaN	0.11	48	83254	1331	1.6	247	18.56	1865	683	361	36.62	38.9	120	17.57	+	0.2645	0.3449	
+04112012_JL_HCC827ER_P85B_TAP_1_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5428	1865	2740	980	0	1760	0	46	46	0	0	1.68	4.69	NaN	0	43	85475	1356	1.59	227	16.74	1917	721	388	37.61	38.57	128	17.75	+	0.31637	0.40472	
+04112012_JL_HCC827ER_P85B_TAP_2_run1	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5431	2046	2890	1190	0	1700	0	90	82	0	8	3.11	6.89	NaN	0.47	81	156590	1578	1.01	239	15.15	4611	962	654	20.86	19.93	130	13.51	+	0.30318	0.37689	
+04112012_JL_HCC827ER_P85B_TAP_2_run2	Trypsin/P		False		Oxidation (M);Acetyl (Protein N-term)	Oxidation (M);Acetyl (Protein N-term)	False	1	2		Standard		5444	2151	2960	1328	0	1632	0	73	70	0	3	2.47	5.27	NaN	0.18	65	119809	1596	1.33	249	15.6	3272	992	663	30.32	31.36	159	16.03	+	0.2871	0.3577	
+HCC827_EGFR_TAP_1_run1																												185																
+HCC827_EGFR_TAP_1_run2																												164																
+HCC827_EGFR_TAP_2_run1																												167																
+HCC827_EGFR_TAP_2_run2																												165																
+HCC827_ERBB3_TAP_1_run1																												70																
+HCC827_ERBB3_TAP_1_run2																												65																
+HCC827_ERBB3_TAP_2_run1																												67																
+HCC827_ERBB3_TAP_2_run2																												74																
+HCC827_GFP_TAP_1_run1																												28																
+HCC827_GFP_TAP_1_run2																												24																
+HCC827_GFP_TAP_2_run1																												21																
+HCC827_GFP_TAP_2_run2																												28																
+HCC827_GRB2_TAP_1_run1																												97																
+HCC827_GRB2_TAP_1_run2																												105																
+HCC827_GRB2_TAP_2_run1																												130																
+HCC827_GRB2_TAP_2_run2																												136																
+HCC827_P85B_TAP_1_run1																												128																
+HCC827_P85B_TAP_1_run2																												109																
+HCC827_P85B_TAP_2_run1																												108																
+HCC827_P85B_TAP_2_run2																												105																
+HCC827ER_EGFR_TAP_1_run1																												122																
+HCC827ER_EGFR_TAP_1_run2																												121																
+HCC827ER_EGFR_TAP_2_run1																												24																
+HCC827ER_EGFR_TAP_2_run2																												22																
+HCC827ER_ERBB3_TAP_1_run1																												9																
+HCC827ER_ERBB3_TAP_1_run2																												18																
+HCC827ER_ERBB3_TAP_2_run1																												46																
+HCC827ER_ERBB3_TAP_2_run2																												37																
+HCC827ER_GRB2_TAP_1_run1																												46																
+HCC827ER_GRB2_TAP_1_run2																												45																
+HCC827ER_GRB2_TAP_2_run1																												101																
+HCC827ER_P85B_TAP_1_run1																												48																
+HCC827ER_P85B_TAP_1_run2																												43																
+HCC827ER_P85B_TAP_2_run1																												81																
+HCC827ER_P85B_TAP_2_run2																												65																
+Total													189307	85842	118776	52622	0	66154	0	3262	3078	0	184	2.75	5.85	NaN	0.28	574	4196304					147465	41136	28814	27.9	27.82	5863	14.25		0.31528	0.42001	

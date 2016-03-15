@@ -1,0 +1,31 @@
+<tool id="ProHits_DotPlot_Generator" name="ProHits DotPlot Generator">
+  <description></description>
+  <command interpreter="python">ProHits_DotPlot_Generator.py $saint_file $FDR1 $FDR2 $spec_max $dotplot $heatmap $estimated $stats</command>
+  <inputs>
+    <param format="txt" name="saint_file" type="data" label="SAINT Output"/>
+    <param type="float" name="FDR1" label="False Discovery Rate 1" value="0.01"/>
+    <param type="float" name="FDR2" label="False Discovery Rate 2" value="0.025"/>
+    <param type="integer" name="spec_max" label="Maximum spectral count" value="50"/>
+  </inputs>
+  <outputs>
+    <data format="pdf" name="dotplot" label="DotPlot" />    
+    <data format="pdf" name="heatmap" label="Heatmap" /> 
+    <data format="pdf" name="estimated" label="Estimated" />  
+    <data format="pdf" name="stats" label="Stats" />   
+  </outputs>
+  <stdio>
+    <regex match="error"
+	   source="stdout"
+           level="fatal"
+           description="Unknown error"/>
+  </stdio> 
+
+  <tests>
+    <test>
+      <param name="input" value="fa_gc_content_input.fa"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+  <help>
+  </help>
+</tool>

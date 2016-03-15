@@ -1,0 +1,36 @@
+<tool id="SAINT_ProteinInteractions_v2" name="SAINT Output to Protein Interaction File">
+  <description></description>
+  <command interpreter="python">ProteinInteractions_v2.py $input $saint_cutoff $CPDB_cutoff $species $Cytoscape_File \$INSTALL_RUN_PATH/</command>
+  <requirements>
+    <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
+  </requirements>
+  <inputs>
+    <param format="txt" name="input" type="data" label="SAINT Output"/>
+    <param type="float" name="saint_cutoff" label="Saint Score Cutoff" value="0.8"/>
+    <param type="float" name="CPDB_cutoff" label="Consensus Path Database Score Cutoff" value="0.8"/>
+    <param type="select" name="species" label="Species">
+      <option value="Human">Human</option>
+      <option value="Yeast">Yeast</option>
+      <option value="Mouse">Mouse</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="sif" name="Cytoscape_File" label="Cytoscape File"/>    
+  </outputs>
+  <stdio>
+    <regex match="error"
+	   source="stdout"
+           level="fatal"
+           description="Unknown error"/>
+  </stdio> 
+
+  <tests>
+    <test>
+      <param name="input" value="fa_gc_content_input.fa"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+  <help>
+    This program will read in a SAINT 'list.txt' file and <!-- '...a list of filtered interactions' + details about how they were gathered? -->the interactions from ConsensusPathDB ( http://consensuspathdb.org/ ) and return all the interactions that we saw in our experiment in a format suitable for cytoscape. This allows us to filter before getting protein-protein interactions (PPI's) so that it doesn't affect our SAINT score or include interactions that don't score well.
+  </help>
+</tool>

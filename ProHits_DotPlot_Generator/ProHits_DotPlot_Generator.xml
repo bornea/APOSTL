@@ -1,0 +1,59 @@
+<tool id="ProHits_DotPlot_Generator" name="ProHits DotPlot Generator">
+  <description></description>
+  <command interpreter="python">ProHits_DotPlot_Generator.py $saint_file $FDR1 $FDR2 $spec_max $dotplot $heatmap $estimated $stats</command>
+  <inputs>
+    <param format="txt" name="saint_file" type="data" label="SAINT Output"/>
+    <param type="float" name="FDR1" label="False Discovery Rate 1" value="0.01"/>
+    <param type="float" name="FDR2" label="False Discovery Rate 2" value="0.025"/>
+    <param type="integer" name="spec_max" label="Maximum spectral count" value="50"/>
+  </inputs>
+  <outputs>
+    <data format="pdf" name="dotplot" label="DotPlot" />    
+    <data format="pdf" name="heatmap" label="Heatmap" /> 
+    <data format="pdf" name="estimated" label="Estimated" />  
+    <data format="pdf" name="stats" label="Stats" />   
+  </outputs>
+  <stdio>
+    <regex match="Error|error"
+     source="stdout"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error|error"
+     source="stderr"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error: bad bait"
+           source="stdout"
+           level="fatal"
+           description="Error: bad bait"/>
+  </stdio> 
+
+  <tests>
+    <test>
+      <param name="input" value="fa_gc_content_input.fa"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+  <help>
+**Running ProHits DotPlot**
+
+This runs the biclustering version of the DotPlot tool found at http://prohitstools.mshri.on.ca/. A more interactive version can be found at http://prohits-viz.lunenfeld.ca/. This script will take a long time to run.
+
+INPUTS:
+
+Saint Output: SAINTexpress generated "list.txt" file.
+
+Primary False Discovery Rate
+
+Secondary False Discovery Rate
+
+Maximum Spectral Count
+
+------
+
+**Please cite** 
+
+ * Knight, J.D., Liu, G., Zhang, J., Pasculescu, A., Choi, H., and Gingras, A.-C. (2014) A web-tool for visualizing quantitative protein-protein interaction data. Proteomics, in press. PMID:25422071. 
+
+  </help>
+</tool>

@@ -1,0 +1,131 @@
+<tool id="APOSTL_Static_Bubblegraph_Generator" name="APOSTL Static Bubblegraph Generator">
+  <description></description>
+  <command interpreter="python">APOSTL_Static_Bubblegraph_Generator.py $list_file $prey_file $crapome $color $label $cutoff $type $inc_file $exc_file $outfile $NSAF_zoom $SAINT_zoom $SAINT $NSAF \$INSTALL_RUN_PATH/</command>
+  <requirements>
+    <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
+  </requirements>
+  <inputs>
+    <param type="select" name="type" label="MaxQuant or Scaffold">
+      <option value="MQ">MaxQuant</option>
+      <option value="SC">Scaffold</option> 
+    </param>
+    <param format="txt" name="list_file" type="data" label="List File"/>
+    <param format="txt" name="prey_file" type="data" label="Prey File"/>
+    <param format="txt" name="crapome" type="data" label="Crapome File" optional="true"/>
+    <param name="color" type="select" label="Color" optional="true">
+        <option value="crapome">Crapome</option>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+    </param>
+    <param type="boolean" name="label" checked="true" label="Use Labels"/>
+    <param type="float" name="cutoff" label="SAINT Score Cutoff" help="Select a value between 0 and 1 written like 0.8." value="0.8"/>
+    <param format="txt" name="inc_file" type="data" label="List of Uniprot IDs to Include" optional="true"/>
+    <param format="txt" name="exc_file" type="data" label="List of Uniprot IDs to Exclude" optional="true"/>
+  </inputs>
+  <outputs>
+    <data format="txt" name="outfile" label="Outfile"/>    
+    <data format="png" name="NSAF_zoom" label="Zoom NSAF" />
+    <data format="png" name="SAINT_zoom" label="Zoom SAINT" />
+    <data format="png" name="NSAF" label="NSAF" />
+    <data format="png" name="SAINT" label="SAINT" />
+  </outputs>
+  <stdio>
+    <regex match="error"
+	   source="stdout"
+           level="fatal"
+           description="Unknown error"/>
+  </stdio> 
+
+  <tests>
+    <test>
+      <param name="input" value="fa_gc_content_input.fa"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+  <help>
+Post-processing:
+Once SAINTexpress has been run, APOSTL is able to read the resulting "list.txt" file. Fromhere APOSTL does a number of things:
+
+APOSTL calculates NSAF values for each prey based on the average spectra observed for each bait
+
+OPTIONAL: APOSTL calculates the probability of a specific interaction based on prey revalence in the CRAPome 
+
+Bubble graphs are generated for each bait where:
+
+- x axis is the natural log of the NSAF values
+
+- y axis is the observed log2 fold change (as compared to control)
+
+- bubble radius is proportional to the average observed spectra
+
+OPTIONAL: bubble color corresponds to the CRAPome probability of a specific interaction in which an 80% cutoff is applied where prey with less than 80% are colored tan
+
+APOSTL queries ConsensusPathDB for protein-protein interactions within your data and then formats the resulting network for simple cytoscape import using the "import network from file" option.
+
+INPUTS:
+
+List File: 
+
+- SAINTexpress generated "list.txt" file
+
+Prey File:
+
+- SAINT pre-processing generated "prey.txt" file used to run SAINTexpress
+
+Crapome File:
+
+- raw output from Crapome Workflow 1 query (http://www.crapome.org)
+
+Color:
+
+- Specify the color of the bubbles within the graph.
+
+- If "crapome" is chosen and 'crapome' file is specified, bubbles will be color based on crapome specificity
+
+Use labels:
+
+- Adds gene name labels to bubbles within the "zoomed in" graphs
+SAINT Score Cutoff:
+
+- Choose Saintscore cutoff (between 0-1) to be used for filtering the "zoomed in" graphs (default = 0.8)
+
+- Also used for filtering during the generation of the cytoscape network
+
+Species:
+
+- Human, mouse, or yeast
+
+Interaction Confidence:
+
+- Interaction confidence value (0-1) used to filter the interactions with the ConsensusPathDB database
+
+- Suggestions:
+
+* low: 0
+
+* medium: 0.5
+
+* high: 0.7
+
+* very high: 0.9
+
+OUTPUTS:
+
+Bubble Graphs:
+
+- Unfiltered Data:
+
+* NSAF v. Log2(FoldChange)
+
+* SAINTscore v. Log2(FoldChange)
+
+- Filtered by SAINT Score
+
+* NSAF v. Log2(FoldChange)
+
+* SAINTscore v. Log2(FoldChange)  
+
+Output.txt
+- SAINTexpress "list.txt" output with additional columns that were used during the analysis
+  </help>
+</tool>

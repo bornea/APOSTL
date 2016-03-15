@@ -1,0 +1,90 @@
+<tool id="SAINT_preprocessing_v5" name="SAINT pre-processing">
+  <description></description>
+  <command interpreter="python">
+    #if (str($type) == 'Scaffold'):
+      SAINT_preprocessing_v6.py $input $preybool $fasta_db $Inter_file $Prey_file 
+      "
+        #for $ba in $bait
+         ${ba.bait1}
+         ${ba.assign}
+         ${ba.T_C}
+        #end for
+        "
+      $Bait_file \$INSTALL_RUN_PATH/ $bait_bool $bait_file_in
+    #elif (str($type) == 'MaxQuant'):
+      SAINT_preprocessing_v6_mq_pep.py $input $preybool $fasta_db $Inter_file $Prey_file 
+        "
+        #for $ba in $bait
+          ${ba.bait1}
+          ${ba.assign}
+          ${ba.T_C}
+        #end for
+        "
+      $Bait_file \$INSTALL_RUN_PATH/ $bait_bool $bait_file_in
+    #end if
+  </command>
+  <requirements>
+    <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
+    <requirement type="package" version="3.2.1">package_r_3_2_1</requirement>
+  </requirements>
+  <inputs>
+    <param type="select" name="type" label="MaxQuant or Scaffold">
+      <option value="MaxQuant">MaxQuant</option>
+      <option value="Scaffold">Scaffold</option> 
+    </param>
+    <param format="dat" name="input" type="data" label="Scaffold or MaxQuant proteinGroup Output"/>
+    <param type="boolean" name="preybool" checked="true" label="Create Prey File"/>
+    <param type="data" name="fasta_db" format="fasta"  label="Provide Uniprot Fasta database" optional="true"/>
+    <param name="bait_bool" type="boolean" checked="true" label="Are You Providing Your Own bait file?"/>
+    <param type="data" format="dat" name="bait_file_in" label="Bait File" optional="true"/>
+    <repeat name="bait" title="Bait Create">
+      <param name="bait1" type="text" size="100" label="Bait"/>
+      <param name="assign" type="text" size="100" label="Group Assignment"/>
+      <param name="T_C" type="boolean" checked="true" label="Is this a Control?"/> 
+    </repeat>
+
+  </inputs>
+  <outputs>
+    <data format="txt" name="Inter_file" label="Inter File"/>    
+    <data format="txt" name="Prey_file" label="Prey File" />
+    <data format="txt" name="Bait_file" label="Bait File" />
+  </outputs>
+  <stdio>
+    <regex match="Error|error"
+	   source="stdout"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error|error"
+     source="stderr"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error: bad bait"
+           source="stdout"
+           level="fatal"
+           description="Error: bad bait"/>
+  </stdio> 
+
+  <tests>
+    <test>
+      <param name="input" value="fa_gc_content_input.fa"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+  <help>
+
+Pre-processing:
+
+APOSTL is able to recognize either a Scaffold "Samples Report" file (tab-delimited txt file) or the "peptides.txt" file output in the MaxQuant "txt" output folder. No modifications should be made to these files. Using the "Bait Create" tool, you can create your "bait.txt" file. It is important that the individual bait names match the bait names within your scaffold or MaxQuant output. APOSTL uses the bait file to findthe user's baits of interest. Additionally there is an option to make the prey file (Y/N). When making a prey file, APOSTL queries Uniprot ( http://www.uniprot.org ) in order to extract protein amino acidlengths and gene names. This takes several minutes depending on your internet connection. Some users may want to run SAINTexpress using the same data set while changing which baits are considered test or control It is useful to toggle "Make Prey" off in order to save time by circumventing this step as the same prey file can be used for both SAINTexpress runs. 
+
+INPUTS:
+
+Scaffold file:
+
+- Scaffold "Samples Report" output (tab-delimited txt file)
+
+
+MaxQuant file:
+
+- MaxQuant "peptides.txt" file (tab-delimited txt file)
+  </help>
+</tool>

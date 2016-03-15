@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title><strong>APOSTL</strong>: Automated Processing of SAINT Templated Layouts</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</head>
+
+<body>
+
+<h2 id="apostl-automated-processing-of-saint-templated-layouts"><strong>APOSTL</strong>: Automated Processing of SAINT Templated Layouts</h2>
+
+<hr/>
+
+<p><div class="toc">
+<ul>
+<li><a href="#apostl-automated-processing-of-saint-templated-layouts"><strong>APOSTL: Automated Processing of SAINT Templated Layouts</strong></a><ul>
+<li><a href="#overview"><strong>Overview</strong></a></li>
+<li><a href="#pre-processing"><strong>Pre-processing</strong></a></li>
+<li><a href="#post-processing"><strong>Post-processing</strong></a></li>
+<li><a href="#references"><strong>References</strong></a></li>
+<li><a href="#contact-us"><strong>Contact us</strong></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</p>
+
+<hr/>
+
+<h2 id="overview"> Overview</h2>
+
+<p>APOSTL is an interactive affinity proteomics analysis software developed to reformat affinity proteomics data (both spectral counting and MS1) for input into the SAINTexpress statistical package\(^1\) and to visualize the output(s).  APOSTL was developed at H. Lee Moffitt Cancer Center &amp; Research Institute and distributed under a GNU General Public License (GPL). APOSTL is built in Python and R and integrated with SAINTexpress into a cohesive affinity proteomics data analysis package using the Galaxy framework.</p>
+
+<h2 id="pre-processing">Pre-processing</h2>
+
+<p>Within the <strong>Galaxy environment</strong> APOSTL is able to recognize either a Scaffold (<a href="http://www.proteomesoftware.com/products/scaffold/">Proteome Software</a>) <em>Samples Report</em> file (tab-delimited txt file) or the <em>peptides.txt</em> file output in the Maxquant (<a href="http://coxdocs.org/doku.php?id=maxquant:start.">link</a>) <em>txt</em> output folder. No modifications should be made to these files. Using the <strong>Bait Create</strong> tool, you can create your <em>bait.txt</em> file. It is important that the individual bait names match the bait names within your scaffold or maxquant output. APOSTL uses the bait file to find the user&#39;s baits of interest. Additionally there is an option to make the prey file (Y/N).</p>
+
+<p>When making a prey file, APOSTL queries a user provided FASTA database in order to extract protein amino acid lengths and gene names. This may take several minutes depending on your computer and if your Galaxy distribution is cluster enabled. Some users may want to run SAINTexpress using the same data set while changing which baits are considered test or control. It is useful to toggle <strong>Make Prey</strong> off in order to save time by circumventing this step as the same prey file can be used for both SAINTexpress runs.</p>
+
+<p><strong>Supported Inputs</strong>:</p>
+
+<ul>
+<li>Scaffold output:
+
+<ul>
+<li><em>Samples Report</em> output</li>
+</ul></li>
+<li>Maxquant output:
+
+<ul>
+<li><em>peptides.txt</em> file</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p><strong>Note:</strong> All files must be <em>tab delimited txt</em></p>
+</blockquote>
+
+<h2 id="post-processing">Post-processing</h2>
+
+<p>Once SAINTexpress has been run, APOSTL is able to read the resulting <em>list.txt</em> file. From here APOSTL does a number of things calculates normalized spectral abundance factor\(^2\) (NSAF) values for each prey based on the average spectra observed for each bait. <em>Optionally</em>, APOSTL calculates the probability of a specific interaction based on prey prevalence in the <a href="http://crapome.org">CRAPome</a>. </p>
+
+<hr/>
+
+<p>Within an <strong>interactive analysis environment</strong>, APOSTL offers various visualization and analysis options including:</p>
+
+<p>1) <em>Quality control</em>: Pearson correlations between replicate runs</p>
+<p>2) <em>Quality control</em>: Boxplots of selected protein across all replicates</p>
+<p>3) Bubble graphs for each bait with numerous customization options:</p>
+
+<ul>
+<li>Axis and bubble scaling choices:
+
+<ul>
+<li>\(ln(NSAF) = ln(\frac{SpC/L}{\sum_{n=1}^N (SpC/L)})\)</li>
+<li>\(\sum_{n=1}^N SpC\)</li>
+<li>\(log_{2}(FC)\)</li>
+<li>\(Saint Score\)</li>
+<li>\(Log Odds Score\)</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>\(SpC\) = Spectral Count</p>
+<p>\(L\) = Amino Acid Length</p>
+<p>\(FC\) = Fold Change</p>
+</blockquote>
+
+<ul>
+<li><em>Optional</em>: bubble color corresponds to the CRAPome probability of a specific interaction in which an 80% cutoff is applied where prey with ≤ 80% are colored separately. Input is the respective output file from <a href="http://crapome.org/?q=wk_1_1_search">Workflow 1</a> from the CRAPome website.</li>
+<li>Numerous cosmetic options including labels, color schemes and plotting themes</li>
+</ul>
+
+<p>4) Histograms of all baits for options specified above</p>
+<p>5) Cytoscape networks of all preys passing filtering criteria displaying newly identified bait-prey interactions</p>
+<p>6) Filtered data displayed as a table</p>
+<p>7) KEGG pathway analysis of filtered data</p>
+<p>8) Gene Ontology (GO) term analysis of filtered data</p>
+
+<p>All graphs, images and data can be saved using the <i class="icon-download"></i> Download buttons or alternatively by <kbd>RMC + Save As</kbd> to generate 600 dpi figures.</p>
+
+<hr/>
+
+<p>Within the <strong>Galaxy environment</strong>, APOSTL offers several other analysis options including:</p>
+
+<p>1) Protein-protein interaction networks querying known PPI as annotated in <a href="http://consensuspathdb.org">ConsensusPathDB</a> following filtering for simple cytoscape import using the <em>import network from file</em> option.</p>
+
+<p>2) Dot plot and clustering analysis from the the <a href="http://prohitstools.mshri.on.ca">Prohits Visualization Tool</a>\(^3\)</p>
+
+<h2 id="references">References</h2>
+
+<ol>
+<li><p>Teo G, Liu G, Zhang J, Nesvizhskii AI, Gingras A-C, Choi H. SAINTexpress: improvements and additional features in Significance Analysis of INTeractome software. <em>J Proteomics</em>. 2014 Apr 4</p></li>
+<li><p>NSAF paper</p></li>
+<li><p>Prohits Viz Paper</p></li>
+</ol>
+
+<h2 id="contact-us">Contact us</h2>
+
+<p>APOSTL support is provided by the Haura and Rix labs:</p>
+
+<ul>
+<li>Adam Borne: <a href="mailto:Adam.Borne@moffitt.org">Adam.Borne@moffitt.org</a></li>
+<li>Brent Kuenzi: <a href="mailto:Brent.Kuenzi@moffitt.org">Brent.Kuenzi@moffitt.org</a></li>
+<li>Paul Stewart, PhD: <a href="mailto:Paul.Stewart@moffitt.org">Paul.Stewart@moffitt.org</a></li>
+</ul>
+
+<p>Source code is available on <a href="https://github.com/bornea/Saint_On_Galaxy">Github</a></p>
+
+</body>
+
+</html>

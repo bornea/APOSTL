@@ -1,0 +1,65 @@
+<tool id="saint_wrapper" name="SAINTexpress">
+  <description></description>
+  <command interpreter="python">saint_wrapper.py $inter_input $prey_input $bait_input $rep_num $vc_bool $vc_num $go_bool $go_file $SAINT_output \$INSTALL_RUN_PATH/</command>
+  <requirements>
+    <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
+  </requirements>
+  <inputs>
+    <param format="txt" name="inter_input" type="data" label="Interactions File"/>
+    <param format="txt" name="prey_input" type="data" label="Prey File"/>
+    <param format="txt" name="bait_input" type="data" label="Bait File"/>
+    <param name="rep_num" type="integer" value="100" label="Number of Replicates" help="the number of replicates (with largest spectral counts or intensities) to be used for probability calculation in each bait.  This option is useful when some baits have more replicates than others." />
+    <param type="boolean" name="vc_bool" checked="false" label="Using Virtual Control Purifications by Compression"/>
+    <param name="vc_num" type="integer" value="1" label="Number of Virtual Controls" />
+    <param type="boolean" name="go_bool" checked="false" label="Incorporate External Data Sources" />
+    <param format="txt" name="go_file" type="data" optional="true" label="External Data File" help="SAINT can be run with the known interaction data in hand and it will incorporate the number of observed interactions into the statistics to boost identification probability."/>
+  </inputs>
+  <outputs>
+    <data format="txt" name="SAINT_output" />
+  </outputs>
+  <stdio>
+    <regex match="Error|error"
+     source="stdout"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error|error"
+     source="stderr"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error: bad bait"
+           source="stdout"
+           level="fatal"
+           description="Error: bad bait"/>
+  </stdio> 
+
+  <tests>
+    <test>
+      <param name="input" value="fa_gc_content_input.fa"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+  <help>
+**Running SAINT Express**
+
+INPUTS:
+
+Interactions File: Should contain four columns: IP name, bait name, prey name, and spectral counts or intensity values, depending on the mode of quantitation.
+
+Prey File: Should contain three columns: prey (protein) name, prey protein length, and prey gene name.  
+
+Bait File: Should have three columns: IP name, bait name, and the indicator for test and negative control purifications.
+
+Number of Replicates: Sets the number of replicates (with largest spectral counts or intensities) to be used for probability calculation in each bait.  This option is useful when some baits have more replicates than others.
+
+Using Virtual Control Purification by Compression: Sets the number of virtual control purifications by compression.  For instance, if the user wishes to take 4 largest spectral counts for controls, set Number of Vitual Controls to 4 and this variable to yes.
+
+Incorporate External Data Sources: To incorporate external data sources for computing the topology-aware probability score (TopoAvgP), the user must also provide the interaction database file that contains two columns: interaction identifier column and interaction/grouping information column. The first column is just for formality and thus can be filled in with anything (no white space) and it will not be utilized in the scoring. The second column must be formatted as a string of prey identifiers (consistent with the first column of the prey file) separated by a white space.
+
+------
+
+**Please cite** 
+
+ * Choi, H., Larsen, B., Lin., Z.-Y., Breitkreutz, A., Mellacheruvu, D., Fermin, D., Qin, Z.S., Tyers, M., Gingras, A.-C. and Nesvizhskii, A.I. (2011) SAINT: probabilistic scoring of affinity purification - mass spectrometry data. Nature Methods, 8:70-3. 
+
+  </help>
+</tool>

@@ -1,0 +1,1785 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MaxQuantParams xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" RunOnCluster="false" ProcessFolder="C:\MaxQuant 1.5.2.8\data\bk_sample\combined\proc">
+   <ionCountIntensities>false</ionCountIntensities>
+   <fixedModifications>
+      <string>Carbamidomethyl (C)</string>
+   </fixedModifications>
+   <fastaFiles>
+      <string>C:\MaxQuant 1.2.2.5\Database\SwissProt_HUMAN_2015_12.fasta</string>
+   </fastaFiles>
+   <fastaFilesFirstSearch />
+   <fixedSearchFolder />
+   <randomize>false</randomize>
+   <specialAas>KR</specialAas>
+   <includeContamiants>true</includeContamiants>
+   <equalIl>false</equalIl>
+   <topxWindow>100</topxWindow>
+   <minTime>NaN</minTime>
+   <maxTime>NaN</maxTime>
+   <maxPeptideMass>5000</maxPeptideMass>
+   <reporterPif>0.75</reporterPif>
+   <reporterFraction>0</reporterFraction>
+   <slicePeaks>true</slicePeaks>
+   <useOriginalPrecursorMz>false</useOriginalPrecursorMz>
+   <scoreThreshold>0</scoreThreshold>
+   <filterAacounts>true</filterAacounts>
+   <secondPeptide>true</secondPeptide>
+   <matchBetweenRuns>true</matchBetweenRuns>
+   <reQuantify>true</reQuantify>
+   <calcPeakProperties>false</calcPeakProperties>
+   <dependentPeptides>false</dependentPeptides>
+   <dependentPeptideFdr>0.01</dependentPeptideFdr>
+   <dependentPeptideMassBin>0.0055</dependentPeptideMassBin>
+   <labelFree>true</labelFree>
+   <ibaq>false</ibaq>
+   <msmsRecalibration>false</msmsRecalibration>
+   <verboseColumnHeaders>false</verboseColumnHeaders>
+   <ibaqLogFit>true</ibaqLogFit>
+   <calcSequenceTags>false</calcSequenceTags>
+   <deNovoVarMods>true</deNovoVarMods>
+   <massDifferenceSearch>false</massDifferenceSearch>
+   <minPepLen>6</minPepLen>
+   <peptideFdr>0.05</peptideFdr>
+   <peptidePep>1</peptidePep>
+   <proteinFdr>0.1</proteinFdr>
+   <siteFdr>0.05</siteFdr>
+   <maxPeptideLengthForUnspecificSearch>25</maxPeptideLengthForUnspecificSearch>
+   <useNormRatiosForOccupancy>true</useNormRatiosForOccupancy>
+   <minPeptides>1</minPeptides>
+   <minRazorPeptides>1</minRazorPeptides>
+   <minUniquePeptides>0</minUniquePeptides>
+   <useCounterparts>false</useCounterparts>
+   <minRatioCount>1</minRatioCount>
+   <lfqMinRatioCount>1</lfqMinRatioCount>
+   <restrictProteinQuantification>true</restrictProteinQuantification>
+   <restrictMods>
+      <string>Oxidation (M)</string>
+      <string>Acetyl (Protein N-term)</string>
+   </restrictMods>
+   <matchingTimeWindow>4</matchingTimeWindow>
+   <maxFeatureDetectionCores>1</maxFeatureDetectionCores>
+   <numberOfCandidatesMultiplexedMsms>50</numberOfCandidatesMultiplexedMsms>
+   <numberOfCandidatesMsms>15</numberOfCandidatesMsms>
+   <expDesignFileName>C:\MaxQuant 1.5.2.8\data\bk_sample\combined\experimentalDesignTemplate.txt</expDesignFileName>
+   <separateAasForSiteFdr>true</separateAasForSiteFdr>
+   <massDifferenceMods />
+   <tempFolder />
+   <ncores>1</ncores>
+   <AifParams aifSilWeight="4" aifIsoWeight="2" aifTopx="50" aifCorrelation="0.8" aifMinMass="0" aifMsmsTol="10" aifSecondPass="false" aifIterative="false" aifThresholdFdr="0.01" />
+   <Filenames>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_EGFR_TAP_1_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_EGFR_TAP_1_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_EGFR_TAP_2_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_EGFR_TAP_2_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_ERBB3_TAP_1_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_ERBB3_TAP_1_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_ERBB3_TAP_2_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_ERBB3_TAP_2_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_GFP_TAP_1_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_GFP_TAP_1_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_GFP_TAP_2_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_GFP_TAP_2_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_GRB2_TAP_1_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_GRB2_TAP_1_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_GRB2_TAP_2_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_GRB2_TAP_2_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_P85B_TAP_1_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_P85B_TAP_1_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_P85B_TAP_2_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827_P85B_TAP_2_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_EGFR_TAP_1_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_EGFR_TAP_1_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_EGFR_TAP_2_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_EGFR_TAP_2_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_ERBB3_TAP_1_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_ERBB3_TAP_1_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_ERBB3_TAP_2_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_ERBB3_TAP_2_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_GRB2_TAP_1_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_GRB2_TAP_1_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_GRB2_TAP_2_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_P85B_TAP_1_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_P85B_TAP_1_run2.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_P85B_TAP_2_run1.RAW</string>
+      <string>C:\MaxQuant 1.5.2.8\data\bk_sample\04112012_JL_HCC827ER_P85B_TAP_2_run2.RAW</string>
+   </Filenames>
+   <GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+      <GroupParams>
+         <maxLabeledAa>3</maxLabeledAa>
+         <maxNmods>5</maxNmods>
+         <maxMissedCleavages>2</maxMissedCleavages>
+         <multiplicity>1</multiplicity>
+         <protease>Trypsin/P</protease>
+         <proteaseFirstSearch>Trypsin/P</proteaseFirstSearch>
+         <useProteaseFirstSearch>false</useProteaseFirstSearch>
+         <useVariableModificationsFirstSearch>false</useVariableModificationsFirstSearch>
+         <variableModifications>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModifications>
+         <isobaricLabels>
+            <string>iTRAQ4plex-Nter114</string>
+            <string>iTRAQ4plex-Nter115</string>
+            <string>iTRAQ4plex-Nter116</string>
+            <string>iTRAQ4plex-Nter117</string>
+            <string>iTRAQ4plex-Lys114</string>
+            <string>iTRAQ4plex-Lys115</string>
+            <string>iTRAQ4plex-Lys116</string>
+            <string>iTRAQ4plex-Lys117</string>
+         </isobaricLabels>
+         <reporterReference>iTRAQ4plex-Nter114</reporterReference>
+         <variableModificationsFirstSearch>
+            <string>Oxidation (M)</string>
+            <string>Acetyl (Protein N-term)</string>
+         </variableModificationsFirstSearch>
+         <hasAdditionalVariableModifications>false</hasAdditionalVariableModifications>
+         <additionalVariableModifications>
+            <ArrayOfString />
+         </additionalVariableModifications>
+         <additionalVariableModificationProteins>
+            <ArrayOfString />
+         </additionalVariableModificationProteins>
+         <maxCharge>5</maxCharge>
+         <groupIndex>1</groupIndex>
+         <doMassFiltering>true</doMassFiltering>
+         <firstSearchTol>20</firstSearchTol>
+         <mainSearchTol>10</mainSearchTol>
+         <labels>
+            <string />
+         </labels>
+         <lcmsRunType>0</lcmsRunType>
+         <msInstrument>0</msInstrument>
+      </GroupParams>
+   </GroupParams>
+   <ExperimentSetting>
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+      <ExperimentSetting xsi:nil="true" />
+   </ExperimentSetting>
+   <msmsParams>
+      <FragmentSpectrumSettings Name="FTMS" InPpm="true" Deisotope="true" Topx="10" HigherCharges="true" IncludeWater="true" IncludeAmmonia="true" DependentLosses="true">
+         <Tolerance>
+            <Value>20</Value>
+            <Unit>Ppm</Unit>
+         </Tolerance>
+      </FragmentSpectrumSettings>
+      <FragmentSpectrumSettings Name="ITMS" InPpm="false" Deisotope="false" Topx="6" HigherCharges="true" IncludeWater="true" IncludeAmmonia="true" DependentLosses="true">
+         <Tolerance>
+            <Value>0.5</Value>
+            <Unit>Dalton</Unit>
+         </Tolerance>
+      </FragmentSpectrumSettings>
+      <FragmentSpectrumSettings Name="TOF" InPpm="false" Deisotope="false" Topx="6" HigherCharges="true" IncludeWater="true" IncludeAmmonia="true" DependentLosses="true">
+         <Tolerance>
+            <Value>0.1</Value>
+            <Unit>Dalton</Unit>
+         </Tolerance>
+      </FragmentSpectrumSettings>
+      <FragmentSpectrumSettings Name="Unknown" InPpm="false" Deisotope="false" Topx="6" HigherCharges="true" IncludeWater="true" IncludeAmmonia="true" DependentLosses="true">
+         <Tolerance>
+            <Value>0.5</Value>
+            <Unit>Dalton</Unit>
+         </Tolerance>
+      </FragmentSpectrumSettings>
+   </msmsParams>
+   <keepLowScoresMode>0</keepLowScoresMode>
+   <msmsCentroidMode>1</msmsCentroidMode>
+   <quantMode>1</quantMode>
+   <siteQuantMode>0</siteQuantMode>
+</MaxQuantParams>
