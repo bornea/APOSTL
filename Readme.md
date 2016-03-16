@@ -10,7 +10,7 @@ APOSTL is an interactive affinity proteomics analysis software developed to refo
 
 Installing APOSTL from Galaxy
 -------------
-The easiest way to get the majority of APOSTL tool is to install them from the galaxy toolshed the instruction for which can be found at https://wiki.galaxyproject.org/Admin/Tools/AddToolFromToolShedTutorial. The tools can be found by searching the term APOSTL in the toolshed. 
+The easiest way to get the majority of APOSTL tool is to install them from the galaxy toolshed the instruction for which can be found at https://wiki.galaxyproject.org/Admin/Tools/AddToolFromToolShedTutorial. The tools can be found at https://toolshed.g2.bx.psu.edu/view/bornea/apostl_tools/6f6e2eb3e81b. 
 
 Most of the tools require an R environment to run. If the R package within galaxy works feel free to use that  but it is not automatically installed. It will also require bioconductor packages to be installed, this may require additional linux libraries to install. In CentOS environments libcurl and xml2lib are required to install bioconductor packages. The script will attempt to install all require R packages automaticaly but this is also imperfect. You may also may need to make sure that Rscript is your $PATH variable. If they do not install automatically you can enter your R environment and use the following commands in R to install are required packages. 
 
@@ -43,6 +43,32 @@ x.write("<html><body> open <a href=\"http://127.0.0.1:3838/"
 ```
 > **Note:** This is a hyperlink to the shiny server make sure that the IP or Domain information on this line reflects how the shiny server is accessed. 
 
+
+APOSTL Docker Image
+-------------
+The APOSTL Docker Image is a fully running version of Galaxy, Shiny and all of the APOSTL tools built on a CentOS 7 framework. This image is located at https://hub.docker.com/r/bornea/apostl_shiny/.
+
+Within docker to get the image start use
+
+```bash
+docker run -p 8080:8080 -p 3838:3838 -ti bornea/apostl_shiny /bin/bash
+```
+
+The image will be running in interactive mode so you can change information in the /galaxy-apostl-docker/config/galaxy.ini.sample to reflect the network configuration. It is reccomended that the galaxy server is started once in the interactive mode.
+
+```bash
+cd /galaxy-apostl-docker
+sh run.sh
+```
+
+Once the startup has completed escape with a Keyboard Interrupt and restart in daemon mode and start the shiny server.
+
+```bash
+sh run.sh --daemon
+sh ./shiny_galaxy_run.sh
+```
+
+APOSTL should be accessable from a web browser at http://127.0.0.1:8080. If using a non-linux OS then the IP is determined by how the docker virtual machine is set up.   
 
 ## References
 

@@ -1,6 +1,9 @@
 <tool id="ProHits_DotPlot_Generator" name="ProHits DotPlot Generator">
   <description></description>
   <command interpreter="python">ProHits_DotPlot_Generator.py $saint_file $FDR1 $FDR2 $spec_max $dotplot $heatmap $estimated $stats</command>
+  <requirements>
+    <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
+  </requirements>
   <inputs>
     <param format="txt" name="saint_file" type="data" label="SAINT Output"/>
     <param type="float" name="FDR1" label="False Discovery Rate 1" value="0.01"/>
@@ -14,10 +17,18 @@
     <data format="pdf" name="stats" label="Stats" />   
   </outputs>
   <stdio>
-    <regex match="error"
-	   source="stdout"
+    <regex match="Error|error"
+     source="stdout"
            level="fatal"
            description="Unknown error"/>
+    <regex match="Error|error"
+     source="stderr"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error: bad bait"
+           source="stdout"
+           level="fatal"
+           description="Error: bad bait"/>
   </stdio> 
 
   <tests>
@@ -27,5 +38,25 @@
     </test>
   </tests>
   <help>
+**Running ProHits DotPlot**
+
+This runs the biclustering version of the DotPlot tool found at http://prohitstools.mshri.on.ca/. A more interactive version can be found at http://prohits-viz.lunenfeld.ca/. This script will take a long time to run.
+
+INPUTS:
+
+Saint Output: SAINTexpress generated "list.txt" file.
+
+Primary False Discovery Rate
+
+Secondary False Discovery Rate
+
+Maximum Spectral Count
+
+------
+
+**Please cite** 
+
+ * Knight, J.D., Liu, G., Zhang, J., Pasculescu, A., Choi, H., and Gingras, A.-C. (2014) A web-tool for visualizing quantitative protein-protein interaction data. Proteomics, in press. PMID:25422071. 
+
   </help>
 </tool>

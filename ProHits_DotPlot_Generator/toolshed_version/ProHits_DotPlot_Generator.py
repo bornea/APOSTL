@@ -20,7 +20,7 @@
 # 3) FDR2: Secondary false discovery rate. (default = 0.025)
 # 4) spec_max: Maximum spectral count. (default = 50)
 #######################################################################################
-import os 
+
 import os
 import sys
 
