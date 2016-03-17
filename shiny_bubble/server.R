@@ -511,5 +511,25 @@ output$box.down = downloadHandler(filename = function() {
     if(input$box.file == ".svg"){svg(file); print(p); dev.off()}
     if(input$box.file == ".eps"){postscript(file); print(p); dev.off()}
     })
+# Save Parameters
+output$param = downloadHandler(filename = function() {
+  paste(Sys.Date(),"parameter.txt",sep='_')},
+  content = function(file){
+    main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
+    main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="log2(FoldChange)")] >= input$main.change)
+    table <- subset(main.data2, SaintScore>=as.numeric(input$main.cutoff))
+    writeLines(con=file,
+               text=c(paste0(Sys.Date()," ","APOSTL Analysis Parameters"),
+                      "",
+                      paste0("The following cutoffs were applied to ",length(main.data$PreyGene),
+                             " interactions to generate a list of ",length(table$PreyGene)," high confidence interactions",sep = ''),
+                      paste0("\tSaintScore Cutoff: ",input$main.cutoff),
+                      paste0("\tFoldChange Cutoff: ",input$main.change),
+                      "",
+                      "The following proteins have been excluded from the analysis:",
+                      paste0("\t",input$main.exclude)
+                      )
+               )
+    })
 # END
 })

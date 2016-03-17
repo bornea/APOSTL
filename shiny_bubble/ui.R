@@ -13,7 +13,8 @@ shinyUI(
                          max=round(max(main.data[(colnames(main.data)=="log2(FoldChange)")]),1), 
                          value=round(min(main.data[(colnames(main.data)=="log2(FoldChange)")]),1)
                          ),
-             selectInput("main.exclude", "Click or search to select proteins to exclude", multiple=TRUE, choices=preys)
+             selectInput("main.exclude", "Click or search to select proteins to exclude", multiple=TRUE, choices=preys),
+             downloadButton('param', 'Download Analysis Parameters')
              ),
   mainPanel(
   tabsetPanel(type="pills",
