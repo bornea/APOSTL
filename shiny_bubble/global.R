@@ -14,12 +14,14 @@ library(mygene); library(httr); library(ggrepel)
 ## REQUIRED INPUT ##
 # 1) listfile: SAINTexpress generated "list.txt" file
 # 2) preyfile: APOSTL generated "prey.txt" file used to run SAINTexpress
-#main.data <- merge_files("EGFR_list.txt", "EGFR_prey.txt", "EGFR_crap.txt")
-#main.data <- as.data.frame(merge_files("EGFR_MQ_list.txt", "EGFR_MQ_prey.txt", "EGFR_MQ_crap.txt"))
-#main.data <- as.data.frame(merge_files("EGFR_MQ_ER_v_WT_GFP_list.txt", "EGFR_MQ_prey.txt", "EGFR_MQ_crap.txt"))
+#working <- as.data.frame(merge_files("EGFR_MQ_ER_v_WT_GFP_list.txt", "EGFR_MQ_prey.txt", "EGFR_MQ_crap.txt"))
+
+#working <- merge_files("list_SpC_All_v_GFP.txt","EGFR_prey.txt","EGFR_SpC_Crap.txt")
 
 # 3) interfile: APOSTL generated "inter.txt" file used to run SAINTexpress
-inter_df <- read.table("inter.txt", sep='\t', header=FALSE)
+
+#inter_df <- read.table("inter.txt", sep='\t', header=FALSE)
+
 ## OPTIONAL INPUT ##
 # 4) crapome: raw output from Crapome Workflow 1 query (http://www.crapome.org)
 ################################# Global Functions ################################################
@@ -45,16 +47,38 @@ merge_files <- function(SAINT_DF, prey_DF, crapome=FALSE) {
   }
   DF$FoldChange <- round(log2(DF$FoldChange),digits=2)
   colnames(DF)[(colnames(DF)=="FoldChange")] <- "log2(FoldChange)"
-
-  DF$SAF <- DF$AvgSpec / DF$Length
-  by_bait <-  DF %>% group_by(Bait) %>% mutate("NSAF" = log(SAF/sum(SAF)))
-  by_bait <- filter(by_bait, NSAF > -Inf)
   
-  colnames(by_bait)[colnames(by_bait)=="NSAF"] <- "ln(NSAF)"
+  DF$SAF <- DF$AvgSpec / DF$Length
+  by_bait <-  DF %>% group_by(Bait) %>% mutate("NSAF" = SAF/sum(SAF))
   by_bait$SAF <- NULL
   return(by_bait[!duplicated(by_bait),])
 }
-main.data <- merge_files("EGFR_list.txt", "EGFR_prey.txt", "EGFR_crap.txt")
+working <- as.data.frame(merge_files("EGFR_list.txt", "EGFR_prey.txt", "EGFR_crap.txt"))
+inter_df <- read.table("inter.txt", sep='\t', header=FALSE)
+working$temp <- strsplit(as.character(working$ctrlCounts),"[|]")
+cnt <- 0
+for(i in working$temp){
+  cnt <- cnt+1
+  working$ctrl_mean[cnt] <- mean(as.numeric(unlist(i)))
+  working$ctrl_number[cnt] <- length(i)}
+working$ctrl_SAF <- working$ctrl_mean / working$Length
+main.data <-  working %>% group_by(Bait) %>% mutate("control_NSAF" = ctrl_SAF/sum(ctrl_SAF))
+ctrl_SAF_constant <- 1/mean(main.data$ctrl_SAF)
+# add ctrl_SAF_constant to prevent dividing by 0
+cnt <- 0
+for(i in main.data$control_NSAF){
+  cnt <- cnt + 1
+  main.data$nsafScore[cnt] <- ((main.data$NSAF[cnt])+ctrl_SAF_constant)/((i/main.data$ctrl_number[cnt])+ctrl_SAF_constant)
+}
+main.data$NSAF <- log(main.data$NSAF)
+main.data$nsafScore <- log(main.data$nsafScore)
+main.data <- filter(main.data, NSAF > -Inf)
+colnames(main.data)[colnames(main.data)=="NSAF"] <- "ln(NSAF)"
+colnames(main.data)[colnames(main.data)=="nsafScore"] <- "NSAF Score"
+main.data$SAF <- NULL; main.data$ctrl_SAF <- NULL
+main.data$control_NSAF <- NULL; main.data$temp <- NULL
+main.data$ctrl_mean <- NULL
+
 ########################### Define Global Variables ############################
 replicates <- as.character(unique(inter_df$V1))
 preys <- as.character(main.data$PreyGene)

@@ -13,6 +13,11 @@ shinyUI(
                          max=round(max(main.data[(colnames(main.data)=="log2(FoldChange)")]),1), 
                          value=round(min(main.data[(colnames(main.data)=="log2(FoldChange)")]),1)
                          ),
+             sliderInput("NSAFscore", "NSAF Score Cutoff", 
+                         min=round(min(main.data[(colnames(main.data)=="NSAF Score")]),1),
+                         max=round(max(main.data[(colnames(main.data)=="NSAF Score")]),1), 
+                         value=round(min(main.data[(colnames(main.data)=="NSAF Score")]),1)
+             ),
              selectInput("main.exclude", "Click or search to select proteins to exclude", multiple=TRUE, choices=preys),
              downloadButton('param', 'Download Analysis Parameters')
              ),
@@ -51,7 +56,7 @@ shinyUI(
       ),
     ################################ Histogram #############################
     tabPanel("Density Plot",
-             column(4,selectInput("hist.x", "Select X Axis", selected="log2(FoldChange)",choices=c("ln(NSAF)","SpecSum", "log2(FoldChange)", "SaintScore", "logOddsScore"))),
+             column(4,selectInput("hist.x", "Select X Axis", selected="log2(FoldChange)",choices=c("ln(NSAF)","SpecSum", "log2(FoldChange)", "SaintScore", "logOddsScore","NSAF Score"))),
              column(4,selectInput("bait.choice", "Select Baits to Include", multiple=TRUE, choices=baits,selected=baits)),
              column(4,selectInput("hist.file", "Select File Type", choices=c(".pdf",".png",".tif",".svg",".jpg"), selected=".png"),
                     downloadButton('hist.down', 'Download Density Plot')),
@@ -61,13 +66,13 @@ shinyUI(
     tabPanel("Bubble Graph",
       plotOutput("bubbles",width="100%",height="500px", click = "plot1_click"),
       p(column(4,
-        selectInput("main.x","X axis",selected = "ln(NSAF)",choices=c("ln(NSAF)","SpecSum", "log2(FoldChange)", "SaintScore", "logOddsScore")),
+        selectInput("main.x","X axis",selected = "ln(NSAF)",choices=c("ln(NSAF)","SpecSum", "log2(FoldChange)", "SaintScore", "logOddsScore","NSAF Score")),
         selectInput("bubble.color", "Bubble Color", multiple=FALSE, choices=colors, selected="#FF0000")),
       column(4,
-        selectInput("main.y","Y axis",selected = "log2(FoldChange)",choices=c("ln(NSAF)","SpecSum", "log2(FoldChange)", "SaintScore", "logOddsScore")),
+        selectInput("main.y","Y axis",selected = "log2(FoldChange)",choices=c("ln(NSAF)","SpecSum", "log2(FoldChange)", "SaintScore", "logOddsScore","NSAF Score")),
         selectInput("filt.color","CRAPome Filtered Bubble Color",choices=colors,selected="#D2B48C")),
       column(4,
-        selectInput("main.size", "Bubble Size", selected = "SpecSum", choices=c("ln(NSAF)","SpecSum", "log2(FoldChange)", "SaintScore", "logOddsScore")),
+        selectInput("main.size", "Bubble Size", selected = "SpecSum", choices=c("ln(NSAF)","SpecSum", "log2(FoldChange)", "SaintScore", "logOddsScore","NSAF Score")),
         selectInput("theme","Select Theme",choices=c("Default","b/w","minimal","classic","dark","linedraw"),selected="Default"))),
       p(column(4,
               selectInput(inputId = "main.label",label="Bubble Labels",choices=c("none",">cutoff","all")),

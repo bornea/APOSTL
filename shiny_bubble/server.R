@@ -20,6 +20,7 @@ shinyServer(function(input, output, session) {
     scl_size = input$main.scale
     main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
     main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="log2(FoldChange)")] >= input$main.change)
+    main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="NSAF Score")] >= input$NSAFscore)
     cytoscape <- subset(main.data2, SaintScore>=as.numeric(str_cutoff), 
                         select = c(str_x,str_y,"Bait","PreyGene",str_size))
     id <- c(as.character(cytoscape$PreyGene),as.character(cytoscape$Bait))
@@ -49,6 +50,7 @@ shinyServer(function(input, output, session) {
     scl_size = input$main.scale
     main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
     main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="log2(FoldChange)")] >= input$main.change)
+    main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="NSAF Score")] >= input$NSAFscore)
     cytoscape <- subset(main.data2, SaintScore>=as.numeric(str_cutoff), 
                         select = c(str_x,str_y,"Bait","PreyGene",str_size))
     id <- c(as.character(cytoscape$PreyGene),as.character(cytoscape$Bait))
@@ -66,6 +68,7 @@ jsnetwork_sif <- reactive({
   str_cutoff= paste0(input$main.cutoff)
   main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
   main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="log2(FoldChange)")] >= input$main.change)
+  main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="NSAF Score")] >= input$NSAFscore)
   main.data2$interaction <- rep("pp",times=length(main.data2$PreyGene))
   cytoscape <- subset(main.data2, SaintScore>=as.numeric(str_cutoff), 
                       select=c("Bait","interaction","PreyGene"))
@@ -84,7 +87,7 @@ jsnetwork_sif <- reactive({
     scl_size = input$main.scale
     main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
     main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="log2(FoldChange)")] >= input$main.change)
-    
+    main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="NSAF Score")] >= input$NSAFscore)
     
     c <- subset(main.data2, SaintScore>=as.numeric(str_cutoff), select = c(str_x,str_y,"Bait","PreyGene",str_size))
     colnames(c) <- c("x","y","Bait","PreyGene","size")
@@ -226,6 +229,7 @@ table_display <- reactive({
   str_cutoff= paste0(input$main.cutoff)
   main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
   main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="log2(FoldChange)")] >= input$main.change)
+  main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="NSAF Score")] >= input$NSAFscore)
   table <- subset(main.data2, SaintScore>=as.numeric(str_cutoff))
   table
 }) 
@@ -235,6 +239,7 @@ pathway_graph <- reactive({
   str_cutoff= paste0(input$main.cutoff)
   main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
   main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="log2(FoldChange)")] >= input$main.change)
+  main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="NSAF Score")] >= input$NSAFscore)
   table <- subset(main.data2, SaintScore>=as.numeric(str_cutoff))
   preys <- unique(as.character(table$PreyGene))
   EG_IDs <- list()
@@ -279,6 +284,7 @@ pathway_table <- reactive({
   str_cutoff= paste0(input$main.cutoff)
   main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
   main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="log2(FoldChange)")] >= input$main.change)
+  main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="NSAF Score")] >= input$NSAFscore)
   table <- subset(main.data2, SaintScore>=as.numeric(str_cutoff))
   preys <- unique(as.character(table$PreyGene))
   EG_IDs <- list()
@@ -299,6 +305,7 @@ ontology_graph <- reactive({
   str_cutoff= paste0(input$main.cutoff)
   main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
   main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="log2(FoldChange)")] >= input$main.change)
+  main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="NSAF Score")] >= input$NSAFscore)
   table <- subset(main.data2, SaintScore>=as.numeric(str_cutoff))
   preys <- unique(as.character(table$PreyGene))
   EG_IDs <- list()
@@ -343,6 +350,7 @@ ontology_table <- reactive({
   str_cutoff= paste0(input$main.cutoff)
   main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
   main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="log2(FoldChange)")] >= input$main.change)
+  main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="NSAF Score")] >= input$NSAFscore)
   table <- subset(main.data2, SaintScore>=as.numeric(str_cutoff))
   preys <- unique(as.character(table$PreyGene))
   EG_IDs <- list()
@@ -517,11 +525,12 @@ output$param = downloadHandler(filename = function() {
   content = function(file){
     main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
     main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="log2(FoldChange)")] >= input$main.change)
+    main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="NSAF Score")] >= input$NSAFscore)
     table <- subset(main.data2, SaintScore>=as.numeric(input$main.cutoff))
     writeLines(con=file,
                text=c(paste0(Sys.Date()," ","APOSTL Analysis Parameters"),
                       "",
-                      paste0("The following cutoffs were applied to ",length(main.data$PreyGene),
+                      paste0("The following global cutoffs were applied to ",length(main.data$PreyGene),
                              " interactions to generate a list of ",length(table$PreyGene)," high confidence interactions",sep = ''),
                       paste0("\tSaintScore Cutoff: ",input$main.cutoff),
                       paste0("\tFoldChange Cutoff: ",input$main.change),
