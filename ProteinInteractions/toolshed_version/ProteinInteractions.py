@@ -81,6 +81,7 @@ def read_listfile(listfile):
 
 def get_info(uniprot_accession_in): 
     # Get aa lengths and gene name.
+    print uniprot_accession_in
     error = open('error proteins.txt', 'a+')
     i = 0
     while i == 0:
@@ -96,7 +97,7 @@ def get_info(uniprot_accession_in):
                 error.write(uniprot_accession_in + '\t' + "Invalid URL. Check protein" + '\n')
                 seqlength = 'NA'
                 genename = 'NA'
-                return ReturnValue1(seqlength, genename)
+                return ReturnValue1(seqlength, genename, genename)
             elif err.code == 302:
                 sys.exit("Request timed out. Check connection and try again.")
             else:
@@ -133,13 +134,14 @@ def dd_network(listfile, SAINTscore, CPDB_filter):
     data = read_listfile(listfile).data
     # Change to filtered list.
     SS = (read_listfile(listfile).header).index("SaintScore")
+    uni_ids = (read_listfile(listfile).header).index("PreyGene") - 1
     filt_data = []
     for i in data:
         if i[SS] >= SAINTscore:
             filt_data.append(i)
     accessions = []
     for i in filt_data:
-        accessions.append(get_info(i[1]).sp)
+        accessions.append(get_info(i[uni_ids]).sp)
     GO = []
     for i in CPDB[2:]:
         if i[3] >= CPDB_filter:
@@ -180,10 +182,11 @@ def cytoscape(dd_network, listfile, SAINTscore):
     with open('network.sif', 'wt') as y:
         data = read_listfile(listfile).data
         SS = (read_listfile(listfile).header).index("SaintScore")
+        uni_ids = (read_listfile(listfile).header).index("PreyGene") - 1
         filt_data = []
         for i in data:
             if i[SS] >= SAINTscore:
-                filt_data.append(get_info(i[1]).sp)
+                filt_data.append(get_info(i[uni_ids]).sp)
         for i in filt_data:
             if dd_network[i] != []:
                 lst = []
