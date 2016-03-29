@@ -132,7 +132,7 @@ def get_info(uniprot_accession_in):
             if uniprot_accession_in == data_line.split("|")[1]:
                 match = count + 1
                 if 'GN=' in data_line:
-                    lst = data_linedata_line.split('GN=')
+                    lst = data_line.split('GN=')
                     lst2 = lst[1].split(' ')
                     genename = lst2[0]
                 if 'GN=' not in data_line:
@@ -144,7 +144,7 @@ def get_info(uniprot_accession_in):
                     else:
                         break
                 return ReturnValue1(seqlength, genename)
-        elif uniprot_accession_in == namer.split(" ")[0]:
+        if uniprot_accession_in == namer.split(" ")[0]:
             match = count + 1
             # Ensures consistent spacing throughout.
             if 'GN=' in data_line:
