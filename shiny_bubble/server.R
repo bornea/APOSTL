@@ -246,7 +246,7 @@ pathway_graph <- reactive({
   for(i in 1:length(preys)){
     EG_IDs[i] <- mygene::query(preys[i])$hits$entrezgene[1]
   }
-
+  
   pathways <- enrichKEGG(EG_IDs, 
                          organism = paste0(input$path_org), 
                          pvalueCutoff = as.numeric(paste0(input$path_pval)),
@@ -255,7 +255,7 @@ pathway_graph <- reactive({
   
   pathways <- as.data.frame(summary(pathways))
   pathways$x <- factor(pathways$Description,levels=rev(pathways$Description))
-
+  if(input$top10KEGG == TRUE) {pathways <- pathways[1:10,]}
   if(str_val=="pvalue"){
     p <- ggplot(data=pathways, aes(y=-log(pvalue), x=x)) + 
       geom_bar(stat="identity",fill=input$KEGG.color) + coord_flip()}
@@ -270,12 +270,12 @@ pathway_graph <- reactive({
   if(input$KEGG_theme== "linedraw") {p <- p + theme_linedraw()}
   
   p <- p + xlab("")+theme(axis.title.y = element_text(size=rel(1.5),face="bold"),
-                 axis.title.x = element_text(size=rel(1.5),face="bold"),
-                 axis.text.x = element_text(size=rel(1.5),face="bold"),
-                 axis.text.y = element_text(size=rel(1.5),face="bold"),
-                 strip.text.x = element_text(size=rel(1.5),face="bold"),
-                 legend.text = element_text(face="bold"),
-                 legend.title = element_text(face="bold"))
+                          axis.title.x = element_text(size=rel(1.5),face="bold"),
+                          axis.text.x = element_text(size=rel(1.5),face="bold"),
+                          axis.text.y = element_text(size=rel(1.5),face="bold"),
+                          strip.text.x = element_text(size=rel(1.5),face="bold"),
+                          legend.text = element_text(face="bold"),
+                          legend.title = element_text(face="bold"))
 })
 
 ############################ KEGG Pathway as Table #############################
@@ -312,17 +312,17 @@ ontology_graph <- reactive({
   for(i in 1:length(preys)){
     EG_IDs[i] <- mygene::query(preys[i])$hits$entrezgene[1]
   }
-
+  
   
   pathways <- enrichGO(EG_IDs, 
-                         organism = paste0(input$path_org),
+                       organism = paste0(input$path_org),
                        pvalueCutoff = as.numeric(paste0(input$path_pval)),
-                         pAdjustMethod = paste0(input$path_adj),
-                         readable=TRUE,
-                        ont = input$GO_ont)
+                       pAdjustMethod = paste0(input$path_adj),
+                       readable=TRUE,
+                       ont = input$GO_ont)
   pathways <- as.data.frame(summary(pathways))
   pathways$x <- factor(pathways$Description,levels=rev(pathways$Description))
-
+  if(input$top10GO == TRUE) {pathways <- pathways[1:10,]}
   if(str_val=="pvalue"){
     p <- ggplot(data=pathways, aes(y=-log(pvalue), x=x)) + 
       geom_bar(stat="identity",fill=input$GO.color) + coord_flip()}
@@ -337,12 +337,12 @@ ontology_graph <- reactive({
   if(input$GO_theme== "linedraw") {p <- p + theme_linedraw()}
   
   p <- p + xlab("")+theme(axis.title.y = element_text(size=rel(1.5),face="bold"),
-                 axis.title.x = element_text(size=rel(1.5),face="bold"),
-                 axis.text.x = element_text(size=rel(1.5),face="bold"),
-                 axis.text.y = element_text(size=rel(1.5),face="bold"),
-                 strip.text.x = element_text(size=rel(1.5),face="bold"),
-                 legend.text = element_text(face="bold"),
-                 legend.title = element_text(face="bold"))
+                          axis.title.x = element_text(size=rel(1.5),face="bold"),
+                          axis.text.x = element_text(size=rel(1.5),face="bold"),
+                          axis.text.y = element_text(size=rel(1.5),face="bold"),
+                          strip.text.x = element_text(size=rel(1.5),face="bold"),
+                          legend.text = element_text(face="bold"),
+                          legend.title = element_text(face="bold"))
 })
 ############################ GeneGO as Table ###################################
 ontology_table <- reactive({

@@ -56,7 +56,7 @@ window.onload = function() {
 
 <h2 id="pre-processing">Pre-processing</h2>
 
-<p>Within the <strong>Galaxy environment</strong> APOSTL is able to recognize either a Scaffold (<a href="http://www.proteomesoftware.com/products/scaffold/">Proteome Software</a>) <em>Samples Report</em> file or the <em>peptides.txt</em> file in the Maxquant (<a href="http://coxdocs.org/doku.php?id=maxquant:start.">link</a>) <em>txt</em> output folder. No modifications should be made to these files. Using the <strong>Bait Create</strong> tool, you can create your <em>bait.txt</em> file. It is important that the individual bait names match the bait names within your scaffold or maxquant output. APOSTL uses the bait file to find the user&#39;s baits of interest. Additionally there is an option to make the prey file (Y/N).</p>
+<p>Within the <strong>Galaxy environment</strong> APOSTL is able to recognize either a Scaffold (<a href="http://www.proteomesoftware.com/products/scaffold/">Proteome Software</a>) <em>Samples Report</em> file or the <em>peptides.txt</em> file in the MaxQuant (<a href="http://coxdocs.org/doku.php?id=maxquant:start.">link</a>) <em>txt</em> output folder. No modifications should be made to these files. Using the <strong>Bait Create</strong> tool, you can create your <em>bait.txt</em> file. It is important that the individual bait names match the bait names within your Scaffold or MaxQuant output. APOSTL uses the bait file to find the user&#39;s baits of interest. Additionally there is an option to make the prey file (Y/N).</p>
 
 <p>When making a prey file, APOSTL queries a user provided FASTA database in order to extract protein amino acid lengths and gene names. This may take several minutes depending on your computer and if your Galaxy distribution is cluster enabled. Some users may want to run SAINTexpress using the same data set while changing which baits are considered test or control. It is useful to toggle <strong>Make Prey</strong> off in order to save time by circumventing this step as the same prey file can be used for both SAINTexpress runs.</p>
 
@@ -68,7 +68,7 @@ window.onload = function() {
 <ul>
 <li><em>Samples Report</em> output</li>
 </ul></li>
-<li>Maxquant output:
+<li>MaxQuant output:
 
 <ul>
 <li><em>peptides.txt</em> file</li>
@@ -81,15 +81,13 @@ window.onload = function() {
 
 <h2 id="post-processing">Post-processing</h2>
 
-<p>Once SAINTexpress has been run, APOSTL is able to read the resulting <em>list.txt</em> file. From here APOSTL does a number of things:</p>
-<p>1) APOSTL calculates the normalized spectral abundance factor\(^2\) (NSAF) values for each prey based on the average spectra observed for each bait</p> 
-<p>2) <em>Optionally</em>, APOSTL calculates the probability of a specific interaction based on prey prevalence in the <a href="http://crapome.org">CRAPome</a></p>
+<p>Once SAINTexpress has been run, APOSTL is able to read the resulting <em>list.txt</em> file. From here APOSTL does a number of things calculates normalized spectral abundance factor\(^2\) (NSAF) values for each prey based on the average spectra observed for each bait. Additionally, APOSTL will calculate the NSAF Score as described below. <em>Optionally</em>, APOSTL calculates the probability of a specific interaction based on prey prevalence in the <a href="http://crapome.org">CRAPome</a>. </p>
 
 <hr/>
 
 <p>Within an <strong>interactive analysis environment</strong>, APOSTL offers various visualization and analysis options including:</p>
 
-<p>1) Pearson correlations between replicate runs</p>
+<p>1) Correlations between replicate runs</p>
 <ul><li>Axes are spectral counts or intensity values of all measured proteins for the selected replicates</ul></li>
 <p>2) Boxplots of selected protein across all replicates</p>
 <ul><li>Abundance refers to spectral counts or intensity values respectively</ul></li>
@@ -104,13 +102,16 @@ window.onload = function() {
 <li>\(log_{2}(FC)\)</li>
 <li>\(Saint Score\)</li>
 <li>\(Log Odds Score\)</li>
+<li>\(NSAF Score = ln(\frac{NSAF_T + &epsilon;}{\frac{NSAF_c} n + &epsilon;})\)</li>
 </ul></li>
 </ul>
 
 <blockquote>
-<p>\(SpC\) = Spectral Count</p>
+<p>\(SpC\) = Spectral Count (or MS1 Intensity)</p>
 <p>\(L\) = Amino Acid Length</p>
 <p>\(FC\) = Fold Change</p>
+<p>\(&epsilon; = 1/mean(\frac{SpC}{L})_c\)</p>
+<p>\(n\) = # control replicates</p>
 </blockquote>
 
 <ul>
@@ -126,7 +127,7 @@ window.onload = function() {
 <p>7) KEGG pathway analysis of filtered data</p>
 <p>8) Gene Ontology (GO) term analysis of filtered data</p>
 
-<p>All graphs, images and data can be saved using the <i class="icon-download"></i> Download buttons or alternatively by <kbd>RMC + Save As</kbd> to generate 600 dpi figures.</p>
+<p>All graphs, images and data can be saved using the <i class="icon-download"></i> Download buttons or alternatively by <kbd>RMB + Save As</kbd> to generate 600 dpi figures.</p>
 
 <hr/>
 
