@@ -53,28 +53,11 @@ def bait_create(baits, infile):
         else:
             T_C = "T"
         bait_line = baits[i] + "\t" + baits[i+1] + "\t" + T_C + "\n"
-        read_infile = open(infile, "r")
-        for input_line in read_infile:
-            input_line = input_line.strip()
-            temp = input_line.split('\t')
-            if "Quantitative Variance" in str(temp):
-                if baits[i] in temp:                    
-                    number_bait = temp.index(str(baits[i]))
-                    number_bait = number_bait - 9
-                    bait_cache.append((number_bait, str(bait_line)))
-                    # Locates the Bait names in the column names and then sets the Baits in the 
-                    # correct order in the cache thus the - 9 because the baits start at the 9th
-                    # column.
-                else:
-                    print "Error: bad bait " + str(baits[i])
-                    sys.exit()
-            else:
-                pass
+        bait_cache.append(str(bait_line))
         i = i + 3
 
-    bait_cache.sort()
     for cache_line in bait_cache:
-        bait_file_tmp.write(cache_line[1])
+        bait_file_tmp.write(cache_line)
 
     bait_file_tmp.close()
 
@@ -212,9 +195,8 @@ def read_Scaffold(Scaffold_input):
                     proteins.append(prot_id)
                 elif "_MOUSE" in prot_id:
                     proteins.append(prot_id)
-                else: 
-                    print "Accession must be uniprot ID or gene name"
-                    sys.exit()
+                else:
+                    print "Accession must be uniprot ID or gene"
     return ReturnValue2(data, proteins, header)
 
 
