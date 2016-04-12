@@ -25,6 +25,7 @@
 
 import sys
 import os.path
+import re
 
 
 infile = sys.argv[1] 
@@ -197,8 +198,23 @@ def read_Scaffold(Scaffold_input):
     for Scaffold_line in data:
         Scaffold_line[4] = Scaffold_line[4].split()[0]
         # Removes the (+##) that sometimes is attached.
+    uniprot_re = re.compile("[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2}")
     for protein in data:
-        proteins.append(protein[prot_start])
+        prot_id = uniprot_re.match(protein[prot_start])
+        if prot_id: 
+            proteins.append(prot_id.group())
+        else:
+            prot_ids = protein[prot_start].split("|")
+            for prot_id in prot_ids:
+                if "_HUMAN" in prot_id:
+                    proteins.append(prot_id)
+                elif "_YEAST" in prot_id:
+                    proteins.append(prot_id)
+                elif "_MOUSE" in prot_id:
+                    proteins.append(prot_id)
+                else: 
+                    print "Accession must be uniprot ID or gene name"
+                    sys.exit()
     return ReturnValue2(data, proteins, header)
 
 
