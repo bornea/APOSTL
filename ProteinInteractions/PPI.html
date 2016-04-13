@@ -1,0 +1,24 @@
+<html>
+<body>
+<h1>SAINT Output to Protein Interaction File</h1>
+<hr/>
+<p> 
+This tool reads in a <em>list.txt</em> file from SAINTexpress and the interactions from <a href="http://consensuspathdb.org/">ConsensusPathDB</a> and returns all the known protein-protein interactions observed in the experiment as a simple interaction file (.SIF).
+<blockquote> <strong>Note: </strong> This network will not include identified interactions between baits and preys. This tool queries known interactions between preys only </blockquote>
+</p>
+
+<h4> 1) SAINT Output File </h4>
+<p>SAINTexpress generated <em>list.txt</em> file. 
+
+<blockquote><strong>Note: </strong>Prey IDs must be in Uniprot/Swissprot format (e.g. "EGFR_HUMAN" or "P00533").</blockquote></p>
+
+<h4> 2) SAINT Score Cutoff </h4>
+<p>SaintScore filter in range 0-1 (default 0.8)</p>
+
+<h4> 3) Consensus Path Database Score Cutoff </h4>
+<p>Interaction confidence filter in range 0-1 (default 0.8) to specify which protein interactions in ConsensusPathDB to include.</p>
+
+<h4> 4) Species </h4>
+<p>Please specify species. Supported species are Human, Mouse, and Yeast.</p>
+
+</body>

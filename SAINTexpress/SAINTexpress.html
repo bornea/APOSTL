@@ -1,0 +1,28 @@
+<html>
+<body>
+<h1>SAINTexpress</h1>
+<hr/>
+<p> This tool will read in a <em> Bait File, Prey File,</em> and <em> Inter File</em> and analyze them using the latest version of SAINTexpress.</p>
+
+<h4> 1) Interactions File </h4>
+<p>Please specify an <em>Inter</em> file for SAINTexpress analysis. An <em>Inter</em> file should contain four columns: IP name, bait name, prey name, and spectral counts or intensity values, depending on the mode of quantification.</p>
+
+<h4> 2) Prey File </h4>
+<p>Please specify a <em>Prey</em> file for SAINTexpress analysis. A <em>Prey</em> file should contain three columns: prey (protein) name, prey amino acid length, and prey gene name.</p>
+
+<h4> 3) Bait File </h4>
+<p>Please specify a <em>Bait</em> file for SAINTexpress analysis. A <em>Bait</em> file should have three columns: IP name, bait name, and the indicator for test and negative control purifications.</p>
+
+<h4> 4) Number of Replicates </h4>
+<p> The number of replicates (with largest spectral counts or intensities) to be used for probability calculation in each bait. This option is useful when some baits have more replicates than others.</p>
+
+<h4> 5) Using Virtual Control Purifications by Compression </h4>
+<p>Sets the number of virtual control purifications by compression. For instance, if you wish to take 4 largest spectral counts for controls, set <strong>Number of Vitual Controls</strong> to 4 and this variable to <kbd>Yes</kbd>.</p>
+
+<h4> 6) Number of Virtual Controls </h4>
+<p>Specify the number of virtual control purifications by compression.</p>
+
+<h4> 7) Incorporate External Data Sources </h4>
+<p>To incorporate external data sources for computing the Topology-Aware Probability Score (TopoAvgP), the user must also provide the interaction database file that contains two columns: interaction identifier column and interaction/grouping information column. The first column is just for formality and thus can be filled in with anything (no white space) and it will not be utilized in the scoring. The second column must be formatted as a list of prey identifiers (consistent with the first column of the prey file) separated by a white space.</p>
+<h4> 8) External Data File </h4>
+<p> Specify external data file</p>
