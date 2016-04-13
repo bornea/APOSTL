@@ -9,9 +9,10 @@ shinyUI(
     sidebarPanel(img(src="APOSTL_icon_no_border.png", height = 100, width = 150),br(),
              sliderInput("main.cutoff", "Saint Score Cutoff", min=0, max=1, value=0.8),
              sliderInput("main.change", "Log2(Fold Change) Cutoff", 
-                         min=round(min(main.data[(colnames(main.data)=="log2(FoldChange)")]),1),
-                         max=round(max(main.data[(colnames(main.data)=="log2(FoldChange)")]),1), 
-                         value=round(min(main.data[(colnames(main.data)=="log2(FoldChange)")]),1)
+                         min=round(min(main.data[(colnames(main.data)=="log2(FoldChange)")]),0),
+                         max=round(max(main.data[(colnames(main.data)=="log2(FoldChange)")]),0), 
+                         value=round(min(main.data[(colnames(main.data)=="log2(FoldChange)")]),0),
+                         step=0.1
                          ),
              sliderInput("NSAFscore", "NSAF Score Cutoff", 
                          min=round(min(main.data[(colnames(main.data)=="NSAF Score")]),1),
@@ -96,8 +97,8 @@ shinyUI(
       Try multiple shapes to resolve the issue.
       "),
     column(4,
-      selectInput("node.color", "Select color for preys", multiple=FALSE, choices=colors, selected="#3B444B"),
-      selectInput("bait.color", "Select color for baits", multiple=FALSE, choices=colors, selected="#8B0000"),
+      selectInput("node.color", "Select color for preys", multiple=FALSE, choices=colors, selected="#0077BE"),
+      selectInput("bait.color", "Select color for baits", multiple=FALSE, choices=colors, selected="#FF7F00"),
       selectInput("node.label.color","Select Node Label Color", choices=c("black","white"),selected="white")
       ),
     column(4,
@@ -105,7 +106,7 @@ shinyUI(
       selectInput("bait.shape", "Select shape for baits", multiple=FALSE, choices=shapes, selected="ellipse")
       ),
     column(4,
-      selectInput("edge.color", "Select color for edges", multiple=FALSE, choices=colors, selected="#C08081"),
+      selectInput("edge.color", "Select color for edges", multiple=FALSE, choices=colors, selected="#000000"),
       selectInput("net.layout", "Select layout algorithm", multiple=FALSE, choices=layouts, selected="cose")
       ),
     column(4,actionButton("saveImage", "Save network image")),
