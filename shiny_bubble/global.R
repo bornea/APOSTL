@@ -4,7 +4,7 @@
 ################################## Dependencies ###################################################
 library(shiny); library(dplyr); library(tidyr); library(ggplot2); library("devtools")
 library(rcytoscapejs); library(jsonlite); library(clusterProfiler); library(org.Hs.eg.db)
-library(mygene); library(httr); library(ggrepel)
+library(mygene); library(httr); library(ggrepel); library(shinyjs)
 #devtools::install_github("cytoscape/r-cytoscape.js"); # need for dependencies
 #install.packages('ggrepel',type='source') # need for dependencies
 
@@ -759,3 +759,29 @@ colors <- c("Air Force blue" = "#5D8AA8", # Copied from http://www.99colors.net/
             "Yellow Orange" = "#FFEF02",
             "Zaffre" = "#0014A8",
             "Zinnwaldite brown" = "#2C1608")
+appCSS_KEGG <- "
+#loading-content-KEGG {
+position: absolute;
+background: #000000;
+opacity: 0.4;
+z-index: 100;
+left: 0;
+right: 0;
+height: 100%;
+text-align: center;
+color: #FFFFFF;
+}
+"
+appCSS_GO <- "
+#loading-content-GO {
+position: absolute;
+background: #000000;
+opacity: 0.4;
+z-index: 100;
+left: 0;
+right: 0;
+height: 100%;
+text-align: center;
+color: #FFFFFF;
+}
+"

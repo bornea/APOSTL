@@ -398,6 +398,7 @@ ontology_table <- reactive({
 # Render Pathway Analysis Graph
   output$pathPlot=renderPlot({
   print(pathway_graph())
+  hide(id = "loading-content-KEGG")
   })
 # Save Pathway Analysis Table
   output$pathTable = downloadHandler(
@@ -410,6 +411,7 @@ ontology_table <- reactive({
 # Render Gene Ontology Graph
   output$ontPlot=renderPlot({
   print(ontology_graph())
+  hide(id = "loading-content-GO")
   })
 # Save Gene Ontology Table
   output$ontTable = downloadHandler(

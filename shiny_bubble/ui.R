@@ -2,7 +2,7 @@
 # R-code: APOSTL Interactive Environment User Interface
 # Author: Brent Kuenzi
 ################################################################################
-shinyUI(
+shinyUI(fluidPage(
   pageWithSidebar(
     headerPanel("Welcome to APOSTL!"),
     ################################ GLOBAL SIDEBAR ############################
@@ -119,7 +119,8 @@ shinyUI(
              dataTableOutput('table'),
              downloadButton("saveTable", "Save Table")),
     ################################ KEGG ANALYSIS #############################
-    tabPanel("Pathway Analysis",
+    tabPanel("Pathway Analysis",useShinyjs(),inlineCSS(appCSS_KEGG),
+             h2(id="loading-content-KEGG","Querying Pathways..."),
              plotOutput("pathPlot",width="100%",height="500px"),
              column(4,
                     selectInput("path_org","Organism", choices=c("mouse","yeast","human"),multiple=FALSE,selected="human"),
@@ -138,7 +139,8 @@ shinyUI(
              column(4,downloadButton("pathway.down", "Download Graph"))
     ),
     ################################ GO ANALYSIS ###############################
-    tabPanel("Gene Ontology",
+    tabPanel("Gene Ontology",useShinyjs(),inlineCSS(appCSS_GO),
+             h2(id="loading-content-GO","Querying GO Terms..."),
              plotOutput("ontPlot",width="100%",height="500px"),
              column(4,
                     selectInput("path_org","Organism", choices=c("mouse","yeast","human"),multiple=FALSE,selected="human"),
@@ -159,4 +161,4 @@ shinyUI(
              column(4,downloadButton("ontology.down", "Download Graph"))
     )
   ))
-  ))
+  )))
