@@ -43,7 +43,7 @@ shinyUI(
     ################################ Boxplots #############################
     tabPanel("Protein Boxplots",
              column(4,
-                    selectInput("prot.box","Select Protein", choices=preys),
+                    selectInput("prot.box","Select Protein", choices=preys,selected=preys[0]),
                     selectInput("box_theme","Select Theme",
                                 choices=c("Default","b/w","minimal","classic","dark","linedraw"),
                                 selected="Default")),
