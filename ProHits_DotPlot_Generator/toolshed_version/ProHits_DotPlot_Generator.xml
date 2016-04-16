@@ -1,6 +1,6 @@
 <tool id="ProHits_DotPlot_Generator" name="ProHits DotPlot Generator">
   <description></description>
-  <command interpreter="python">ProHits_DotPlot_Generator.py $saint_file $FDR1 $FDR2 $spec_max $dotplot $heatmap $estimated $stats</command>
+  <command interpreter="python">ProHits_DotPlot_Generator.py $saint_file $FDR1 $FDR2 $spec_max $dotplot $heatmap $estimated $stats \$INSTALL_RUN_PATH/</command>
   <requirements>
     <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
   </requirements>
@@ -29,6 +29,10 @@
            source="stdout"
            level="fatal"
            description="Error: bad bait"/>
+    <regex match="os.rename(sys."
+           source="stdout"
+           level="fatal"
+           description="Database association broken please reupload file"/>
   </stdio> 
 
   <tests>
