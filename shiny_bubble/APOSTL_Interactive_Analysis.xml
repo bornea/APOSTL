@@ -27,8 +27,7 @@
 APOSTL: Automated Processing of SAINT Templated Layouts
 -----------------------------------------------------------
 
-Overview
---------
+**Overview**
 
 APOSTL is an interactive affinity proteomics analysis software developed
 to reformat affinity proteomics data (both spectral counting and MS1)
@@ -39,8 +38,7 @@ License (GPL). APOSTL is built in Python and R and integrated with
 SAINTexpress into a cohesive affinity proteomics data analysis package
 using the Galaxy framework.
 
-Interactive Analysis
---------------------
+**Interactive Analysis**
 
 Once SAINTexpress has been run, APOSTL is able to read the resulting
 *list.txt* file. From here APOSTL calculates normalized spectral
@@ -50,15 +48,12 @@ calculate the NSAF Score as described below. *Optionally*, APOSTL
 calculates the probability of a specific interaction based on prey
 prevalence in the CRAPome http://crapome.org.
 
-Contact us
-----------
+**Contact us**
 
 APOSTL support is provided by the Haura and Rix labs:
 
-  Adam Borne: Adam.Borne@moffitt.org
-  
-  Brent Kuenzi: Brent.Kuenzi@moffitt.org
-
+  Adam Borne: Adam.Borne@moffitt.org 
+  Brent Kuenzi: Brent.Kuenzi@moffitt.org 
   Paul Stewart, PhD: Paul.Stewart@moffitt.org
 
 Source code is available on Github https://github.com/bornea/APOSTL
