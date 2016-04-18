@@ -1,0 +1,48 @@
+<tool id="CRAPomeQuery" name="Query CRAPome">
+  <description></description>
+  <command interpreter="python">CRAPomeQuery.py $input $species $CrapomeFile \$INSTALL_RUN_PATH/</command>
+  <requirements>
+    <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
+  </requirements>
+  <inputs>
+    <param format="txt" name="input" type="data" label="Prey File or single column list"/>
+    <param type="select" name="species" label="Species">
+      <option value="HUMAN">Human</option>
+      <option value="YEAST">Yeast</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="txt" name="CrapomeFile" label="CRAPome File"/>    
+  </outputs>
+  <stdio>
+    <regex match="Error|error"
+     source="stdout"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error|error"
+     source="stderr"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error: bad bait"
+           source="stdout"
+           level="fatal"
+           description="Error: bad bait"/>
+  </stdio> 
+  <tests>
+    <test>
+      <param name="input" value="fa_gc_content_input.fa"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+  <help>
+Query CRAPome
+-------------
+This program will read in a SAINT formatted *Prey* file or a single column list (no column name) of Uniprot accessions (e.g. "P00533" or "EGFR_HUMAN"), query the  CRAPome database (v1.1) http://crapome.org, and return a file specifying the prevalence of each protein in the CRAPome.
+
+**1) Input File**
+SAINT formatted *Prey* file or a single column list (no column name) of Uniprot accessions.
+
+**2) Species**
+Please specify species. Supported species are Human and Yeast.
+  </help>
+</tool>

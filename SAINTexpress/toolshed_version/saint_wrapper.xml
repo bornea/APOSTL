@@ -39,23 +39,63 @@
     </test>
   </tests>
   <help>
-**Running SAINT Express**
+SAINTexpress
+------------
 
-INPUTS:
+This tool will read in a *Bait File, Prey File,* and *Inter File* and
+analyze them using the latest version of SAINTexpress.
 
-Interactions File: Should contain four columns: IP name, bait name, prey name, and spectral counts or intensity values, depending on the mode of quantitation.
+**1) Interactions File**
 
-Prey File: Should contain three columns: prey (protein) name, prey protein length, and prey gene name.  
+Please specify an *Inter* file for SAINTexpress analysis. An *Inter*
+file should contain four columns: IP name, bait name, prey name, and
+spectral counts or intensity values, depending on the mode of
+quantification.
 
-Bait File: Should have three columns: IP name, bait name, and the indicator for test and negative control purifications.
+**2) Prey File**
 
-Number of Replicates: Sets the number of replicates (with largest spectral counts or intensities) to be used for probability calculation in each bait.  This option is useful when some baits have more replicates than others.
+Please specify a *Prey* file for SAINTexpress analysis. A *Prey* file
+should contain three columns: prey (protein) name, prey amino acid
+length, and prey gene name.
 
-Using Virtual Control Purification by Compression: Sets the number of virtual control purifications by compression.  For instance, if the user wishes to take 4 largest spectral counts for controls, set Number of Vitual Controls to 4 and this variable to yes.
+**3) Bait File**
 
-Incorporate External Data Sources: To incorporate external data sources for computing the topology-aware probability score (TopoAvgP), the user must also provide the interaction database file that contains two columns: interaction identifier column and interaction/grouping information column. The first column is just for formality and thus can be filled in with anything (no white space) and it will not be utilized in the scoring. The second column must be formatted as a string of prey identifiers (consistent with the first column of the prey file) separated by a white space.
+Please specify a *Bait* file for SAINTexpress analysis. A *Bait* file
+should have three columns: IP name, bait name, and the indicator for
+test and negative control purifications.
 
-------
+**4) Number of Replicates**
+
+The number of replicates (with largest spectral counts or intensities)
+to be used for probability calculation in each bait. This option is
+useful when some baits have more replicates than others.
+
+**5) Using Virtual Control Purifications by Compression**
+
+Sets the number of virtual control purifications by compression. For
+instance, if you wish to take 4 largest spectral counts for controls,
+set **Number of Vitual Controls** to 4 and this variable to Yes.
+
+**6) Number of Virtual Controls**
+
+Specify the number of virtual control purifications by compression.
+
+**7) Incorporate External Data Sources**
+
+To incorporate external data sources for computing the Topology-Aware
+Probability Score (TopoAvgP), the user must also provide the interaction
+database file that contains two columns: interaction identifier column
+and interaction/grouping information column. The first column is just
+for formality and thus can be filled in with anything (no white space)
+and it will not be utilized in the scoring. The second column must be
+formatted as a list of prey identifiers (consistent with the first
+column of the prey file) separated by a white space.
+
+**8) External Data File**
+
+Specify external data file
+
+--------
 
 **Please cite** 
 

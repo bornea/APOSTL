@@ -71,50 +71,83 @@
     </test>
   </tests>
   <help>
-# Pre-Processing
+Pre-Processing
+^^^^^^^^^^^^^^
 
-* * *
+This tool will read in a Scaffold *Samples Report* file (tab-delimited
+txt file) or a MaxQuant *peptides.txt* file and process them to generate
+a *Bait File, Prey File,* and *Inter File* for SAINTexpress analysis.
 
-This tool will read in a Scaffold _Samples Report_ file (tab-delimited txt file) or a MaxQuant _peptides.txt_ file and process them to generate a _Bait File, Prey File,_ and _Inter File_ for SAINTexpress analysis.
+--------------
 
-#### 1) MaxQuant or Scaffold
+**1) MaxQuant or Scaffold**
 
-APOSTL is able to recognize either a Scaffold _Samples Report_ file (tab-delimited txt file) or the _peptides.txt_ file output in the MaxQuant _txt_ output folder. No modifications should be made to these files. Please designate which one is being provided.
+APOSTL is able to recognize either a Scaffold *Samples Report* file
+(tab-delimited txt file) or the *peptides.txt* file output in the
+MaxQuant *txt* output folder. No modifications should be made to these
+files. Please designate which one is being provided.
 
-#### 2) Scaffold or MaxQuant File Input
+**2) Scaffold or MaxQuant File Input**
 
-Select the corresponding _Samples Report_ or _peptides.txt_ here.
+Select the corresponding *Samples Report* or *peptides.txt* here.
 
-#### 3) Create Prey File
+**3) Create Prey File**
 
 Select whether or not you would like APOSTL to generate a prey file.
 
-When making a prey file, APOSTL queries a user provided FASTA database (see below) in order to extract protein amino acid lengths and gene names. This may take several minutes depending on your computer and if your Galaxy distribution is cluster enabled. Some users may want to run SAINTexpress using the same data set while changing which baits are considered test or control. It is useful to toggle **Create Prey File** off in order to save time by circumventing this step as the same prey file can be used for both SAINTexpress runs.
+When making a prey file, APOSTL queries a user provided FASTA database
+(see below) in order to extract protein amino acid lengths and gene
+names. This may take several minutes depending on your computer and if
+your Galaxy distribution is cluster enabled. Some users may want to run
+SAINTexpress using the same data set while changing which baits are
+considered test or control. It is useful to toggle **Create Prey File**
+off in order to save time by circumventing this step as the same prey
+file can be used for both SAINTexpress runs.
 
-#### 4) Provide Uniprot FASTA database
+**4) Provide Uniprot FASTA database**
 
-Please specify a FASTA file containing the protein sequence. You can download the latest release of Uniprot's reviewed sequences (Swiss-Prot) [here](http://www.uniprot.org/downloads). For computing efficiency, please limit your FASTA file to your species of interest. It is generally advised to use the same FASTA database that was used for your database searches during peptide and protein ID.
+Please specify a FASTA file containing the protein sequence. You can
+download the latest release of Uniprot's reviewed sequences (Swiss-Prot)
+http://www.uniprot.org/downloads. For computing efficiency,
+please limit your FASTA file to your species of interest. It is
+generally advised to use the same FASTA database that was used for your
+database searches during peptide and protein ID.
 
-#### 5) Are You Providing Your Own Bait File?
+**5) Are You Providing Your Own Bait File?**
 
-Users have two options for providing a _Bait_ file. If you would like to create your own _Bait_ file, select <kbd>Yes</kbd> and designate the file below. If you would like to use the **Bait Create** tool to create a _Bait_ file within Galaxy, please select <kbd>No</kbd> and proceed to the **Bait Create** tool.
+Users have two options for providing a *Bait* file. If you would like to
+create your own *Bait* file, select Yes and designate the file below. If
+you would like to use the **Bait Create** tool to create a *Bait* file
+within Galaxy, please select No and proceed to the **Bait Create** tool.
 
-#### 6) Bait File
+**6) Bait File**
 
-If you selected <kbd>Yes</kbd> above, please specify the _Bait_ file you would like to provide. If you selected <kbd>No</kbd> above, ignore this argument and proceed to the **Bait Create** tool.
+If you selected Yes above, please specify the *Bait* file you would like
+to provide. If you selected No above, ignore this argument and proceed
+to the **Bait Create** tool.
 
-> **Note:** Individual bait names must match to the sample names within your Scaffold or MaxQuant output exactly and must contain no whitespace characters (e.g. spaces) or dashes.
+    **Note:** Individual bait names must match to the sample names
+    within your Scaffold or MaxQuant output exactly and must contain no
+    whitespace characters (e.g. spaces) or dashes.
 
-#### 7) Bait Create
+**7) Bait Create**
 
-Using the **Bait Create** tool, you can create your _bait.txt_ file.
+Using the **Bait Create** tool, you can create your *bait.txt* file.
 
-> **Note:** Individual bait names must match to the sample names within your Scaffold or MaxQuant output exactly and must contain no whitespace characters (e.g. spaces) or dashes.
+    **Note:** Individual bait names must match to the sample names
+    within your Scaffold or MaxQuant output exactly and must contain no
+    whitespace characters (e.g. spaces) or dashes.
 
-APOSTL uses this bait file to find the user's baits of interest within a _Samples Report_ or _peptides.txt_ file and when preparing the _inter.txt_ file.
+APOSTL uses this bait file to find the user's baits of interest within a
+*Samples Report* or *peptides.txt* file and when preparing the
+*inter.txt* file.
 
-* * *
+--------------
 
-Once your parameters have been finalized, please press the <kbd>Execute</kbd> button to start processing. This may take a few minutes. Once your process has been completed, you will see your _Bait File, Prey File,_ and _Inter File_ on the right hand side of your panel highlighted in green.
+Once your parameters have been finalized, please press the Execute
+button to start processing. This may take a few minutes. Once your
+process has been completed, you will see your *Bait File, Prey File,*
+and *Inter File* on the right hand side of your panel highlighted in
+green.
   </help>
 </tool>

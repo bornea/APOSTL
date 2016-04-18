@@ -39,23 +39,36 @@
     </test>
   </tests>
   <help>
-**Protein Interactions**
+SAINT Output to Protein Interaction File
+----------------------------------------
 
-This program will read in a SAINT 'list.txt' file and the interactions from ConsensusPathDB ( http://consensuspathdb.org/ ) and return all the interactions that we saw in our experiment in a format suitable for cytoscape. This allows us to filter before getting protein-protein interactions (PPI's) so that it doesn't affect our SAINT score or include interactions that don't score well.
+This tool reads in a *list.txt* file from SAINTexpress and the
+interactions from ConsensusPathDB (http://consensuspathdb.org/) and
+returns all the known protein-protein interactions observed in the
+experiment as a simple interaction file (.SIF).
 
-INPUT
+    **Note:** This network will not include identified interactions
+    between baits and preys. This tool queries known interactions
+    between preys only
 
-SAINT Output: SAINTexpress output.
+**1) SAINT Output File**
 
-SAINT Score Cutoff: Saint score cutoff for import (between 0 and 1).
+SAINTexpress generated *list.txt* file.
 
-Consensus Path Database Score Cutoff: Confidence of PPI from CPDB to include (between 0 and 1).
- * low: no filtering
- * medium: >0.5
- * high: >0.7
- * very high: >0.9
+    **Note:** Prey IDs must be in Uniprot/Swissprot format (e.g.
+    "EGFR\_HUMAN" or "P00533").
 
-Species: Human, Yeast, or Mouse.
+**2) SAINT Score Cutoff**
 
+SaintScore filter in range 0-1 (default 0.8)
+
+**3) Consensus Path Database Score Cutoff**
+
+Interaction confidence filter in range 0-1 (default 0.8) to specify
+which protein interactions in ConsensusPathDB to include.
+
+**4) Species**
+
+Please specify species. Supported species are Human, Mouse, and Yeast.
   </help>
 </tool>

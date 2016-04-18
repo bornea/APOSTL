@@ -42,21 +42,31 @@
     </test>
   </tests>
   <help>
-**Running ProHits DotPlot**
+Prohits Dotplot
+---------------
 
-This runs the biclustering version of the DotPlot tool found at http://prohitstools.mshri.on.ca/. A more interactive version can be found at http://prohits-viz.lunenfeld.ca/. This script will take a long time to run.
+This tool runs the biclustering version of the DotPlot tool found
+at http://prohitstools.mshri.on.ca/. A more interactive version
+can be found at http://prohits-viz.lunenfeld.ca/. Depending on
+your Galaxy distribution, this tool may take a few minutes to run.
 
-INPUTS:
+**1) SAINT Output File**
 
-Saint Output: SAINTexpress generated "list.txt" file.
+SAINTexpress generated *list.txt* file
 
-Primary False Discovery Rate
+**2) False Discovery Rate 1**
 
-Secondary False Discovery Rate
+Primary FDR cutoff in range 0-1 (default 0.01)
 
-Maximum Spectral Count
+**3) False Discovery Rate 2**
 
-------
+Secondary FDR cutoff; must be higher than the primary (default 0.025)
+
+**4) Maximum Spectral Count**
+
+Maximum spectral count to visualize (default 50)
+
+----------------
 
 **Please cite** 
 
