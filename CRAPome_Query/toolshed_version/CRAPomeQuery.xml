@@ -15,6 +15,10 @@
     <data format="txt" name="CrapomeFile" label="CRAPome File"/>    
   </outputs>
   <stdio>
+    <regex match="TypeError"
+           source="stderr"
+           level="fatal"
+           description="Error: Check input file."/>
     <regex match="Error|error"
      source="stdout"
            level="fatal"
@@ -23,10 +27,6 @@
      source="stderr"
            level="fatal"
            description="Unknown error"/>
-    <regex match="Error: bad bait"
-           source="stdout"
-           level="fatal"
-           description="Error: bad bait"/>
   </stdio> 
   <tests>
     <test>

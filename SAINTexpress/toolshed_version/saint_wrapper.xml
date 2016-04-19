@@ -18,6 +18,14 @@
     <data format="txt" name="SAINT_output" />
   </outputs>
   <stdio>
+    <regex match="boost::exception_detail::clone_impl"
+           source="stderr"
+           level="fatal"
+           description="Error: Check input file assignments."/>
+    <regex match="what():  file doesn't exist!"
+           source="stderr"
+           level="fatal"
+           description="Error: Check External Data File."/>
     <regex match="Error|error"
      source="stdout"
            level="fatal"
@@ -26,10 +34,6 @@
      source="stderr"
            level="fatal"
            description="Unknown error"/>
-    <regex match="Error: bad bait"
-           source="stdout"
-           level="fatal"
-           description="Error: bad bait"/>
   </stdio> 
 
   <tests>

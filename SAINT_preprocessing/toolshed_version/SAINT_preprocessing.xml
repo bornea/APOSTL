@@ -50,6 +50,18 @@
     <data format="txt" name="Bait_file" label="Bait File" />
   </outputs>
   <stdio>
+    <regex match="Error: bad bait"
+           source="stdout"
+           level="fatal"
+           description="Error: bad bait"/>
+    <regex match="IOError: [Errno 2] No such file or directory: './tukeys_output.txt'"
+           source="stderr"
+           level="fatal"
+           description="Error: Scaffold/MaxQuant mismatch. Check job settings."/>
+    <regex match="bait_temp_file = open(sys.argv[10], 'r')"
+           source="stderr"
+           level="fatal"
+           description="Error: Bait create settings mismatch. Check job settings."/>
     <regex match="Error|error"
 	   source="stdout"
            level="fatal"
@@ -58,10 +70,6 @@
      source="stderr"
            level="fatal"
            description="Unknown error"/>
-    <regex match="Error: bad bait"
-           source="stdout"
-           level="fatal"
-           description="Error: bad bait"/>
   </stdio> 
 
   <tests>

@@ -17,6 +17,10 @@
     <data format="pdf" name="stats" label="Stats" />   
   </outputs>
   <stdio>
+    <regex match="DotPlot did not run correctly"
+           source="stdout"
+           level="fatal"
+           description="DotPlot did not run correctly."/>
     <regex match="Error|error"
      source="stdout"
            level="fatal"
@@ -29,10 +33,6 @@
            source="stdout"
            level="fatal"
            description="Error: bad bait"/>
-    <regex match="os.rename(sys."
-           source="stdout"
-           level="fatal"
-           description="Database association broken please reupload file"/>
   </stdio> 
 
   <tests>

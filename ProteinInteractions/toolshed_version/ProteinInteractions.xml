@@ -18,6 +18,10 @@
     <data format="sif" name="Cytoscape_File" label="Cytoscape File"/>    
   </outputs>
   <stdio>
+    <regex match="ValueError: 'PreyGene' is not in list"
+       source="stdout"
+       level="fatal"
+       description="Error: Check Input file."/>
     <regex match="Error|error"
      source="stdout"
            level="fatal"
@@ -26,10 +30,6 @@
      source="stderr"
            level="fatal"
            description="Unknown error"/>
-    <regex match="Error: bad bait"
-           source="stdout"
-           level="fatal"
-           description="Error: bad bait"/>
   </stdio> 
 
   <tests>

@@ -44,12 +44,17 @@ else:
 
 cmd = (str(ins_path) + r"Dotplot_Release/dotplot.bash -f saint_input.txt" + r" -c b -s " + str(FDR1) +
     r" -t " + str(FDR2) + " -m " + str(spec_max))
-os.system(cmd)
+try:
+    os.system(cmd)
+    cmd1 = r"cp -a ./Output_saint_input/. ."
+    os.system(cmd1)
+    os.rename("saint_input.txt", str(sys.argv[1]))
+except OSError:
+    os.rename("saint_input.txt", str(sys.argv[1]))
+    print "DotPlot did not run correctly"
+    sys.exit()
 
-cmd1 = r"cp -a ./Output_saint_input/. ."
-os.system(cmd1)
 
-os.rename("saint_input.txt", str(sys.argv[1]))
 os.rename('dotplot.pdf', str(sys.argv[5])) 
 os.rename('bait2bait.pdf', str(sys.argv[6])) 
 os.rename('estimated.pdf', str(sys.argv[7])) 
