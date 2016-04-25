@@ -134,7 +134,7 @@ def crapome(infile): # Query CRAPome
             temp.append(i[0]) # append gene name
             ave = []
             total = len(i[3:]) # calculate total experiments
-            for j in i[3:]: 
+            for j in i[3:]:
                 if j != '0':
                     ave.append(int(j)) # calculate Ave.SC on only experiments with ID
                     cnt+=1
@@ -148,6 +148,9 @@ def crapome(infile): # Query CRAPome
         else:
             temp.append(i[2]) # append accession
             temp.append(i[3])
+            temp.append("NA")
+            temp.append("NA")
+            temp.append("NA")
         query.append(temp) # final query results
 
     header = ["User Input","Mapped Gene Symbol","Num of Expt. (found/total)","Ave SC","Max SC"]
