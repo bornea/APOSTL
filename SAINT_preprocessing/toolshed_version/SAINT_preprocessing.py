@@ -231,7 +231,8 @@ def make_prey(Scaffold_input):
         seq = get_info(protein).seqlength
         GN = get_info(protein).genename
         if seq != 'NA':
-            output_file.write(protein + "\t" + str(seq) + "\t" + str(GN) + "\n")
+            if GN != 'NA':
+                output_file.write(protein + "\t" + str(seq) + "\t" + str(GN) + "\n")
     output_file.close()
 
 

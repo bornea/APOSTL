@@ -75,16 +75,24 @@ main <- function(peptides_file, db_path) {
 	global_min = min(apply(peptides_txt_mapped_log2[,2:ncol(peptides_txt_mapped_log2)],2,function(x) {
 	  min(x[x != -Inf])
 	}))
-	peptides_txt_mapped_log2[peptides_txt_mapped_log2 == -Inf] <- 0
+	peptides_txt_mapped_log2[peptides_txt_mapped_log2 == -Inf] <- NA
   #uniprot accessions WITHOUT isoforms; it looks like only contaminants contain isoforms anyways.
 	mapped_protein_uniprotonly = str_extract(peptides_txt_mapped_log2$Uniprot,"[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2}") 
 	mapped_protein_uniprot_accession = str_extract(peptides_txt_mapped_log2$Uniprot,"[OPQ][0-9][A-Z0-9]{3}[0-9](-[0-9]+)?|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2}(-[0-9]+)?|[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2}")
 	peptides_txt_mapped_log2$mapped_protein = mapped_protein_uniprotonly
+	names_db = str_extract(swissprot_fasta,"[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2}")
+	names_db = names_db[!is.na(names_db)]
   # Runs the Tukey function returning completed table.
-  peptides_txt_mapped_log2 = subset(peptides_txt_mapped_log2,mapped_protein %in% swissprot_fasta)
+  peptides_txt_mapped_log2 = subset(peptides_txt_mapped_log2,mapped_protein %in% names_db)
+  if (nrow(peptides_txt_mapped_log2) == 0) {
+    print("Uniprot Database does not have any of the proteins in the peptides file")
+    quit()
+  }
 	protein_intensities_tukeys = get_protein_values(peptides_txt_mapped_log2,intensity_columns)
   protein_intensities_tukeys[protein_intensities_tukeys == 1] <- 0
-  write.table(protein_intensities_tukeys, "./tukeys_output.txt", row.names = FALSE, col.names = TRUE, quote = FALSE, sep = "\t")	
+  # Eliminates all pure NA rows. 
+  protein_intensities_tukeys = protein_intensities_tukeys[rowSums(is.na(protein_intensities_tukeys)) != (ncol(protein_intensities_tukeys)-1),]
+  write.table(protein_intensities_tukeys, "./tukeys_output.txt", row.names = FALSE, col.names = TRUE, quote = FALSE, sep = "\t")
 
 }
 
@@ -94,7 +102,7 @@ map_peptides_proteins = function(peptides_in) {
     k = 1
     for (i in 1:nrow(peptides_in)) {
         protein_names = peptides_in[i,"Proteins"]
-        protein_names_split = unlist(strsplit(protein_names,";"))
+        protein_names_split = unlist(str_split(protein_names,";"))
         for (j in 1:length(protein_names_split)) {
             peptides_mapped_proteins = data.frame(peptides_in[i,],mapped_protein=protein_names_split[j],stringsAsFactors=FALSE)
             results_list[[k]] = peptides_mapped_proteins
@@ -117,7 +125,7 @@ get_protein_values = function(mapped_peptides_in,intensity_columns_list) {
     # Results_list[[i]] = data.frame(Protein=unique_mapped_proteins_list[i],Peptides_per_protein=nrow(mapped_peptides_unique_subset)).
     for (j in intensity_columns_list) {
       # Populates with new Tukeys values.
-      Tukeys_df[i,j] = 2^(tukey.biweight(mapped_peptides_unique_subset[,j]))
+      Tukeys_df[i,j] = 2^(tukey.biweight(na.omit(mapped_peptides_unique_subset[,j])))
     }
   }
   return(Tukeys_df)

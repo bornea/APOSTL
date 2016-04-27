@@ -31,15 +31,23 @@ import os
 mq_file = sys.argv[1]
 ins_path = sys.argv[8]
 names_path = str(ins_path) + r"uniprot_names.txt"
-cmd = (r"Rscript "+ str(ins_path) +"pre_process_protein_name_set.R " + str(mq_file) +
-       " " + str(names_path))
-os.system(cmd)
+fasta_db = sys.argv[3]
+
+# Uses faster names list for filtering when default db used. 
+if fasta_db == "None":
+    cmd = (r"Rscript "+ str(ins_path) +"pre_process_protein_name_set.R " + str(mq_file) +
+        " " + str(names_path))
+    os.system(cmd)
+else:
+    cmd = (r"Rscript "+ str(ins_path) +"pre_process_protein_name_set.R " + str(mq_file) +
+        " " + str(fasta_db))
+    os.system(cmd)
+
 
 infile = "./tukeys_output.txt" 
 # The MaxQuant "Samples Report" output.
 prey = sys.argv[2] 
 # Y or N boolean from Galaxy.
-fasta_db = sys.argv[3]
 if fasta_db == "None":
     fasta_db = str(ins_path)  + "SwissProt_HUMAN_2014_08.fasta"
 make_bait = sys.argv[6]
@@ -224,7 +232,8 @@ def make_prey(MaxQuant_input):
         seq = get_info(a).seqlength
         GN = get_info(a).genename
         if seq != 'NA':
-            output_file.write(a+"\t"+str(seq)+ "\t" + str(GN) + "\n")
+            if GN != 'NA':
+                output_file.write(a+"\t"+str(seq)+ "\t" + str(GN) + "\n")
     output_file.close()
 
 
