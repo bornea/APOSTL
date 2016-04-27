@@ -18,18 +18,18 @@ Created on Thu Apr 14 16:58:05 2016
 # A copy of the license is included in the section entitled "GNU
 # Free Documentation License".
 ################################################################################
+## Dependencies ##
+import urllib2
+import sys
+import numpy
+import os
+################################################################################
 ## REQUIRED INPUT ##
 # 1) crappyData: Prey.txt or single column list of Uniprot accessions
 crappyData = sys.argv[1] # Prey file or File with single column of accessions
 # 2) Species: HUMAN or YEAST
 species = sys.argv[2] # HUMAN or YEAST
 db_path = sys.argv[4]
-################################################################################
-## Dependencies ##
-import urllib2
-import sys
-import numpy
-import os
 ################################################################################
 ## Global Variables ##
 if species == "HUMAN":
