@@ -234,7 +234,8 @@ table_display <- reactive({
   table
 }) 
 ############################ KEGG Pathway Graph ################################
-pathway_graph <- reactive({
+pathway_graph <- eventReactive(input$KEGGbutton,{
+  toggle(id = "loading-content-KEGG")
   str_val <- input$path_x
   str_cutoff= paste0(input$main.cutoff)
   main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
@@ -300,7 +301,8 @@ pathway_table <- reactive({
   summary(pathways)
 })
 ############################ GeneGO Graph #####################################
-ontology_graph <- reactive({
+ontology_graph <- eventReactive(input$GObutton,{
+  toggle(id = "loading-content-GO")
   str_val <- input$path_x
   str_cutoff= paste0(input$main.cutoff)
   main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
@@ -397,6 +399,7 @@ ontology_table <- reactive({
   })
 # Render Pathway Analysis Graph
   output$pathPlot=renderPlot({
+  hide(id = "loading-content-KEGG",time=0.01)
   print(pathway_graph())
   hide(id = "loading-content-KEGG")
   })
@@ -410,6 +413,7 @@ ontology_table <- reactive({
                 sep = "\t", row.names=FALSE)})
 # Render Gene Ontology Graph
   output$ontPlot=renderPlot({
+  hide(id = "loading-content-GO",time=0.01)
   print(ontology_graph())
   hide(id = "loading-content-GO")
   })
