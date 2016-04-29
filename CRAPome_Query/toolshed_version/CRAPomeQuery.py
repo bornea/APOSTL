@@ -29,7 +29,8 @@ import os
 crappyData = sys.argv[1] # Prey file or File with single column of accessions
 # 2) Species: HUMAN or YEAST
 species = sys.argv[2] # HUMAN or YEAST
-db_path = sys.argv[4]
+fasta_db = sys.argv[3]
+db_path = sys.argv[5]
 ################################################################################
 ## Global Variables ##
 if species == "HUMAN":
@@ -46,48 +47,75 @@ class ReturnValue1(object):
 def get_info(uniprot_accession_in): #get aa lengths and gene name
     error = open('error proteins.txt', 'a+')
     i=0
-    while i==0:
-        try:
-            data = urllib2.urlopen("http://www.uniprot.org/uniprot/" + uniprot_accession_in + ".fasta")
-            break
-        except urllib2.HTTPError, err:
-            i = i + 1
-            if i == 50:
-                sys.exit("More than 50 errors. Check your file or try again later.")
-            if err.code == 404:
-                error.write(uniprot_accession_in + '\t' + "Invalid URL. Check protein" + '\n')
-                seqlength = 'NA'
-                genename = 'NA'
-                return ReturnValue1(seqlength, genename)
-            elif err.code == 302:
-                sys.exit("Request timed out. Check connection and try again.")
-            else:
-                sys.exit("Uniprot had some other error")
-    lines = data.readlines()
-    header = lines[0]
-    lst = header.split('|')
-    lst2 = lst[2].split(' ')
-    swissprot = lst2[0]
-    uniprot_acc = lst[1]
-    if lines == []:
-        error.write(uniprot_accession_in + '\t' + "Blank Fasta" + '\n')
-        error.close
-        uniprot_acc = 'NA'
-        genename = 'NA'
-        return ReturnValue1(uniprot_acc, genename, swissprot)
-    if lines != []:
-        seqlength = 0
+    if fasta_db == "None":
+        while i==0:
+            try:
+                data = urllib2.urlopen("http://www.uniprot.org/uniprot/" + uniprot_accession_in + ".fasta")
+                break
+            except urllib2.HTTPError, err:
+                i = i + 1
+                if i == 50:
+                    sys.exit("More than 50 errors. Check your file or try again later.")
+                if err.code == 404:
+                    error.write(uniprot_accession_in + '\t' + "Invalid URL. Check protein" + '\n')
+                    seqlength = 'NA'
+                    genename = 'NA'
+                    return ReturnValue1(seqlength, genename)
+                elif err.code == 302:
+                    sys.exit("Request timed out. Check connection and try again.")
+                else:
+                    sys.exit("Uniprot had some other error")
+        lines = data.readlines()
         header = lines[0]
-        if 'GN=' in header:
-            lst = header.split('GN=')
-            lst2 = lst[1].split(' ')
-            genename = lst2[0]
+        lst = header.split('|')
+        lst2 = lst[2].split(' ')
+        swissprot = lst2[0]
+        uniprot_acc = lst[1]
+        if lines == []:
+            error.write(uniprot_accession_in + '\t' + "Blank Fasta" + '\n')
             error.close
-            return ReturnValue1(uniprot_acc, genename, swissprot)
-        if 'GN=' not in header:
+            uniprot_acc = 'NA'
             genename = 'NA'
-            error.close
             return ReturnValue1(uniprot_acc, genename, swissprot)
+        if lines != []:
+            seqlength = 0
+            header = lines[0]
+            if 'GN=' in header:
+                lst = header.split('GN=')
+                lst2 = lst[1].split(' ')
+                genename = lst2[0]
+                error.close
+                return ReturnValue1(uniprot_acc, genename, swissprot)
+            if 'GN=' not in header:
+                genename = 'NA'
+                error.close
+                return ReturnValue1(uniprot_acc, genename, swissprot)
+    else:
+        data = open(fasta_db, 'r')
+        data_lines = data.readlines()
+        db_len = len(data_lines)
+        for fasta_line in data_lines:
+            if uniprot_accession_in in fasta_line:
+                sp, uniprot_acc, name_info = fasta_line.split("|")
+                swissprot = name_info.split(' ')[0]
+                if 'GN=' in name_info:
+                    lst = name_info.split('GN=')
+                    lst2 = lst[1].split(' ')
+                    genename = lst2[0]
+                    return ReturnValue1(uniprot_acc, genename, swissprot)
+                if 'GN=' not in name_info:
+                    genename = 'NA'
+                    return ReturnValue1(uniprot_acc, genename, swissprot)
+        if sp == ">sp":
+            error.close()
+        else:
+            error.write(uniprot_accession_in + '\t' + "Blank Fasta" + '\n')
+            error.close
+            uniprot_acc = 'NA'
+            genename = 'NA'
+            return ReturnValue1(uniprot_acc, genename, swissprot)
+
+
 def readtab(infile): # read in tab-delim text
     with open(infile,'r') as x:
         output = []
@@ -161,5 +189,5 @@ def crapome(infile): # Query CRAPome
 if __name__ == '__main__':
     crapome(crappyData)
 
-os.rename("Crappy Data.txt", sys.argv[3])
+os.rename("Crappy Data.txt", sys.argv[4])
 ## END ##
