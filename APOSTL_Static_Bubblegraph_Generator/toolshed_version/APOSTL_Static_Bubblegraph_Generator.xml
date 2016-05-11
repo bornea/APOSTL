@@ -1,37 +1,1429 @@
 <tool id="APOSTL_Static_Bubblegraph_Generator" name="APOSTL Static Bubblegraph Generator">
   <description></description>
-  <command interpreter="python">APOSTL_Static_Bubblegraph_Generator.py $list_file $prey_file $crapome $color $label $cutoff $type $inc_file $exc_file $outfile $NSAF_zoom $SAINT_zoom $SAINT $NSAF \$INSTALL_RUN_PATH/</command>
+  <command interpreter="python">APOSTL_Static_Bubblegraph_Generator.py $list_file $prey_file $crapome $inter $main_x $main_y $size_id $color $SS_cutoff $FC_cutoff $NS_cutoff $theme $label $label_color $bubble_color $outline_color $filt_color $outfile \$INSTALL_RUN_PATH/
+  </command>
   <requirements>
     <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
   </requirements>
   <inputs>
-    <param type="select" name="type" label="MaxQuant or Scaffold">
-      <option value="MQ">MaxQuant</option>
-      <option value="SC">Scaffold</option> 
-    </param>
     <param format="txt" name="list_file" type="data" label="List File"/>
     <param format="txt" name="prey_file" type="data" label="Prey File"/>
     <param format="txt" name="crapome" type="data" label="Crapome File" optional="true"/>
-    <param name="color" type="select" label="Color" optional="true">
-        <option value="crapome">Crapome</option>
-        <option value="red">Red</option>
-        <option value="blue">Blue</option>
+    <param format="txt" name="inter" type="data" label="Inter File"/>
+    <param name="main_x" type="select" label="X Axis" >
+        <option value="lnNSAF">ln(NSAF)</option>
+        <option value="SpecSum">SpecSum</option>
+        <option value="log2FoldChange">log2(FoldChange)</option>
+        <option value="SaintScore">SaintScore</option>
+        <option value="logOddsScore">logOddsScore</option>
+        <option value="NSAFScore">NSAFScore</option>
     </param>
-    <param type="boolean" name="label" checked="true" label="Use Labels"/>
-    <param type="float" name="cutoff" label="SAINT Score Cutoff" help="Select a value between 0 and 1 written like 0.8." value="0.8"/>
-    <param format="txt" name="inc_file" type="data" label="List of Uniprot IDs to Include" optional="true"/>
-    <param format="txt" name="exc_file" type="data" label="List of Uniprot IDs to Exclude" optional="true"/>
+    <param name="main_y" type="select" label="Y Axis" >
+        <option value="lnNSAF">ln(NSAF)</option>
+        <option value="SpecSum">SpecSum</option>
+        <option value="log2FoldChange">log2(FoldChange)</option>
+        <option value="SaintScore">SaintScore</option>
+        <option value="logOddsScore">logOddsScore</option>
+        <option value="NSAFScore">NSAFScore</option>
+    </param>
+    <param name="size_id" type="select" label="Bubble Size" >
+        <option value="fixed">fixed</option> 
+        <option value="lnNSAF">ln(NSAF)</option>
+        <option value="SpecSum">SpecSum</option>
+        <option value="log2FoldChange">log2(FoldChange)</option>
+        <option value="SaintScore">SaintScore</option>
+        <option value="logOddsScore">logOddsScore</option>
+        <option value="NSAFScore">NSAFScore</option>
+    </param>
+    <param name="color" type="select" label="Color" >
+        <option value="crapome">Crapome</option>
+        <option value="fixed">fixed</option>
+    </param>
+    <param type="float" name="SS_cutoff" label="SAINT Score Cutoff" help="Select a value between 0 and 1 written like 0.8." value="0.8"/>
+    <param type="integer" name="FC_cutoff" label="Fold Change Cutoff" help="Select a value between -Inf and Inf." value="0"/>
+    <param type="integer" name="NS_cutoff" label="NSAF Score Cutoff" help="Select a value between -Inf and Inf." value="0"/>
+    <param name="theme" type="select" label="Plot Theme" >
+        <option value="Default">Default</option>
+        <option value="b/w">b/w</option>
+        <option value="minimal">minimal</option>
+        <option value="classic">classic</option>
+        <option value="dark">dark</option>
+        <option value="linedraw">linedraw</option>
+    </param>
+    <param name="label" type="select" label="Label Type" >
+        <option value="none">none</option>
+        <option value="cutoff">cutoff</option>
+        <option value="all">all</option>
+    </param>
+    <param name="label_color" type="select" label="Label Color" >
+        <option value="black">Black</option>
+        <option value="white">White</option>
+    </param>
+    <param name="bubble_color" type="select" label="Bubble Color" >
+        <option value="AirForceblue">AirForceblue</option>
+        <option value="Aliceblue">Aliceblue</option>
+        <option value="Alizarincrimson">Alizarincrimson</option>
+        <option value="Almond">Almond</option>
+        <option value="Amaranth">Amaranth</option>
+        <option value="Amber">Amber</option>
+        <option value="Americanrose">Americanrose</option>
+        <option value="Amethyst">Amethyst</option>
+        <option value="AndroidGreen">AndroidGreen</option>
+        <option value="AirForceblue">Antiflashwhite</option>
+        <option value="Antiquefuchsia">Antiquefuchsia</option>
+        <option value="Antiquewhite">Antiquewhite</option>
+        <option value="Ao">Ao</option>
+        <option value="Applegreen">Applegreen</option>
+        <option value="Apricot">Apricot</option>
+        <option value="Aqua">Aqua</option>
+        <option value="Amber">Amber</option>
+        <option value="Aquamarine">Aquamarine</option>
+        <option value="Amethyst">Amethyst</option>
+        <option value="Armygreen">Armygreen</option>
+        <option value="Arsenic">Arsenic</option>
+        <option value="Arylideyellow">Arylideyellow</option>
+        <option value="Ashgray">Ashgray</option>
+        <option value="Asparagus">Asparagus</option>
+        <option value="Atomictangerine">Atomictangerine</option>
+        <option value="Auburn">Auburn</option>
+        <option value="Aureolin">Aureolin</option>
+        <option value="AuroMetalSaurus">AuroMetalSaurus</option>
+        <option value="Awesome">Awesome</option>
+        <option value="Azuremist">Azuremist</option>
+        <option value="Babyblue">Babyblue</option>
+        <option value="Babypink">Babypink</option>
+        <option value="BallBlue">BallBlue</option>
+        <option value="BananaMania">BananaMania</option>
+        <option value="Bananayellow">Bananayellow</option>
+        <option value="Battleshipgray">Battleshipgray</option>
+        <option value="Bazaar">Bazaar</option>
+        <option value="Beaublue">Beaublue</option>
+        <option value="Beaver">Beaver</option>
+        <option value="Beige">Beige</option>
+        <option value="Bisque">Bisque</option>
+        <option value="Bistre">Bistre</option>
+        <option value="Bittersweet">Bittersweet</option>
+        <option value="Obsidian">Obsidian</option>
+        <option value="Onyx">Onyx</option>
+        <option value="LostSoul">LostSoul</option>
+        <option value="Midnight">Midnight</option>
+        <option value="RollingBlackout">RollingBlackout</option>
+        <option value="SleepingPanther">SleepingPanther</option>
+        <option value="VoidbyArmani">VoidbyArmani</option>
+        <option value="BlanchedAlmond">BlanchedAlmond</option>
+        <option value="BleudeFrance">BleudeFrance</option>
+        <option value="BlizzardBlue">BlizzardBlue</option>
+        <option value="Blond">Blond</option>
+        <option value="Blue">Blue</option>
+        <option value="BlueBell">BlueBell</option>
+        <option value="BlueGray">BlueGray</option>
+        <option value="Bluegreen">Bluegreen</option>
+        <option value="Blueviolet">Blueviolet</option>
+        <option value="Blush">Blush</option>
+        <option value="Bole">Bole</option>
+        <option value="Bondiblue">Bondiblue</option>
+        <option value="Brandeisblue">Brandeisblue</option>
+        <option value="Brass">Brass</option>
+        <option value="Brickred">Brickred</option>
+        <option value="Brightcerulean">Brightcerulean</option>
+        <option value="Brightgreen">Brightgreen</option>
+        <option value="Brightlavender">Brightlavender</option>
+        <option value="Brightmaroon">Brightmaroon</option>
+        <option value="Brightpink">Brightpink</option>
+        <option value="Brightturquoise">Brightturquoise</option>
+        <option value="Brightube">Brightube</option>
+        <option value="Brilliantlavender">Brilliantlavender</option>
+        <option value="Brilliantrose">Brilliantrose</option>
+        <option value="Brinkpink">Brinkpink</option>
+        <option value="Britishracinggreen">Britishracinggreen</option>
+        <option value="Bronze">Bronze</option>
+        <option value="Brown">Brown</option>
+        <option value="Bubblegum">Bubblegum</option>
+        <option value="Bubbles">Bubbles</option>
+        <option value="Buff">Buff</option>
+        <option value="Bulgarianrose">Bulgarianrose</option>
+        <option value="Burgundy">Burgundy</option>
+        <option value="Beaublue">Beaublue</option>
+        <option value="Burlywood">Burlywood</option>
+        <option value="Burntorange">Burntorange</option>
+        <option value="Burntsienna">Burntsienna</option>
+        <option value="Burntumber">Burntumber</option>
+        <option value="Bittersweet">Bittersweet</option>
+        <option value="Byzantine">Byzantine</option>
+        <option value="Byzantium">Byzantium</option>
+        <option value="Cadet">Cadet</option>
+        <option value="Cadetblue">Cadetblue</option>
+        <option value="Cadetgray">Cadetgray</option>
+        <option value="CadmiumGreen">CadmiumGreen</option>
+        <option value="CadmiumOrange">CadmiumOrange</option>
+        <option value="CadmiumRed">CadmiumRed</option>
+        <option value="CadmiumYellow">CadmiumYellow</option>
+        <option value="CalPolyPomonagreen">CalPolyPomonagreen</option>
+        <option value="CambridgeBlue">CambridgeBlue</option>
+        <option value="Camel">Camel</option>
+        <option value="Camouflagegreen">Camouflagegreen</option>
+        <option value="Canaryyellow">Canaryyellow</option>
+        <option value="Candyapplered">Candyapplered</option>
+        <option value="Candypink">Candypink</option>
+        <option value="Capri">Capri</option>
+        <option value="Caputmortuum">Caputmortuum</option>
+        <option value="Cardinal">Cardinal</option>
+        <option value="Caribbeangreen">Caribbeangreen</option>
+        <option value="Carmine">Carmine</option>
+        <option value="Carminepink">Carminepink</option>
+        <option value="Carminered">Carminered</option>
+        <option value="Carnationpink">Carnationpink</option>
+        <option value="Carnelian">Carnelian</option>
+        <option value="Carolinablue">Carolinablue</option>
+        <option value="Carrotorange">Carrotorange</option>
+        <option value="Ceil">Ceil</option>
+        <option value="Celadon">Celadon</option>
+        <option value="Celestialblue">Celestialblue</option>
+        <option value="Cerise">Cerise</option>
+        <option value="Cerisepink">Cerisepink</option>
+        <option value="Cerulean">Cerulean</option>
+        <option value="Ceruleanblue">Ceruleanblue</option>
+        <option value="CGBlue">CGBlue</option>
+        <option value="CGRed">CGRed</option>
+        <option value="Chamoisee">Chamoisee</option>
+        <option value="Champagne">Champagne</option>
+        <option value="Charcoal">Charcoal</option>
+        <option value="Chartreuse">Chartreuse</option>
+        <option value="Cherryblossompink">Cherryblossompink</option>
+        <option value="Chestnut">Chestnut</option>
+        <option value="Chocolate">Chocolate</option>
+        <option value="Chromeyellow">Chromeyellow</option>
+        <option value="Cinereous">Cinereous</option>
+        <option value="Cinnabar">Cinnabar</option>
+        <option value="Cinnamon">Cinnamon</option>
+        <option value="Citrine">Citrine</option>
+        <option value="Classicrose">Classicrose</option>
+        <option value="Cobalt">Cobalt</option>
+        <option value="Coffee">Coffee</option>
+        <option value="Columbiablue">Columbiablue</option>
+        <option value="Coolblack">Coolblack</option>
+        <option value="Coolgray">Coolgray</option>
+        <option value="Copper">Copper</option>
+        <option value="Copperrose">Copperrose</option>
+        <option value="Coquelicot">Coquelicot</option>
+        <option value="Coral">Coral</option>
+        <option value="Coralpink">Coralpink</option>
+        <option value="Coralred">Coralred</option>
+        <option value="Cordovan">Cordovan</option>
+        <option value="Corn">Corn</option>
+        <option value="Cornflowerblue">Cornflowerblue</option>
+        <option value="Cornsilk">Cornsilk</option>
+        <option value="Cosmiclatte">Cosmiclatte</option>
+        <option value="Cottoncandy">Cottoncandy</option>
+        <option value="Cream">Cream</option>
+        <option value="Crimson">Crimson</option>
+        <option value="Crimsonglory">Crimsonglory</option>
+        <option value="Cyan">Cyan</option>
+        <option value="Daffodil">Daffodil</option>
+        <option value="Dandelion">Dandelion</option>
+        <option value="Darkblue">Darkblue</option>
+        <option value="Darkbrown">Darkbrown</option>
+        <option value="Darkbyzantium">Darkbyzantium</option>
+        <option value="Darkcandyapplered">Darkcandyapplered</option>
+        <option value="Darkcerulean">Darkcerulean</option>
+        <option value="Darkchampagne">Darkchampagne</option>
+        <option value="Darkchestnut">Darkchestnut</option>
+        <option value="Darkcoral">Darkcoral</option>
+        <option value="Darkcyan">Darkcyan</option>
+        <option value="Darkelectricblue">Darkelectricblue</option>
+        <option value="Darkgoldenrod">Darkgoldenrod</option>
+        <option value="Darkgray">Darkgray</option>
+        <option value="Darkgreen">Darkgreen</option>
+        <option value="Darkjunglegreen">Darkjunglegreen</option>
+        <option value="Darkkhaki">Darkkhaki</option>
+        <option value="Darklava">Darklava</option>
+        <option value="Darklavender">Darklavender</option>
+        <option value="Darkmagenta">Darkmagenta</option>
+        <option value="Darkmidnightblue">Darkmidnightblue</option>
+        <option value="Darkolivegreen">Darkolivegreen</option>
+        <option value="Darkorange">Darkorange</option>
+        <option value="Darkorchid">Darkorchid</option>
+        <option value="Darkpastelblue">Darkpastelblue</option>
+        <option value="Darkpastelgreen">Darkpastelgreen</option>
+        <option value="Darkpastelpurple">Darkpastelpurple</option>
+        <option value="Darkpastelred">Darkpastelred</option>
+        <option value="Darkpink">Darkpink</option>
+        <option value="Darkpowderblue">Darkpowderblue</option>
+        <option value="Darkraspberry">Darkraspberry</option>
+        <option value="Darkred">Darkred</option>
+        <option value="Darksalmon">Darksalmont</option>
+        <option value="Darkscarlet">Darkscarlet</option>
+        <option value="Darkseagreen">Darkseagreen</option>
+        <option value="Darksienna">Darksienna</option>
+        <option value="Darkslateblue">Darkslateblue</option>
+        <option value="Darkslategray">Darkslategray</option>
+        <option value="Darkspringgreen">Darkspringgreen</option>
+        <option value="Darktan">Darktan</option>
+        <option value="Darktangerine">Darktangerine</option>
+        <option value="Darkterracotta">Darkterracotta</option>
+        <option value="Darkturquoise">Darkturquoise</option>
+        <option value="Darkviolet">Darkviolet</option>
+        <option value="Dartmouthgreen">Dartmouthgreen</option>
+        <option value="Davysgray">Davysgray</option>
+        <option value="Debianred">Debianred</option>
+        <option value="Deepcarmine">Deepcarmine</option>
+        <option value="Deepcarminepink">Deepcarminepink</option>
+        <option value="Deepcarrotorange">Deepcarrotorange</option>
+        <option value="Deepcerise">Deepcerise</option>
+        <option value="Deepchampagne">Deepchampagne</option>
+        <option value="Deepchestnut">Deepchestnut</option>
+        <option value="Deepfuchsia">Deepfuchsia</option>
+        <option value="Deepjunglegreen">Deepjunglegreen</option>
+        <option value="Deeplilac">Deeplilac</option>
+        <option value="Deepmagenta">Deepmagenta</option>
+        <option value="Deeppeach">Deeppeach</option>
+        <option value="Deeppink">Deeppink</option>
+        <option value="Deepsaffron">Deepsaffron</option>
+        <option value="Denim">Denim</option>
+        <option value="Desertsand">Desertsand</option>
+        <option value="Dimgray">Dimgray</option>
+        <option value="Dodgerblue">Dodgerblue</option>
+        <option value="Dogwoodrose">Dogwoodrose</option>
+        <option value="Dollarbill">Dollarbill</option>
+        <option value="Drab">Drab</option>
+        <option value="Dukeblue">Dukeblue</option>
+        <option value="Earthyellow">Earthyellow</option>
+        <option value="Eggplant">Eggplant</option>
+        <option value="Egyptianblue">Egyptianblue</option>
+        <option value="Electricblue">Electricblue</option>
+        <option value="Electriccrimson">Electriccrimson</option>
+        <option value="Electricgreen">Electricgreen</option>
+        <option value="Electricindigo">Electricindigo</option>
+        <option value="Electriclime">Electriclime</option>
+        <option value="Electricpurple">Electricpurple</option>
+        <option value="Electricultramarine">Electricultramarine</option>
+        <option value="Electricviolet">Electricviolet</option>
+        <option value="Electricyellow">Electricyellow</option>
+        <option value="Emerald">Emerald</option>
+        <option value="Etonblue">Etonblue</option>
+        <option value="Falured">Falured</option>
+        <option value="Fandango">Fandango</option>
+        <option value="Fashionfuchsia">Fashionfuchsia</option>
+        <option value="Fawn">Fawn</option>
+        <option value="Feldgrau">Feldgrau</option>
+        <option value="Ferngreen">Ferngreen</option>
+        <option value="FerrariRed">FerrariRed</option>
+        <option value="Fielddrab">Fielddrab</option>
+        <option value="Firebrick">Firebrick</option>
+        <option value="Fireenginered">Fireenginered</option>
+        <option value="Flame">Flame</option>
+        <option value="Flamingopink">Flamingopink</option>
+        <option value="Flavescent">Flavescent</option>
+        <option value="Flax">Flax</option>
+        <option value="Floralwhite">Floralwhite</option>
+        <option value="Folly">Folly</option>
+        <option value="Forestgreen">Forestgreen</option>
+        <option value="Frenchbeige">Frenchbeige</option>
+        <option value="Frenchblue">Frenchblue</option>
+        <option value="Frenchlilac">Frenchlilac</option>
+        <option value="Frenchrose">Frenchrose</option>
+        <option value="Fuchsia">Fuchsia</option>
+        <option value="Fuchsiapink">Fuchsiapink</option>
+        <option value="Fulvous">Fulvous</option>
+        <option value="FuzzyWuzzy">FuzzyWuzzy</option>
+        <option value="Gainsboro">Gainsboro</option>
+        <option value="Gamboge">Gamboge</option>
+        <option value="Ghostwhite">Ghostwhite</option>
+        <option value="Ginger">Ginger</option>
+        <option value="Glaucous">Glaucous</option>
+        <option value="Gold">Gold</option>
+        <option value="Goldenbrown">Goldenbrown</option>
+        <option value="Goldenpoppy">Goldenpoppy</option>
+        <option value="Goldenrod">Goldenrod</option>
+        <option value="Goldenyellow">Goldenyellow</option>
+        <option value="GrannySmithApple">GrannySmithApple</option>
+        <option value="Gray">Gray</option>
+        <option value="Grayasparagus">Grayasparagus</option>
+        <option value="Green">Green</option>
+        <option value="Greenyellow">Greenyellow</option>
+        <option value="Grullo">Grullo</option>
+        <option value="Guppiegreen">Guppiegreen</option>
+        <option value="Halayaube">Halayaube</option>
+        <option value="Hanblue">Hanblue</option>
+        <option value="Hanpurple">Hanpurple</option>
+        <option value="Harlequin">Harlequin</option>
+        <option value="Harvardcrimson">Harvardcrimson</option>
+        <option value="HarvestGold">HarvestGold</option>
+        <option value="Heliotrope">Heliotrope</option>
+        <option value="Honeydew">Honeydew</option>
+        <option value="Hookersgreen">Hookersgreen</option>
+        <option value="Hotmagenta">Hotmagenta</option>
+        <option value="Hotpink">Hotpink</option>
+        <option value="Huntergreen">Huntergreen</option>
+        <option value="Iceberg">Iceberg</option>
+        <option value="Icterine">Icterine</option>
+        <option value="Inchworm">Inchworm</option>
+        <option value="Indiagreen">Indiagreen</option>
+        <option value="Indianyellow">Indianyellow</option>
+        <option value="Indigo">Indigo</option>
+        <option value="InternationalKleinBlue">InternationalKleinBlue</option>
+        <option value="Internationalorange">Internationalorange</option>
+        <option value="Iris">Iris</option>
+        <option value="Isabelline">Isabelline</option>
+        <option value="Islamicgreen">Islamicgreen</option>
+        <option value="Ivory">Ivory</option>
+        <option value="Jade">Jade</option>
+        <option value="Jasmine">Jasmine</option>
+        <option value="Jasper">Jasper</option>
+        <option value="Jazzberryjam">Jazzberryjam</option>
+        <option value="Jonquil">Jonquil</option>
+        <option value="Junebud">Junebud</option>
+        <option value="Junglegreen">Junglegreen</option>
+        <option value="Kellygreen">Kellygreen</option>
+        <option value="Khaki">Khaki</option>
+        <option value="KUCrimson">KUCrimson</option>
+        <option value="Languidlavender">Languidlavender</option>
+        <option value="Lapislazuli">Lapislazuli</option>
+        <option value="LaSalleGreen">LaSalleGreen</option>
+        <option value="LaserLemo">LaserLemo</option>
+        <option value="Lava">Lava</option>
+        <option value="Lavender">Lavender</option>
+        <option value="Lavenderblue">Lavenderblue</option>
+        <option value="Lavenderblush">Lavenderblush</option>
+        <option value="Lavendergray">Lavendergray</option>
+        <option value="Lavendermagenta">Lavendermagenta</option>
+        <option value="Lavendermist">Lavendermist</option>
+        <option value="Lavenderpink">Lavenderpink</option>
+        <option value="Lavenderpurple">Lavenderpurple</option>
+        <option value="Lavenderrose">Lavenderrose</option>
+        <option value="Lawngreen">Lawngren</option>
+        <option value="Lemon">Lemon</option>
+        <option value="Lemonchiffon">Lemonchiffon</option>
+        <option value="Lightapricot">Lightapricot</option>
+        <option value="Lightblue">Lightblue</option>
+        <option value="Lightbrown">Lightbrown</option>
+        <option value="Lightcarminepink">Lightcarminepink</option>
+        <option value="Lightcoral">Lightcoral</option>
+        <option value="Lightcornflowerblue">Lightcornflowerblue</option>
+        <option value="LightCrimson">LightCrimson</option>
+        <option value="Lightcyan">Lightcyan</option>
+        <option value="Lightfuchsiapink">Lightfuchsiapink</option>
+        <option value="Lightgoldenrodyellow">Lightgoldenrodyellow</option>
+        <option value="Lightgray">Lightgray</option>
+        <option value="Lightgreen">Lightgreen</option>
+        <option value="Lightkhaki">Lightkhaki</option>
+        <option value="Lightmauve">Lightmauve</option>
+        <option value="Lightpastelpurple">Lightpastelpurple</option>
+        <option value="Lightpink">Lightpink</option>
+        <option value="Lightsalmon">Lightsalmon</option>
+        <option value="Lightsalmonpink">Lightsalmonpink</option>
+        <option value="Lightseagreen">Lightseagreen</option>
+        <option value="Lightskyblue">Lightskyblue</option>
+        <option value="Lightslategray">Lightslategray</option>
+        <option value="Lighttaupe">Lighttaupe</option>
+        <option value="LightThulianpink">LightThulianpink</option>
+        <option value="Lightyellow">Lightyellow</option>
+        <option value="Lilac">Lilac</option>
+        <option value="Lime">Lime</option>
+        <option value="Limegreen">Limegreen</option>
+        <option value="Lincolngreen">Lincolngreen</option>
+        <option value="Linen">Linen</option>
+        <option value="Liver">Liver</option>
+        <option value="Lust">Lust</option>
+        <option value="Magenta">Magenta</option>
+        <option value="Magicmint">Magicmint</option>
+        <option value="Magnolia">Magnolia</option>
+        <option value="Mahogany">Mahogany</option>
+        <option value="MajorelleBlue">MajorelleBlue</option>
+        <option value="Malachite">Malachite</option>
+        <option value="Manatee">Manatee</option>
+        <option value="MangoTango">MangoTango</option>
+        <option value="Maroon">Maroon</option>
+        <option value="Mauve">Mauve</option>
+        <option value="Mauvelous">Mauvelous</option>
+        <option value="Mauvetaupe">Mauvetaupe</option>
+        <option value="Mayablue">Mayablue</option>
+        <option value="Meatbrown">Meatbrown</option>
+        <option value="Mediumaquamarine">Mediumaquamarine</option>
+        <option value="Mediumblue">Mediumblue</option>
+        <option value="Mediumcandyapplered">Mediumcandyapplered</option>
+        <option value="Mediumcarmine">Mediumcarmine</option>
+        <option value="Mediumchampagne">Mediumchampagne</option>
+        <option value="Mediumelectricblue">Mediumelectricblue</option>
+        <option value="Mediumjunglegreen">Mediumjunglegreen</option>
+        <option value="Mediumlavendermagenta">Mediumlavendermagenta</option>
+        <option value="Mediumorchid">Mediumorchid</option>
+        <option value="MediumPersianblue">MediumPersianblue</option>
+        <option value="Mediumpurple">Mediumpurple</option>
+        <option value="Mediumredviolet">Mediumredviolet</option>
+        <option value="Mediumseagreen">Mediumseagreen</option>
+        <option value="Atomictangerine">Atomictangerine</option>
+        <option value="Mediumslateblue">Mediumslateblue</option>
+        <option value="Mediumspringbud">Mediumspringbud</option>
+        <option value="Mediumspringgreen">Mediumspringgreen</option>
+        <option value="Mediumtaupe">Mediumtaupe</option>
+        <option value="Mediumtealblue">Mediumtealblue</option>
+        <option value="Mediumturquoise">Mediumturquoise</option>
+        <option value="Mediumvioletred">Mediumvioletred</option>
+        <option value="Melon">Melon</option>
+        <option value="Midnightblue">Midnightblue</option>
+        <option value="Midnightgreen">Midnightgreen</option>
+        <option value="Mikadoyellow">Mikadoyellow</option>
+        <option value="Mint">Mint</option>
+        <option value="Mintcream">Mintcream</option>
+        <option value="Mintgreen">Mintgreen</option>
+        <option value="Mistyrose">Mistyrose</option>
+        <option value="Moonstoneblue">Moonstoneblue</option>
+        <option value="Mordantred19">Mordantred19e</option>
+        <option value="Mossgreen">Mossgreen</option>
+        <option value="MountainMeadow">MountainMeadow</option>
+        <option value="Mountbattenpink">Mountbattenpink</option>
+        <option value="MSUGreen">MSUGreenl</option>
+        <option value="Midnight">Midnight</option>
+        <option value="Mulberry">Mulberry</option>
+        <option value="Mustard">Mustard</option>
+        <option value="Myrtle">Myrtle</option>
+        <option value="Nadeshikopink">Nadeshikopink</option>
+        <option value="Napiergreen">Napiergreen</option>
+        <option value="Navajowhite">Navajowhite</option>
+        <option value="Neonfuchsia">Neonfuchsia</option>
+        <option value="Neongreen">Neongreen</option>
+        <option value="Nonphotoblue">Nonphotoblue</option>
+        <option value="OceanBoatBlu">OceanBoatBlu</option>
+        <option value="Ochre">Ochre</option>
+        <option value="Oldgold">Oldgold</option>
+        <option value="Oldlace">Oldlace</option>
+        <option value="Oldlavender">Oldlavender</option>
+        <option value="Oldmauve">Oldmauve</option>
+        <option value="Oldrose">Oldrose</option>
+        <option value="Olive">Olive</option>
+        <option value="OliveDrab">OliveDrab</option>
+        <option value="OliveDrab7">OliveDrab7</option>
+        <option value="Olivine">Olivine</option>
+        <option value="Operamauve">Operamauve</option>
+        <option value="Orange">Orange</option>
+        <option value="Orangepeel">Orangepeel</option>
+        <option value="Orangered">Orangered</option>
+        <option value="Orchid">Orchid</option>
+        <option value="OUCrimsonRed">OUCrimsonRed</option>
+        <option value="OuterSpace">OuterSpace</option>
+        <option value="OutrageousOrange">OutrageousOrange</option>
+        <option value="OxfordBlue">OxfordBlue</option>
+        <option value="Pakistangreen">Pakistangreen</option>
+        <option value="Palatinateblue">Palatinateblue</option>
+        <option value="Palatinatepurple">Palatinatepurple</option>
+        <option value="Paleblue">Paleblue</option>
+        <option value="Palebrown">Palebrown</option>
+        <option value="Palecerulean">Palecerulean</option>
+        <option value="Palechestnut">Palechestnut</option>
+        <option value="Palecopper">Palecopper</option>
+        <option value="Palecornflowerblue">Palecornflowerblue</option>
+        <option value="Palegold">Palegolde</option>
+        <option value="Palegreen">Palegreen</option>
+        <option value="Palemagenta">Palemagenta</option>
+        <option value="Palepink">Palepink</option>
+        <option value="Paleredviolet">Paleredviolet</option>
+        <option value="Palerobineggblue">Palerobineggblue</option>
+        <option value="Palesilver">Palesilver</option>
+        <option value="Palespringbud">Palespringbud</option>
+        <option value="Paletaupe">Paletaupe</option>
+        <option value="Pansypurple">Pansypurple</option>
+        <option value="Papayawhip">Papayawhip</option>
+        <option value="Pastelblue">Pastelblue</option>
+        <option value="Pastelbrown">Pastelbrown</option>
+        <option value="Pastelgray">Pastelgray</option>
+        <option value="Pastelgreen">Pastelgreen</option>
+        <option value="Pastelmagenta">Pastelmagenta</option>
+        <option value="Pastelorange">Pastelorange</option>
+        <option value="Pastelpink">Pastelpink</option>
+        <option value="Pastelpurple">Pastelpurple</option>
+        <option value="Pastelred">Pastelred</option>
+        <option value="Pastelviolet">Pastelviolet</option>
+        <option value="Pastelyellow">Pastelyellow</option>
+        <option value="Paynesgray">Paynesgray</option>
+        <option value="Peach">Peach</option>
+        <option value="Peachorange">Peachorange</option>
+        <option value="Peachpuff">Peachpuff</option>
+        <option value="Peachyellow">Peachyellow</option>
+        <option value="Pear">Pear</option>
+        <option value="PearlAqua">PearlAqua</option>
+        <option value="Peridot">Peridot</option>
+        <option value="Persianblue">Persianblue</option>
+        <option value="Persiangreen">Persiangreen</option>
+        <option value="Persianindigo">Persianindigo</option>
+        <option value="Persianorange">Persianorange</option>
+        <option value="Persianpink">Persianpink</option>
+        <option value="Persianplum">Persianplum</option>
+        <option value="Persianred">Persianred</option>
+        <option value="Persianrose">Persianrose</option>
+        <option value="Persimmon">Persimmon</option>
+        <option value="Phlox">Phlox</option>
+        <option value="Phthaloblue">Phthaloblue</option>
+        <option value="Phthalogreen">Phthalogreen</option>
+        <option value="Piggypink">Piggypink</option>
+        <option value="Pinegreen">Pinegreen</option>
+        <option value="Pink">Pink</option>
+        <option value="Pinkpearl">Pinkpearl</option>
+        <option value="PinkSherbet">PinkSherbet</option>
+        <option value="Pistachio">Pistachio</option>
+        <option value="Platinum">Platinum</option>
+        <option value="Plum">Plum</option>
+        <option value="PortlandOrange">PortlandOrange</option>
+        <option value="Powderblue">Powderblue</option>
+        <option value="Princetonorange">Princetonorange</option>
+        <option value="Prussianblue">Prussianblue</option>
+        <option value="Puce">Puce</option>
+        <option value="Pumpkin">Pumpkin</option>
+        <option value="Purple">Purple</option>
+        <option value="PurpleHeart">PurpleHeart</option>
+        <option value="Purplemountainmajesty">Purplemountainmajesty</option>
+        <option value="Purplepizzazz">Purplepizzazz</option>
+        <option value="Purpletaupe">Purpletaupe</option>
+        <option value="Quartz">Quartz</option>
+        <option value="RadicalRed">RadicalRed</option>
+        <option value="Raspberry">Raspberry</option>
+        <option value="Raspberrypink">Raspberrypink</option>
+        <option value="Raspberryrose">Raspberryrose</option>
+        <option value="Rawumber">Rawumber</option>
+        <option value="Razzledazzlerose">Razzledazzlerose</option>
+        <option value="Razzmatazz">Razzmatazz</option>
+        <option value="Red">Red</option>
+        <option value="Redwood">Redwood</option>
+        <option value="Regalia">Regalia</option>
+        <option value="Richblack">Richblack</option>
+        <option value="Richbrilliantlavender">Richbrilliantlavender</option>
+        <option value="Richcarmine">Richcarmine</option>
+        <option value="Richelectricblue">Richelectricblue</option>
+        <option value="Richlavender">Richlavender</option>
+        <option value="Richlilac">Richlilac</option>
+        <option value="Richmaroon">Richmaroon</option>
+        <option value="Riflegreen">Riflegreen</option>
+        <option value="Robineggblue">Robineggblue</option>
+        <option value="Rosebonbon">Rosebonbon</option>
+        <option value="Roseebony">Roseebony</option>
+        <option value="Rosegold">Rosegold</option>
+        <option value="Rosepink">Rosepink</option>
+        <option value="Rosequartz">Rosequartz</option>
+        <option value="Rosetaupe">Rosetaupe</option>
+        <option value="Rosewood">Rosewood</option>
+        <option value="Rossocorsa">Rossocorsa</option>
+        <option value="Rosybrown">Rosybrown</option>
+        <option value="Royalazure">Royalazure</option>
+        <option value="Royalblue">Royalblue</option>
+        <option value="Royalfuchsia">Royalfuchsia</option>
+        <option value="Royalpurple">Royalpurple</option>
+        <option value="Ruby">Ruby</option>
+        <option value="Ruddy">Ruddy</option>
+        <option value="Ruddybrown">Ruddybrown</option>
+        <option value="Ruddypink">Ruddypink</option>
+        <option value="Rufous">Rufouse</option>
+        <option value="Russet">Russet</option>
+        <option value="Rust">Rust</option>
+        <option value="SacramentoStategreen">SacramentoStategreen</option>
+        <option value="Saddlebrown">Saddlebrown</option>
+        <option value="Safetyorange">Safetyorange</option>
+        <option value="Saffron">Saffron</option>
+        <option value="Salmon">Salmon</option>
+        <option value="Salmonpink">Salmonpink</option>
+        <option value="Sandstorm">Sandstorm</option>
+        <option value="Sandybrown">Sandybrown</option>
+        <option value="Sangria">Sangria</option>
+        <option value="Sapgreen">Sapgreen</option>
+        <option value="Sapphire">Sapphire</option>
+        <option value="Satinsheengold">Satinsheengold</option>
+        <option value="Scarlet">Scarlet</option>
+        <option value="Schoolbusyellow">Schoolbusyellow</option>
+        <option value="ScreaminGreen">ScreaminGreen</option>
+        <option value="Seagreen">Seagreen</option>
+        <option value="Sealbrown">Sealbrown</option>
+        <option value="Seashell">Seashell</option>
+        <option value="Selectiveyellow">Selectiveyellow</option>
+        <option value="Sepia">Sepia</option>
+        <option value="Shadow">Shadow</option>
+        <option value="Shamrockgreen">Shamrockgreen</option>
+        <option value="Shockingpink">Shockingpink</option>
+        <option value="Sienna">Sienna</option>
+        <option value="Silver">Silver</option>
+        <option value="Sinopia">Sinopia</option>
+        <option value="Skobeloff">Skobeloff</option>
+        <option value="Skyblue">Skyblue</option>
+        <option value="Skymagenta">Skymagenta</option>
+        <option value="Slateblue">Slateblue</option>
+        <option value="Slategray">Slategrayh</option>
+        <option value="Smokeytopaz">Smokeytopaz</option>
+        <option value="Smokyblack">Smokyblack</option>
+        <option value="Snow">Snow</option>
+        <option value="SpiroDiscoBall">SpiroDiscoBalld</option>
+        <option value="Splashedwhite">Splashedwhite</option>
+        <option value="Springbud">Springbud</option>
+        <option value="Steelblue">Steelblue</option>
+        <option value="St.Patricksblue">St.Patricksblue</option>
+        <option value="Straw">Straw</option>
+        <option value="Tan">Tan</option>
+        <option value="Tangelo">Tangelo</option>
+        <option value="Tangerine">Tangerine</option>
+        <option value="Tangerineyellow">Tangerineyellow</option>
+        <option value="Taupegray">Taupegray</option>
+        <option value="Teagreen">Teagreen</option>
+        <option value="Teal">Teal</option>
+        <option value="Tealblue">Tealblue</option>
+        <option value="Tealgreen">Tealgreen</option>
+        <option value="Tenné">Tenné</option>
+        <option value="Terracotta">Terracotta</option>
+        <option value="Thistle">Thistle</option>
+        <option value="Thulianpink">Thulianpink</option>
+        <option value="TickleMePink">TickleMePink</option>
+        <option value="TiffanyBlue">TiffanyBlue</option>
+        <option value="Tigerseye">Tigerseye</option>
+        <option value="Timberwolf">Timberwolf</option>
+        <option value="Titaniumyellow">Titaniumyellow</option>
+        <option value="Tomato">Tomato</option>
+        <option value="Toolbox">Toolbox</option>
+        <option value="Topaz">Topaz</option>
+        <option value="Tractorred">Tractorred</option>
+        <option value="Tropicalrainforest">Tropicalrainforest</option>
+        <option value="TrueBlue">TrueBlue</option>
+        <option value="TuftsBlue">TuftsBlue</option>
+        <option value="Tumbleweed">Tumbleweed</option>
+        <option value="Turkishrose">Turkishrose</option>
+        <option value="Turquoise">Turquoise</option>
+        <option value="Turquoiseblue">Turquoiseblue</option>
+        <option value="Turquoisegreen">Turquoisegreen</option>
+        <option value="Tuscanred">Tuscanred</option>
+        <option value="Twilightlavender">Twilightlavender</option>
+        <option value="Tyrianpurple">Tyrianpurple</option>
+        <option value="UAblue">UAblue</option>
+        <option value="UAred">UAred</option>
+        <option value="Ube">Ube</option>
+        <option value="UCLABlue">UCLABlue</option>
+        <option value="UCLAGold">UCLAGold</option>
+        <option value="UFOGreen">UFOGreen</option>
+        <option value="Ultramarine">Ultramarine</option>
+        <option value="Ultramarineblue">Ultramarineblue</option>
+        <option value="Ultrapink">Ultrapink</option>
+        <option value="UnitedNationsblue">UnitedNationsblue</option>
+        <option value="UniversityofCaliforniaGold">UniversityofCaliforniaGold</option>
+        <option value="UnmellowYellow">UnmellowYellow</option>
+        <option value="UPMaroon">UPMaroon</option>
+        <option value="Upsdellred">Upsdellred</option>
+        <option value="Urobilin">Urobilin</option>
+        <option value="UtahCrimson">UtahCrimson</option>
+        <option value="Vegasgold">Vegasgold</option>
+        <option value="Venetianred">Venetianred</option>
+        <option value="Verdigris">Verdigris</option>
+        <option value="Veronica">Veronica</option>
+        <option value="Violet">Violet</option>
+        <option value="Viridian">Viridian</option>
+        <option value="Vividauburn">Vividauburn</option>
+        <option value="Vividburgundy">Vividburgundy</option>
+        <option value="Vividceris">Vividceris</option>
+        <option value="Vividtangerine">Vividtangerine</option>
+        <option value="Vividviolet">Vividviolet</option>
+        <option value="Warmblack">Warmblack</option>
+        <option value="Wenge">Wenge</option>
+        <option value="Wheat">Wheat</option>
+        <option value="White">White</option>
+        <option value="Whitesmoke">Whitesmoke</option>
+        <option value="Wildblueyonder">Wildblueyonder</option>
+        <option value="WildStrawberry">WildStrawberry</option>
+        <option value="WildWatermelon">WildWatermelon</option>
+        <option value="Wine">Wine</option>
+        <option value="Wisteria">Wisteria</option>
+        <option value="Xanadu">Xanadu</option>
+        <option value="YaleBlue">YaleBlue</option>
+        <option value="Yellow">Yellow</option>
+        <option value="Yellowgreen">Yellowgreen</option>
+        <option value="YellowOrange">YellowOrange</option>
+        <option value="Zaffre">Zaffre</option>
+        <option value="Zinnwalditebrown">Zinnwalditebrown</option>
+    </param>
+    <param name="outline_color" type="select" label="Outline Color" >
+        <option value="black">Black</option>
+        <option value="white">White</option>  
+    </param>
+    <param name="filt_color" type="select" label="Crapome Filter Color" >
+        <option value="AirForceblue">AirForceblue</option>
+        <option value="Aliceblue">Aliceblue</option>
+        <option value="Alizarincrimson">Alizarincrimson</option>
+        <option value="Almond">Almond</option>
+        <option value="Amaranth">Amaranth</option>
+        <option value="Amber">Amber</option>
+        <option value="Americanrose">Americanrose</option>
+        <option value="Amethyst">Amethyst</option>
+        <option value="AndroidGreen">AndroidGreen</option>
+        <option value="AirForceblue">Antiflashwhite</option>
+        <option value="Antiquefuchsia">Antiquefuchsia</option>
+        <option value="Antiquewhite">Antiquewhite</option>
+        <option value="Ao">Ao</option>
+        <option value="Applegreen">Applegreen</option>
+        <option value="Apricot">Apricot</option>
+        <option value="Aqua">Aqua</option>
+        <option value="Amber">Amber</option>
+        <option value="Aquamarine">Aquamarine</option>
+        <option value="Amethyst">Amethyst</option>
+        <option value="Armygreen">Armygreen</option>
+        <option value="Arsenic">Arsenic</option>
+        <option value="Arylideyellow">Arylideyellow</option>
+        <option value="Ashgray">Ashgray</option>
+        <option value="Asparagus">Asparagus</option>
+        <option value="Atomictangerine">Atomictangerine</option>
+        <option value="Auburn">Auburn</option>
+        <option value="Aureolin">Aureolin</option>
+        <option value="AuroMetalSaurus">AuroMetalSaurus</option>
+        <option value="Awesome">Awesome</option>
+        <option value="Azuremist">Azuremist</option>
+        <option value="Babyblue">Babyblue</option>
+        <option value="Babypink">Babypink</option>
+        <option value="BallBlue">BallBlue</option>
+        <option value="BananaMania">BananaMania</option>
+        <option value="Bananayellow">Bananayellow</option>
+        <option value="Battleshipgray">Battleshipgray</option>
+        <option value="Bazaar">Bazaar</option>
+        <option value="Beaublue">Beaublue</option>
+        <option value="Beaver">Beaver</option>
+        <option value="Beige">Beige</option>
+        <option value="Bisque">Bisque</option>
+        <option value="Bistre">Bistre</option>
+        <option value="Bittersweet">Bittersweet</option>
+        <option value="Obsidian">Obsidian</option>
+        <option value="Onyx">Onyx</option>
+        <option value="LostSoul">LostSoul</option>
+        <option value="Midnight">Midnight</option>
+        <option value="RollingBlackout">RollingBlackout</option>
+        <option value="SleepingPanther">SleepingPanther</option>
+        <option value="VoidbyArmani">VoidbyArmani</option>
+        <option value="BlanchedAlmond">BlanchedAlmond</option>
+        <option value="BleudeFrance">BleudeFrance</option>
+        <option value="BlizzardBlue">BlizzardBlue</option>
+        <option value="Blond">Blond</option>
+        <option value="Blue">Blue</option>
+        <option value="BlueBell">BlueBell</option>
+        <option value="BlueGray">BlueGray</option>
+        <option value="Bluegreen">Bluegreen</option>
+        <option value="Blueviolet">Blueviolet</option>
+        <option value="Blush">Blush</option>
+        <option value="Bole">Bole</option>
+        <option value="Bondiblue">Bondiblue</option>
+        <option value="Brandeisblue">Brandeisblue</option>
+        <option value="Brass">Brass</option>
+        <option value="Brickred">Brickred</option>
+        <option value="Brightcerulean">Brightcerulean</option>
+        <option value="Brightgreen">Brightgreen</option>
+        <option value="Brightlavender">Brightlavender</option>
+        <option value="Brightmaroon">Brightmaroon</option>
+        <option value="Brightpink">Brightpink</option>
+        <option value="Brightturquoise">Brightturquoise</option>
+        <option value="Brightube">Brightube</option>
+        <option value="Brilliantlavender">Brilliantlavender</option>
+        <option value="Brilliantrose">Brilliantrose</option>
+        <option value="Brinkpink">Brinkpink</option>
+        <option value="Britishracinggreen">Britishracinggreen</option>
+        <option value="Bronze">Bronze</option>
+        <option value="Brown">Brown</option>
+        <option value="Bubblegum">Bubblegum</option>
+        <option value="Bubbles">Bubbles</option>
+        <option value="Buff">Buff</option>
+        <option value="Bulgarianrose">Bulgarianrose</option>
+        <option value="Burgundy">Burgundy</option>
+        <option value="Beaublue">Beaublue</option>
+        <option value="Burlywood">Burlywood</option>
+        <option value="Burntorange">Burntorange</option>
+        <option value="Burntsienna">Burntsienna</option>
+        <option value="Burntumber">Burntumber</option>
+        <option value="Bittersweet">Bittersweet</option>
+        <option value="Byzantine">Byzantine</option>
+        <option value="Byzantium">Byzantium</option>
+        <option value="Cadet">Cadet</option>
+        <option value="Cadetblue">Cadetblue</option>
+        <option value="Cadetgray">Cadetgray</option>
+        <option value="CadmiumGreen">CadmiumGreen</option>
+        <option value="CadmiumOrange">CadmiumOrange</option>
+        <option value="CadmiumRed">CadmiumRed</option>
+        <option value="CadmiumYellow">CadmiumYellow</option>
+        <option value="CalPolyPomonagreen">CalPolyPomonagreen</option>
+        <option value="CambridgeBlue">CambridgeBlue</option>
+        <option value="Camel">Camel</option>
+        <option value="Camouflagegreen">Camouflagegreen</option>
+        <option value="Canaryyellow">Canaryyellow</option>
+        <option value="Candyapplered">Candyapplered</option>
+        <option value="Candypink">Candypink</option>
+        <option value="Capri">Capri</option>
+        <option value="Caputmortuum">Caputmortuum</option>
+        <option value="Cardinal">Cardinal</option>
+        <option value="Caribbeangreen">Caribbeangreen</option>
+        <option value="Carmine">Carmine</option>
+        <option value="Carminepink">Carminepink</option>
+        <option value="Carminered">Carminered</option>
+        <option value="Carnationpink">Carnationpink</option>
+        <option value="Carnelian">Carnelian</option>
+        <option value="Carolinablue">Carolinablue</option>
+        <option value="Carrotorange">Carrotorange</option>
+        <option value="Ceil">Ceil</option>
+        <option value="Celadon">Celadon</option>
+        <option value="Celestialblue">Celestialblue</option>
+        <option value="Cerise">Cerise</option>
+        <option value="Cerisepink">Cerisepink</option>
+        <option value="Cerulean">Cerulean</option>
+        <option value="Ceruleanblue">Ceruleanblue</option>
+        <option value="CGBlue">CGBlue</option>
+        <option value="CGRed">CGRed</option>
+        <option value="Chamoisee">Chamoisee</option>
+        <option value="Champagne">Champagne</option>
+        <option value="Charcoal">Charcoal</option>
+        <option value="Chartreuse">Chartreuse</option>
+        <option value="Cherryblossompink">Cherryblossompink</option>
+        <option value="Chestnut">Chestnut</option>
+        <option value="Chocolate">Chocolate</option>
+        <option value="Chromeyellow">Chromeyellow</option>
+        <option value="Cinereous">Cinereous</option>
+        <option value="Cinnabar">Cinnabar</option>
+        <option value="Cinnamon">Cinnamon</option>
+        <option value="Citrine">Citrine</option>
+        <option value="Classicrose">Classicrose</option>
+        <option value="Cobalt">Cobalt</option>
+        <option value="Coffee">Coffee</option>
+        <option value="Columbiablue">Columbiablue</option>
+        <option value="Coolblack">Coolblack</option>
+        <option value="Coolgray">Coolgray</option>
+        <option value="Copper">Copper</option>
+        <option value="Copperrose">Copperrose</option>
+        <option value="Coquelicot">Coquelicot</option>
+        <option value="Coral">Coral</option>
+        <option value="Coralpink">Coralpink</option>
+        <option value="Coralred">Coralred</option>
+        <option value="Cordovan">Cordovan</option>
+        <option value="Corn">Corn</option>
+        <option value="Cornflowerblue">Cornflowerblue</option>
+        <option value="Cornsilk">Cornsilk</option>
+        <option value="Cosmiclatte">Cosmiclatte</option>
+        <option value="Cottoncandy">Cottoncandy</option>
+        <option value="Cream">Cream</option>
+        <option value="Crimson">Crimson</option>
+        <option value="Crimsonglory">Crimsonglory</option>
+        <option value="Cyan">Cyan</option>
+        <option value="Daffodil">Daffodil</option>
+        <option value="Dandelion">Dandelion</option>
+        <option value="Darkblue">Darkblue</option>
+        <option value="Darkbrown">Darkbrown</option>
+        <option value="Darkbyzantium">Darkbyzantium</option>
+        <option value="Darkcandyapplered">Darkcandyapplered</option>
+        <option value="Darkcerulean">Darkcerulean</option>
+        <option value="Darkchampagne">Darkchampagne</option>
+        <option value="Darkchestnut">Darkchestnut</option>
+        <option value="Darkcoral">Darkcoral</option>
+        <option value="Darkcyan">Darkcyan</option>
+        <option value="Darkelectricblue">Darkelectricblue</option>
+        <option value="Darkgoldenrod">Darkgoldenrod</option>
+        <option value="Darkgray">Darkgray</option>
+        <option value="Darkgreen">Darkgreen</option>
+        <option value="Darkjunglegreen">Darkjunglegreen</option>
+        <option value="Darkkhaki">Darkkhaki</option>
+        <option value="Darklava">Darklava</option>
+        <option value="Darklavender">Darklavender</option>
+        <option value="Darkmagenta">Darkmagenta</option>
+        <option value="Darkmidnightblue">Darkmidnightblue</option>
+        <option value="Darkolivegreen">Darkolivegreen</option>
+        <option value="Darkorange">Darkorange</option>
+        <option value="Darkorchid">Darkorchid</option>
+        <option value="Darkpastelblue">Darkpastelblue</option>
+        <option value="Darkpastelgreen">Darkpastelgreen</option>
+        <option value="Darkpastelpurple">Darkpastelpurple</option>
+        <option value="Darkpastelred">Darkpastelred</option>
+        <option value="Darkpink">Darkpink</option>
+        <option value="Darkpowderblue">Darkpowderblue</option>
+        <option value="Darkraspberry">Darkraspberry</option>
+        <option value="Darkred">Darkred</option>
+        <option value="Darksalmon">Darksalmont</option>
+        <option value="Darkscarlet">Darkscarlet</option>
+        <option value="Darkseagreen">Darkseagreen</option>
+        <option value="Darksienna">Darksienna</option>
+        <option value="Darkslateblue">Darkslateblue</option>
+        <option value="Darkslategray">Darkslategray</option>
+        <option value="Darkspringgreen">Darkspringgreen</option>
+        <option value="Darktan">Darktan</option>
+        <option value="Darktangerine">Darktangerine</option>
+        <option value="Darkterracotta">Darkterracotta</option>
+        <option value="Darkturquoise">Darkturquoise</option>
+        <option value="Darkviolet">Darkviolet</option>
+        <option value="Dartmouthgreen">Dartmouthgreen</option>
+        <option value="Davysgray">Davysgray</option>
+        <option value="Debianred">Debianred</option>
+        <option value="Deepcarmine">Deepcarmine</option>
+        <option value="Deepcarminepink">Deepcarminepink</option>
+        <option value="Deepcarrotorange">Deepcarrotorange</option>
+        <option value="Deepcerise">Deepcerise</option>
+        <option value="Deepchampagne">Deepchampagne</option>
+        <option value="Deepchestnut">Deepchestnut</option>
+        <option value="Deepfuchsia">Deepfuchsia</option>
+        <option value="Deepjunglegreen">Deepjunglegreen</option>
+        <option value="Deeplilac">Deeplilac</option>
+        <option value="Deepmagenta">Deepmagenta</option>
+        <option value="Deeppeach">Deeppeach</option>
+        <option value="Deeppink">Deeppink</option>
+        <option value="Deepsaffron">Deepsaffron</option>
+        <option value="Denim">Denim</option>
+        <option value="Desertsand">Desertsand</option>
+        <option value="Dimgray">Dimgray</option>
+        <option value="Dodgerblue">Dodgerblue</option>
+        <option value="Dogwoodrose">Dogwoodrose</option>
+        <option value="Dollarbill">Dollarbill</option>
+        <option value="Drab">Drab</option>
+        <option value="Dukeblue">Dukeblue</option>
+        <option value="Earthyellow">Earthyellow</option>
+        <option value="Eggplant">Eggplant</option>
+        <option value="Egyptianblue">Egyptianblue</option>
+        <option value="Electricblue">Electricblue</option>
+        <option value="Electriccrimson">Electriccrimson</option>
+        <option value="Electricgreen">Electricgreen</option>
+        <option value="Electricindigo">Electricindigo</option>
+        <option value="Electriclime">Electriclime</option>
+        <option value="Electricpurple">Electricpurple</option>
+        <option value="Electricultramarine">Electricultramarine</option>
+        <option value="Electricviolet">Electricviolet</option>
+        <option value="Electricyellow">Electricyellow</option>
+        <option value="Emerald">Emerald</option>
+        <option value="Etonblue">Etonblue</option>
+        <option value="Falured">Falured</option>
+        <option value="Fandango">Fandango</option>
+        <option value="Fashionfuchsia">Fashionfuchsia</option>
+        <option value="Fawn">Fawn</option>
+        <option value="Feldgrau">Feldgrau</option>
+        <option value="Ferngreen">Ferngreen</option>
+        <option value="FerrariRed">FerrariRed</option>
+        <option value="Fielddrab">Fielddrab</option>
+        <option value="Firebrick">Firebrick</option>
+        <option value="Fireenginered">Fireenginered</option>
+        <option value="Flame">Flame</option>
+        <option value="Flamingopink">Flamingopink</option>
+        <option value="Flavescent">Flavescent</option>
+        <option value="Flax">Flax</option>
+        <option value="Floralwhite">Floralwhite</option>
+        <option value="Folly">Folly</option>
+        <option value="Forestgreen">Forestgreen</option>
+        <option value="Frenchbeige">Frenchbeige</option>
+        <option value="Frenchblue">Frenchblue</option>
+        <option value="Frenchlilac">Frenchlilac</option>
+        <option value="Frenchrose">Frenchrose</option>
+        <option value="Fuchsia">Fuchsia</option>
+        <option value="Fuchsiapink">Fuchsiapink</option>
+        <option value="Fulvous">Fulvous</option>
+        <option value="FuzzyWuzzy">FuzzyWuzzy</option>
+        <option value="Gainsboro">Gainsboro</option>
+        <option value="Gamboge">Gamboge</option>
+        <option value="Ghostwhite">Ghostwhite</option>
+        <option value="Ginger">Ginger</option>
+        <option value="Glaucous">Glaucous</option>
+        <option value="Gold">Gold</option>
+        <option value="Goldenbrown">Goldenbrown</option>
+        <option value="Goldenpoppy">Goldenpoppy</option>
+        <option value="Goldenrod">Goldenrod</option>
+        <option value="Goldenyellow">Goldenyellow</option>
+        <option value="GrannySmithApple">GrannySmithApple</option>
+        <option value="Gray">Gray</option>
+        <option value="Grayasparagus">Grayasparagus</option>
+        <option value="Green">Green</option>
+        <option value="Greenyellow">Greenyellow</option>
+        <option value="Grullo">Grullo</option>
+        <option value="Guppiegreen">Guppiegreen</option>
+        <option value="Halayaube">Halayaube</option>
+        <option value="Hanblue">Hanblue</option>
+        <option value="Hanpurple">Hanpurple</option>
+        <option value="Harlequin">Harlequin</option>
+        <option value="Harvardcrimson">Harvardcrimson</option>
+        <option value="HarvestGold">HarvestGold</option>
+        <option value="Heliotrope">Heliotrope</option>
+        <option value="Honeydew">Honeydew</option>
+        <option value="Hookersgreen">Hookersgreen</option>
+        <option value="Hotmagenta">Hotmagenta</option>
+        <option value="Hotpink">Hotpink</option>
+        <option value="Huntergreen">Huntergreen</option>
+        <option value="Iceberg">Iceberg</option>
+        <option value="Icterine">Icterine</option>
+        <option value="Inchworm">Inchworm</option>
+        <option value="Indiagreen">Indiagreen</option>
+        <option value="Indianyellow">Indianyellow</option>
+        <option value="Indigo">Indigo</option>
+        <option value="InternationalKleinBlue">InternationalKleinBlue</option>
+        <option value="Internationalorange">Internationalorange</option>
+        <option value="Iris">Iris</option>
+        <option value="Isabelline">Isabelline</option>
+        <option value="Islamicgreen">Islamicgreen</option>
+        <option value="Ivory">Ivory</option>
+        <option value="Jade">Jade</option>
+        <option value="Jasmine">Jasmine</option>
+        <option value="Jasper">Jasper</option>
+        <option value="Jazzberryjam">Jazzberryjam</option>
+        <option value="Jonquil">Jonquil</option>
+        <option value="Junebud">Junebud</option>
+        <option value="Junglegreen">Junglegreen</option>
+        <option value="Kellygreen">Kellygreen</option>
+        <option value="Khaki">Khaki</option>
+        <option value="KUCrimson">KUCrimson</option>
+        <option value="Languidlavender">Languidlavender</option>
+        <option value="Lapislazuli">Lapislazuli</option>
+        <option value="LaSalleGreen">LaSalleGreen</option>
+        <option value="LaserLemo">LaserLemo</option>
+        <option value="Lava">Lava</option>
+        <option value="Lavender">Lavender</option>
+        <option value="Lavenderblue">Lavenderblue</option>
+        <option value="Lavenderblush">Lavenderblush</option>
+        <option value="Lavendergray">Lavendergray</option>
+        <option value="Lavendermagenta">Lavendermagenta</option>
+        <option value="Lavendermist">Lavendermist</option>
+        <option value="Lavenderpink">Lavenderpink</option>
+        <option value="Lavenderpurple">Lavenderpurple</option>
+        <option value="Lavenderrose">Lavenderrose</option>
+        <option value="Lawngreen">Lawngren</option>
+        <option value="Lemon">Lemon</option>
+        <option value="Lemonchiffon">Lemonchiffon</option>
+        <option value="Lightapricot">Lightapricot</option>
+        <option value="Lightblue">Lightblue</option>
+        <option value="Lightbrown">Lightbrown</option>
+        <option value="Lightcarminepink">Lightcarminepink</option>
+        <option value="Lightcoral">Lightcoral</option>
+        <option value="Lightcornflowerblue">Lightcornflowerblue</option>
+        <option value="LightCrimson">LightCrimson</option>
+        <option value="Lightcyan">Lightcyan</option>
+        <option value="Lightfuchsiapink">Lightfuchsiapink</option>
+        <option value="Lightgoldenrodyellow">Lightgoldenrodyellow</option>
+        <option value="Lightgray">Lightgray</option>
+        <option value="Lightgreen">Lightgreen</option>
+        <option value="Lightkhaki">Lightkhaki</option>
+        <option value="Lightmauve">Lightmauve</option>
+        <option value="Lightpastelpurple">Lightpastelpurple</option>
+        <option value="Lightpink">Lightpink</option>
+        <option value="Lightsalmon">Lightsalmon</option>
+        <option value="Lightsalmonpink">Lightsalmonpink</option>
+        <option value="Lightseagreen">Lightseagreen</option>
+        <option value="Lightskyblue">Lightskyblue</option>
+        <option value="Lightslategray">Lightslategray</option>
+        <option value="Lighttaupe">Lighttaupe</option>
+        <option value="LightThulianpink">LightThulianpink</option>
+        <option value="Lightyellow">Lightyellow</option>
+        <option value="Lilac">Lilac</option>
+        <option value="Lime">Lime</option>
+        <option value="Limegreen">Limegreen</option>
+        <option value="Lincolngreen">Lincolngreen</option>
+        <option value="Linen">Linen</option>
+        <option value="Liver">Liver</option>
+        <option value="Lust">Lust</option>
+        <option value="Magenta">Magenta</option>
+        <option value="Magicmint">Magicmint</option>
+        <option value="Magnolia">Magnolia</option>
+        <option value="Mahogany">Mahogany</option>
+        <option value="MajorelleBlue">MajorelleBlue</option>
+        <option value="Malachite">Malachite</option>
+        <option value="Manatee">Manatee</option>
+        <option value="MangoTango">MangoTango</option>
+        <option value="Maroon">Maroon</option>
+        <option value="Mauve">Mauve</option>
+        <option value="Mauvelous">Mauvelous</option>
+        <option value="Mauvetaupe">Mauvetaupe</option>
+        <option value="Mayablue">Mayablue</option>
+        <option value="Meatbrown">Meatbrown</option>
+        <option value="Mediumaquamarine">Mediumaquamarine</option>
+        <option value="Mediumblue">Mediumblue</option>
+        <option value="Mediumcandyapplered">Mediumcandyapplered</option>
+        <option value="Mediumcarmine">Mediumcarmine</option>
+        <option value="Mediumchampagne">Mediumchampagne</option>
+        <option value="Mediumelectricblue">Mediumelectricblue</option>
+        <option value="Mediumjunglegreen">Mediumjunglegreen</option>
+        <option value="Mediumlavendermagenta">Mediumlavendermagenta</option>
+        <option value="Mediumorchid">Mediumorchid</option>
+        <option value="MediumPersianblue">MediumPersianblue</option>
+        <option value="Mediumpurple">Mediumpurple</option>
+        <option value="Mediumredviolet">Mediumredviolet</option>
+        <option value="Mediumseagreen">Mediumseagreen</option>
+        <option value="Atomictangerine">Atomictangerine</option>
+        <option value="Mediumslateblue">Mediumslateblue</option>
+        <option value="Mediumspringbud">Mediumspringbud</option>
+        <option value="Mediumspringgreen">Mediumspringgreen</option>
+        <option value="Mediumtaupe">Mediumtaupe</option>
+        <option value="Mediumtealblue">Mediumtealblue</option>
+        <option value="Mediumturquoise">Mediumturquoise</option>
+        <option value="Mediumvioletred">Mediumvioletred</option>
+        <option value="Melon">Melon</option>
+        <option value="Midnightblue">Midnightblue</option>
+        <option value="Midnightgreen">Midnightgreen</option>
+        <option value="Mikadoyellow">Mikadoyellow</option>
+        <option value="Mint">Mint</option>
+        <option value="Mintcream">Mintcream</option>
+        <option value="Mintgreen">Mintgreen</option>
+        <option value="Mistyrose">Mistyrose</option>
+        <option value="Moonstoneblue">Moonstoneblue</option>
+        <option value="Mordantred19">Mordantred19e</option>
+        <option value="Mossgreen">Mossgreen</option>
+        <option value="MountainMeadow">MountainMeadow</option>
+        <option value="Mountbattenpink">Mountbattenpink</option>
+        <option value="MSUGreen">MSUGreenl</option>
+        <option value="Midnight">Midnight</option>
+        <option value="Mulberry">Mulberry</option>
+        <option value="Mustard">Mustard</option>
+        <option value="Myrtle">Myrtle</option>
+        <option value="Nadeshikopink">Nadeshikopink</option>
+        <option value="Napiergreen">Napiergreen</option>
+        <option value="Navajowhite">Navajowhite</option>
+        <option value="Neonfuchsia">Neonfuchsia</option>
+        <option value="Neongreen">Neongreen</option>
+        <option value="Nonphotoblue">Nonphotoblue</option>
+        <option value="OceanBoatBlu">OceanBoatBlu</option>
+        <option value="Ochre">Ochre</option>
+        <option value="Oldgold">Oldgold</option>
+        <option value="Oldlace">Oldlace</option>
+        <option value="Oldlavender">Oldlavender</option>
+        <option value="Oldmauve">Oldmauve</option>
+        <option value="Oldrose">Oldrose</option>
+        <option value="Olive">Olive</option>
+        <option value="OliveDrab">OliveDrab</option>
+        <option value="OliveDrab7">OliveDrab7</option>
+        <option value="Olivine">Olivine</option>
+        <option value="Operamauve">Operamauve</option>
+        <option value="Orange">Orange</option>
+        <option value="Orangepeel">Orangepeel</option>
+        <option value="Orangered">Orangered</option>
+        <option value="Orchid">Orchid</option>
+        <option value="OUCrimsonRed">OUCrimsonRed</option>
+        <option value="OuterSpace">OuterSpace</option>
+        <option value="OutrageousOrange">OutrageousOrange</option>
+        <option value="OxfordBlue">OxfordBlue</option>
+        <option value="Pakistangreen">Pakistangreen</option>
+        <option value="Palatinateblue">Palatinateblue</option>
+        <option value="Palatinatepurple">Palatinatepurple</option>
+        <option value="Paleblue">Paleblue</option>
+        <option value="Palebrown">Palebrown</option>
+        <option value="Palecerulean">Palecerulean</option>
+        <option value="Palechestnut">Palechestnut</option>
+        <option value="Palecopper">Palecopper</option>
+        <option value="Palecornflowerblue">Palecornflowerblue</option>
+        <option value="Palegold">Palegolde</option>
+        <option value="Palegreen">Palegreen</option>
+        <option value="Palemagenta">Palemagenta</option>
+        <option value="Palepink">Palepink</option>
+        <option value="Paleredviolet">Paleredviolet</option>
+        <option value="Palerobineggblue">Palerobineggblue</option>
+        <option value="Palesilver">Palesilver</option>
+        <option value="Palespringbud">Palespringbud</option>
+        <option value="Paletaupe">Paletaupe</option>
+        <option value="Pansypurple">Pansypurple</option>
+        <option value="Papayawhip">Papayawhip</option>
+        <option value="Pastelblue">Pastelblue</option>
+        <option value="Pastelbrown">Pastelbrown</option>
+        <option value="Pastelgray">Pastelgray</option>
+        <option value="Pastelgreen">Pastelgreen</option>
+        <option value="Pastelmagenta">Pastelmagenta</option>
+        <option value="Pastelorange">Pastelorange</option>
+        <option value="Pastelpink">Pastelpink</option>
+        <option value="Pastelpurple">Pastelpurple</option>
+        <option value="Pastelred">Pastelred</option>
+        <option value="Pastelviolet">Pastelviolet</option>
+        <option value="Pastelyellow">Pastelyellow</option>
+        <option value="Paynesgray">Paynesgray</option>
+        <option value="Peach">Peach</option>
+        <option value="Peachorange">Peachorange</option>
+        <option value="Peachpuff">Peachpuff</option>
+        <option value="Peachyellow">Peachyellow</option>
+        <option value="Pear">Pear</option>
+        <option value="PearlAqua">PearlAqua</option>
+        <option value="Peridot">Peridot</option>
+        <option value="Persianblue">Persianblue</option>
+        <option value="Persiangreen">Persiangreen</option>
+        <option value="Persianindigo">Persianindigo</option>
+        <option value="Persianorange">Persianorange</option>
+        <option value="Persianpink">Persianpink</option>
+        <option value="Persianplum">Persianplum</option>
+        <option value="Persianred">Persianred</option>
+        <option value="Persianrose">Persianrose</option>
+        <option value="Persimmon">Persimmon</option>
+        <option value="Phlox">Phlox</option>
+        <option value="Phthaloblue">Phthaloblue</option>
+        <option value="Phthalogreen">Phthalogreen</option>
+        <option value="Piggypink">Piggypink</option>
+        <option value="Pinegreen">Pinegreen</option>
+        <option value="Pink">Pink</option>
+        <option value="Pinkpearl">Pinkpearl</option>
+        <option value="PinkSherbet">PinkSherbet</option>
+        <option value="Pistachio">Pistachio</option>
+        <option value="Platinum">Platinum</option>
+        <option value="Plum">Plum</option>
+        <option value="PortlandOrange">PortlandOrange</option>
+        <option value="Powderblue">Powderblue</option>
+        <option value="Princetonorange">Princetonorange</option>
+        <option value="Prussianblue">Prussianblue</option>
+        <option value="Puce">Puce</option>
+        <option value="Pumpkin">Pumpkin</option>
+        <option value="Purple">Purple</option>
+        <option value="PurpleHeart">PurpleHeart</option>
+        <option value="Purplemountainmajesty">Purplemountainmajesty</option>
+        <option value="Purplepizzazz">Purplepizzazz</option>
+        <option value="Purpletaupe">Purpletaupe</option>
+        <option value="Quartz">Quartz</option>
+        <option value="RadicalRed">RadicalRed</option>
+        <option value="Raspberry">Raspberry</option>
+        <option value="Raspberrypink">Raspberrypink</option>
+        <option value="Raspberryrose">Raspberryrose</option>
+        <option value="Rawumber">Rawumber</option>
+        <option value="Razzledazzlerose">Razzledazzlerose</option>
+        <option value="Razzmatazz">Razzmatazz</option>
+        <option value="Red">Red</option>
+        <option value="Redwood">Redwood</option>
+        <option value="Regalia">Regalia</option>
+        <option value="Richblack">Richblack</option>
+        <option value="Richbrilliantlavender">Richbrilliantlavender</option>
+        <option value="Richcarmine">Richcarmine</option>
+        <option value="Richelectricblue">Richelectricblue</option>
+        <option value="Richlavender">Richlavender</option>
+        <option value="Richlilac">Richlilac</option>
+        <option value="Richmaroon">Richmaroon</option>
+        <option value="Riflegreen">Riflegreen</option>
+        <option value="Robineggblue">Robineggblue</option>
+        <option value="Rosebonbon">Rosebonbon</option>
+        <option value="Roseebony">Roseebony</option>
+        <option value="Rosegold">Rosegold</option>
+        <option value="Rosepink">Rosepink</option>
+        <option value="Rosequartz">Rosequartz</option>
+        <option value="Rosetaupe">Rosetaupe</option>
+        <option value="Rosewood">Rosewood</option>
+        <option value="Rossocorsa">Rossocorsa</option>
+        <option value="Rosybrown">Rosybrown</option>
+        <option value="Royalazure">Royalazure</option>
+        <option value="Royalblue">Royalblue</option>
+        <option value="Royalfuchsia">Royalfuchsia</option>
+        <option value="Royalpurple">Royalpurple</option>
+        <option value="Ruby">Ruby</option>
+        <option value="Ruddy">Ruddy</option>
+        <option value="Ruddybrown">Ruddybrown</option>
+        <option value="Ruddypink">Ruddypink</option>
+        <option value="Rufous">Rufouse</option>
+        <option value="Russet">Russet</option>
+        <option value="Rust">Rust</option>
+        <option value="SacramentoStategreen">SacramentoStategreen</option>
+        <option value="Saddlebrown">Saddlebrown</option>
+        <option value="Safetyorange">Safetyorange</option>
+        <option value="Saffron">Saffron</option>
+        <option value="Salmon">Salmon</option>
+        <option value="Salmonpink">Salmonpink</option>
+        <option value="Sandstorm">Sandstorm</option>
+        <option value="Sandybrown">Sandybrown</option>
+        <option value="Sangria">Sangria</option>
+        <option value="Sapgreen">Sapgreen</option>
+        <option value="Sapphire">Sapphire</option>
+        <option value="Satinsheengold">Satinsheengold</option>
+        <option value="Scarlet">Scarlet</option>
+        <option value="Schoolbusyellow">Schoolbusyellow</option>
+        <option value="ScreaminGreen">ScreaminGreen</option>
+        <option value="Seagreen">Seagreen</option>
+        <option value="Sealbrown">Sealbrown</option>
+        <option value="Seashell">Seashell</option>
+        <option value="Selectiveyellow">Selectiveyellow</option>
+        <option value="Sepia">Sepia</option>
+        <option value="Shadow">Shadow</option>
+        <option value="Shamrockgreen">Shamrockgreen</option>
+        <option value="Shockingpink">Shockingpink</option>
+        <option value="Sienna">Sienna</option>
+        <option value="Silver">Silver</option>
+        <option value="Sinopia">Sinopia</option>
+        <option value="Skobeloff">Skobeloff</option>
+        <option value="Skyblue">Skyblue</option>
+        <option value="Skymagenta">Skymagenta</option>
+        <option value="Slateblue">Slateblue</option>
+        <option value="Slategray">Slategrayh</option>
+        <option value="Smokeytopaz">Smokeytopaz</option>
+        <option value="Smokyblack">Smokyblack</option>
+        <option value="Snow">Snow</option>
+        <option value="SpiroDiscoBall">SpiroDiscoBalld</option>
+        <option value="Splashedwhite">Splashedwhite</option>
+        <option value="Springbud">Springbud</option>
+        <option value="Steelblue">Steelblue</option>
+        <option value="St.Patricksblue">St.Patricksblue</option>
+        <option value="Straw">Straw</option>
+        <option value="Tan">Tan</option>
+        <option value="Tangelo">Tangelo</option>
+        <option value="Tangerine">Tangerine</option>
+        <option value="Tangerineyellow">Tangerineyellow</option>
+        <option value="Taupegray">Taupegray</option>
+        <option value="Teagreen">Teagreen</option>
+        <option value="Teal">Teal</option>
+        <option value="Tealblue">Tealblue</option>
+        <option value="Tealgreen">Tealgreen</option>
+        <option value="Tenné">Tenné</option>
+        <option value="Terracotta">Terracotta</option>
+        <option value="Thistle">Thistle</option>
+        <option value="Thulianpink">Thulianpink</option>
+        <option value="TickleMePink">TickleMePink</option>
+        <option value="TiffanyBlue">TiffanyBlue</option>
+        <option value="Tigerseye">Tigerseye</option>
+        <option value="Timberwolf">Timberwolf</option>
+        <option value="Titaniumyellow">Titaniumyellow</option>
+        <option value="Tomato">Tomato</option>
+        <option value="Toolbox">Toolbox</option>
+        <option value="Topaz">Topaz</option>
+        <option value="Tractorred">Tractorred</option>
+        <option value="Tropicalrainforest">Tropicalrainforest</option>
+        <option value="TrueBlue">TrueBlue</option>
+        <option value="TuftsBlue">TuftsBlue</option>
+        <option value="Tumbleweed">Tumbleweed</option>
+        <option value="Turkishrose">Turkishrose</option>
+        <option value="Turquoise">Turquoise</option>
+        <option value="Turquoiseblue">Turquoiseblue</option>
+        <option value="Turquoisegreen">Turquoisegreen</option>
+        <option value="Tuscanred">Tuscanred</option>
+        <option value="Twilightlavender">Twilightlavender</option>
+        <option value="Tyrianpurple">Tyrianpurple</option>
+        <option value="UAblue">UAblue</option>
+        <option value="UAred">UAred</option>
+        <option value="Ube">Ube</option>
+        <option value="UCLABlue">UCLABlue</option>
+        <option value="UCLAGold">UCLAGold</option>
+        <option value="UFOGreen">UFOGreen</option>
+        <option value="Ultramarine">Ultramarine</option>
+        <option value="Ultramarineblue">Ultramarineblue</option>
+        <option value="Ultrapink">Ultrapink</option>
+        <option value="UnitedNationsblue">UnitedNationsblue</option>
+        <option value="UniversityofCaliforniaGold">UniversityofCaliforniaGold</option>
+        <option value="UnmellowYellow">UnmellowYellow</option>
+        <option value="UPMaroon">UPMaroon</option>
+        <option value="Upsdellred">Upsdellred</option>
+        <option value="Urobilin">Urobilin</option>
+        <option value="UtahCrimson">UtahCrimson</option>
+        <option value="Vegasgold">Vegasgold</option>
+        <option value="Venetianred">Venetianred</option>
+        <option value="Verdigris">Verdigris</option>
+        <option value="Veronica">Veronica</option>
+        <option value="Violet">Violet</option>
+        <option value="Viridian">Viridian</option>
+        <option value="Vividauburn">Vividauburn</option>
+        <option value="Vividburgundy">Vividburgundy</option>
+        <option value="Vividceris">Vividceris</option>
+        <option value="Vividtangerine">Vividtangerine</option>
+        <option value="Vividviolet">Vividviolet</option>
+        <option value="Warmblack">Warmblack</option>
+        <option value="Wenge">Wenge</option>
+        <option value="Wheat">Wheat</option>
+        <option value="White">White</option>
+        <option value="Whitesmoke">Whitesmoke</option>
+        <option value="Wildblueyonder">Wildblueyonder</option>
+        <option value="WildStrawberry">WildStrawberry</option>
+        <option value="WildWatermelon">WildWatermelon</option>
+        <option value="Wine">Wine</option>
+        <option value="Wisteria">Wisteria</option>
+        <option value="Xanadu">Xanadu</option>
+        <option value="YaleBlue">YaleBlue</option>
+        <option value="Yellow">Yellow</option>
+        <option value="Yellowgreen">Yellowgreen</option>
+        <option value="YellowOrange">YellowOrange</option>
+        <option value="Zaffre">Zaffre</option>
+        <option value="Zinnwalditebrown">Zinnwalditebrown</option>
+    </param>
   </inputs>
-  <outputs>
-    <data format="txt" name="outfile" label="Outfile"/>    
-    <data format="png" name="NSAF_zoom" label="Zoom NSAF" />
-    <data format="png" name="SAINT_zoom" label="Zoom SAINT" />
-    <data format="png" name="NSAF" label="NSAF" />
-    <data format="png" name="SAINT" label="SAINT" />
+  <outputs>    
+    <data format="png" name="outfile" label="Bubble Plot" />
   </outputs>
   <stdio>
-    <regex match="error"
-	   source="stdout"
+    <regex match="ValueError: 'PreyGene' is not in list"
+       source="stdout"
+       level="fatal"
+       description="Error: Check Input file."/>
+    <regex match="Error|error"
+     source="stdout"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error|error"
+     source="stderr"
            level="fatal"
            description="Unknown error"/>
   </stdio> 
@@ -43,89 +1435,99 @@
     </test>
   </tests>
   <help>
-Post-processing:
-Once SAINTexpress has been run, APOSTL is able to read the resulting "list.txt" file. Fromhere APOSTL does a number of things:
+Bubble Graph Generator
+^^^^^^^^^^^^^^^^^^^^^^
 
-APOSTL calculates NSAF values for each prey based on the average spectra observed for each bait
+This Bubble Graph Generator is static version of the APOSTL interactive affinity proteomics analysis 
+software developed to reformat affinity proteomics data (both spectral counting and MS1) for input 
+into the SAINTexpress statistical package and to visualize the output(s). APOSTL was developed at 
+H. Lee Moffitt Cancer Center and Research Institute and distributed under a GNU General Public License (GPL). 
 
-OPTIONAL: APOSTL calculates the probability of a specific interaction based on prey revalence in the CRAPome 
+--------------
 
-Bubble graphs are generated for each bait where:
+**1) SAINT Output File**
 
-- x axis is the natural log of the NSAF values
+SAINTexpress generated *list.txt* file.
 
-- y axis is the observed log2 fold change (as compared to control)
+    **Note:** Prey IDs must be in Uniprot/Swissprot format (e.g.
+    "EGFR\_HUMAN" or "P00533").
 
-- bubble radius is proportional to the average observed spectra
+**2) Prey File**
 
-OPTIONAL: bubble color corresponds to the CRAPome probability of a specific interaction in which an 80% cutoff is applied where prey with less than 80% are colored tan
+Please specify a *Prey* file for Bubble Graph creation. A *Prey* file
+should contain three columns: prey (protein) name, prey amino acid
+length, and prey gene name.
 
-APOSTL queries ConsensusPathDB for protein-protein interactions within your data and then formats the resulting network for simple cytoscape import using the "import network from file" option.
+**3) CRAPome File**
 
-INPUTS:
+Please specify an *CRAPome* file for Bubble Graph creation. An *Inter*
+file should contain five columns: IP name, Mapped Gene Symbol, Number of 
+Experiments (ratio), and Average spectral counts, and Max spectral counts.
 
-List File: 
+**4) Interactions File**
 
-- SAINTexpress generated "list.txt" file
+Please specify an *Inter* file for Bubble Graph creation. An *Inter*
+file should contain four columns: IP name, bait name, prey name, and
+spectral counts or intensity values, depending on the mode of
+quantification.
 
-Prey File:
+**5) X Axis Label**
 
-- SAINT pre-processing generated "prey.txt" file used to run SAINTexpress
+Selct the value to be used as the X axis in the Bubble Graph.
 
-Crapome File:
+**6) Y Axis Label**
 
-- raw output from Crapome Workflow 1 query (http://www.crapome.org)
+Selct the value to be used as the Y axis in the Bubble Graph.
 
-Color:
+**7) Bubble Size**
 
-- Specify the color of the bubbles within the graph.
+Selct the value to size the bubbles in the Bubble Graph. The "fixed"
+option will make all the bubbles the same size (must be used if no-crapome 
+file is provided).
 
-- If "crapome" is chosen and 'crapome' file is specified, bubbles will be color based on crapome specificity
+**8) Color**
 
-Use labels:
+Crapome will color the bubbles acooring to their likelyhood of a good
+interaction. Fixed will make all the bubbles one color (must be used if no-crapome 
+file is provided).
 
-- Adds gene name labels to bubbles within the "zoomed in" graphs
-SAINT Score Cutoff:
+**9) SAINT Score Cutoff**
 
-- Choose Saintscore cutoff (between 0-1) to be used for filtering the "zoomed in" graphs (default = 0.8)
+SaintScore filter in range 0-1 (default 0.8)
 
-- Also used for filtering during the generation of the cytoscape network
+**10) Fold Change Cutoff**
 
-Species:
+Fold Change filter in range -Inf to Inf (default 0)
 
-- Human, mouse, or yeast
+**11) NSAF Score Cutoff**
 
-Interaction Confidence:
+NSAF Score filter in range -Inf to Inf (default 0)
 
-- Interaction confidence value (0-1) used to filter the interactions with the ConsensusPathDB database
+**12) Plot Theme**
 
-- Suggestions:
+Select theme to be used when creating Bubble Graph.
 
-* low: 0
+**13) Label Type**
 
-* medium: 0.5
+Select the type of labeling, no labels, lable those greater than cutoff, and 
+all bubbles labeled.
 
-* high: 0.7
+**14) Label Color**
 
-* very high: 0.9
+Select label color.
 
-OUTPUTS:
+**15) Bubble Color**
 
-Bubble Graphs:
+Select color of Bubble interior. If *8* is set to crapome this will act as the good 
+crapome score. If *8* is set to fixed this will be the bubble color.
 
-- Unfiltered Data:
+**16) Outline Color**
 
-* NSAF v. Log2(FoldChange)
+Select the bubble outline color.
 
-* SAINTscore v. Log2(FoldChange)
+**17) Crapome Filter Color**
 
-- Filtered by SAINT Score
+Select color of crapome filtering. If *8* is set to crapome this will act as the poor 
+crapome score. If *8* is set to fixed this will not be used.
 
-* NSAF v. Log2(FoldChange)
-
-* SAINTscore v. Log2(FoldChange)  
-
-Output.txt
-- SAINTexpress "list.txt" output with additional columns that were used during the analysis
-  </help>
 </tool>

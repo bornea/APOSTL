@@ -1,0 +1,74 @@
+<tool id="nsaf_scoring" name="NSAF Scoring Table">
+  <description></description>
+  <command interpreter="python">nsaf_scoring.py $list_file $prey_file $crapome $inter_file $outfile \$INSTALL_RUN_PATH/ </command>
+  <requirements>
+    <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
+  </requirements>
+  <inputs>
+    <param format="txt" name="list_file" type="data" label="List File"/>
+    <param format="txt" name="prey_file" type="data" label="Prey File"/>
+    <param format="txt" name="crapome" type="data" label="Crapome File" optional="true"/>
+    <param format="txt" name="inter_file" type="data" label="Inter File" />
+  </inputs>
+  <outputs>
+    <data format="txt" name="outfile" label="NSAF Scored Table"/>    
+  </outputs>
+  <stdio>
+    <regex match="ValueError: 'PreyGene' is not in list"
+       source="stdout"
+       level="fatal"
+       description="Error: Check Input file."/>
+    <regex match="Error|error"
+     source="stdout"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error|error"
+     source="stderr"
+           level="fatal"
+           description="Unknown error"/>
+  </stdio> 
+  <tests>
+    <test>
+      <param name="input" value="fa_gc_content_input.fa"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+  <help>
+NSAF Scoring Table
+^^^^^^^^^^^^^^^^^^
+
+The NSAF score is the ratio of the NSAF for test preys versus control preys normalized by the number of controls.
+The NSAF score performs similarly to the SaintScore in spectral counting data following a sigmoidal relationship 
+whereas with MS1 intensity data, NSAF scoring tracks sigmoidally to the log2 fold-change. The NSAF score is 
+designed as a less stringent alternative to the SaintScore to complement the analysis, functioning as an empirical fold-change. 
+
+--------------
+
+**1) SAINT Output File**
+
+SAINTexpress generated *list.txt* file.
+
+    **Note:** Prey IDs must be in Uniprot/Swissprot format (e.g.
+    "EGFR\_HUMAN" or "P00533").
+
+**2) Prey File**
+
+Please specify a *Prey* file for Bubble Graph creation. A *Prey* file
+should contain three columns: prey (protein) name, prey amino acid
+length, and prey gene name.
+
+**3) CRAPome File**
+
+Please specify an *CRAPome* file for Bubble Graph creation. An *Inter*
+file should contain five columns: IP name, Mapped Gene Symbol, Number of 
+Experiments (ratio), and Average spectral counts, and Max spectral counts.
+
+**4) Interactions File**
+
+Please specify an *Inter* file for Bubble Graph creation. An *Inter*
+file should contain four columns: IP name, bait name, prey name, and
+spectral counts or intensity values, depending on the mode of
+quantification.
+
+  </help>
+</tool>
