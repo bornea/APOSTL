@@ -1460,7 +1460,7 @@ length, and prey gene name.
 
 **3) CRAPome File**
 
-Please specify an *CRAPome* file for Bubble Graph creation. An *Inter*
+Please specify an *CRAPome* file for Bubble Graph creation. An *CRAPome*
 file should contain five columns: IP name, Mapped Gene Symbol, Number of 
 Experiments (ratio), and Average spectral counts, and Max spectral counts.
 
@@ -1529,5 +1529,5 @@ Select the bubble outline color.
 
 Select color of crapome filtering. If *8* is set to crapome this will act as the poor 
 crapome score. If *8* is set to fixed this will not be used.
-
+    </help>
 </tool>
