@@ -36,12 +36,16 @@
   <help>
 NSAF Scoring Table
 ^^^^^^^^^^^^^^^^^^
+This tool is a static version of the APOSTL interactive affinity proteomics analysis software that calculates the NSAF, NSAF Score, and optionally the CRAPomePCT.
 
-The NSAF score is the ratio of the NSAF for test preys versus control preys normalized by the number of controls.
-The NSAF score performs similarly to the SaintScore in spectral counting data following a sigmoidal relationship 
+The NSAF Score is the ratio of the NSAF for test preys versus control preys normalized by the number of controls.
+The NSAF Score performs similarly to the SaintScore in spectral counting data following a sigmoidal relationship 
 whereas with MS1 intensity data, NSAF scoring tracks sigmoidally to the log2 fold-change. The NSAF score is 
 designed as a less stringent alternative to the SaintScore to complement the analysis, functioning as an empirical fold-change. 
 
+CRAPomePCT is the probability of a true interaction based on the abundance of a protein in the CRAPome database.
+
+APOSTL was developed at H. Lee Moffitt Cancer Center and Research Institute and distributed under a GNU General Public License (GPL). 
 --------------
 
 **1) SAINT Output File**

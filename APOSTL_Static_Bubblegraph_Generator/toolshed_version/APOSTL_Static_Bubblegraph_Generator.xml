@@ -1438,7 +1438,7 @@
 Bubble Graph Generator
 ^^^^^^^^^^^^^^^^^^^^^^
 
-This Bubble Graph Generator is static version of the APOSTL interactive affinity proteomics analysis 
+This Bubble Graph Generator is a static version of the APOSTL interactive affinity proteomics analysis 
 software developed to reformat affinity proteomics data (both spectral counting and MS1) for input 
 into the SAINTexpress statistical package and to visualize the output(s). APOSTL was developed at 
 H. Lee Moffitt Cancer Center and Research Institute and distributed under a GNU General Public License (GPL). 
@@ -1456,7 +1456,7 @@ SAINTexpress generated *list.txt* file.
 
 Please specify a *Prey* file for Bubble Graph creation. A *Prey* file
 should contain three columns: prey (protein) name, prey amino acid
-length, and prey gene name.
+length, and prey gene name (no header).
 
 **3) CRAPome File**
 
@@ -1473,7 +1473,7 @@ quantification.
 
 **5) X Axis Label**
 
-Selct the value to be used as the X axis in the Bubble Graph.
+Select the value to be used as the X axis in the Bubble Graph.
 
 **6) Y Axis Label**
 
@@ -1481,9 +1481,8 @@ Selct the value to be used as the Y axis in the Bubble Graph.
 
 **7) Bubble Size**
 
-Selct the value to size the bubbles in the Bubble Graph. The "fixed"
-option will make all the bubbles the same size (must be used if no-crapome 
-file is provided).
+Select the value to size the bubbles in the Bubble Graph. The "fixed"
+option will make all the bubbles the same size
 
 **8) Color**
 
@@ -1509,7 +1508,7 @@ Select theme to be used when creating Bubble Graph.
 
 **13) Label Type**
 
-Select the type of labeling, no labels, lable those greater than cutoff, and 
+Select the type of labeling: no labels, label points greater than CRAPomePCT cutoff, and 
 all bubbles labeled.
 
 **14) Label Color**
@@ -1518,8 +1517,7 @@ Select label color.
 
 **15) Bubble Color**
 
-Select color of Bubble interior. If *8* is set to crapome this will act as the good 
-crapome score. If *8* is set to fixed this will be the bubble color.
+Select color of Bubble interior. If *Color* is set to *crapome* this will act as the color of CRAPomePCT > 80. If *Color* is set to *fixed* this will be the bubble color.
 
 **16) Outline Color**
 
@@ -1527,7 +1525,6 @@ Select the bubble outline color.
 
 **17) Crapome Filter Color**
 
-Select color of crapome filtering. If *8* is set to crapome this will act as the poor 
-crapome score. If *8* is set to fixed this will not be used.
+Select color of CRAPome filtering. If *Color* is set to *crapome* this will act as the color of CRAPomePCT < 80. If *Color* is set to *fixed* this will not be used.
     </help>
 </tool>
