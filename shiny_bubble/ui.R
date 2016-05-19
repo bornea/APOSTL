@@ -15,9 +15,9 @@ shinyUI(fluidPage(
                          step=0.1
                          ),
              sliderInput("NSAFscore", "NSAF Score Cutoff", 
-                         min=round(min(main.data[(colnames(main.data)=="NSAF Score")]),1),
-                         max=round(max(main.data[(colnames(main.data)=="NSAF Score")]),1), 
-                         value=round(min(main.data[(colnames(main.data)=="NSAF Score")]),1)
+                         min=min(main.data[(colnames(main.data)=="NSAF Score")]),
+                         max=max(main.data[(colnames(main.data)=="NSAF Score")]), 
+                         value=min(main.data[(colnames(main.data)=="NSAF Score")])
              ),
              selectInput("main.exclude", "Click or search to select proteins to exclude", multiple=TRUE, choices=preys),
              downloadButton('param', 'Download Analysis Parameters')
