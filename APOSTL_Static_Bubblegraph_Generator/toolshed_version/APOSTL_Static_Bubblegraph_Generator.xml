@@ -1517,7 +1517,7 @@ Select label color.
 
 **15) Bubble Color**
 
-Select color of Bubble interior. If *Color* is set to *crapome* this will act as the color of CRAPomePCT > 80. If *Color* is set to *fixed* this will be the bubble color.
+Select color of Bubble interior. If *Color* is set to *crapome* this will act as the color of CRAPomePCT greater than 80. If *Color* is set to *fixed* this will be the bubble color.
 
 **16) Outline Color**
 
@@ -1525,6 +1525,6 @@ Select the bubble outline color.
 
 **17) Crapome Filter Color**
 
-Select color of CRAPome filtering. If *Color* is set to *crapome* this will act as the color of CRAPomePCT < 80. If *Color* is set to *fixed* this will not be used.
+Select color of CRAPome filtering. If *Color* is set to *crapome* this will act as the color of CRAPomePCT less than 80. If *Color* is set to *fixed* this will not be used.
     </help>
 </tool>

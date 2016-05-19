@@ -128,7 +128,7 @@ def main(MaxQuant_input, make_bait):
         no_error_inter(MaxQuant_input)
         os.rename('prey.txt', sys.argv[5])
     elif prey == 'false':
-        if os.path.isfile('error proteins.txt') == True:
+        if os.path.isfile('./error_proteins.txt') == True:
             no_error_inter(MaxQuant_input)
         pass
     elif prey != 'true' or 'false':
@@ -139,7 +139,7 @@ def main(MaxQuant_input, make_bait):
 
 def get_info(uniprot_accession_in): 
     # Get aa lengths and gene name.
-    error = open('error proteins.txt', 'a+')
+    error = open('./error_proteins.txt', 'a+')
     data = open(fasta_db, 'r')
     data_lines = data.readlines()
     db_len = len(data_lines)
@@ -239,7 +239,7 @@ def make_prey(MaxQuant_input):
 
 def no_error_inter(MaxQuant_input):
     # Remake inter file without protein errors from Uniprot.
-    err = readtab("error proteins.txt")
+    err = readtab("./error_proteins.txt")
     bait = readtab(baitfile)
     data = read_MaxQuant(MaxQuant_input).data
     header = read_MaxQuant(MaxQuant_input).header
@@ -251,15 +251,25 @@ def no_error_inter(MaxQuant_input):
         bait_index.append(header.index(bait_item[0]))
     proteins = read_MaxQuant(MaxQuant_input).proteins
     errors = []
+    valid_prots = []
     for e in err:
         errors.append(e[0])
+    for a in proteins:
+        a = a.replace("\n", "")
+        # Remove \n for input into function.
+        a = a.replace("\r", "")
+        # Ditto for \r.
+        seq = get_info(a).seqlength
+        GN = get_info(a).genename
+        if seq != 'NA':
+            if GN != 'NA':
+                valid_prots.append(a)
     with open('inter.txt', 'w') as input_file:
         l = 0; a = 0
         for bb in bait:
             for lst in data:
-                if proteins[a] not in errors:
-                    input_file.write(header[bait_index[l]] + '\t' + bb[1] + '\t' + proteins[a] + '\t' 
-                            + lst[bait_index[l]] + '\n')
+                if lst[0] in valid_prots:
+                    input_file.write(header[bait_index[l]] + '\t' + bb[1] + '\t' + lst[0] + '\t' + lst[bait_index[l]] + '\n')
                 a += 1
                 if a == len(proteins):
                     l += 1; a = 0
