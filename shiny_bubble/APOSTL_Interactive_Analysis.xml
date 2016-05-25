@@ -46,7 +46,26 @@ abundance factor (NSAF) values for each prey based on the
 average spectra observed for each bait. Additionally, APOSTL will
 calculate the NSAF Score as described below. *Optionally*, APOSTL
 calculates the probability of a specific interaction based on prey
-prevalence in the CRAPome http://crapome.org.
+prevalence in the CRAPome http://crapome.org. This tool provides several
+analysis and visualization options. These include:
+
+**1) Correlations between replicate runs**
+
+**2) Boxplots of selected proteins**
+
+**3) Bubble graphs for each bait**
+
+**4) Density plots of all baits for a number of variables**
+
+**5) Cytoscape networks of newly identified bait-prey interactions**
+
+**6) Filtered data table**
+
+**7) KEGG pathway analysis**
+
+**8) Gene ontology (GO) analysis
+
+All graphs are highly customizable and have various download options
 
 **Contact us**
 
