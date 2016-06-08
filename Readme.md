@@ -70,6 +70,124 @@ sh ./shiny_galaxy_run.sh
 
 APOSTL should be accessible from a web browser at http://127.0.0.1:8080. If using a non-linux OS then the IP is determined by how the docker virtual machine is set up. 
 
+## APOSTL Walkthrough
+
+This walkthrough will guide you through using APOSTL with sample data and pre-made workflows available in this Galaxy instance.
+
+### 1) Create a User Account
+
+Creating a user account allows you to access all the tools and features of APOSTL. User accounts are free, are generated immediately, and can be used immediately.Please select the <span style="font-weight: bold;">Register</span> button under the <span style="font-weight: bold;">User</span> tab on the menu.
+
+![register_button](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/register_button.png)
+<span style="font-family: Helvetica;">
+Fill out the form with your e-mail, a strong password, and a diplay name (mainly for sharing data/workflows with other users; data is not shared automatically).</span>
+![register_form](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/register_form.png)
+<span style="font-family: Helvetica;">Once you click <span style="font-weight: bold;">Submit</span> you will be redirected to the Home page. Although this walkthrough focuses on using pre-defined workflows, all of the tools that make up APOSTL can be accessed on the left hand side of the screen under APOSTL Tools.</span>
+
+<div align="center">![register_form](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/apostl_tools.png)</div>
+
+Instructions for some of the tools are provided on their respective pages. For help with tools maintained by other groups, please see <span style="color: #fd1701;"><span style="color: #000000;">the [SAINT user manual](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/SAINTexpress-manual.pdf), the [ProHits user manual](http://prohitsms.com/Prohits_download/list.php), and the [crapome guide](http://crapome.org/)</span>.</span> 
+
+### <span style="font-weight: bold; font-family: Helvetica;">2) Upload Data</span>
+
+<span style="color: #000000;">One file is needed to complete the entire APOSTL work flow, the MaxQuant _peptides.txt _a Scaffold _Sample Report_. Uploading the file can be accomplished by selecting either the upload button or the upload tool on the upper left hand side. </span>
+
+<span style="color: #000000;">![](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/upload_button.png)</span>
+
+<span style="color: #000000;">Both option will bring up the upload interface where you can drag and drop a file or select **Choose a local file**. When uploading it is best to leave the Type as auto-detect and the Genome as unspecified.</span>
+
+<span style="color: #000000;">![](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/upload_screen.png)Once your files have been selected use the **Start** button to initiate the upload.</span>
+
+### 3) <span style="font-weight: bold;">SAINT Pre-processing</span> Tool and Bait-create
+
+A bait file can also be provided by the user using an upload functionality, for formatting on the bait file refer to the <span style="color: #fd1701;"><span style="color: #000000;">[SAINT user manual](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/SAINTexpress-manual.pdf)</span></span>. If one is not provided it can be created with the **SAINT pre-processing** tool's Bait Create Function.
+
+![](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/preproc.png)
+
+To use this function when using the preprocessing tool select **No** for Are You Providing Your Own bait file. Select the **Insert Bait Create** <span style="color: #000000;">to add additional baits which require the Bait, a Bait group assignment and needs to set to control or experimental. </span>
+
+<span style="color: #000000;">![](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/bait_create.png)</span>
+
+<span style="color: #000000;">This approach has the advantage of checking your baits against the Scaffold or MaxQuant file prior to using SAINT and ensures proper formatting of the bait file.</span>**<span style="color: red;">
+</span>**
+
+### 4) Select a Workflow
+
+The Galaxy portion of APOSTL is a number of individual tools strung together using workflows. To access the pre-made workflows available on this Galaxy instance, select the <span style="font-weight: bold;">Shared Data</span> dropdown followed by <span style="font-weight: bold;">Published Workflows</span> on the top menu.
+
+![shared_wrkfl](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/shared_wrkfl.png)
+
+You will be able to select from two pre-made workflows, depending on the type of data you are using (MaxQuant or Scaffold).
+
+![](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/wkflws.png)
+
+Alternatively, you can click on the workflow name directly to view each step and the presets involved. From this page the workflow can be imported with the <span style="font-weight: bold;">+</span> button in the top right, and the workflow can be downloaded using the floppy disk icon in the top right corner. 
+
+![share_flow](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/share_flow.png)
+
+### 5) Importing Workflows
+
+If the user is not using apostl.moffitt.org or the provided docker image the workflows will need to be imported into the galaxy instance. This can be accomplished by selecting **Workflow** and the **Upload or import workflow.**
+
+![](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/uploadwrkflw.png)
+
+The two workflows can be found at [Github Workflows](https://github.com/bornea/APOSTL/tree/master/Workflows) once dowloaded to your local machine they can be imported into any galaxy instance which has APOSTL tools installed.
+
+### 6) Using a Workflow
+
+Once imported, the workflows can be accessed from the <span style="font-weight: bold;">Workflow</span> menu tab at the top of the screen.
+
+![wrkflw_menu]https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/wrkflw_menu.png)
+
+The Workflow can be run or edited by clicking on the Workflow and selecting <span style="font-weight: bold;">Run</span> or <span style="font-weight: bold;">Edit</span>. Select the workflow you just imported and click <span style="font-weight: bold;">Run. </span>
+
+![wkflw_select](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/wkflw_select.png)
+
+Select your previously uploaded Scaffold or MaxQuant output from step 2a using the dropdown menus. You will also need to provide a bait file unless you just generated one using step 2b. Other options can be chosen at this time but are not required (i.e. a custom fasta database for identification of proteins). Unless otherwise specified, APOSTL will use <span style="color: #000000;">Uniprot database updated on 08//2014.</span>
+
+![wrkflw_items](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/wrkflw_items.png)
+
+Once you have selected the necessary files and options, click the <span style="font-weight: bold;">Run Workflow</span> button at the bottom of the page.
+
+![run_wrkflw](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/run_wrkflw.png)
+
+<span style="font-family: Helvetica;">The jobs will begin running and show up in your History on the right side of the screen</span><span style="font-family: Helvetica;">. Jobs that successfully complete will be colored in green. Jobs that do not successfully complete will be colored red and the execution of the workflow will be halted. If everything completes successfully, select the xx output, click the eye icon, and click the link to be taken to the Shiny portion of APOSTL.
+
+</span>
+
+### 7) Trouble Shooting
+
+<span style="font-family: Helvetica;">APOSTL has been tested on a number of datasets and different species. The most common errors in Galaxy typically stem from bad formatting of input files (e.g., spaces instead of tabs in a file that should be <span style="font-style: italic;">tab delimited</span>). <span style="color: red;"><span style="color: black;">APOSTL has been tested with MaxQuant version 1.2.2.5 <span style="color: red;"><span style="color: black;">as well as Scaffold version</span> <span style="color: #000000;">4.3.4.</span></span> </span></span></span><span style="font-family: Helvetica;">If you are using properly formatted input files from a software known to work with APOSTL, then <span style="color: #000000;">click on the Bug Report</span> </span><span style="font-family: Helvetica;"><span style="color: red;">. <span style="color: black;">We are happy to hear from you if you are experiencing difficulties getting APOSTL to work. Please send questions or other correspondence to <span style="color: #000000;">[Paul Stewart](mailto:Paul.Stewart@moffitt.org).</span></span></span>
+
+</span>
+
+### 8) Pre-published History
+
+Access the Published Histories for both Scaffold and MaxQuant by selecting Shared Histories under the Shared Data tab on the menu.
+
+![shared_histories](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/shared_histories.png)
+
+Select either History by clicking on it.
+
+*   The shared History will show you all the steps completed, the History can be imported with the Import History in the upper right hand corner.
+
+![share_history](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/share_history.png)
+
+Once imported the History will be shown in the History right side column.
+
+*   When clicked on the dataset will expand. The eye button will open the dataset for viewing in the web browser, and the floppy dick icon can be used to download the dataset.
+
+![his_panel](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/his_panel.png)
+
+The shiny version can be accessed by selecting the Shiny dataset, hitting the eye button and click on the APOSTL Interactive Analysis link (or right click and open in new tab).
+
+![open_shiny.png](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/open_shiny.png)
+
+Any job can be run with the same settings using the circular arrows button.
+
+![rerun.png](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/rerun.png)
+
+
 ## References
 
 1.  Teo G, Liu G, Zhang J, Nesvizhskii AI, Gingras A-C, Choi H. SAINTexpress: improvements and additional features in Significance Analysis of INTeractome software. J Proteomics. 2014 Apr 4
