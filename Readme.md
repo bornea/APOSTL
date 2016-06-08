@@ -84,7 +84,7 @@ Fill out the form with your e-mail, a strong password, and a diplay name (mainly
 ![register_form](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/register_form.png)
 <span style="font-family: Helvetica;">Once you click <span style="font-weight: bold;">Submit</span> you will be redirected to the Home page. Although this walkthrough focuses on using pre-defined workflows, all of the tools that make up APOSTL can be accessed on the left hand side of the screen under APOSTL Tools.</span>
 
-<div align="center">![register_form](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/apostl_tools.png)</div>
+![register_form](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/apostl_tools.png)</div>
 
 Instructions for some of the tools are provided on their respective pages. For help with tools maintained by other groups, please see <span style="color: #fd1701;"><span style="color: #000000;">the [SAINT user manual](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/SAINTexpress-manual.pdf), the [ProHits user manual](http://prohitsms.com/Prohits_download/list.php), and the [crapome guide](http://crapome.org/)</span>.</span> 
 
