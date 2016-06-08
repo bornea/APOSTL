@@ -79,8 +79,8 @@ This walkthrough will guide you through using APOSTL with sample data and pre-ma
 Creating a user account allows you to access all the tools and features of APOSTL. User accounts are free, are generated immediately, and can be used immediately.Please select the <span style="font-weight: bold;">Register</span> button under the <span style="font-weight: bold;">User</span> tab on the menu.
 
 ![register_button](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/register_button.png)
-<span style="font-family: Helvetica;">
-Fill out the form with your e-mail, a strong password, and a diplay name (mainly for sharing data/workflows with other users; data is not shared automatically).</span>
+
+Fill out the form with your e-mail, a strong password, and a diplay name (mainly for sharing data/workflows with other users; data is not shared automatically).
 ![register_form](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/register_form.png)
 <span style="font-family: Helvetica;">Once you click <span style="font-weight: bold;">Submit</span> you will be redirected to the Home page. Although this walkthrough focuses on using pre-defined workflows, all of the tools that make up APOSTL can be accessed on the left hand side of the screen under APOSTL Tools.</span>
 
@@ -137,7 +137,7 @@ The two workflows can be found at [Github Workflows](https://github.com/bornea/A
 
 Once imported, the workflows can be accessed from the <span style="font-weight: bold;">Workflow</span> menu tab at the top of the screen.
 
-![wrkflw_menu]https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/wrkflw_menu.png)
+![wrkflw_menu](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/wrkflw_menu.png)
 
 The Workflow can be run or edited by clicking on the Workflow and selecting <span style="font-weight: bold;">Run</span> or <span style="font-weight: bold;">Edit</span>. Select the workflow you just imported and click <span style="font-weight: bold;">Run. </span>
 
