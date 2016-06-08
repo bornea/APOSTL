@@ -32,7 +32,7 @@
       <option value="MaxQuant">MaxQuant</option>
       <option value="Scaffold">Scaffold</option> 
     </param>
-    <param format="dat" name="input" type="data" label="Scaffold or MaxQuant proteinGroup Output"/>
+    <param format="dat" name="input" type="data" label="Scaffold or MaxQuant peptides Output"/>
     <param type="boolean" name="preybool" checked="true" label="Create Prey File"/>
     <param type="data" name="fasta_db" format="fasta"  label="Provide Uniprot Fasta database" optional="true"/>
     <param name="bait_bool" type="boolean" checked="true" label="Are You Providing Your Own bait file?"/>
