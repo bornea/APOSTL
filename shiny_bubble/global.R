@@ -46,8 +46,8 @@ merge_files <- function(SAINT_DF, prey_DF, crapome=FALSE) {
     
   }
   DF$FoldChange <- round(log2(DF$FoldChange),digits=2)
+  DF$FoldChange[DF$FoldChange == "-Inf"] <- 0.00
   colnames(DF)[(colnames(DF)=="FoldChange")] <- "log2(FoldChange)"
-  
   DF$SAF <- DF$AvgSpec / DF$Length
   by_bait <-  DF %>% group_by(Bait) %>% mutate("NSAF" = SAF/sum(SAF))
   by_bait$SAF <- NULL
