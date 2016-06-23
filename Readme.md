@@ -200,6 +200,6 @@ Any job can be run with the same settings using the circular arrows button.
 
 APOSTL support is provided by the Haura and Rix labs:
 
-*   Adam Borne: [Adam.Borne@moffitt.org](mailto:Adam.Borne@moffitt.org)
+*   Adam Borne: [Bornea27@gmail.com](mailto:bornea27@gmail.com)
 *   Brent Kuenzi: [Brent.Kuenzi@moffitt.org](mailto:Brent.Kuenzi@moffitt.org)
 *   Paul Stewart, PhD: [Paul.Stewart@moffitt.org](mailto:Paul.Stewart@moffitt.org)
