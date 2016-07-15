@@ -38,7 +38,7 @@ merge_files <- function(SAINT_DF, prey_DF, crapome=FALSE) {
   if(crapome!=FALSE) {
     crapome <- read.table(crapome, sep='\t', header=TRUE)
     colnames(crapome) <- c("Prey", "Symbol", "Num.of.Exp", "Ave.SC", "Max.SC")
-    DF1 <- merge(DF, crapome); as.character(DF1$Num.of.Exp); DF1$Symbol <- NULL;
+    DF1 <- merge(DF, crapome,by="Prey"); as.character(DF1$Num.of.Exp); DF1$Symbol <- NULL;
     DF1$Ave.SC <- NULL; DF1$Max.SC <- NULL #remove unnecessary columns
     DF1$Num.of.Exp <- sub("^$", "0 / 1", DF1$Num.of.Exp ) #replace blank values with 0 / 1
     DF <- DF1 %>% separate(Num.of.Exp, c("NumExp", "TotalExp"), " / ") #split into 2 columns
