@@ -54,6 +54,7 @@ merge_files <- function(SAINT_DF, prey_DF, crapome=FALSE) {
   return(by_bait[!duplicated(by_bait),])
 }
 working <- as.data.frame(merge_files("EGFR_list.txt", "EGFR_prey.txt", "EGFR_crap.txt"))
+working <- working %>% replace_na(list(CrapomePCT = 100))
 inter_df <- read.table("inter.txt", sep='\t', header=FALSE)
 working$temp <- strsplit(as.character(working$ctrlCounts),"[|]")
 cnt <- 0
