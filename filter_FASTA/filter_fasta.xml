@@ -1,0 +1,38 @@
+<tool id="filter_fasta" name="Filter FASTA">
+  <description></description>
+  <command interpreter="python">filter_fasta.py $fasta_input $scaf_input $fasta_output</command>
+  <inputs>
+    <param format="fasta" name="fasta_input" type="data" label="FASTA Database"/>
+    <param format="txt" name="scaf_input" type="data" label="Scaffold Report"/>
+  </inputs>
+  <outputs>
+    <data format="fasta" name="fasta_output" label="Filtered FASTA"/>    
+  </outputs>
+  <stdio>
+    <regex match="Error|error"
+     source="stdout"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error|error"
+     source="stderr"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error: bad bait"
+           source="stdout"
+           level="fatal"
+           description="Error: bad bait"/>
+  </stdio> 
+  <tests>
+    <test>
+      <param name="input" value="fa_gc_content_input.fa"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+  <help>
+This program will filter a fasta file using a data file containing an "Accession" or "Accession Number" column.
+
+**Required input:**
+1) fasta file to be filtered
+2) data file containing a "Accession" or "Accession Number" column
+  </help>
+</tool>
