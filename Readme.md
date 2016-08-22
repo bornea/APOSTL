@@ -72,7 +72,7 @@ APOSTL should be accessible from a web browser at http://127.0.0.1:8080. If usin
 
 ## APOSTL Walkthrough
 
-This walkthrough will guide you through using APOSTL with sample data and pre-made workflows available in this Galaxy instance.
+This walkthrough will guide you through using APOSTL with sample data and pre-made workflows available in a Galaxy test instance accessible at [http://apostl.moffitt.org](http://apostl.moffitt.org).
 
 ### 1) Create a User Account
 
