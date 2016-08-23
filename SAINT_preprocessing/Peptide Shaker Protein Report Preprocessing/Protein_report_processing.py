@@ -3,14 +3,60 @@ import os
 from time import sleep
 
 files = sys.argv[1] # read in a string of file names seperated by ", "
+print files
 # e.g. "Default_Protein_Report.txt, Default_Protein_Report_2.txt"
-bait = sys.argv[2] # SAINT formatted bait file
+#bait = sys.argv[2] # SAINT formatted bait file
 # still need a way to match files to bait identifiers
 # or they can just be required to be put in the order of the bait file
 quant_type = sys.argv[3] # what metric to use for quantification
+print quant_type
 # "#Validated Peptides", "#Peptides", "#Unique", "#Validated PSMs", "#PSMs"
 db = sys.argv[4] # fasta database used in SearchGUI and PeptideShaker
+print db
 prey = sys.argv[5]
+print prey
+tool_path = sys.argv[7]
+print tool_path
+if db == "None":
+    db = str(tool_path)  + "/SwissProt_HUMAN_2015_12.fasta"
+make_bait = sys.argv[6]
+print make_bait
+bait_bool = sys.argv[8]
+print bait_bool
+
+def bait_create(baits, infile):
+    # Verifies the Baits are valid in the Scaffold file and writes the Bait.txt.
+    baits = make_bait.split()
+    i = 0
+    bait_file_tmp = open("bait.txt", "w")
+    order = []
+    bait_cache = []
+    while i < len(baits):
+        if baits[i+2] == "true":
+            T_C = "C"
+        else:
+            T_C = "T"
+        bait_line = baits[i] + "\t" + baits[i+1] + "\t" + T_C + "\n"
+        bait_cache.append(str(bait_line))
+        i = i + 3
+
+    for cache_line in bait_cache:
+        bait_file_tmp.write(cache_line)
+
+    bait_file_tmp.close()
+
+if bait_bool == 'false':
+    bait_create(make_bait, infile)
+    bait = "bait.txt"
+else:
+    bait_temp_file = open(sys.argv[9], 'r')
+    bait_cache = bait_temp_file.readlines()
+    bait_file_tmp = open("bait.txt", "wr")
+    for cache_line in bait_cache:
+        bait_file_tmp.write(cache_line)
+    bait_file_tmp.close()
+    bait = "bait.txt"
+
 class ReturnValue1(object):
     def __init__(self, sequence, gene):
         self.seqlength = sequence
@@ -94,7 +140,7 @@ def get_info(uniprot_accession_in,fasta_db):
         genename = 'NA'
         return ReturnValue1(seqlength, genename)
 def concatenate_files(file_list_string, bait_file):
-    file_list = file_list_string.split(", ")
+    file_list = file_list_string.split(",")
     bait = read_tab(bait_file)
     master_table = []
     header_check = 0
@@ -129,6 +175,8 @@ def make_inter(master_table,quant_type):
     replicate_index = master_table[0].index("Replicate")
     grouping_index = master_table[0].index("Bait_Grouping")
     accession_index = master_table[0].index("Main Accession")
+    quant_type = quant_type.replace("_", " ")
+    quant_type = r"#" + quant_type
     Quant_index = master_table[0].index(quant_type)
     inter_file = ""
     for i in master_table[1:]:
@@ -166,5 +214,9 @@ def make_prey(concat_table,fasta_db):
     output_file.close()
 data = concatenate_files(files,bait)
 make_inter(data, quant_type)
-if prey == "Y":
+if prey == "true":
     make_prey(data,db)
+
+os.rename("bait.txt", sys.argv[2])
+os.rename("inter.txt", sys.argv[10])
+os.rename("prey.txt", sys.argv[11])

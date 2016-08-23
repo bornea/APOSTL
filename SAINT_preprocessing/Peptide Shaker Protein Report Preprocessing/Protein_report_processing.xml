@@ -1,0 +1,72 @@
+<tool id="Protein_report_processig" name="SAINT pre-processing Peptideshaker Report">
+  <description></description>
+  <command interpreter="python">Protein_report_processing.py "$input" $Bait_file $use_metric $fasta_db $preybool 
+    "
+      #for $ba in $bait
+       ${ba.bait1}
+       ${ba.assign}
+       ${ba.T_C}
+      #end for
+    "
+    \$INSTALL_RUN_PATH/ $bait_bool $bait_file_in $Inter_file $Prey_file
+  </command>
+  <requirements>
+    <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
+  </requirements>
+  <inputs>
+    <param format="dat" name="input" type="data" label="Scaffold or MaxQuant peptides Output" multiple="true"/>
+    <param type="select" name="use_metric" label="Select Report File Value for Qunatification">
+      <option value="Validated_Peptides">#Validated Peptides</option>
+      <option value="Peptides">#Peptides</option>
+      <option value="Unique">#Unique</option> 
+      <option value="Validated_PSMs">#Validated PSMs</option>
+      <option value="PSMs">#PSMs</option> 
+    </param>
+    <param type="boolean" name="preybool" checked="true" label="Create Prey File"/>
+    <param type="data" name="fasta_db" format="fasta"  label="Provide Uniprot Fasta database" optional="true"/>
+    <param name="bait_bool" type="boolean" checked="true" label="Are You Providing Your Own bait file?"/>
+    <param type="data" format="dat" name="bait_file_in" label="Bait File" optional="true"/>
+    <repeat name="bait" title="Bait Create">
+      <param name="bait1" type="text" size="100" label="Bait"/>
+      <param name="assign" type="text" size="100" label="Group Assignment"/>
+      <param name="T_C" type="boolean" checked="true" label="Is this a Control?"/> 
+    </repeat>
+
+  </inputs>
+  <outputs>
+    <data format="txt" name="Inter_file" label="Inter File"/>    
+    <data format="txt" name="Prey_file" label="Prey File" />
+    <data format="txt" name="Bait_file" label="Bait File" />
+  </outputs>
+  <stdio>
+    <regex match="Error: bad bait"
+           source="stdout"
+           level="fatal"
+           description="Error: bad bait"/>
+    <regex match="IOError: [Errno 2] No such file or directory: './tukeys_output.txt'"
+           source="stderr"
+           level="fatal"
+           description="Error: Scaffold/MaxQuant mismatch. Check job settings."/>
+    <regex match="bait_temp_file = open(sys.argv[10], 'r')"
+           source="stderr"
+           level="fatal"
+           description="Error: Bait create settings mismatch. Check job settings."/>
+    <regex match="Error|error"
+	   source="stdout"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error|error"
+     source="stderr"
+           level="fatal"
+           description="Unknown error"/>
+  </stdio> 
+
+  <tests>
+    <test>
+      <param name="input" value="fa_gc_content_input.fa"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+  <help>
+  </help>
+</tool>
