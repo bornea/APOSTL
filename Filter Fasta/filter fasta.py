@@ -33,10 +33,13 @@ def getAccessions(infile): # get list of protein accessions from your data
             break
         cnt += 1
     header = data[header_start]
-    if "Accession Number" in header:
-        prot_start = header.index("Accession Number")
-    elif "Accession" in header:
-        prot_start = header.index("Accession")
+    for i in header:
+        if i == "Accession":
+            prot_start = header.index("Accession")
+        if i == "Accession Number":
+            prot_start = header.index("Accession Number")
+        if i == "Main Accession":
+            prot_start = header.index("Main Accession")
     proteins = []
     for protein in data[1:]:
         proteins.append(protein[prot_start])
@@ -83,5 +86,5 @@ def FilterFastaSeq(infile,accession): # fasta file and UniprotID/SwissprotID
             x.write(i+'\n'+seq[cnt]+'\n')
             cnt+=1
 fasta = sys.argv[1] # fasta file to filter
-data = sys.argv[2] # input data
+data = sys.argv[2] # scaffold report #2 -- filename
 FilterFastaSeq(fasta,getAccessions(data))

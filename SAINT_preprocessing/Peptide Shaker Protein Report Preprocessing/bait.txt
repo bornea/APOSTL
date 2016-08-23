@@ -1,0 +1,2 @@
+combined_1	combined	T
+EGFR_1	EGFR	C
