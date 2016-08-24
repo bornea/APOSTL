@@ -29,10 +29,10 @@
     </test>
   </tests>
   <help>
-This program will filter a fasta file using a data file containing an "Accession" or "Accession Number" column.
+This program will filter a fasta file using a data file containing an "Accession", "Accession Number", or "Main Accession" column.
 
 **Required input:**
 1) fasta file to be filtered
-2) data file containing a "Accession" or "Accession Number" column
+2) data file containing a "Accession", "Accession Number", or "Main Accession" column
   </help>
 </tool>
