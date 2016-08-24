@@ -1,0 +1,1 @@
+python Protein_report_processing.py "Default_Protein_Report.txt, Default_Protein_Report_2.txt" bait.txt "#PSMs" /Users/brentkuenzi/Desktop/searchgui/searchgui_out/SwissProt_HUMAN_2015_12.fasta Y

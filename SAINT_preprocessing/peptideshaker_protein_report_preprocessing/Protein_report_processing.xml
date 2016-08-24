@@ -1,0 +1,152 @@
+<tool id="Protein_report_processig" name="SAINT pre-processing Peptideshaker Report">
+  <description></description>
+  <command interpreter="python">Protein_report_processing.py "$input" $Bait_file $use_metric $fasta_db $preybool 
+    "
+      #for $ba in $bait
+       ${ba.bait1}
+       ${ba.assign}
+       ${ba.T_C}
+      #end for
+    "
+    \$INSTALL_RUN_PATH/ $bait_bool $bait_file_in $Inter_file $Prey_file
+  </command>
+  <requirements>
+    <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
+  </requirements>
+  <inputs>
+    <param format="dat" name="input" type="data" label="Peptideshaker Output" multiple="true"/>
+    <param type="select" name="use_metric" label="Select Report File Value for Quantification">
+      <option value="Validated_Peptides">#Validated Peptides</option>
+      <option value="Peptides">#Peptides</option>
+      <option value="Unique">#Unique</option> 
+      <option value="Validated_PSMs">#Validated PSMs</option>
+      <option value="PSMs">#PSMs</option> 
+    </param>
+    <param type="boolean" name="preybool" checked="true" label="Create Prey File"/>
+    <param type="data" name="fasta_db" format="fasta"  label="Provide Uniprot Fasta database" optional="true"/>
+    <param name="bait_bool" type="boolean" checked="true" label="Are You Providing Your Own bait file?"/>
+    <param type="data" format="dat" name="bait_file_in" label="Bait File" optional="true"/>
+    <repeat name="bait" title="Bait Create">
+      <param name="bait1" type="text" size="100" label="Bait"/>
+      <param name="assign" type="text" size="100" label="Group Assignment"/>
+      <param name="T_C" type="boolean" checked="true" label="Is this a Control?"/> 
+    </repeat>
+
+  </inputs>
+  <outputs>
+    <data format="txt" name="Inter_file" label="Inter File"/>    
+    <data format="txt" name="Prey_file" label="Prey File" />
+    <data format="txt" name="Bait_file" label="Bait File" />
+  </outputs>
+  <stdio>
+    <regex match="Error: bad bait"
+           source="stdout"
+           level="fatal"
+           description="Error: bad bait"/>
+    <regex match="IOError: [Errno 2] No such file or directory: './tukeys_output.txt'"
+           source="stderr"
+           level="fatal"
+           description="Error: Scaffold/MaxQuant mismatch. Check job settings."/>
+    <regex match="bait_temp_file = open(sys.argv[10], 'r')"
+           source="stderr"
+           level="fatal"
+           description="Error: Bait create settings mismatch. Check job settings."/>
+    <regex match="Error|error"
+	   source="stdout"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error|error"
+     source="stderr"
+           level="fatal"
+           description="Unknown error"/>
+  </stdio> 
+
+  <tests>
+    <test>
+      <param name="input" value="fa_gc_content_input.fa"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+  <help>
+Pre-Processing
+^^^^^^^^^^^^^^
+
+This tool will read in a Peptideshaker *Report* file (tab-delimited
+txt file) and process them to generate
+a *Bait File, Prey File,* and *Inter File* for SAINTexpress analysis.
+
+--------------
+
+  **Note:** The baits in the baitfile for this version need to be in
+  the same order as the files selected.
+
+
+**1) Peptideshaker File Inputs**
+
+Select the corresponding *Report* here.
+
+
+**2) Select Report File Value for Quantification**
+
+Select the column that should be used in calculating SAINT scores.
+
+**3) Create Prey File**
+
+Select whether or not you would like APOSTL to generate a prey file.
+
+When making a prey file, APOSTL queries a user provided FASTA database
+(see below) in order to extract protein amino acid lengths and gene
+names. This may take several minutes depending on your computer and if
+your Galaxy distribution is cluster enabled. Some users may want to run
+SAINTexpress using the same data set while changing which baits are
+considered test or control. It is useful to toggle **Create Prey File**
+off in order to save time by circumventing this step as the same prey
+file can be used for both SAINTexpress runs.
+
+**4) Provide Uniprot FASTA database**
+
+Please specify a FASTA file containing the protein sequence. You can
+download the latest release of Uniprot's reviewed sequences (Swiss-Prot)
+http://www.uniprot.org/downloads. For computing efficiency,
+please limit your FASTA file to your species of interest. It is
+generally advised to use the same FASTA database that was used for your
+database searches during peptide and protein ID.
+
+**5) Are You Providing Your Own Bait File?**
+
+Users have two options for providing a *Bait* file. If you would like to
+create your own *Bait* file, select Yes and designate the file below. If
+you would like to use the **Bait Create** tool to create a *Bait* file
+within Galaxy, please select No and proceed to the **Bait Create** tool.
+
+**6) Bait File**
+
+If you selected Yes above, please specify the *Bait* file you would like
+to provide. If you selected No above, ignore this argument and proceed
+to the **Bait Create** tool.
+
+    **Note:** Individual bait names must match to the sample names
+    within your Scaffold or MaxQuant output exactly and must contain no
+    whitespace characters (e.g. spaces) or dashes.
+
+**7) Bait Create**
+
+Using the **Bait Create** tool, you can create your *bait.txt* file.
+
+    **Note:** Individual bait names must match to the sample names
+    within your Scaffold or MaxQuant output exactly and must contain no
+    whitespace characters (e.g. spaces) or dashes.
+
+APOSTL uses this bait file to find the user's baits of interest within a
+*Samples Report* or *peptides.txt* file and when preparing the
+*inter.txt* file.
+
+--------------
+
+Once your parameters have been finalized, please press the Execute
+button to start processing. This may take a few minutes. Once your
+process has been completed, you will see your *Bait File, Prey File,*
+and *Inter File* on the right hand side of your panel highlighted in
+green.
+  </help>
+</tool>
