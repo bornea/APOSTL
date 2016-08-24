@@ -34,10 +34,13 @@ def getAccessions(infile): # get list of protein accessions from your data
             break
         cnt += 1
     header = data[header_start]
-    if "Accession Number" in header:
-        prot_start = header.index("Accession Number")
-    elif "Accession" in header:
-        prot_start = header.index("Accession")
+    for i in header:
+        if i == "Accession":
+            prot_start = header.index("Accession")
+        if i == "Accession Number":
+            prot_start = header.index("Accession Number")
+        if i == "Main Accession":
+            prot_start = header.index("Main Accession")
     proteins = []
     for protein in data[header_start:]:
         if len(protein) > prot_start:

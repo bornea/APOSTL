@@ -71,7 +71,7 @@
 Pre-Processing
 ^^^^^^^^^^^^^^
 
-This tool will read in a Peptideshaker *Report* file (tab-delimited
+This tool will read in multiple Peptideshaker *Protein Report* files (tab-delimited
 txt file) and process them to generate
 a *Bait File, Prey File,* and *Inter File* for SAINTexpress analysis.
 
@@ -83,7 +83,7 @@ a *Bait File, Prey File,* and *Inter File* for SAINTexpress analysis.
 
 **1) Peptideshaker File Inputs**
 
-Select the corresponding *Report* here.
+Select the corresponding *Reports* here.
 
 
 **2) Select Report File Value for Quantification**
@@ -110,7 +110,12 @@ download the latest release of Uniprot's reviewed sequences (Swiss-Prot)
 http://www.uniprot.org/downloads. For computing efficiency,
 please limit your FASTA file to your species of interest. It is
 generally advised to use the same FASTA database that was used for your
-database searches during peptide and protein ID.
+database searches during peptide and protein ID. To speed up processing
+time, you can also filter your fasta database using your input data and
+the *Filter Fasta* tool in APOSTL. **Note** if you are analyzing data from
+PeptideShaker, your files should first be merged using SAINT Pre-processing
+without generating a Prey File. This will merge your input files into a master
+list that can be used for *Filter Fasta*.
 
 **5) Are You Providing Your Own Bait File?**
 
