@@ -3,26 +3,19 @@ import os
 from time import sleep
 
 files = sys.argv[1] # read in a string of file names seperated by ", "
-print files
 # e.g. "Default_Protein_Report.txt, Default_Protein_Report_2.txt"
 #bait = sys.argv[2] # SAINT formatted bait file
 # still need a way to match files to bait identifiers
 # or they can just be required to be put in the order of the bait file
 quant_type = sys.argv[3] # what metric to use for quantification
-print quant_type
 # "#Validated Peptides", "#Peptides", "#Unique", "#Validated PSMs", "#PSMs"
 db = sys.argv[4] # fasta database used in SearchGUI and PeptideShaker
-print db
 prey = sys.argv[5]
-print prey
 tool_path = sys.argv[7]
-print tool_path
 if db == "None":
     db = str(tool_path)  + "/SwissProt_HUMAN_2015_12.fasta"
 make_bait = sys.argv[6]
-print make_bait
 bait_bool = sys.argv[8]
-print bait_bool
 
 def bait_create(baits, infile):
     # Verifies the Baits are valid in the Scaffold file and writes the Bait.txt.
@@ -219,4 +212,5 @@ if prey == "true":
 
 os.rename("bait.txt", sys.argv[2])
 os.rename("inter.txt", sys.argv[10])
-os.rename("prey.txt", sys.argv[11])
+if str(prey) != "None": 
+    os.rename("prey.txt", sys.argv[11])
