@@ -1,0 +1,1 @@
+ython /Users/brentkuenzi/Desktop/mzIdentML-preprocessing/mzID_process2.py "/Users/brentkuenzi/Desktop/mzIdentML-preprocessing/search_gui_fraction_test.mzid, /Users/brentkuenzi/Desktop/mzIdentML-preprocessing/search_gui_fraction_test\ copy.mzid" bait.txt Y /Users/brentkuenzi/Desktop/mzIdentML-preprocessing/SwissProt_HUMAN_2015_12.fasta 
