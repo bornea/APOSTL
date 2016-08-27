@@ -14,7 +14,7 @@ The easiest way to get the majority of APOSTL tool is to install them from the g
 
 Most of the tools require an R environment to run. If the R package within galaxy works in your instance feel free to use it but it is not automatically installed when the tools are installed. APOSTL also requires bioconductor packages to be installed, bioconductor packages may require additional linux libraries for installation. In CentOS environments libcurl and xml2lib are required to install bioconductor packages. The script will attempt to install all require R packages automatically but this is imperfect. You may need to make sure that Rscript is your $PATH variable. If the packages are not installed automatically you can enter your R environment and use the following commands in R to install are required packages. 
 ```R
-> install.packages("dplyr", "tidyr", "httr", "jsonlite", "colorRamps", "gplots", "ggrepel", "ggplot2", "data.table", "rcytoscapejs", "stringr", "VennDiagram", "clusterProfiler", repos = "http://cran.us.r-project.org") 
+> install.packages(c("dplyr", "tidyr", "httr", "jsonlite", "colorRamps", "gplots", "ggrepel", "ggplot2", "data.table", "rcytoscapejs", "stringr", "VennDiagram", "clusterProfiler"), repos = "http://cran.us.r-project.org") 
 > source("https://bioconductor.org/biocLite.R") 
 > biocLite(c('mygene','affy','clusterProfiler','org.Hs.eg.db'))
 ```
