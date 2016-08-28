@@ -12,9 +12,9 @@ Installing APOSTL from Galaxy
 -------------
 The easiest way to get the majority of APOSTL tool is to install them from the galaxy toolshed the instructions for which can be found at https://wiki.galaxyproject.org/Admin/Tools/AddToolFromToolShedTutorial. The tools can be found at https://toolshed.g2.bx.psu.edu/view/bornea/apostl_tools/6f6e2eb3e81b. 
 
-Most of the tools require an R environment to run. If the R package within galaxy works in your instance feel free to use it but it is not automatically installed when the tools are installed. APOSTL also requires bioconductor packages to be installed, bioconductor packages may require additional linux libraries for installation. In CentOS environments libcurl and xml2lib are required to install bioconductor packages. The script will attempt to install all require R packages automatically but this is imperfect. You may need to make sure that Rscript is your $PATH variable. If the packages are not installed automatically you can enter your R environment and use the following commands in R to install are required packages. 
+Most of the tools require an R environment to run. If the R package within galaxy works in your instance feel free to use it but it is not automatically installed when the tools are installed. APOSTL also requires bioconductor packages to be installed, bioconductor packages may require additional linux libraries for installation. In CentOS environments openssl, libcurl and xml2lib (devel versions) are required to install bioconductor packages. The script will attempt to install all require R packages automatically but this is imperfect. You may need to make sure that Rscript is in your $PATH variable. If the packages are not installed automatically you can enter your R environment and use the following commands in R to install are required packages. 
 ```R
-> install.packages("dplyr", "tidyr", "httr", "jsonlite", "colorRamps", "gplots", "ggrepel", "ggplot2", "data.table", "rcytoscapejs", "stringr", "VennDiagram", "clusterProfiler", repos = "http://cran.us.r-project.org") 
+> install.packages(c("dplyr", "tidyr", "httr", "jsonlite", "colorRamps", "gplots", "ggrepel", "ggplot2", "data.table", "rcytoscapejs", "stringr", "VennDiagram"), repos = "http://cran.us.r-project.org") 
 > source("https://bioconductor.org/biocLite.R") 
 > biocLite(c('mygene','affy','clusterProfiler','org.Hs.eg.db', 'mzID'))
 ```
@@ -24,7 +24,7 @@ Installing APOSTL Shiny
 -------------
 
 Please refer to https://www.rstudio.com/products/shiny/download-server/ for how to install the shiny server on different distributions of linux.
-Additional packages libcurl-devel, libxml2-devel, openssl-devel, gsl-devel.x86_64 and libpng-devel will need to be installed (on CentOS installed via yum package manager). The shiny R package must be installed (should be done as part of shiny install).
+Additional packages libcurl-devel, libxml2-devel, openssl-devel, gsl-devel.x86_64 and libpng-devel will need to be installed (on CentOS installed via yum package manager). The shiny R package must be installed in R (should be done as part of shiny install).
 
 ```R
 install.packages('shiny', repos = 'http://cran.r-project.org')
@@ -48,7 +48,7 @@ APOSTL Docker Image
 -------------
 The APOSTL Docker Image is a running version of Galaxy, Shiny and all of the APOSTL tools built on a CentOS 7 framework. This image is located at https://hub.docker.com/r/bornea/apostl_shiny/.
 
-Within docker to get the image started use
+Within docker get the image started using
 
 ```bash
 docker run -p 8080:8080 -p 3838:3838 -ti bornea/apostl_shiny /bin/bash
