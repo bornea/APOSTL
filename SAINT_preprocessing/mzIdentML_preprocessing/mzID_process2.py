@@ -15,7 +15,7 @@ Python-code: Preprocess mzIdentML
 import sys
 import os
 
-ins_path = str(os.getcwd()) + "/"
+ins_path = sys.argv[5]
 
 class ReturnValue1(object):
     def __init__(self, sequence, gene):
@@ -61,6 +61,7 @@ def get_info(uniprot_accession_in,fasta_db):
     db_len = len(data_lines)
     seqlength = 0
     count = 0
+    last_line = data_lines[-1]
     for data_line in data_lines:
         if ">sp" in data_line:
             namer = data_line.split("|")[2]
@@ -75,6 +76,8 @@ def get_info(uniprot_accession_in,fasta_db):
                 while ">sp" not in data_lines[match]:
                     if match <= db_len:
                         seqlength = seqlength + len(data_lines[match].strip())
+                        if data_lines[match] == last_line:
+                            break
                         match = match + 1
                     else:
                         break
@@ -91,6 +94,8 @@ def get_info(uniprot_accession_in,fasta_db):
             while ">sp" not in data_lines[match]:
                 if match <= db_len:
                     seqlength = seqlength + len(data_lines[match].strip())
+                    if data_lines[match] == last_line:
+                        break
                     match = match + 1
                 else:
                     break
@@ -125,10 +130,51 @@ def make_inter(mzIdentML,replicate,grouping):
 
 
 files = sys.argv[1]
-file_list = files.split(", ")
+file_list = files.split(",")
 bait = read_tab(sys.argv[2])
 make_prey = sys.argv[3]
 db = sys.argv[4]
+if db == "None":
+    db = str(ins_path)  + "/SwissProt_HUMAN_2015_12.fasta"
+make_bait = sys.argv[6]
+bait_bool = sys.argv[7]
+prey_file = sys.argv[8]
+bait_out = sys.argv[9]
+inter_out = sys.argv[10]
+
+def bait_create(baits, infile):
+    # Verifies the Baits are valid in the Scaffold file and writes the Bait.txt.
+    baits = make_bait.split()
+    i = 0
+    bait_file_tmp = open("bait.txt", "w")
+    order = []
+    bait_cache = []
+    while i < len(baits):
+        if baits[i+2] == "true":
+            T_C = "C"
+        else:
+            T_C = "T"
+        bait_line = baits[i] + "\t" + baits[i+1] + "\t" + T_C + "\n"
+        bait_cache.append(str(bait_line))
+        i = i + 3
+
+    for cache_line in bait_cache:
+        bait_file_tmp.write(cache_line)
+
+    bait_file_tmp.close()
+
+if bait_bool == 'false':
+    bait_create(make_bait, infile)
+    bait = "bait.txt"
+else:
+    bait_temp_file = open(sys.argv[2], 'r')
+    bait_cache = bait_temp_file.readlines()
+    bait_file_tmp = open("bait.txt", "wr")
+    for cache_line in bait_cache:
+        bait_file_tmp.write(cache_line)
+    bait_file_tmp.close()
+    bait = "bait.txt"
+
 inter = ""
 cnt = 0
 accessions = []
@@ -160,4 +206,7 @@ if make_prey == "Y":
 	with open("prey.txt","w") as x:
 		x.write(prey)
 
-
+os.rename("bait.txt", sys.argv[2])
+os.rename("inter.txt", sys.argv[10])
+if str(prey) != "None": 
+    os.rename("prey.txt", sys.argv[11])

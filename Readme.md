@@ -16,7 +16,7 @@ Most of the tools require an R environment to run. If the R package within galax
 ```R
 > install.packages("dplyr", "tidyr", "httr", "jsonlite", "colorRamps", "gplots", "ggrepel", "ggplot2", "data.table", "rcytoscapejs", "stringr", "VennDiagram", "clusterProfiler", repos = "http://cran.us.r-project.org") 
 > source("https://bioconductor.org/biocLite.R") 
-> biocLite(c('mygene','affy','clusterProfiler','org.Hs.eg.db'))
+> biocLite(c('mygene','affy','clusterProfiler','org.Hs.eg.db', 'mzID'))
 ```
 
 

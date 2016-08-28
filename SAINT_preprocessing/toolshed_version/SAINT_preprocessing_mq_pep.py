@@ -145,6 +145,7 @@ def get_info(uniprot_accession_in):
     db_len = len(data_lines)
     seqlength = 0
     count = 0
+    last_line = data_lines[-1]
     for data_line in data_lines:
         if ">sp" in data_line:
             if uniprot_accession_in == data_line.split("|")[1]:
@@ -158,6 +159,8 @@ def get_info(uniprot_accession_in):
                 while ">sp" not in data_lines[match]:
                     if match <= db_len:
                         seqlength = seqlength + len(data_lines[match].strip())
+                        if data_lines[match] == last_line:
+                            break
                         match = match + 1
                     else:
                         break

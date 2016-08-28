@@ -1,8 +1,8 @@
 <tool id="SAINT_preprocessing_v5" name="SAINT pre-processing">
   <description></description>
   <command interpreter="python">
-    #if (str($type) == 'Scaffold'):
-      SAINT_preprocessing.py $input $preybool $fasta_db $Inter_file $Prey_file 
+    #if (str($type_select.type) == 'Scaffold'):
+      SAINT_preprocessing.py $type_select.input $type_select.preybool $type_select.fasta_db $Inter_file $Prey_file 
       "
         #for $ba in $bait
          ${ba.bait1}
@@ -10,9 +10,9 @@
          ${ba.T_C}
         #end for
         "
-      $Bait_file \$INSTALL_RUN_PATH/ $bait_bool $bait_file_in
-    #elif (str($type) == 'MaxQuant'):
-      SAINT_preprocessing_mq_pep.py $input $preybool $fasta_db $Inter_file $Prey_file 
+      $Bait_file \$INSTALL_RUN_PATH/ $type_select.bait_bool $type_select.bait_file_in
+    #elif (str($type_select.type) == 'MaxQuant'):
+      SAINT_preprocessing_mq_pep.py $type_select.input $type_select.preybool $type_select.fasta_db $Inter_file $Prey_file 
         "
         #for $ba in $bait
           ${ba.bait1}
@@ -20,29 +20,81 @@
           ${ba.T_C}
         #end for
         "
-      $Bait_file \$INSTALL_RUN_PATH/ $bait_bool $bait_file_in
+      $Bait_file \$INSTALL_RUN_PATH/ $type_select.bait_bool $type_select.bait_file_in
+    #elif (str($type_select.type) == 'Peptideshaker'):
+      Protein_report_processing.py "$type_select.input" $Bait_file $type_select.use_metric $type_select.fasta_db $type_select.preybool 
+        "
+        #for $ba in $bait
+          ${ba.bait1}
+          ${ba.assign}
+          ${ba.T_C}
+        #end for
+        "
+      \$INSTALL_RUN_PATH/ $type_select.bait_bool $type_select.bait_file_in $Inter_file $Prey_file
+    #elif (str($type_select.type) == 'mzIdentML'):
+      mzID_process2.py "$type_select.input" $type_select.bait_file_in $type_select.preybool $type_select.fasta_db \$INSTALL_RUN_PATH/ 
+        "
+        #for $ba in $bait
+          ${ba.bait1}
+          ${ba.assign}
+          ${ba.T_C}
+        #end for
+        "
+      $type_select.bait_bool $Prey_file $Bait_file $Inter_file 
     #end if
   </command>
   <requirements>
     <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
-    <requirement type="package" version="3.2.1">package_r_3_2_1</requirement>
   </requirements>
   <inputs>
-    <param type="select" name="type" label="MaxQuant or Scaffold">
-      <option value="MaxQuant">MaxQuant</option>
-      <option value="Scaffold">Scaffold</option> 
-    </param>
-    <param format="dat" name="input" type="data" label="Scaffold or MaxQuant peptides Output"/>
-    <param type="boolean" name="preybool" checked="true" label="Create Prey File"/>
-    <param type="data" name="fasta_db" format="fasta"  label="Provide Uniprot Fasta database" optional="true"/>
-    <param name="bait_bool" type="boolean" checked="true" label="Are You Providing Your Own bait file?"/>
-    <param type="data" format="dat" name="bait_file_in" label="Bait File" optional="true"/>
+    <conditional name="type_select">
+      <param type="select" name="type" label="Data Source">
+        <option value="MaxQuant">MaxQuant</option>
+        <option value="Scaffold">Scaffold</option>
+        <option value="Peptideshaker">Peptideshaker</option> 
+        <option value="mzIdentML">mzIdentML</option> 
+      </param>
+      <when value="MaxQuant">
+        <param format="dat" name="input" type="data" label="MaxQuant peptides Output"/>
+        <param type="boolean" name="preybool" checked="true" label="Create Prey File"/>
+        <param type="data" name="fasta_db" format="fasta"  label="Provide Uniprot Fasta database" optional="true"/>
+        <param name="bait_bool" type="boolean" checked="true" label="Are You Providing Your Own bait file?"/>
+        <param type="data" format="dat" name="bait_file_in" label="Bait File" optional="true"/>
+      </when>
+      <when value="Scaffold">
+        <param format="dat" name="input" type="data" label="Scaffold Output"/>
+        <param type="boolean" name="preybool" checked="true" label="Create Prey File"/>
+        <param type="data" name="fasta_db" format="fasta"  label="Provide Uniprot Fasta database" optional="true"/>
+        <param name="bait_bool" type="boolean" checked="true" label="Are You Providing Your Own bait file?"/>
+        <param type="data" format="dat" name="bait_file_in" label="Bait File" optional="true"/>
+      </when>
+      <when value="Peptideshaker">
+        <param format="dat" name="input" type="data" label="Peptideshaker Output" multiple="true"/>
+        <param type="select" name="use_metric" label="Select Report File Value for Quantification">
+          <option value="Validated_Peptides">#Validated Peptides</option>
+          <option value="Peptides">#Peptides</option>
+          <option value="Unique">#Unique</option> 
+          <option value="Validated_PSMs">#Validated PSMs</option>
+          <option value="PSMs">#PSMs</option> 
+        </param>
+        <param type="boolean" name="preybool" checked="true" label="Create Prey File"/>
+        <param type="data" name="fasta_db" format="fasta"  label="Provide Uniprot Fasta database" optional="true"/>
+        <param name="bait_bool" type="boolean" checked="true" label="Are You Providing Your Own bait file?"/>
+        <param type="data" format="dat" name="bait_file_in" label="Bait File" optional="true"/>
+      </when>
+      <when value="mzIdentML">
+        <param format="dat" name="input" type="data" label="mzIdentML Files" multiple="true"/>
+        <param type="boolean" name="preybool" checked="true" label="Create Prey File"/>
+        <param type="data" name="fasta_db" format="fasta"  label="Provide Uniprot Fasta database" optional="true"/>
+        <param name="bait_bool" type="boolean" checked="true" label="Are You Providing Your Own bait file?"/>
+        <param type="data" format="dat" name="bait_file_in" label="Bait File" optional="true"/>
+      </when>
+    </conditional>
     <repeat name="bait" title="Bait Create">
       <param name="bait1" type="text" size="100" label="Bait"/>
       <param name="assign" type="text" size="100" label="Group Assignment"/>
       <param name="T_C" type="boolean" checked="true" label="Is this a Control?"/> 
     </repeat>
-
   </inputs>
   <outputs>
     <data format="txt" name="Inter_file" label="Inter File"/>    
@@ -83,8 +135,9 @@ Pre-Processing
 ^^^^^^^^^^^^^^
 
 This tool will read in a Scaffold *Samples Report* file (tab-delimited
-txt file) or a MaxQuant *peptides.txt* file and process them to generate
-a *Bait File, Prey File,* and *Inter File* for SAINTexpress analysis.
+txt file), multiple Peptideshaker *Protein Report* files or a MaxQuant 
+*peptides.txt* file and process them to generate a *Bait File, Prey 
+File,* and *Inter File* for SAINTexpress analysis.
 
 --------------
 
@@ -137,6 +190,9 @@ to the **Bait Create** tool.
     **Note:** Individual bait names must match to the sample names
     within your Scaffold or MaxQuant output exactly and must contain no
     whitespace characters (e.g. spaces) or dashes.
+
+    **Note:** When using Peptideshaker output the baits in the baitfile 
+    need to be in the same order as the files selected.
 
 **7) Bait Create**
 
