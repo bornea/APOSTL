@@ -74,7 +74,7 @@
 
 Pre-processing:
 
-APOSTL is able to recognize either a Scaffold "Samples Report" file (tab-delimited txt file) or the "peptides.txt" file output in the MaxQuant "txt" output folder. No modifications should be made to these files. Using the "Bait Create" tool, you can create your "bait.txt" file. It is important that the individual bait names match the bait names within your scaffold or MaxQuant output. APOSTL uses the bait file to findthe user's baits of interest. Additionally there is an option to make the prey file (Y/N). When making a prey file, APOSTL queries Uniprot ( http://www.uniprot.org ) in order to extract protein amino acidlengths and gene names. This takes several minutes depending on your internet connection. Some users may want to run SAINTexpress using the same data set while changing which baits are considered test or control It is useful to toggle "Make Prey" off in order to save time by circumventing this step as the same prey file can be used for both SAINTexpress runs. 
+APOSTL is able to recognize a Scaffold "Samples Report" file (tab-delimited txt file), PeptideShaker "Protein Report" files (tab-delimited txt file), and mzIdentML files for spectral counting quantification or the "peptides.txt" file output in the MaxQuant "txt" output folder for MS1 quantification (tab-delimited txt file). No modifications should be made to these files. Using the "Bait Create" tool, you can create your "bait.txt" file. It is important that the individual bait names match the bait names within your Scaffold or MaxQuant output. APOSTL uses the bait file to find the user's baits of interest. For input of multiple PeptideShaker "Protein Reports" or mzIdentML files, we currently require the bait file to be made with your baits in the order that the selected files appear in the list above. Additionally there is an option to make the prey file (Y/N). When making a prey file, APOSTL queries a user-specified FASTA database in order to extract protein amino acid lengths and gene names. This takes several minutes depending on your internet connection. Some users may want to run SAINTexpress using the same data set while changing which baits are considered test or control. It is useful to toggle "Make Prey" off in order to save time by circumventing this step as the same prey file can be used for both SAINTexpress runs. In addition, a user may filter their FASTA database using the "Filter Fasta" tool in order to drastically speed up pre-processing. To filter your data in the "Filter Fasta" tool, either provide your Scaffold input or a single column txt file containing all of your protein accessions with the column name "Accession", "Accession Number", or "Main Accession".
 
 INPUTS:
 
@@ -86,5 +86,16 @@ Scaffold file:
 MaxQuant file:
 
 - MaxQuant "peptides.txt" file (tab-delimited txt file)
+
+
+PeptideShaker:
+
+- PeptideShaker "Protein Report" files (tab-delimited txt file)
+- Your bait file must be in the order of these files
+
+mzIdentML:
+
+- Your bait file must be in the order of these files
+
   </help>
 </tool>
