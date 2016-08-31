@@ -14,7 +14,7 @@ shinyUI(fluidPage(
                          value=round(min(main.data[(colnames(main.data)=="log2(FoldChange)")]),0),
                          step=0.1
                          ),
-             sliderInput("NSAFscore", "NSAF Score Cutoff", 
+             numberInput("NSAFscore", "NSAF Score Cutoff", 
                          min=min(main.data[(colnames(main.data)=="NSAF Score")]),
                          max=max(main.data[(colnames(main.data)=="NSAF Score")]), 
                          value=min(main.data[(colnames(main.data)=="NSAF Score")])
@@ -89,31 +89,27 @@ shinyUI(fluidPage(
                downloadButton('main.down', 'Download Bubble Plot'))
         )),
     ################################ CYTOSCAPE NETWORK #########################
-    tabPanel("Cytoscape Network",
-    rcytoscapejsOutput("network",width="125%",height="600px"), 
-      p("BETA Release: The network refreshes itself and DOES NOT save user 
-      layouts when altering parameters. Make sure to finalize filtering criteria and aesthetics before reorganizing 
-      the network. There remains some instability in the node shapes with a large number of nodes present. 
-      Try multiple shapes to resolve the issue.
-      "),
-    column(4,
-      selectInput("node.color", "Select color for preys", multiple=FALSE, choices=colors, selected="#0077BE"),
-      selectInput("bait.color", "Select color for baits", multiple=FALSE, choices=colors, selected="#FF7F00"),
-      selectInput("node.label.color","Select Node Label Color", choices=c("black","white"),selected="white")
-      ),
-    column(4,
-      selectInput("node.shape", "Select shape for preys", multiple=FALSE, choices=shapes, selected="ellipse"),
-      selectInput("bait.shape", "Select shape for baits", multiple=FALSE, choices=shapes, selected="ellipse")
-      ),
-    column(4,
-      selectInput("edge.color", "Select color for edges", multiple=FALSE, choices=colors, selected="#000000"),
-      selectInput("net.layout", "Select layout algorithm", multiple=FALSE, choices=layouts, selected="cose")
-      ),
-    column(4,actionButton("saveImage", "Save network image")),
-    column(4,downloadButton("saveJSON", "Export network as JSON")),
-    column(4,downloadButton("network.sif","Export network as SIF"))
+    tabPanel("Network",
+             visNetworkOutput("networkproxynodes",height="600px"),
+             column(4,
+                    selectInput("PreyColor", "Prey Color", multiple=FALSE, choices=colors,selected="#5D8AA8"),
+                    selectInput("BaitColor", "Bait Color", multiple=FALSE, choices=colors,selected="#F0F8FF"),
+                    radioButtons("smooth", "Smooth Edges",choices=c("On"=TRUE, "Off"=FALSE), selected=FALSE),
+                    radioButtons("hierLayout","Hierarchical Layout",choices=c("Yes","No"),selected="No")),
+             column(4,
+                    actionButton("physics", "Physics", icon=icon("stop",lib = "font-awesome")),#,choices=c("On"=TRUE, "Off"=FALSE), selected=TRUE),
+                    sliderInput("PreySize", "Prey Size",min=1,max=100, value=25),
+                    sliderInput("BaitSize", "Bait Size",min=1,max=100, value=25)),
+             column(4,
+                    selectInput("PreyShape","Prey Shape", 
+                                choices= shapes, 
+                                selected="circle"),
+                    selectInput("BaitShape","Bait Shape", 
+                                choices= shapes, 
+                                selected="circle"),
+                    downloadButton("network.sif","Export network as SIF"),
+                    actionButton("saveJSON","Export network as GEPHI JSON"))
     ),
-    tags$head(tags$script(src="cyjs.js")), # for saving cytoscape networks
     ################################ TABLE DISPLAY #############################
     tabPanel("Data Table",
              dataTableOutput('table'),

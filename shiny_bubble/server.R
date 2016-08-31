@@ -10,7 +10,7 @@ shinyServer(function(input, output, session) {
 ################################################################################
   
 ######################### Cytoscape Network ####################################  
-  jsnetwork <- reactive({
+  mynet <- reactive({
     str_x=paste0(input$main.x)
     str_y=paste0(input$main.y)
     str_color=paste0(input$main.color)
@@ -23,23 +23,44 @@ shinyServer(function(input, output, session) {
     main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="NSAF Score")] >= input$NSAFscore)
     cytoscape <- subset(main.data2, SaintScore>=as.numeric(str_cutoff), 
                         select = c(str_x,str_y,"Bait","PreyGene",str_size))
-    id <- c(as.character(cytoscape$PreyGene),as.character(cytoscape$Bait))
-    source <- as.character(cytoscape$Bait)
-    name <- c(as.character(cytoscape$PreyGene),as.character(cytoscape$Bait))
-    target <- as.character(cytoscape$PreyGene)
-    node.data <- data.frame(id,name)
-    edge.data <- data.frame(source,target)
-    node.data$color <- rep(input$node.color, nrow(node.data))
-    node.data$color[node.data$name %in% cytoscape$Bait] <- input$bait.color
-    node.data$shape <- rep(input$node.shape, nrow(node.data))
-    node.data$shape[node.data$name %in% cytoscape$Bait] <- input$bait.shape
-    edge.data$color <- rep(input$edge.color, nrow(edge.data))
-    network <- createCytoscapeJsNetwork(node.data, edge.data,
-                                        edgeTargetShape="none",nodeLabelColor=input$node.label.color)
-    rcytoscapejs(network$nodes, network$edges, showPanzoom=TRUE, 
-                 layout=input$net.layout, highlightConnectedNodes=FALSE)
-  })
-############################ JSON  Cytoscape Network ###########################
+    })
+  
+  output$networkproxynodes <- renderVisNetwork({
+    cytoscape <- mynet()
+    id <- c(as.character(unique(cytoscape$PreyGene)),unique(as.character(cytoscape$Bait)))
+    from <- as.character(cytoscape$Bait)
+    to <- as.character(cytoscape$PreyGene)
+    group <- c(rep("Prey",length(unique(cytoscape$PreyGene))),rep("Bait",length(unique(as.character(cytoscape$Bait)))))
+    nodes <- data.frame(id,label=id,group=group)
+    edges <- data.frame(from,to)
+    p <- visNetwork(nodes, edges) %>% visPhysics(enabled=TRUE) %>% visEdges(smooth=FALSE,color=list(inherit='from')) %>%
+      visOptions(selectedBy = "group",
+                 manipulation = TRUE,
+                 nodesIdSelection = list(enabled=TRUE)) %>%
+      visInteraction(hover=TRUE,multiselect=TRUE) %>% 
+      visGroups(groupname="Prey",color="#5D8AA8") %>% 
+      visGroups(groupname="Bait",color="#F0F8FF") %>%
+      visNodes(labelHighlightBold = TRUE) %>% visExport(label = "Save Network Image (.png)")
+      
+    if(input$smooth==TRUE){p<- p %>% visEdges(smooth=TRUE)}
+    if(input$hierLayout=="Yes"){p<- p %>% visHierarchicalLayout(enabled=TRUE)}
+    p
+    })
+  observe({visNetworkProxy("networkproxynodes") %>% visGroups(groupname="Prey", color=input$PreyColor)})
+  observe({visNetworkProxy("networkproxynodes") %>% visGroups(groupname="Prey", shape=input$PreyShape)})
+  observe({visNetworkProxy("networkproxynodes") %>% visGroups(groupname="Prey", size=input$PreySize)})
+  observe({visNetworkProxy("networkproxynodes") %>% visGroups(groupname="Bait", color=input$BaitColor)})
+  observe({visNetworkProxy("networkproxynodes") %>% visGroups(groupname="Bait", shape=input$BaitShape)})
+  observe({visNetworkProxy("networkproxynodes") %>% visGroups(groupname="Bait", size=input$BaitSize)})
+  observe({input$physics ; visNetworkProxy("networkproxynodes") %>% visPhysics(enabled=FALSE)})
+  output$test <- renderPrint( vals$coords )
+  vals <- reactiveValues(coords=NULL)
+  observe({
+    invalidateLater(1000)
+    visNetworkProxy("networkproxynodes") %>% visGetPositions()
+    vals$coords <- if (!is.null(input$network_positions)) 
+      do.call(rbind, input$network_positions)
+  })############################ JSON  Cytoscape Network ###########################
   jsnetwork_flat <- reactive({
     str_x=paste0(input$main.x)
     str_y=paste0(input$main.y)
