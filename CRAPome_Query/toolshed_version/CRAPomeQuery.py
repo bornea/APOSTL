@@ -176,7 +176,7 @@ def crapome(infile): # Query CRAPome
         else:
             temp.append(i[2]) # append accession
             temp.append(i[3])
-            temp.append("NA")
+            temp.append("")
             temp.append("NA")
             temp.append("NA")
         query.append(temp) # final query results

@@ -3,7 +3,7 @@
 # Author: Brent Kuenzi
 ################################## Dependencies ###################################################
 library(shiny); library(dplyr); library(tidyr); library(ggplot2); library("devtools")
-library(rcytoscapejs); library(jsonlite); library(clusterProfiler); library(org.Hs.eg.db)
+library(vizNetwork); library(jsonlite); library(clusterProfiler); library(org.Hs.eg.db)
 library(mygene); library(httr); library(ggrepel); library(shinyjs)
 #devtools::install_github("cytoscape/r-cytoscape.js"); # need for dependencies
 #install.packages('ggrepel',type='source') # need for dependencies
