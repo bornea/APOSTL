@@ -189,7 +189,8 @@ def make_prey(concat_table,fasta_db):
     accession_index = input_data[0].index("Main Accession")
     proteins = []
     for i in input_data[1:]:
-        proteins.append(i[accession_index])
+        if i[accession_index] not in proteins:
+            proteins.append(i[accession_index])
     output_file = open("prey.txt", 'w')
     start = 0
     end = len(proteins)
