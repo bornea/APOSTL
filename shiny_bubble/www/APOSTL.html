@@ -132,8 +132,8 @@ window.onload = function() {
 
 <p>4) Density plots of all baits for options specified above</p>
 <ul><li>EPS file download not supported for density plots</ul></li>
-<p>5) Cytoscape networks of all preys passing filtering criteria displaying newly identified bait-prey interactions</p>
-<ul><li> Networks can be saved as png images or exported as JSON (for import into cytoscapejs) or Simple Interaction File (SIF) format (for direct importing into cytoscape)</li></ul>
+<p>5) Interaction networks of all preys passing filtering criteria displaying newly identified bait-prey interactions</p>
+<ul><li> Networks can be saved as png images or exported as JSON (for import into cytoscapejs) or Simple Interaction File (SIF) format (for direct importing into cytoscape/gephi)</li></ul>
 <p>6) Filtered data displayed as a table</p>
 <p>7) KEGG pathway analysis of filtered data</p>
 <p>8) Gene Ontology (GO) term analysis of filtered data</p>
@@ -174,8 +174,8 @@ window.onload = function() {
 <h5>General Error</h5>
 <p><code style="color:red"><strong>Error:</strong> length of 'dimnames' [2] not equal to array extent</code> This error is usually due to the user filtering data such that it has removed all the points in your data. Adjust your filtering to resolve.</p>
 
-<h5>Cytoscape Network</h5>
-<p>Occasionally when rendering the Cytoscape network in the browser, node shapes can become white when changing them. This issue has not been fully resolved in the Beta Release of this tool. To fix this issue currently, toggle different shapes in your network until the shape you want remains.</p>
+<h5>Network</h5>
+<p>After saving an image from the network, the interactive environment will become locked and will need to be rebooted from Galaxy. This issue has not been fully resolved in the Beta Release of this tool. To fix this issue currently, re-run the interactive analysis tool in Galaxy</p>
 
 <h5>KEGG Pathway Analysis</h5>
 <p><code style="color:red"><strong>Error:</strong> invalid request, server returned Success: (200) OK (http://rest.kegg.jp/link/hsa/pathway)</code> This is usually due to your R Bioconductor installation being out of date. It can usually be resolved by running the
