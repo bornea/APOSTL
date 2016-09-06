@@ -1,8 +1,8 @@
 {
     "a_galaxy_workflow": "true", 
-    "annotation": "", 
+    "annotation": "SpC_Scaffold", 
     "format-version": "0.1", 
-    "name": "APOSTL_MaxQuant", 
+    "name": "APOSTL_MS1", 
     "steps": {
         "0": {
             "annotation": "", 
@@ -27,22 +27,54 @@
                 }
             ], 
             "position": {
-                "left": 200, 
-                "top": 200
+                "left": 207.953125, 
+                "top": 206
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bornea/saint_preprocessing/SAINT_preprocessing_v5/1.0.0", 
-            "tool_state": "{\"__page__\": 0, \"bait\": \"[]\", \"preybool\": \"\\\"True\\\"\", \"__rerun_remap_job_id__\": null, \"fasta_db\": \"null\", \"bait_file_in\": \"null\", \"bait_bool\": \"\\\"True\\\"\", \"input\": \"null\", \"type\": \"\\\"MaxQuant\\\"\"}", 
+            "tool_state": "{\"bait\": \"[]\", \"__rerun_remap_job_id__\": null, \"type_select\": \"{\\\"preybool\\\": \\\"True\\\", \\\"fasta_db\\\": null, \\\"bait_file_in\\\": null, \\\"bait_bool\\\": \\\"True\\\", \\\"__current_case__\\\": 0, \\\"input\\\": null, \\\"type\\\": \\\"MaxQuant\\\"}\", \"__page__\": 0}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "5dee1c45-15be-4de3-9f62-b19e5621566b", 
+            "uuid": "1e1a7135-718c-49d3-a301-008c7f37dde8", 
             "workflow_outputs": []
         }, 
         "1": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/saintexpress/saint_wrapper/1.0.0", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/query_crapome/CRAPomeQuery/1.0.0", 
             "id": 1, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "Prey_file"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Query CRAPome", 
+            "outputs": [
+                {
+                    "name": "CrapomeFile", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 209.46875, 
+                "top": 440
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bornea/query_crapome/CRAPomeQuery/1.0.0", 
+            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"fasta_db\": \"null\", \"species\": \"\\\"HUMAN\\\"\", \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "041acb22-7161-4da8-bf7e-e65551a3d51e", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/saintexpress/saint_wrapper/1.0.0", 
+            "id": 2, 
             "input_connections": {
                 "bait_input": {
                     "id": 0, 
@@ -67,8 +99,8 @@
                 }
             ], 
             "position": {
-                "left": 528, 
-                "top": 200
+                "left": 453.015625, 
+                "top": 201
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -76,124 +108,16 @@
             "tool_state": "{\"rep_num\": \"\\\"100\\\"\", \"__page__\": 0, \"go_file\": \"null\", \"__rerun_remap_job_id__\": null, \"bait_input\": \"null\", \"vc_bool\": \"\\\"False\\\"\", \"inter_input\": \"null\", \"go_bool\": \"\\\"False\\\"\", \"prey_input\": \"null\", \"vc_num\": \"\\\"1\\\"\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "7e4c42ae-31b4-4533-867b-da3ad9a1d744", 
-            "workflow_outputs": []
-        }, 
-        "2": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/query_crapome/CRAPomeQuery/1.0.0", 
-            "id": 2, 
-            "input_connections": {
-                "input": {
-                    "id": 0, 
-                    "output_name": "Prey_file"
-                }
-            }, 
-            "inputs": [], 
-            "label": null, 
-            "name": "Query CRAPome", 
-            "outputs": [
-                {
-                    "name": "CrapomeFile", 
-                    "type": "txt"
-                }
-            ], 
-            "position": {
-                "left": 528, 
-                "top": 395
-            }, 
-            "post_job_actions": {}, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/bornea/query_crapome/CRAPomeQuery/1.0.0", 
-            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"fasta_db\": \"null\", \"species\": \"\\\"HUMAN\\\"\", \"__page__\": 0}", 
-            "tool_version": "1.0.0", 
-            "type": "tool", 
-            "uuid": "e7d0fe9f-b1f5-4570-ba2f-19844a4e4ecb", 
+            "uuid": "54a07cf4-4e13-4075-8779-1ecfa677d5ba", 
             "workflow_outputs": []
         }, 
         "3": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/saint_protein_interactions/SAINT_ProteinInteractions/1.0.0", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/apostl_static_bubblegraph_generator/APOSTL_Static_Bubblegraph_Generator/1.0.0", 
             "id": 3, 
             "input_connections": {
-                "input": {
-                    "id": 1, 
-                    "output_name": "SAINT_output"
-                }
-            }, 
-            "inputs": [], 
-            "label": null, 
-            "name": "SAINT Output to Protein Interaction File", 
-            "outputs": [
-                {
-                    "name": "Cytoscape_File", 
-                    "type": "sif"
-                }
-            ], 
-            "position": {
-                "left": 826, 
-                "top": 200
-            }, 
-            "post_job_actions": {}, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/bornea/saint_protein_interactions/SAINT_ProteinInteractions/1.0.0", 
-            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"CPDB_cutoff\": \"\\\"0.8\\\"\", \"saint_cutoff\": \"\\\"0.8\\\"\", \"input\": \"null\", \"species\": \"\\\"Human\\\"\"}", 
-            "tool_version": "1.0.0", 
-            "type": "tool", 
-            "uuid": "20bfe8c2-4b0f-4841-a999-47be4531573d", 
-            "workflow_outputs": []
-        }, 
-        "4": {
-            "annotation": "", 
-            "content_id": "APOSTL_Interactive_Analysis", 
-            "id": 4, 
-            "input_connections": {
                 "crapome": {
-                    "id": 2, 
-                    "output_name": "CrapomeFile"
-                }, 
-                "inter_file": {
-                    "id": 0, 
-                    "output_name": "Inter_file"
-                }, 
-                "list_file": {
                     "id": 1, 
-                    "output_name": "SAINT_output"
-                }, 
-                "prey_file": {
-                    "id": 0, 
-                    "output_name": "Prey_file"
-                }
-            }, 
-            "inputs": [], 
-            "label": null, 
-            "name": "APOSTL Interactive Analysis", 
-            "outputs": [
-                {
-                    "name": "output", 
-                    "type": "html"
-                }
-            ], 
-            "position": {
-                "left": 826, 
-                "top": 331
-            }, 
-            "post_job_actions": {}, 
-            "tool_errors": null, 
-            "tool_id": "APOSTL_Interactive_Analysis", 
-            "tool_state": "{\"inter_file\": \"null\", \"crapome\": \"null\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"prey_file\": \"null\", \"list_file\": \"null\"}", 
-            "tool_version": "1.0.0", 
-            "type": "tool", 
-            "uuid": "a6fe4cb8-224a-4dc6-84fb-1c03690afa61", 
-            "workflow_outputs": []
-        }, 
-        "5": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/apostl_static_bubblegraph_generator/APOSTL_Static_Bubblegraph_Generator/1.0.0", 
-            "id": 5, 
-            "input_connections": {
-                "crapome": {
-                    "id": 2, 
                     "output_name": "CrapomeFile"
                 }, 
                 "inter": {
@@ -201,7 +125,7 @@
                     "output_name": "Inter_file"
                 }, 
                 "list_file": {
-                    "id": 1, 
+                    "id": 2, 
                     "output_name": "SAINT_output"
                 }, 
                 "prey_file": {
@@ -219,16 +143,92 @@
                 }
             ], 
             "position": {
-                "left": 826, 
-                "top": 526
+                "left": 477.515625, 
+                "top": 474
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bornea/apostl_static_bubblegraph_generator/APOSTL_Static_Bubblegraph_Generator/1.0.0", 
-            "tool_state": "{\"__page__\": 0, \"crapome\": \"null\", \"outline_color\": \"\\\"black\\\"\", \"filt_color\": \"\\\"Amaranth\\\"\", \"color\": \"\\\"crapome\\\"\", \"bubble_color\": \"\\\"AirForceblue\\\"\", \"SS_cutoff\": \"\\\"0.8\\\"\", \"FC_cutoff\": \"\\\"0\\\"\", \"label\": \"\\\"none\\\"\", \"prey_file\": \"null\", \"list_file\": \"null\", \"theme\": \"\\\"Default\\\"\", \"__rerun_remap_job_id__\": null, \"size_id\": \"\\\"log2FoldChange\\\"\", \"main_x\": \"\\\"lnNSAF\\\"\", \"main_y\": \"\\\"SaintScore\\\"\", \"NS_cutoff\": \"\\\"0\\\"\", \"inter\": \"null\", \"label_color\": \"\\\"black\\\"\"}", 
+            "tool_state": "{\"__page__\": 0, \"crapome\": \"null\", \"outline_color\": \"\\\"black\\\"\", \"filt_color\": \"\\\"AirForceblue\\\"\", \"color\": \"\\\"crapome\\\"\", \"bubble_color\": \"\\\"AirForceblue\\\"\", \"SS_cutoff\": \"\\\"0.8\\\"\", \"FC_cutoff\": \"\\\"0\\\"\", \"label\": \"\\\"none\\\"\", \"prey_file\": \"null\", \"list_file\": \"null\", \"theme\": \"\\\"Default\\\"\", \"__rerun_remap_job_id__\": null, \"size_id\": \"\\\"fixed\\\"\", \"main_x\": \"\\\"lnNSAF\\\"\", \"main_y\": \"\\\"lnNSAF\\\"\", \"NS_cutoff\": \"\\\"0\\\"\", \"inter\": \"null\", \"label_color\": \"\\\"black\\\"\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "b37f5015-cb6f-4e1d-91cc-9333ddf86e7c", 
+            "uuid": "e67c61a3-03da-41fd-a7c7-d67b386c430b", 
+            "workflow_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "APOSTL_Interactive_Analysis", 
+            "id": 4, 
+            "input_connections": {
+                "crapome": {
+                    "id": 1, 
+                    "output_name": "CrapomeFile"
+                }, 
+                "inter_file": {
+                    "id": 0, 
+                    "output_name": "Inter_file"
+                }, 
+                "list_file": {
+                    "id": 2, 
+                    "output_name": "SAINT_output"
+                }, 
+                "prey_file": {
+                    "id": 0, 
+                    "output_name": "Prey_file"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "APOSTL Interactive Analysis", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "html"
+                }
+            ], 
+            "position": {
+                "left": 672.515625, 
+                "top": 162.015625
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "APOSTL_Interactive_Analysis", 
+            "tool_state": "{\"inter_file\": \"null\", \"crapome\": \"null\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"prey_file\": \"null\", \"list_file\": \"null\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "52293949-e7be-4c10-a265-fa6e0066c87a", 
+            "workflow_outputs": []
+        }, 
+        "5": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/saint_protein_interactions/SAINT_ProteinInteractions/1.0.0", 
+            "id": 5, 
+            "input_connections": {
+                "input": {
+                    "id": 2, 
+                    "output_name": "SAINT_output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "SAINT Output to Protein Interaction File", 
+            "outputs": [
+                {
+                    "name": "Cytoscape_File", 
+                    "type": "sif"
+                }
+            ], 
+            "position": {
+                "left": 240.96875, 
+                "top": 741
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bornea/saint_protein_interactions/SAINT_ProteinInteractions/1.0.0", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"CPDB_cutoff\": \"\\\"0.8\\\"\", \"saint_cutoff\": \"\\\"0.8\\\"\", \"input\": \"null\", \"species\": \"\\\"Human\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "ca006423-ebd4-4e36-8c92-343c0cf8b3db", 
             "workflow_outputs": []
         }, 
         "6": {
@@ -237,7 +237,7 @@
             "id": 6, 
             "input_connections": {
                 "crapome": {
-                    "id": 2, 
+                    "id": 1, 
                     "output_name": "CrapomeFile"
                 }, 
                 "inter_file": {
@@ -245,7 +245,7 @@
                     "output_name": "Inter_file"
                 }, 
                 "list_file": {
-                    "id": 1, 
+                    "id": 2, 
                     "output_name": "SAINT_output"
                 }, 
                 "prey_file": {
@@ -263,8 +263,8 @@
                 }
             ], 
             "position": {
-                "left": 826, 
-                "top": 738
+                "left": 746.515625, 
+                "top": 359
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -272,9 +272,9 @@
             "tool_state": "{\"inter_file\": \"null\", \"crapome\": \"null\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"prey_file\": \"null\", \"list_file\": \"null\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "945aaa46-835f-4de8-a2e5-587cee5e19d2", 
+            "uuid": "ff75c1d2-6396-4cab-ab92-b66af05e03a9", 
             "workflow_outputs": []
         }
     }, 
-    "uuid": "5f2b7a1b-65e2-4222-88ec-c2cc2df71f49"
+    "uuid": "060c6cd9-183a-4bd8-9671-04e334a2a43d"
 }

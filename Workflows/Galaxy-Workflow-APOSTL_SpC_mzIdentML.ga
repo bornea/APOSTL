@@ -1,0 +1,204 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "SpC_mzID", 
+    "format-version": "0.1", 
+    "name": "APOSTL_SpC_mzIdentML", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/saint_preprocessing/SAINT_preprocessing_v5/1.0.0", 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": null, 
+            "name": "SAINT pre-processing", 
+            "outputs": [
+                {
+                    "name": "Inter_file", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "Prey_file", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "Bait_file", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 200, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bornea/saint_preprocessing/SAINT_preprocessing_v5/1.0.0", 
+            "tool_state": "{\"bait\": \"[]\", \"__rerun_remap_job_id__\": null, \"type_select\": \"{\\\"preybool\\\": \\\"True\\\", \\\"fasta_db\\\": null, \\\"bait_file_in\\\": null, \\\"bait_bool\\\": \\\"True\\\", \\\"__current_case__\\\": 3, \\\"input\\\": null, \\\"type\\\": \\\"mzIdentML\\\"}\", \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "0ec70861-4077-483b-a55d-9399198fa7ce", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/saintexpress/saint_wrapper/1.0.0", 
+            "id": 1, 
+            "input_connections": {
+                "bait_input": {
+                    "id": 0, 
+                    "output_name": "Bait_file"
+                }, 
+                "inter_input": {
+                    "id": 0, 
+                    "output_name": "Inter_file"
+                }, 
+                "prey_input": {
+                    "id": 0, 
+                    "output_name": "Prey_file"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "SAINTexpress", 
+            "outputs": [
+                {
+                    "name": "SAINT_output", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 516.109375, 
+                "top": 229
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bornea/saintexpress/saint_wrapper/1.0.0", 
+            "tool_state": "{\"rep_num\": \"\\\"100\\\"\", \"__page__\": 0, \"go_file\": \"null\", \"__rerun_remap_job_id__\": null, \"bait_input\": \"null\", \"vc_bool\": \"\\\"False\\\"\", \"inter_input\": \"null\", \"go_bool\": \"\\\"False\\\"\", \"prey_input\": \"null\", \"vc_num\": \"\\\"1\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "9070bd3b-c08a-49ae-85b6-45a644303fd4", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/query_crapome/CRAPomeQuery/1.0.0", 
+            "id": 2, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "Prey_file"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Query CRAPome", 
+            "outputs": [
+                {
+                    "name": "CrapomeFile", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 479.609375, 
+                "top": 463
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bornea/query_crapome/CRAPomeQuery/1.0.0", 
+            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"fasta_db\": \"null\", \"species\": \"\\\"HUMAN\\\"\", \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "42e3f137-06b7-40ac-a629-27d9e9831d19", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/prohits_dotplot_generator/ProHits_DotPlot_Generator/1.0.0", 
+            "id": 3, 
+            "input_connections": {
+                "saint_file": {
+                    "id": 1, 
+                    "output_name": "SAINT_output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "ProHits DotPlot Generator", 
+            "outputs": [
+                {
+                    "name": "dotplot", 
+                    "type": "pdf"
+                }, 
+                {
+                    "name": "heatmap", 
+                    "type": "pdf"
+                }, 
+                {
+                    "name": "estimated", 
+                    "type": "pdf"
+                }, 
+                {
+                    "name": "stats", 
+                    "type": "pdf"
+                }
+            ], 
+            "position": {
+                "left": 757.59375, 
+                "top": 434
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bornea/prohits_dotplot_generator/ProHits_DotPlot_Generator/1.0.0", 
+            "tool_state": "{\"__page__\": 0, \"spec_max\": \"\\\"50\\\"\", \"FDR2\": \"\\\"0.025\\\"\", \"__rerun_remap_job_id__\": null, \"saint_file\": \"null\", \"FDR1\": \"\\\"0.01\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "c595df49-a0df-4452-9a43-619a287dd5f9", 
+            "workflow_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "APOSTL_Interactive_Analysis", 
+            "id": 4, 
+            "input_connections": {
+                "crapome": {
+                    "id": 2, 
+                    "output_name": "CrapomeFile"
+                }, 
+                "inter_file": {
+                    "id": 0, 
+                    "output_name": "Inter_file"
+                }, 
+                "list_file": {
+                    "id": 1, 
+                    "output_name": "SAINT_output"
+                }, 
+                "prey_file": {
+                    "id": 0, 
+                    "output_name": "Prey_file"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "APOSTL Interactive Analysis", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "html"
+                }
+            ], 
+            "position": {
+                "left": 754.734375, 
+                "top": 225.125
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "APOSTL_Interactive_Analysis", 
+            "tool_state": "{\"inter_file\": \"null\", \"crapome\": \"null\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"prey_file\": \"null\", \"list_file\": \"null\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "4d893ae9-fcd5-46b3-ad52-fe5d1880495e", 
+            "workflow_outputs": []
+        }
+    }, 
+    "uuid": "e778995b-ff2d-44d2-9344-8da442fe9e7d"
+}

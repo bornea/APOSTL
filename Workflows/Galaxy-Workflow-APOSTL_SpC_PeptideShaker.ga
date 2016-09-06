@@ -1,8 +1,8 @@
 {
     "a_galaxy_workflow": "true", 
-    "annotation": "", 
+    "annotation": "PeptideShaker", 
     "format-version": "0.1", 
-    "name": "APOSTL_Scaffold", 
+    "name": "APOSTL_SpC_PeptideShaker", 
     "steps": {
         "0": {
             "annotation": "", 
@@ -27,16 +27,16 @@
                 }
             ], 
             "position": {
-                "left": 265.5333251953125, 
-                "top": 655.9000244140625
+                "left": 159.984375, 
+                "top": 178.96875
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bornea/saint_preprocessing/SAINT_preprocessing_v5/1.0.0", 
-            "tool_state": "{\"__page__\": 0, \"bait\": \"[]\", \"preybool\": \"\\\"True\\\"\", \"__rerun_remap_job_id__\": null, \"fasta_db\": \"null\", \"bait_file_in\": \"null\", \"bait_bool\": \"\\\"True\\\"\", \"input\": \"null\", \"type\": \"\\\"MaxQuant\\\"\"}", 
+            "tool_state": "{\"bait\": \"[]\", \"__rerun_remap_job_id__\": null, \"type_select\": \"{\\\"preybool\\\": \\\"True\\\", \\\"fasta_db\\\": null, \\\"bait_file_in\\\": null, \\\"bait_bool\\\": \\\"True\\\", \\\"__current_case__\\\": 0, \\\"input\\\": null, \\\"type\\\": \\\"MaxQuant\\\"}\", \"__page__\": 0}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "fdb3f355-7459-47ac-a30d-1b7183f4e387", 
+            "uuid": "4d1f0a4b-ab5f-4ada-97d0-ffe3ac0dcb9d", 
             "workflow_outputs": []
         }, 
         "1": {
@@ -67,8 +67,8 @@
                 }
             ], 
             "position": {
-                "left": 593.5333251953125, 
-                "top": 655.9000244140625
+                "left": 426.984375, 
+                "top": 186
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -76,7 +76,7 @@
             "tool_state": "{\"rep_num\": \"\\\"100\\\"\", \"__page__\": 0, \"go_file\": \"null\", \"__rerun_remap_job_id__\": null, \"bait_input\": \"null\", \"vc_bool\": \"\\\"False\\\"\", \"inter_input\": \"null\", \"go_bool\": \"\\\"False\\\"\", \"prey_input\": \"null\", \"vc_num\": \"\\\"1\\\"\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "54cce418-89df-402b-8312-82f18e8170fc", 
+            "uuid": "ad073a92-a97a-4c41-80bc-5b1ba5f4bd2a", 
             "workflow_outputs": []
         }, 
         "2": {
@@ -99,8 +99,8 @@
                 }
             ], 
             "position": {
-                "left": 593.5333251953125, 
-                "top": 850.9000244140625
+                "left": 403.5, 
+                "top": 447.96875
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -108,45 +108,13 @@
             "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"fasta_db\": \"null\", \"species\": \"\\\"HUMAN\\\"\", \"__page__\": 0}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "d82f13a5-2d11-43d4-aec5-151f914c7833", 
+            "uuid": "b3b57899-1f29-4273-9467-a3658b78348a", 
             "workflow_outputs": []
         }, 
         "3": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/saint_protein_interactions/SAINT_ProteinInteractions/1.0.0", 
-            "id": 3, 
-            "input_connections": {
-                "input": {
-                    "id": 1, 
-                    "output_name": "SAINT_output"
-                }
-            }, 
-            "inputs": [], 
-            "label": null, 
-            "name": "SAINT Output to Protein Interaction File", 
-            "outputs": [
-                {
-                    "name": "Cytoscape_File", 
-                    "type": "sif"
-                }
-            ], 
-            "position": {
-                "left": 891.5333251953125, 
-                "top": 1079.9000244140625
-            }, 
-            "post_job_actions": {}, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/bornea/saint_protein_interactions/SAINT_ProteinInteractions/1.0.0", 
-            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"CPDB_cutoff\": \"\\\"0.8\\\"\", \"saint_cutoff\": \"\\\"0.8\\\"\", \"input\": \"null\", \"species\": \"\\\"Human\\\"\"}", 
-            "tool_version": "1.0.0", 
-            "type": "tool", 
-            "uuid": "1c566a34-e815-43e4-92d1-cdf8c995293e", 
-            "workflow_outputs": []
-        }, 
-        "4": {
-            "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/prohits_dotplot_generator/ProHits_DotPlot_Generator/1.0.0", 
-            "id": 4, 
+            "id": 3, 
             "input_connections": {
                 "saint_file": {
                     "id": 1, 
@@ -175,8 +143,8 @@
                 }
             ], 
             "position": {
-                "left": 891.5333251953125, 
-                "top": 1405.9000244140625
+                "left": 664.015625, 
+                "top": 377.984375
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -184,101 +152,13 @@
             "tool_state": "{\"__page__\": 0, \"spec_max\": \"\\\"50\\\"\", \"FDR2\": \"\\\"0.025\\\"\", \"__rerun_remap_job_id__\": null, \"saint_file\": \"null\", \"FDR1\": \"\\\"0.01\\\"\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "15a5834f-7eff-44b9-8635-90d0deef9b74", 
+            "uuid": "4260ca6c-3cff-4d13-a76f-a01400f29a88", 
             "workflow_outputs": []
         }, 
-        "5": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/apostl_static_bubblegraph_generator/APOSTL_Static_Bubblegraph_Generator/1.0.0", 
-            "id": 5, 
-            "input_connections": {
-                "crapome": {
-                    "id": 2, 
-                    "output_name": "CrapomeFile"
-                }, 
-                "inter": {
-                    "id": 0, 
-                    "output_name": "Inter_file"
-                }, 
-                "list_file": {
-                    "id": 1, 
-                    "output_name": "SAINT_output"
-                }, 
-                "prey_file": {
-                    "id": 0, 
-                    "output_name": "Prey_file"
-                }
-            }, 
-            "inputs": [], 
-            "label": null, 
-            "name": "APOSTL Static Bubblegraph Generator", 
-            "outputs": [
-                {
-                    "name": "outfile", 
-                    "type": "png"
-                }
-            ], 
-            "position": {
-                "left": 891.5333251953125, 
-                "top": 655.9000244140625
-            }, 
-            "post_job_actions": {}, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/bornea/apostl_static_bubblegraph_generator/APOSTL_Static_Bubblegraph_Generator/1.0.0", 
-            "tool_state": "{\"__page__\": 0, \"crapome\": \"null\", \"outline_color\": \"\\\"black\\\"\", \"filt_color\": \"\\\"Amaranth\\\"\", \"color\": \"\\\"crapome\\\"\", \"bubble_color\": \"\\\"AirForceblue\\\"\", \"SS_cutoff\": \"\\\"0.8\\\"\", \"FC_cutoff\": \"\\\"0\\\"\", \"label\": \"\\\"all\\\"\", \"prey_file\": \"null\", \"list_file\": \"null\", \"theme\": \"\\\"Default\\\"\", \"__rerun_remap_job_id__\": null, \"size_id\": \"\\\"log2FoldChange\\\"\", \"main_x\": \"\\\"lnNSAF\\\"\", \"main_y\": \"\\\"SaintScore\\\"\", \"NS_cutoff\": \"\\\"0\\\"\", \"inter\": \"null\", \"label_color\": \"\\\"black\\\"\"}", 
-            "tool_version": "1.0.0", 
-            "type": "tool", 
-            "uuid": "c6c97f04-58ba-437c-8d12-7ad751b0f383", 
-            "workflow_outputs": []
-        }, 
-        "6": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bornea/nsaf_scoring/nsaf_scoring/1.0.0", 
-            "id": 6, 
-            "input_connections": {
-                "crapome": {
-                    "id": 2, 
-                    "output_name": "CrapomeFile"
-                }, 
-                "inter_file": {
-                    "id": 0, 
-                    "output_name": "Inter_file"
-                }, 
-                "list_file": {
-                    "id": 1, 
-                    "output_name": "SAINT_output"
-                }, 
-                "prey_file": {
-                    "id": 0, 
-                    "output_name": "Prey_file"
-                }
-            }, 
-            "inputs": [], 
-            "label": null, 
-            "name": "NSAF Scoring Table", 
-            "outputs": [
-                {
-                    "name": "outfile", 
-                    "type": "txt"
-                }
-            ], 
-            "position": {
-                "left": 891.5333251953125, 
-                "top": 867.9000244140625
-            }, 
-            "post_job_actions": {}, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/bornea/nsaf_scoring/nsaf_scoring/1.0.0", 
-            "tool_state": "{\"inter_file\": \"null\", \"crapome\": \"null\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"prey_file\": \"null\", \"list_file\": \"null\"}", 
-            "tool_version": "1.0.0", 
-            "type": "tool", 
-            "uuid": "f95c3137-66cf-4bd1-b184-ddcb3c763d18", 
-            "workflow_outputs": []
-        }, 
-        "7": {
+        "4": {
             "annotation": "", 
             "content_id": "APOSTL_Interactive_Analysis", 
-            "id": 7, 
+            "id": 4, 
             "input_connections": {
                 "crapome": {
                     "id": 2, 
@@ -307,8 +187,8 @@
                 }
             ], 
             "position": {
-                "left": 891.5333251953125, 
-                "top": 1210.9000244140625
+                "left": 675.515625, 
+                "top": 158.78125
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -316,9 +196,9 @@
             "tool_state": "{\"inter_file\": \"null\", \"crapome\": \"null\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"prey_file\": \"null\", \"list_file\": \"null\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "86302cf2-98a5-4fed-b6b7-2e81ea916c68", 
+            "uuid": "dcba5b2e-0b0c-44bd-8f07-947f689f419f", 
             "workflow_outputs": []
         }
     }, 
-    "uuid": "199cd193-2b56-4273-9a32-b0ea3f0169f3"
+    "uuid": "6d8283b5-3b4e-43b3-9fd4-45cdef9d02d8"
 }
