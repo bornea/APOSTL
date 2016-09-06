@@ -14,7 +14,7 @@ shinyUI(fluidPage(
                          value=round(min(main.data[(colnames(main.data)=="log2(FoldChange)")]),0),
                          step=0.1
                          ),
-             numberInput("NSAFscore", "NSAF Score Cutoff", 
+             numericInput("NSAFscore", "NSAF Score Cutoff", 
                          min=min(main.data[(colnames(main.data)=="NSAF Score")]),
                          max=max(main.data[(colnames(main.data)=="NSAF Score")]), 
                          value=min(main.data[(colnames(main.data)=="NSAF Score")])
