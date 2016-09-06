@@ -113,11 +113,11 @@ To use this function when using the preprocessing tool select **No** for Are You
 
 ### 4) Select a Workflow
 
-The Galaxy portion of APOSTL is a number of individual tools strung together using workflows. To access the pre-made workflows available on this Galaxy instance, select the <span style="font-weight: bold;">Shared Data</span> dropdown followed by <span style="font-weight: bold;">Published Workflows</span> on the top menu.
+The Galaxy portion of APOSTL is a number of individual tools strung together using workflows. To access the pre-made workflows available on the http://apostl.moffitt.org Galaxy instance, select the <span style="font-weight: bold;">Shared Data</span> dropdown followed by <span style="font-weight: bold;">Published Workflows</span> on the top menu.
 
 ![shared_wrkfl](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/shared_wrkfl.png)
 
-You will be able to select from two pre-made workflows, depending on the type of data you are using (MaxQuant or Scaffold).
+Select a pre-made workflow based on the type of data you are using (MaxQuant , Scaffold, mzIdentML, or PeptideShaker).
 
 ![](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/wkflws.png)
 
@@ -127,11 +127,11 @@ Alternatively, you can click on the workflow name directly to view each step and
 
 ### 5) Importing Workflows
 
-If the user is not using apostl.moffitt.org or the provided docker image the workflows will need to be imported into the galaxy instance. This can be accomplished by selecting **Workflow** and the **Upload or import workflow.**
+If the user is not using http://apostl.moffitt.org or the provided docker image, then the workflows will need to be imported into the galaxy instance. This can be accomplished by selecting **Workflow** and the **Upload or import workflow.**
 
 ![](https://raw.githubusercontent.com/bornea/APOSTL/master/wk_images/uploadwrkflw.png)
 
-The two workflows can be found at [Github Workflows](https://github.com/bornea/APOSTL/tree/master/Workflows) once dowloaded to your local machine they can be imported into any galaxy instance which has APOSTL tools installed.
+The workflows can be found at [Github Workflows](https://github.com/bornea/APOSTL/tree/master/Workflows) once dowloaded to your local machine they can be imported into any galaxy instance which has APOSTL tools installed.
 
 ### 6) Using a Workflow
 
