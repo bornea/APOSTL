@@ -1,8 +1,8 @@
 {
     "a_galaxy_workflow": "true", 
-    "annotation": "SpC_Scaffold", 
+    "annotation": "MaxQuant", 
     "format-version": "0.1", 
-    "name": "APOSTL_MS1", 
+    "name": "APOSTL_MS1_MaxQuant", 
     "steps": {
         "0": {
             "annotation": "", 
