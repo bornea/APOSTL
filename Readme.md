@@ -33,7 +33,7 @@ chmod -R 777 /srv/shiny-server
 cp -r ~/APOSTL/shiny_bubble /srv/shiny-server
 ```
 
-APOSTL uses a Python wrapper to run the Shiny analysis. The Python wrapper `APOSTL_Interactive_Analysis.py` and tool definition XML `APOSTL_Interactive_Analysis.xml` need to be moved into Galaxy `tools` directory. An entry needs to made in the `galaxy/config/tool_conf.xml` file so that Galaxy is aware of the tool. It may also be necessary to change the run_as variable in the `/etc/shiny-server/shiny-server.conf` file to the user that runs galaxy. 
+APOSTL uses a Python wrapper to run the Shiny analysis. The Python wrapper `APOSTL_Interactive_Analysis.py` and tool definition XML `APOSTL_Interactive_Analysis.xml` need to be moved into Galaxy `tools` directory. An entry needs to made in the `galaxy/config/tool_conf.xml` file so that Galaxy is aware of the tool. It may also be necessary to change the run_as variable in the `/etc/shiny-server/shiny-server.conf` file to the user account that runs Galaxy. 
 > **Note:** For help with adding Galaxy tools, see the [Galaxy Add Tool Tutorial](https://wiki.galaxyproject.org/Admin/Tools/AddToolTutorial).
 
 The Shiny Server will listen on port 3838 by default. Please navigate to the bottom of  `APOSTL_Interactive_Analysis.py` and make sure the line beginning with `x.write` contains an http:// address that reflects your network configuration. This provides an HTML link within Galaxy for a user to click on which then brings them to the Shiny interface with their analysis imported from Galaxy.
