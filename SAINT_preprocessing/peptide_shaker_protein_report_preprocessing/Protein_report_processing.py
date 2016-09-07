@@ -4,52 +4,13 @@ from time import sleep
 
 files = sys.argv[1] # read in a string of file names seperated by ", "
 # e.g. "Default_Protein_Report.txt, Default_Protein_Report_2.txt"
-#bait = sys.argv[2] # SAINT formatted bait file
+bait = sys.argv[2] # SAINT formatted bait file
 # still need a way to match files to bait identifiers
 # or they can just be required to be put in the order of the bait file
 quant_type = sys.argv[3] # what metric to use for quantification
 # "#Validated Peptides", "#Peptides", "#Unique", "#Validated PSMs", "#PSMs"
 db = sys.argv[4] # fasta database used in SearchGUI and PeptideShaker
 prey = sys.argv[5]
-tool_path = sys.argv[7]
-if db == "None":
-    db = str(tool_path)  + "/SwissProt_HUMAN_2015_12.fasta"
-make_bait = sys.argv[6]
-bait_bool = sys.argv[8]
-
-def bait_create(baits, infile):
-    # Verifies the Baits are valid in the Scaffold file and writes the Bait.txt.
-    baits = make_bait.split()
-    i = 0
-    bait_file_tmp = open("bait.txt", "w")
-    order = []
-    bait_cache = []
-    while i < len(baits):
-        if baits[i+2] == "true":
-            T_C = "C"
-        else:
-            T_C = "T"
-        bait_line = baits[i] + "\t" + baits[i+1] + "\t" + T_C + "\n"
-        bait_cache.append(str(bait_line))
-        i = i + 3
-
-    for cache_line in bait_cache:
-        bait_file_tmp.write(cache_line)
-
-    bait_file_tmp.close()
-
-if bait_bool == 'false':
-    bait_create(make_bait, infile)
-    bait = "bait.txt"
-else:
-    bait_temp_file = open(sys.argv[9], 'r')
-    bait_cache = bait_temp_file.readlines()
-    bait_file_tmp = open("bait.txt", "wr")
-    for cache_line in bait_cache:
-        bait_file_tmp.write(cache_line)
-    bait_file_tmp.close()
-    bait = "bait.txt"
-
 class ReturnValue1(object):
     def __init__(self, sequence, gene):
         self.seqlength = sequence
@@ -91,7 +52,6 @@ def get_info(uniprot_accession_in,fasta_db):
     db_len = len(data_lines)
     seqlength = 0
     count = 0
-    last_line = data_lines[-1]
     for data_line in data_lines:
         if ">sp" in data_line:
             namer = data_line.split("|")[2]
@@ -106,8 +66,6 @@ def get_info(uniprot_accession_in,fasta_db):
                 while ">sp" not in data_lines[match]:
                     if match <= db_len:
                         seqlength = seqlength + len(data_lines[match].strip())
-                        if data_lines[match] == last_line:
-                            break
                         match = match + 1
                     else:
                         break
@@ -124,8 +82,6 @@ def get_info(uniprot_accession_in,fasta_db):
             while ">sp" not in data_lines[match]:
                 if match <= db_len:
                     seqlength = seqlength + len(data_lines[match].strip())
-                    if data_lines[match] == last_line:
-                        break
                     match = match + 1
                 else:
                     break
@@ -138,7 +94,7 @@ def get_info(uniprot_accession_in,fasta_db):
         genename = 'NA'
         return ReturnValue1(seqlength, genename)
 def concatenate_files(file_list_string, bait_file):
-    file_list = file_list_string.split(",")
+    file_list = file_list_string.split(", ")
     bait = read_tab(bait_file)
     master_table = []
     header_check = 0
@@ -173,8 +129,6 @@ def make_inter(master_table,quant_type):
     replicate_index = master_table[0].index("Replicate")
     grouping_index = master_table[0].index("Bait_Grouping")
     accession_index = master_table[0].index("Main Accession")
-    quant_type = quant_type.replace("_", " ")
-    quant_type = r"#" + quant_type
     Quant_index = master_table[0].index(quant_type)
     inter_file = ""
     for i in master_table[1:]:
@@ -194,8 +148,7 @@ def make_prey(concat_table,fasta_db):
     accession_index = input_data[0].index("Main Accession")
     proteins = []
     for i in input_data[1:]:
-        if i[accession_index] not in proteins:
-            proteins.append(i[accession_index])
+        proteins.append(i[accession_index])
     output_file = open("prey.txt", 'w')
     start = 0
     end = len(proteins)
@@ -213,10 +166,5 @@ def make_prey(concat_table,fasta_db):
     output_file.close()
 data = concatenate_files(files,bait)
 make_inter(data, quant_type)
-if prey == "true":
+if prey == "Y":
     make_prey(data,db)
-
-os.rename("bait.txt", sys.argv[2])
-os.rename("inter.txt", sys.argv[10])
-if str(prey) != "None": 
-    os.rename("prey.txt", sys.argv[11])
