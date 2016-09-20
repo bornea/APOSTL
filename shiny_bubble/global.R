@@ -4,7 +4,7 @@
 ################################## Dependencies ###################################################
 library(shiny); library(dplyr); library(tidyr); library(ggplot2); library("devtools")
 library(visNetwork); library(jsonlite); library(clusterProfiler); library(org.Hs.eg.db)
-library(mygene); library(httr); library(ggrepel); library(shinyjs),library(rcytoscapejs)
+library(mygene); library(httr); library(ggrepel); library(shinyjs); library(rcytoscapejs)
 #devtools::install_github("cytoscape/r-cytoscape.js"); # need for dependencies
 #install.packages('ggrepel',type='source') # need for dependencies
 
