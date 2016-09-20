@@ -43,6 +43,7 @@ merge_files <- function(SAINT_DF, prey_DF, crapome=FALSE) {
     DF1$Num.of.Exp <- sub("^$", "0 / 1", DF1$Num.of.Exp ) #replace blank values with 0 / 1
     DF <- DF1 %>% separate(Num.of.Exp, c("NumExp", "TotalExp"), " / ") #split into 2 columns
     DF$CrapomePCT <- round(100 - (as.integer(DF$NumExp) / as.integer(DF$TotalExp) * 100), digits=2) #calculate crapome %
+    DF <- DF %>% replace_na(list(CrapomePCT = 100))
     
   }
   DF$FoldChange <- round(log2(DF$FoldChange),digits=2)
@@ -54,7 +55,6 @@ merge_files <- function(SAINT_DF, prey_DF, crapome=FALSE) {
   return(by_bait[!duplicated(by_bait),])
 }
 working <- as.data.frame(merge_files("EGFR_list.txt", "EGFR_prey.txt", "EGFR_crap.txt"))
-working <- working %>% replace_na(list(CrapomePCT = 100))
 inter_df <- read.table("inter.txt", sep='\t', header=FALSE)
 working$temp <- strsplit(as.character(working$ctrlCounts),"[|]")
 cnt <- 0
