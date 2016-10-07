@@ -198,3 +198,8 @@ APOSTL has been tested with MaxQuant version 1.2.2.5 as well as Scaffold version
 3.  Knight JD, Liu G, Zhang JP, Pasculescu A, Choi H, Gingras AC. A web-tool for visualizing quantitative protein-protein interaction data. _Proteomics_. 2015 Jan 19
 
 4. Vaudel M, Burkhart JM, Zahedi RP, Oveland E, Berven FS,Sickmann A,  Martens L, Barsnes H. PeptideShaker enables reanalysis of MS-derived proteomics data sets. _Nature Biotechnology_. 2015
+
+## Please Cite
+
+1. Kuenzi, B.M., Borne, A.L., Li, J., Haura, E.B., Eschrich, S.A., Koomen, J.M., Rix, U., and Stewart, P.A. (2016). APOSTL: An Interactive Galaxy Pipeline for Reproducible Analysis of Affinity Proteomics Data. J. Proteome Res.
+  DOI:https://doi.org/10.1021/acs.jproteome.6b00660
