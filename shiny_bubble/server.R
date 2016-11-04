@@ -3,13 +3,12 @@
 # Author: Brent Kuenzi
 ################################################################################
 shinyServer(function(input, output, session) {  
-  
+  session$onSessionEnded(stopApp)
   
 ################################################################################
 ############################ Plotting and Analyses #############################
 ################################################################################
-  
-######################### Cytoscape Network ####################################  
+################################################################################  
   mynet <- reactive({
     str_x=paste0(input$main.x)
     str_y=paste0(input$main.y)
@@ -84,7 +83,7 @@ shinyServer(function(input, output, session) {
     node.data$color[node.data$name %in% cytoscape$Bait] <- "#FF0000"
     network <- toJSON(as.list(createCytoscapeJsNetwork(node.data, edge.data)))
   })
-############################ SIF  Cytoscape Network ###########################
+  ############################ SIF  Cytoscape Network ###########################
 jsnetwork_sif <- reactive({
   str_cutoff= paste0(input$main.cutoff)
   main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
@@ -196,7 +195,7 @@ repl_corr <- reactive({
   p <- ggplot(x=x1,y=y1) + geom_point(aes(x=x1,y=y1),size=rel(5),pch=21,color="black",fill=input$corr.color) + 
        ylab(input$corr_y) + xlab(input$corr_x) + geom_smooth(aes(x=x1,y=y1),method="lm",color="black",linetype="dashed")
   p <- p + geom_label(aes(label=paste0("R-squared = ",round(summary(lm(y1~x1))$r.squared,2)),
-                     x=max(x1)*0.1,y=max(y1)*0.75),size=rel(5), fontface="bold",
+                     x=max(x1)*input$Rpos[1],y=max(y1)*input$Rpos[2]),size=rel(5), fontface="bold",
                      label.padding=unit(0.5,"lines"))}
   if(input$corr_log == "Yes"){
     x2 <- log10(x1); y2 <- log10(y1)
@@ -204,8 +203,8 @@ repl_corr <- reactive({
     p <- ggplot(x=x2,y=y2) + geom_point(aes(x=x2,y=y2),size=rel(5),pch=21,color="black",fill=input$corr.color) + 
       ylab(input$corr_y) + xlab(input$corr_x) + geom_smooth(aes(x=x2,y=y2),method="lm",color="black",linetype="dashed")
     p <- p + geom_label(aes(label=paste0("R-squared = ",round(summary(lm(y2~x2))$r.squared,2)),
-                            x=max(x2)*0.2,y=max(y2)*0.8),size=rel(5), fontface="bold",
-                        label.padding=unit(0.5,"lines"))}
+                      x=max(x2)*input$Rpos[1],y=max(y2)*input$Rpos[2]),size=rel(5), fontface="bold",
+                      label.padding=unit(0.5,"lines"))}
   if(input$corr_theme== "classic") {p <- p + theme_classic()}
   if(input$corr_theme== "b/w") {p <- p + theme_bw()}
   if(input$corr_theme== "minimal") {p <- p + theme_minimal()}
@@ -226,7 +225,7 @@ prot_box <- reactive({
   protein <- unique(protein$Prey)
   prot_filt <- inter_df[protein == inter_df$V3,]
   p <- ggplot(prot_filt,aes(x=V2,y=V4)) + geom_boxplot(fill=input$box.color) + 
-    ylab("Abundance") + xlab("")
+    ylab("Abundance") + xlab("")+labs(title=input$prot.box)
   if(input$prot_log == "Yes"){
     prot_filt$V4 <- log10(prot_filt$V4)
     prot_filt$V4[!is.finite(prot_filt$V4)] <- 0
@@ -243,7 +242,8 @@ prot_box <- reactive({
                  axis.text.y = element_text(size=rel(1.5),face="bold"),
                  strip.text.x = element_text(size=rel(1.5),face="bold"),
                  legend.text = element_text(face="bold"),
-                 legend.title = element_text(face="bold"))
+                 legend.title = element_text(face="bold"),
+                 plot.title = element_text(size=rel(1.5),face="bold"))
   })
 ############################ Display Filtered SAINT table #######################
 table_display <- reactive({
@@ -268,7 +268,7 @@ pathway_graph <- eventReactive(input$KEGGbutton,{
   for(i in 1:length(preys)){
     EG_IDs[i] <- mygene::query(preys[i])$hits$entrezgene[1]
   }
-  
+
   pathways <- enrichKEGG(EG_IDs, 
                          organism = paste0(input$path_org), 
                          pvalueCutoff = as.numeric(paste0(input$path_pval)),
@@ -290,16 +290,15 @@ pathway_graph <- eventReactive(input$KEGGbutton,{
   if(input$KEGG_theme== "minimal") {p <- p + theme_minimal()}
   if(input$KEGG_theme== "dark") {p <- p + theme_dark()}
   if(input$KEGG_theme== "linedraw") {p <- p + theme_linedraw()}
-  
   p <- p + xlab("")+theme(axis.title.y = element_text(size=rel(1.5),face="bold"),
-                          axis.title.x = element_text(size=rel(1.5),face="bold"),
-                          axis.text.x = element_text(size=rel(1.5),face="bold"),
-                          axis.text.y = element_text(size=rel(1.5),face="bold"),
-                          strip.text.x = element_text(size=rel(1.5),face="bold"),
-                          legend.text = element_text(face="bold"),
-                          legend.title = element_text(face="bold"))
+                 axis.title.x = element_text(size=rel(1.5),face="bold"),
+                 axis.text.x = element_text(size=rel(1.5),face="bold"),
+                 axis.text.y = element_text(size=rel(1.5),face="bold"),
+                 strip.text.x = element_text(size=rel(1.5),face="bold"),
+                 legend.text = element_text(face="bold"),
+                 legend.title = element_text(face="bold"))
+  p
 })
-
 ############################ KEGG Pathway as Table #############################
 pathway_table <- reactive({
   str_val <- input$path_x
@@ -335,14 +334,14 @@ ontology_graph <- eventReactive(input$GObutton,{
   for(i in 1:length(preys)){
     EG_IDs[i] <- mygene::query(preys[i])$hits$entrezgene[1]
   }
-  
+
   
   pathways <- enrichGO(EG_IDs, 
-                       organism = paste0(input$path_org),
+                         organism = paste0(input$path_org),
                        pvalueCutoff = as.numeric(paste0(input$path_pval)),
-                       pAdjustMethod = paste0(input$path_adj),
-                       readable=TRUE,
-                       ont = input$GO_ont)
+                         pAdjustMethod = paste0(input$path_adj),
+                         readable=TRUE,
+                        ont = input$GO_ont)
   pathways <- as.data.frame(summary(pathways))
   pathways$x <- factor(pathways$Description,levels=rev(pathways$Description))
   if(input$top10GO == TRUE) {pathways <- pathways[1:10,]}
@@ -360,12 +359,12 @@ ontology_graph <- eventReactive(input$GObutton,{
   if(input$GO_theme== "linedraw") {p <- p + theme_linedraw()}
   
   p <- p + xlab("")+theme(axis.title.y = element_text(size=rel(1.5),face="bold"),
-                          axis.title.x = element_text(size=rel(1.5),face="bold"),
-                          axis.text.x = element_text(size=rel(1.5),face="bold"),
-                          axis.text.y = element_text(size=rel(1.5),face="bold"),
-                          strip.text.x = element_text(size=rel(1.5),face="bold"),
-                          legend.text = element_text(face="bold"),
-                          legend.title = element_text(face="bold"))
+                 axis.title.x = element_text(size=rel(1.5),face="bold"),
+                 axis.text.x = element_text(size=rel(1.5),face="bold"),
+                 axis.text.y = element_text(size=rel(1.5),face="bold"),
+                 strip.text.x = element_text(size=rel(1.5),face="bold"),
+                 legend.text = element_text(face="bold"),
+                 legend.title = element_text(face="bold"))
 })
 ############################ GeneGO as Table ###################################
 ontology_table <- reactive({
@@ -389,6 +388,43 @@ ontology_table <- reactive({
                        ont = input$GO_ont)
   summary(pathways)
   })
+  
+  ############################ Bait to Bait Comparison ###################################
+  # Calculates overlap between all different baits
+  # displays as a heatmap
+  bait2bait <- reactive({
+    str_val <- input$path_x
+    str_cutoff= paste0(input$main.cutoff)
+    main.data2 <- main.data[!(main.data$PreyGene %in% input$main.exclude),]
+    main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="log2(FoldChange)")] >= input$main.change)
+    main.data2 <- subset(main.data2, main.data2[(colnames(main.data2)=="NSAF Score")] >= input$NSAFscore)
+    table <- subset(main.data2, SaintScore>=as.numeric(str_cutoff))
+    baits <- unique(as.character(table$Bait))
+    b2b <- data.frame()
+    for(i in 1:length(baits)){
+      overlap <- c()
+      for(j in 1:length(baits)){
+        comp1 <- subset(table,Bait==baits[i])
+        comp2 <- subset(table,Bait==baits[j])
+        overlap <- c(overlap,length(intersect(comp1$PreyGene,comp2$PreyGene)))
+      }
+      if(dim(b2b)[1] != 0){
+        b2b[,i] <- overlap
+      }
+      if(dim(b2b)[1] == 0){
+        b2b <- data.frame(overlap)
+      }
+    }
+    colnames(b2b) <- baits
+    row.names(b2b) <- baits
+    b2b2 <- as.matrix(b2b)
+    my_palette <- colorRampPalette(c(input$lowcol, input$highcol))(n = max(b2b))
+    heatmap.2(b2b2,col=my_palette,
+              dendrogram="both",trace="none",margins=input$margin)
+  })
+  # Render SAINT Table
+  output$baittable=renderPlot({
+    bait2bait()})
 
 ###############################################################################
 ############################ Rendering and Saving Files #######################
@@ -415,12 +451,11 @@ ontology_table <- reactive({
     jsnetwork()
   })
 # Render SAINT Table
-  output$table=renderDataTable({
-    table_display()
-  })
+  output$table=renderDataTable(
+    table_display(), options = list(scrollX = TRUE))
 # Render Pathway Analysis Graph
   output$pathPlot=renderPlot({
-  hide(id = "loading-content-KEGG",time=0.01)
+    hide(id = "loading-content-KEGG",time=0.01)
   print(pathway_graph())
   hide(id = "loading-content-KEGG")
   })
@@ -467,49 +502,62 @@ output$main.down = downloadHandler(filename = function() {
   paste(Sys.Date(), "_bubbleplot",input$main.file,sep='')},
   content = function(file){
     p=bubblebeam()
-    if(input$main.file == ".png"){png(file); print(p); dev.off()}
-    if(input$main.file == ".pdf"){pdf(file); print(p); dev.off()}
-    if(input$main.file == ".tif"){tiff(file); print(p); dev.off()}
-    if(input$main.file == ".jpg"){jpeg(file); print(p); dev.off()}
-    if(input$main.file == ".svg"){svg(file); print(p); dev.off()}
-    if(input$main.file == ".eps"){postscript(file); print(p); dev.off()}
+    width  <- session$clientData$output_bubbles_width
+    height <- session$clientData$output_bubbles_height
+    pixelratio <- session$clientData$pixelratio
+    if(input$main.file == ".png"){png(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$main.file == ".pdf"){pdf(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$main.file == ".tif"){tiff(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$main.file == ".jpg"){jpeg(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$main.file == ".svg"){svg(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$main.file == ".eps"){postscript(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
     })
 # Download Density Plot
 output$hist.down = downloadHandler(filename = function() {
   paste(Sys.Date(), "_density_plot",input$hist.file,sep='')},
   content = function(file){
     p=hist_plot()
-    if(input$hist.file == ".png"){png(file); print(p); dev.off()}
-    if(input$hist.file == ".pdf"){pdf(file); print(p); dev.off()}
-    if(input$hist.file == ".tif"){tiff(file); print(p); dev.off()}
-    if(input$hist.file == ".jpg"){jpeg(file); print(p); dev.off()}
+    width  <- session$clientData$output_hist_width
+    height <- session$clientData$output_hist_height
+    pixelratio <- session$clientData$pixelratio
+    if(input$hist.file == ".png"){png(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$hist.file == ".pdf"){pdf(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$hist.file == ".tif"){tiff(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$hist.file == ".jpg"){jpeg(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
     })
 # Download KEGG Pathway Graph
 output$pathway.down = downloadHandler(filename = function() {
   paste(Sys.Date(), "_KEGG",input$pathway.file,sep='')},
   content = function(file){
     p=pathway_graph()
-    if(input$pathway.file == ".png"){png(file); print(p); dev.off()}
-    if(input$pathway.file == ".pdf"){pdf(file); print(p); dev.off()}
-    if(input$pathway.file == ".tif"){tiff(file); print(p); dev.off()}
-    if(input$pathway.file == ".jpg"){jpeg(file); print(p); dev.off()}
-    if(input$pathway.file == ".svg"){svg(file); print(p); dev.off()}
-    if(input$pathway.file == ".eps"){postscript(file); print(p); dev.off()}
+    width  <- session$clientData$output_pathPlot_width
+    height <- session$clientData$output_pathPlot_height
+    pixelratio <- session$clientData$pixelratio
+    if(input$pathway.file == ".png"){png(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$pathway.file == ".pdf"){pdf(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$pathway.file == ".tif"){tiff(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$pathway.file == ".jpg"){jpeg(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$pathway.file == ".svg"){svg(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$pathway.file == ".eps"){postscript(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
     })
 # Download Gene Ontology Graph
 output$ontology.down = downloadHandler(filename = function() {
   paste(Sys.Date(), "_GO",input$ontology.file,sep='')},
   content = function(file){
     p=ontology_graph()
-    if(input$ontology.file == ".png"){png(file); print(p); dev.off()}
-    if(input$ontology.file == ".pdf"){pdf(file); print(p); dev.off()}
-    if(input$ontology.file == ".tif"){tiff(file); print(p); dev.off()}
-    if(input$ontology.file == ".jpg"){jpeg(file); print(p); dev.off()}
-    if(input$ontology.file == ".svg"){svg(file); print(p); dev.off()}
-    if(input$ontology.file == ".eps"){postscript(file); print(p); dev.off()}
+    width  <- session$clientData$output_ontPlot_width
+    height <- session$clientData$output_ontPlot_height
+    pixelratio <- session$clientData$pixelratio
+    if(input$ontology.file == ".png"){png(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$ontology.file == ".pdf"){pdf(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$ontology.file == ".tif"){tiff(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$ontology.file == ".jpg"){jpeg(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$ontology.file == ".svg"){svg(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$ontology.file == ".eps"){postscript(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
     })
 
 ## Save cytoscape network image
+
 # Critical assistance from Augustin Luna (Memorial Sloan Kettering) to get this working  
 observeEvent(input$saveImage, {
   session$sendCustomMessage(type="saveImage", message="NULL")
@@ -525,11 +573,14 @@ output$correlation.down = downloadHandler(filename = function() {
   paste(Sys.Date(),"_",input$corr_y,"~",input$corr_x,input$correlation.file,sep='')},
   content = function(file){
     p=repl_corr()
-    if(input$correlation.file == ".png"){png(file); print(p); dev.off()}
-    if(input$correlation.file == ".pdf"){pdf(file); print(p); dev.off()}
-    if(input$correlation.file == ".tif"){tiff(file); print(p); dev.off()}
-    if(input$correlation.file == ".jpg"){jpeg(file); print(p); dev.off()}
-    if(input$correlation.file == ".svg"){svg(file); print(p); dev.off()}
+    width  <- session$clientData$output_corr_width
+    height <- session$clientData$output_corr_height
+    pixelratio <- session$clientData$pixelratio
+    if(input$correlation.file == ".png"){png(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$correlation.file == ".pdf"){pdf(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$correlation.file == ".tif"){tiff(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$correlation.file == ".jpg"){jpeg(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$correlation.file == ".svg"){svg(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
     if(input$correlation.file == ".eps"){postscript(file); print(p); dev.off()}
     })
     #ggsave(file,plot = p,dpi=600)})
@@ -539,12 +590,15 @@ output$box.down = downloadHandler(filename = function() {
   paste(Sys.Date(),input$prot.box,"boxplot",input$box.file,sep='_')},
   content = function(file){
     p=prot_box()
-    if(input$box.file == ".png"){png(file); print(p); dev.off()}
-    if(input$box.file == ".pdf"){pdf(file); print(p); dev.off()}
-    if(input$box.file == ".tif"){tiff(file); print(p); dev.off()}
-    if(input$box.file == ".jpg"){jpeg(file); print(p); dev.off()}
-    if(input$box.file == ".svg"){svg(file); print(p); dev.off()}
-    if(input$box.file == ".eps"){postscript(file); print(p); dev.off()}
+    width  <- session$clientData$output_box_width
+    height <- session$clientData$output_box_height
+    pixelratio <- session$clientData$pixelratio
+    if(input$box.file == ".png"){png(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$box.file == ".pdf"){pdf(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$box.file == ".tif"){tiff(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$box.file == ".jpg"){jpeg(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$box.file == ".svg"){svg(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
+    if(input$box.file == ".eps"){postscript(file,width=width*pixelratio,height=height*pixelratio); print(p); dev.off()}
     })
 # Save Parameters
 output$param = downloadHandler(filename = function() {
