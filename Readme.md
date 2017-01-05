@@ -206,5 +206,5 @@ APOSTL has been tested with MaxQuant version 1.2.2.5 as well as Scaffold version
 
 ## Please Cite
 
-1. Kuenzi, B.M., Borne, A.L., Li, J., Haura, E.B., Eschrich, S.A., Koomen, J.M., Rix, U., and Stewart, P.A. (2016). APOSTL: An Interactive Galaxy Pipeline for Reproducible Analysis of Affinity Proteomics Data. J. Proteome Res.
+1. Kuenzi, B.M., Borne, A.L., Li, J., Haura, E.B., Eschrich, S.A., Koomen, J.M., Rix, U., and Stewart, P.A. (2016). APOSTL: An Interactive Galaxy Pipeline for Reproducible Analysis of Affinity Proteomics Data. J. Proteome Res., 2016, 15 (12), pp 4747–4754
   DOI:https://doi.org/10.1021/acs.jproteome.6b00660
