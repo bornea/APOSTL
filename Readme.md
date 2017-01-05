@@ -181,7 +181,8 @@ APOSTL has been tested on a number of datasets and species. The most common erro
 If you are an Galaxy administrator having problems with R (e.g., messages such as `Error in library(...) : there is no package called '...'`), then packages are likely not being automatically installed as intended. One solution is to manually install the required R packages. Open an R session (make sure it's the same R used by Galaxy), and use the following commands to install the required packages:
 
 ```R
-install.packages(c("dplyr", "tidyr", "httr", "jsonlite", "colorRamps", "gplots", "ggrepel", "ggplot2", "data.table", "stringr", "VennDiagram", "devtools", "visNetwork", "shiny", "shinyjs"), repos = "http://cran.us.r-project.org") 
+install.packages(c("dplyr", "tidyr", "httr", "jsonlite", "colorRamps", "gplots", "ggrepel", "ggplot2", "data.table", "stringr", "VennDiagram", "devtools", "visNetwork", "shiny", "shinyjs"), repos = "http://cran.us.r-project.org")
+library("devtools")
 devtools::install_github("cytoscape/r-cytoscape.js")
 source("https://bioconductor.org/biocLite.R") 
 biocLite(c("mygene", "affy", "clusterProfiler", "org.Hs.eg.db", "mzID"))
