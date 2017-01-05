@@ -181,9 +181,10 @@ APOSTL has been tested on a number of datasets and species. The most common erro
 If you are an Galaxy administrator having problems with R (e.g., messages such as `Error in library(...) : there is no package called '...'`), then packages are likely not being automatically installed as intended. One solution is to manually install the required R packages. Open an R session (make sure it's the same R used by Galaxy), and use the following commands to install the required packages:
 
 ```R
-> install.packages(c("dplyr", "tidyr", "httr", "jsonlite", "colorRamps", "gplots", "ggrepel", "ggplot2", "data.table", "rcytoscapejs", "stringr", "VennDiagram", "devtools", "visNetwork", "shiny", "shinyjs"), repos = "http://cran.us.r-project.org") 
-> source("https://bioconductor.org/biocLite.R") 
-> biocLite(c("mygene", "affy", "clusterProfiler", "org.Hs.eg.db", "mzID"))
+install.packages(c("dplyr", "tidyr", "httr", "jsonlite", "colorRamps", "gplots", "ggrepel", "ggplot2", "data.table", "stringr", "VennDiagram", "devtools", "visNetwork", "shiny", "shinyjs"), repos = "http://cran.us.r-project.org") 
+devtools::install_github("cytoscape/r-cytoscape.js")
+source("https://bioconductor.org/biocLite.R") 
+biocLite(c("mygene", "affy", "clusterProfiler", "org.Hs.eg.db", "mzID"))
 ```
 
 APOSTL has been tested with MaxQuant version 1.2.2.5 as well as Scaffold version 4.3.4. Our [test server](http://apostl.moffitt.org) runs APOSTL using CentOS 7, R 3.2.3, and Python 2.7.5. If you are using properly formatted input files from a software known to work with APOSTL, then please create an [issue in Github](https://github.com/bornea/APOSTL/issues). Alternatively, we are happy to hear from you directly if you are experiencing difficulties with running or configuring APOSTL. Please send questions or other correspondence to the authors [Brent Kuenzi](mailto:brent.kuenzi@moffitt.org), [Adam Borne](mailto:bornea27@gmail.com), or [Paul Stewart](mailto:paul.stewart@moffitt.org).
