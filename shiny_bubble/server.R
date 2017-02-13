@@ -333,7 +333,7 @@ ontology_graph <- eventReactive(input$GObutton,{
 
   
   pathways <- enrichGO(EG_IDs, 
-                       OrgDb = org.Hs.eg.db
+                       OrgDb = org.Hs.eg.db,
                        pvalueCutoff = as.numeric(paste0(input$path_pval)),
                        pAdjustMethod = paste0(input$path_adj),
                        ont = input$GO_ont)
