@@ -269,11 +269,9 @@ pathway_graph <- eventReactive(input$KEGGbutton,{
     EG_IDs[i] <- mygene::query(preys[i])$hits$entrezgene[1]
   }
 
-  pathways <- enrichKEGG(EG_IDs, 
-                         organism = paste0(input$path_org), 
+  pathways <- enrichKEGG(EG_IDs,
                          pvalueCutoff = as.numeric(paste0(input$path_pval)),
-                         pAdjustMethod = paste0(input$path_adj),
-                         readable=TRUE)
+                         pAdjustMethod = paste0(input$path_adj))
   
   pathways <- as.data.frame(summary(pathways))
   pathways$x <- factor(pathways$Description,levels=rev(pathways$Description))
@@ -313,11 +311,9 @@ pathway_table <- reactive({
     EG_IDs[i] <- mygene::query(preys[i])$hits$entrezgene[1]
   }
 
-  pathways <- enrichKEGG(EG_IDs, 
-                         organism = paste0(input$path_org), 
+  pathways <- enrichKEGG(EG_IDs,  
                          pvalueCutoff = as.numeric(input$path_pval),
-                         pAdjustMethod = paste0(input$path_adj),
-                         readable=TRUE)
+                         pAdjustMethod = paste0(input$path_adj))
   summary(pathways)
 })
 ############################ GeneGO Graph #####################################
@@ -337,11 +333,10 @@ ontology_graph <- eventReactive(input$GObutton,{
 
   
   pathways <- enrichGO(EG_IDs, 
-                         organism = paste0(input$path_org),
+                       OrgDb = org.Hs.eg.db
                        pvalueCutoff = as.numeric(paste0(input$path_pval)),
-                         pAdjustMethod = paste0(input$path_adj),
-                         readable=TRUE,
-                        ont = input$GO_ont)
+                       pAdjustMethod = paste0(input$path_adj),
+                       ont = input$GO_ont)
   pathways <- as.data.frame(summary(pathways))
   pathways$x <- factor(pathways$Description,levels=rev(pathways$Description))
   if(input$top10GO == TRUE) {pathways <- pathways[1:10,]}
@@ -381,10 +376,9 @@ ontology_table <- reactive({
   }
 
   pathways <- enrichGO(EG_IDs, 
-                       organism = paste0(input$path_org), 
+                       OrgDb = org.Hs.eg.db, 
                        pvalueCutoff = as.numeric(input$path_pval),
                        pAdjustMethod = paste0(input$path_adj),
-                       readable=TRUE,
                        ont = input$GO_ont)
   summary(pathways)
   })
