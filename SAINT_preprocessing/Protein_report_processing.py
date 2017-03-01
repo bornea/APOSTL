@@ -17,7 +17,7 @@ if db == "None":
 make_bait = sys.argv[6]
 bait_bool = sys.argv[8]
 
-def bait_create(baits, infile):
+def bait_create(baits):
     # Verifies the Baits are valid in the Scaffold file and writes the Bait.txt.
     baits = make_bait.split()
     i = 0
@@ -39,7 +39,7 @@ def bait_create(baits, infile):
     bait_file_tmp.close()
 
 if bait_bool == 'false':
-    bait_create(make_bait, infile)
+    bait_create(make_bait)
     bait = "bait.txt"
 else:
     bait_temp_file = open(sys.argv[9], 'r')
