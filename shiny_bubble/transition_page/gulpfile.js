@@ -5,7 +5,7 @@ var header = require('gulp-header');
 var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
-var pkg = require('https://github.com/bornea/APOSTL/tree/master/shiny_bubble/transition_page/package.json');
+var pkg = require('./package.json');
 
 // Set the banner content
 var banner = ['/*!\n',
@@ -29,7 +29,7 @@ gulp.task('less', function() {
 
 // Minify compiled CSS
 gulp.task('minify-css', ['less'], function() {
-    return gulp.src('https://github.com/bornea/APOSTL/tree/master/shiny_bubble/transition_page/css/creative.css')
+    return gulp.src('css/creative.css')
         .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('css'))
@@ -40,7 +40,7 @@ gulp.task('minify-css', ['less'], function() {
 
 // Minify JS
 gulp.task('minify-js', function() {
-    return gulp.src('https://github.com/bornea/APOSTL/tree/master/shiny_bubble/transition_page/js/creative.js')
+    return gulp.src('js/creative.js')
         .pipe(uglify())
         .pipe(header(banner, { pkg: pkg }))
         .pipe(rename({ suffix: '.min' }))
