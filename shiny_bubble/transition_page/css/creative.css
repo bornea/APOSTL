@@ -155,7 +155,7 @@ header {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('../img/header.jpg');
+  background-image: url('https://github.com/bornea/APOSTL/tree/master/shiny_bubble/transition_page/img/header.jpg');
   text-align: center;
   color: black;
 }
