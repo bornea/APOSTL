@@ -18,7 +18,7 @@ var banner = ['/*!\n',
 
 // Compile LESS files from /less into /css
 gulp.task('less', function() {
-    return gulp.src('less/creative.less')
+    return gulp.src('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/less/creative.less')
         .pipe(less())
         .pipe(header(banner, { pkg: pkg }))
         .pipe(gulp.dest('css'))
@@ -29,7 +29,7 @@ gulp.task('less', function() {
 
 // Minify compiled CSS
 gulp.task('minify-css', ['less'], function() {
-    return gulp.src('css/creative.css')
+    return gulp.src('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/css/creative.css')
         .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('css'))
@@ -40,7 +40,7 @@ gulp.task('minify-css', ['less'], function() {
 
 // Minify JS
 gulp.task('minify-js', function() {
-    return gulp.src('js/creative.js')
+    return gulp.src('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/js/creative.js')
         .pipe(uglify())
         .pipe(header(banner, { pkg: pkg }))
         .pipe(rename({ suffix: '.min' }))
@@ -53,16 +53,16 @@ gulp.task('minify-js', function() {
 // Copy vendor libraries from /node_modules into /vendor
 gulp.task('copy', function() {
     gulp.src(['node_modules/bootstrap/dist/**/*', '!**/npm.js', '!**/bootstrap-theme.*', '!**/*.map'])
-        .pipe(gulp.dest('vendor/bootstrap'))
+        .pipe(gulp.dest('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/vendor/bootstrap'))
 
     gulp.src(['node_modules/jquery/dist/jquery.js', 'node_modules/jquery/dist/jquery.min.js'])
-        .pipe(gulp.dest('vendor/jquery'))
+        .pipe(gulp.dest('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/vendor/jquery'))
 
     gulp.src(['node_modules/magnific-popup/dist/*'])
-        .pipe(gulp.dest('vendor/magnific-popup'))
+        .pipe(gulp.dest('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/vendor/magnific-popup'))
 
     gulp.src(['node_modules/scrollreveal/dist/*.js'])
-        .pipe(gulp.dest('vendor/scrollreveal'))
+        .pipe(gulp.dest('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/vendor/scrollreveal'))
 
     gulp.src([
             'node_modules/font-awesome/**',
@@ -72,7 +72,7 @@ gulp.task('copy', function() {
             '!node_modules/font-awesome/*.md',
             '!node_modules/font-awesome/*.json'
         ])
-        .pipe(gulp.dest('vendor/font-awesome'))
+        .pipe(gulp.dest('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/vendor/font-awesome'))
 })
 
 // Run everything
@@ -89,10 +89,10 @@ gulp.task('browserSync', function() {
 
 // Dev task with browserSync
 gulp.task('dev', ['browserSync', 'less', 'minify-css', 'minify-js'], function() {
-    gulp.watch('less/*.less', ['less']);
-    gulp.watch('css/*.css', ['minify-css']);
-    gulp.watch('js/*.js', ['minify-js']);
+    gulp.watch('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/less/*.less', ['less']);
+    gulp.watch('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/css/*.css', ['minify-css']);
+    gulp.watch('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/js/*.js', ['minify-js']);
     // Reloads the browser whenever HTML or JS files change
-    gulp.watch('*.html', browserSync.reload);
-    gulp.watch('js/**/*.js', browserSync.reload);
+    gulp.watch('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/*.html', browserSync.reload);
+    gulp.watch('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/js/**/*.js', browserSync.reload);
 });
