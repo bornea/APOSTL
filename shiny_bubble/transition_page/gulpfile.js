@@ -40,7 +40,7 @@ gulp.task('minify-css', ['less'], function() {
 
 // Minify JS
 gulp.task('minify-js', function() {
-    return gulp.src('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/js/creative.js')
+    return gulp.src('https://rawgit.com/bornea/APOSTL/master/shiny_bubble/transition_page/js/creative.js')
         .pipe(uglify())
         .pipe(header(banner, { pkg: pkg }))
         .pipe(rename({ suffix: '.min' }))
@@ -91,8 +91,8 @@ gulp.task('browserSync', function() {
 gulp.task('dev', ['browserSync', 'less', 'minify-css', 'minify-js'], function() {
     gulp.watch('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/less/*.less', ['less']);
     gulp.watch('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/css/*.css', ['minify-css']);
-    gulp.watch('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/js/*.js', ['minify-js']);
+    gulp.watch('https://rawgit.com/bornea/APOSTL/master/shiny_bubble/transition_page/js/*.js', ['minify-js']);
     // Reloads the browser whenever HTML or JS files change
     gulp.watch('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/*.html', browserSync.reload);
-    gulp.watch('https://raw.githubusercontent.com/bornea/APOSTL/master/shiny_bubble/transition_page/js/**/*.js', browserSync.reload);
+    gulp.watch('https://rawgit.com/bornea/APOSTL/master/shiny_bubble/transition_page/js/**/*.js', browserSync.reload);
 });
