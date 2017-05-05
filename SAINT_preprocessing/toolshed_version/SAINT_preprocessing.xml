@@ -31,6 +31,22 @@
         #end for
         "
       \$INSTALL_RUN_PATH/ $type_select.bait_bool $type_select.bait_file_in $Inter_file $Prey_file
+    #elif (str($type_select.type) == 'Peptideshaker_ordered_input'):
+      Protein_report_processing.py 
+        #set $protein_files=[]
+        #for $i1, $protein_input in enumerate($type_select.protein_inputs)
+        #silent $protein_files.append(str($protein_input.protein_file))
+        #end for
+        #echo ','.join($protein_files)
+        $Bait_file $type_select.use_metric $type_select.fasta_db $type_select.preybool 
+        "
+        #for $ba in $bait
+          ${ba.bait1}
+          ${ba.assign}
+          ${ba.T_C}
+        #end for
+        "
+      \$INSTALL_RUN_PATH/ $type_select.bait_bool $type_select.bait_file_in $Inter_file $Prey_file
     #elif (str($type_select.type) == 'mzIdentML'):
       mzID_process2.py "$type_select.input" $type_select.bait_file_in $type_select.preybool $type_select.fasta_db \$INSTALL_RUN_PATH/ 
         "
@@ -70,6 +86,22 @@
       </when>
       <when value="Peptideshaker">
         <param format="dat" name="input" type="data" label="Peptideshaker Output" multiple="true"/>
+        <param type="select" name="use_metric" label="Select Report File Value for Quantification">
+          <option value="Validated_Peptides">#Validated Peptides</option>
+          <option value="Peptides">#Peptides</option>
+          <option value="Unique">#Unique</option> 
+          <option value="Validated_PSMs">#Validated PSMs</option>
+          <option value="PSMs">#PSMs</option> 
+        </param>
+        <param type="boolean" name="preybool" checked="true" label="Create Prey File"/>
+        <param type="data" name="fasta_db" format="fasta"  label="Provide Uniprot Fasta database" optional="true"/>
+        <param name="bait_bool" type="boolean" checked="true" label="Are You Providing Your Own bait file?"/>
+        <param type="data" format="dat" name="bait_file_in" label="Bait File" optional="true"/>
+      </when>
+      <when value="Peptideshaker_ordered_input">
+        <repeat name = "protein_inputs" min="1" title="Input PeptideShaker Protein Result File">
+            <param format="tabular" name="protein_file" type="data" label="Peptideshaker Output" multiple="false"/>
+        </repeat>
         <param type="select" name="use_metric" label="Select Report File Value for Quantification">
           <option value="Validated_Peptides">#Validated Peptides</option>
           <option value="Peptides">#Peptides</option>
