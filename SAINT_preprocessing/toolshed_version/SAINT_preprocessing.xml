@@ -1,4 +1,4 @@
-<tool id="SAINT_preprocessing_v5" name="SAINT pre-processing">
+<tool id="SAINT_preprocessing_v6" name="SAINT pre-processing">
   <description></description>
   <command interpreter="python">
     #if (str($type_select.type) == 'Scaffold'):
