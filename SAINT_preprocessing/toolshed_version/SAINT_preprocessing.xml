@@ -67,7 +67,8 @@
       <param type="select" name="type" label="Data Source">
         <option value="MaxQuant">MaxQuant</option>
         <option value="Scaffold">Scaffold</option>
-        <option value="Peptideshaker">Peptideshaker</option> 
+        <option value="Peptideshaker">Peptideshaker</option>
+	<option value="Peptideshaker_ordered_input">Peptideshaker Ordered Input</option>
         <option value="mzIdentML">mzIdentML</option> 
       </param>
       <when value="MaxQuant">
