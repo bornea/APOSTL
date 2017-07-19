@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang='en'>
+<!--
+HTML content is Sanitized by Galaxy unless set as 'Trusted' in admin panel under 'Manage Display Whitelist'
+-->
+
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<meta name='description' content=''>
+	<meta name='author' content=''>
+
+	<title>APOSTL</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href='https://rawcdn.githack.com/bornea/APOSTL/master/shiny_bubble/transition_page/vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+
+	<!-- Custom Fonts -->
+	<link href='https://rawcdn.githack.com/bornea/APOSTL/master/shiny_bubble/transition_page/vendor/font-awesome/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+	<!-- Plugin CSS -->
+	<link href='https://rawcdn.githack.com/bornea/APOSTL/master/shiny_bubble/transition_page/vendor/magnific-popup/magnific-popup.css' rel='stylesheet' type='text/css'>
+
+	<!-- Theme CSS -->
+	<link href='https://rawcdn.githack.com/bornea/APOSTL/master/shiny_bubble/transition_page/css/creative.min.css' rel='stylesheet' type='text/css'>
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+        <script src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'></script>
+        <script src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'></script>
+    <![endif]-->
+
+</head>
+
+<body id='page-top'>
+
+	<nav id='mainNav' class='navbar navbar-default navbar-fixed-top'>
+		<div class='container-fluid'>
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class='navbar-header'>
+				<button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>
+                    <span class='sr-only'>Toggle navigation</span> Menu <i class='fa fa-bars'></i>
+                </button>
+				<a class='navbar-brand page-scroll' href='#page-top'>APOSTL</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+				<ul class='nav navbar-nav navbar-right'>
+					<li>
+						<a class='page-scroll' href='#about'>About</a>
+					</li>
+					<li>
+						<a class='page-scroll' href='#services'>Features</a>
+					</li>
+					<li>
+						<a class='page-scroll' href='#works'>How it works</a>
+					</li>
+					<li>
+						<a class='page-scroll' href='#quick'>Quick Start Guide</a>
+					</li>
+					<li>
+						<a class='page-scroll' href='#updates'>Updates</a>
+					</li>
+					<li>
+						<a class='page-scroll' href='#contact'>Contact</a>
+					</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+	<header>
+		<div class='header-content'>
+			<div class='header-content-inner'>
+				<h1 id='homeHeading'>APOSTL</h1>
+				<hr>
+				<p><strong>Welcome to APOSTL! To begin analyzing your data, select tools in pane to your left. Click button below for a detailed step by step tutorial of how to use APOSTL. Scroll down or click shortcut above to see a Quick Start Guide on using APOSTL.</strong></p>
+				<a href='https://github.com/bornea/APOSTL#apostl-walkthrough' class='btn btn-primary btn-xl'>Open Tutorial</a>
+			</div>
+		</div>
+	</header>
+
+	<section class='bg-primary' id='about'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-lg-8 col-lg-offset-2 text-center'>
+					<h2 class='section-heading'>Overview</h2>
+					<hr class='light'>
+					<p class='text-faded'>Automated Processing of SAINT Templated Layouts (APOSTL) is a Galaxy-based analysis pipeline for reproducible analysis of affinity proteomics (AP) data. APOSTL utilizes Significance Analysis of INTeractome (SAINT), a popular command-line software
+						for analyzing AP data. APOSTL can process AP results from MaxQuant, Scaffold, PeptideShaker, or any software that can export mzIdentML. APOSTL can create a number of publication-quality visualizations including interactive bubble plots, protein-protein
+						interaction networks, and pathway enrichment/gene ontology plots. All visualizations are accomplished through Shiny, an interactive and open-source visualization package for the R programming language. APOSTL is open-source software released under
+						GPLv3, and it is freely available on the Galaxy Tool Shed and GitHub.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id='services'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-lg-8 col-lg-offset-2 text-center'>
+					<h2 class='section-heading'>Features</h2>
+					<hr class='primary'>
+				</div>
+			</div>
+		</div>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-lg-8 col-lg-offset-2 text-center'>
+					<div class='service-box'>
+						<i class='fa fa-4x fa-desktop text-primary sr-icons'></i>
+						<h3>Multiple Formats</h3>
+						<p class='text-muted'>Pre-process your data from Scaffold, MaxQuant, PeptideShaker or mzIdentML</p>
+					</div>
+				</div>
+				<div class='col-lg-8 col-lg-offset-2 text-center'>
+					<div class='service-box'>
+						<i class='fa fa-4x fa-area-chart text-primary sr-icons'></i>
+						<h3>Interactive Plotting</h3>
+						<p class='text-muted'>Analyze your data in real time</p>
+					</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-lg-8 col-lg-offset-2 text-center'>
+					<div class='service-box'>
+						<i class='fa fa-4x fa-image text-primary sr-icons'></i>
+						<h3>Publication Quality Figures</h3>
+						<p class='text-muted'>Save any image as publication quality figure in multiple formats</p>
+					</div>
+				</div>
+				<div class='col-lg-8 col-lg-offset-2 text-center'>
+					<div class='service-box'>
+						<i class='fa fa-4x fa-code text-primary sr-icons'></i>
+						<h3>GalaxyP</h3>
+						<p class='text-muted'>Interface with <a href='http://useGalaxyP.org' target='_blank'>GalaxyP</a> for an entire proteomics workflow in Galaxy!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id='works'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-lg-8 col-lg-offset-2 text-center'>
+					<h2 class='section-heading'>How It Works</h2>
+					<hr class='light'>
+					<hr class='primary'>
+					<p class='text-faded'>
+						<h3>Pre-processing</h3>
+
+						<p>APOSTL is able to recognize the <a href="http://www.proteomesoftware.com/products/scaffold/">Scaffold</a> <em>Samples Report</em> file, the <em>peptides.txt</em> file in the <a href="http://coxdocs.org/doku.php?id=maxquant:start.">Maxquant</a> <em>txt</em>							output folder, the <a href="http://compomics.github.io/projects/peptide-shaker.html">PeptideShaker</a> <em>Protein Report</em> file, or the output from other tools in <a href="http://www.psidev.info/mzidentml">mzIdentML format</a>. Scaffold, MaxQuant,
+							and PeptideShaker output files must be saved as <em>tab delimited text</em>, and no other modifications should be made to these files. Using the Bait Create option in the <strong>SAINT Pre-processing</strong> tool allows you to quickly create a
+							<em>bait.txt</em> file. It is important that the individual bait names exactly match the bait names within your output from the above software. This tool also includes an option to automatically generate a <em>prey.txt</em> file. </p>
+
+						<blockquote>
+							<p><strong>Note:</strong> See the SaintExpress <a href="https://sourceforge.net/projects/saint-apms/files/SAINTexpress-manual.docx/download">manual</a> for more information about file formatting requirements.</p>
+						</blockquote>
+
+						<p>When making a <em>prey.txt</em> file, APOSTL queries a user provided FASTA database in order to extract protein amino acid lengths and gene names. This process may take several minutes. Some users may want to run SAINTexpress using the same data
+							set while changing which baits are considered test or control. It is useful to toggle <strong>Make Prey</strong> off in order to save time by circumventing this step as the same prey file can be used for both SAINTexpress runs.</p>
+
+						<h3>Post-processing</h3>
+
+						<p>Once SAINTexpress has been run, APOSTL is able to read the resulting <em>list.txt</em> file. From here APOSTL does a number of things:</p>
+
+						<p>1) APOSTL calculates the normalized spectral abundance factor (NSAF) values for each prey based on the average spectra observed for each bait</p>
+
+						<p>2) <em>Optionally</em>, APOSTL calculates the probability of a specific interaction based on prey prevalence in the <a href="http://crapome.org">CRAPome</a>.</p>
+
+						<h3>Other Analysis Options</h3>
+
+						<p>1) Protein-protein interaction network query using <a href="http://consensuspathdb.org">ConsensusPathDB</a> following filtering. Allows for easy <a href="http://www.cytoscape.org/">Cytoscape</a> import for visualization using the <em>import network from file</em>							option.</p>
+
+						<p>2) Dot plot and clustering analysis from the the <a href="http://prohitstools.mshri.on.ca">Prohits Visualization Tool</a>.</p>
+
+						<p>3) Galaxy passes results to <a href="http://shiny.rstudio.com/">Shiny</a> for interactive visualizations (Shiny is configured on this server).</p>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id='quick'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-lg-8 col-lg-offset-2 text-center'>
+					<h2 class='section-heading'>Quick Start Guide</h2>
+					<hr class='light'>
+					<hr class='primary'>
+					<p>This is a quick start guide more appropriate for users familiar with Galaxy. Before beginning, it is recommended that first-time users familiarize themselves with how SAINTexpress works and the contents of required files (<a href="https://sourceforge.net/projects/saint-apms/files/SAINTexpress-manual.docx/download">link to manual</a>).
+						A long format walkthrough with screen captures can be found <a href="https://github.com/bornea/APOSTL#apostl-walkthrough">on GitHub</a>. </p>
+
+					<p>1) Register: Please create a free account by clicking on the <strong>User</strong> menu button and selecting <strong>Register</strong>. Accounts are created immediately and can be used immediately.</p>
+
+					<p>2) Once signed in as a user, click on the <strong>Shared Data</strong> menu button and select <strong>Published Histories</strong>.</p>
+
+					<ul>
+						<li>This will allow you to view sample EGFR LFQ Scaffold and MaxQuant results files along with every step taken to produce the results.</li>
+						<li>These Histories can be imported into the History Panel on the Home Page by clicking on them and selecting <strong>Import History</strong> in the upper right corner.</li>
+						<li>The last step in each History (found at the very top of the History Panel) is an APOSTL-generated output that features interactive analysis with Shiny. To access the interactive data analysis, simply click <strong>View Data</strong> button (which looks like an eye) and clicking the <strong>APOSTL Interactive Analysis</strong> link.</li>
+					</ul>
+
+					<p>3) To access workflows that can be used on user-provided datasets, click on the <strong>Shared Data</strong> menu button and select <strong>Published Workflows</strong>.</p>
+
+					<ul>
+						<li> Choose the appropriate workflow for Scaffold or MaxQuant data and click <strong>Import Workflow</strong>.</li>
+						<li> Upload output files from supported software: a Scaffold-formatted <em>Samples Report</em> output file or MaxQuant <em>peptides.txt</em> output file, and a bait file (which can be created using the Bait Create within the preprocessing tool).</li>
+						<li> Click the <strong>Workflow</strong> button at the top of the page and select the imported workflow. Select the appropriate files in the drop down menu and press <strong>Run Workflow</strong>.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id='updates'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-lg-8 col-lg-offset-2 text-center'>
+					<h2 class='section-heading'>APOSTL Updates</h2>
+					<hr class='light'>
+					<hr class='primary'>
+					<li><strong>6/28/16</strong>: Paul Stewart presented APOSTL at the <a href="https://gcc16.sched.com/event/73yr/an-interactive-tool-for-reproducible-analysis-of-affinity-proteomics-data">Galaxy Community Conference</a>!</li>
+					<li><strong>9/29/16</strong>: APOSTL has been published in the <a href="http://pubs.acs.org/doi/abs/10.1021/acs.jproteome.6b00660"> Journal of Proteome Research</a>!</li>
+					<li><strong>5/6/17</strong>: Working with members of the<a href = "https://usegalaxyp.org/"> GalaxyP</a> team, we have increased compatibility with SearchGUI and Peptideshaker.</li>
+					<li><strong>6/19/17</strong>: Protect your Gene Names and identifiers from Microsoft Excel autoformatting with <a href = "https://github.com/pstew/escape_excel">Escape Excel</a>! Now implemented here with APOSTL.
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id='contact'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-lg-8 col-lg-offset-2 text-center'>
+					<h2 class='section-heading'>Contact</h2>
+					<hr class='primary'>
+					<p>APOSTL is maintained by the Haura and Rix labs</p>
+				</div>
+				<div class='col-lg-4 text-center'>
+				</div>
+				<div class='col-lg-4 text-center'>
+					<i class='fa fa-envelope-o fa-3x sr-contact'></i>
+					<p><a href='mailto:paul.stewart@moffitt.org'>paul.stewart@moffitt.org</a></p>
+					<p><a href='mailto:brent.kuenzi@moffitt.org'>brent.kuenzi@moffitt.org</a></p>
+					<p><a href='mailto:bornea27@gmail.com'>bornea27@gmail.com</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- jQuery -->
+	<script src='https://rawcdn.githack.com/bornea/APOSTL/master/shiny_bubble/transition_page/vendor/jquery/jquery.min.js' type='application/javascript'></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src='https://rawcdn.githack.com/bornea/APOSTL/master/shiny_bubble/transition_page/vendor/bootstrap/js/bootstrap.min.js' type='application/javascript'></script>
+
+	<!-- Plugin JavaScript -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js' type='application/javascript'></script>
+	<script src='https://rawcdn.githack.com/bornea/APOSTL/master/shiny_bubble/transition_page/vendor/scrollreveal/scrollreveal.min.js' type='application/javascript'></script>
+	<script src='https://rawcdn.githack.com/bornea/APOSTL/master/shiny_bubble/transition_page/vendor/magnific-popup/jquery.magnific-popup.min.js' type='application/javascript'></script>
+
+	<!-- Theme JavaScript -->
+	<script src='https://rawcdn.githack.com/bornea/APOSTL/master/shiny_bubble/transition_page/js/creative.min.js' type='application/javascript'></script>
+
+</body>
+
+</html>
