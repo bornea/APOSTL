@@ -51,7 +51,7 @@ metric and perform community detection based on the specified algorithm.
 
 **1) Network File **
     This file must be a two column sif file (tab delimited)
-	e.g. EGFR_HUMAN	GRB2_HUMAN
+	e.g. EGFR\_HUMAN	GRB2\_HUMAN
 
 **2) Centrality**
     Specify centrality metric measuring influence or bottlenecks in the network
