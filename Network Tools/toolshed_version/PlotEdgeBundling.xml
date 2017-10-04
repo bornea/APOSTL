@@ -1,0 +1,46 @@
+<tool id="plot_edge_bundling" name="Plot Network: Hierarchical Edge Bundling">
+  <description></description>
+  <command interpreter="python">plot_edge_bundling.py $node_attr $edges $edge_bundling \$INSTALL_RUN_PATH/</command>
+  <requirements>
+    <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
+  </requirements>
+  <inputs>
+    <param format="tabular" name="node_attr" type="data" label="Node Attribute File"/>
+    <param type="sif" name="edges" type = data label="Network File"/>
+  </inputs>
+  <outputs>
+    <data format="html" name="edge_bundling" label="Hierarchical Edge Bundling"/>
+  </outputs>
+  <stdio>
+    <regex match="Error|error"
+     source="stdout"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error|error"
+     source="stderr"
+           level="fatal"
+           description="Unknown error"/>
+  </stdio>
+
+  <tests>
+    <test>
+      <param name="input" value="fa_gc_content_input.fa"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+  <help>
+Plot Hierarchical Edge Bundling
+----------------------------------------
+
+This tool reads in a network SIF file and it's corresponding node attributes
+and plots an interactive hierarchical edge bundling network in HMTL format
+
+**1) Node Attributes File **
+    This file must be output from Network Attributes Tool of the network
+	file being input below.
+
+**2) Network File**
+
+Please input a network SIF file matching the Node Attribute file above
+  </help>
+</tool>

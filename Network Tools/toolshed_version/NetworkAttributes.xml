@@ -1,0 +1,64 @@
+<tool id="network_attributes" name="Calculate Network Attributes">
+  <description></description>
+  <command interpreter="python">Calculate_attributes_wrapper.py $edges $centrality $modularity $node_attr \$INSTALL_RUN_PATH/</command>
+  <requirements>
+    <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
+  </requirements>
+  <inputs>
+    <param format="sif" name="edges" type="data" label="Network File"/>
+    <param type="select" name="centrality" label="Select Centrality Metric"/>
+		<option value="eigenvector">eigenvector centrality</option>
+		<option value="betweenness">betweenness centrality</option>
+		<option value="closeness">closeness centrality</option>
+		<option value="PageRank">Page Rank</option>
+    <param type="select" name="modularity" label="Select Community Detection Algorithm">
+      <option value="fast.greedy">Fast Greedy (recommended)</option>
+      <option value="optimal">Optimal (see note)</option>
+      <option value="edge.betweenness">Edge Betweenness</option>
+	  <option value="walk.trap">Walk Trap</option>
+	  <option value="spin.glass">Spin Glass</option>
+	  <option value="leading eigenvector">Leading Eigenvector</option>
+	  <option value="label.propagation">Label Propagation</option>
+	  <option value="multilevel">Multilevel</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="txt" name="Node_attributes" label="Node Attributes"/>
+  </outputs>
+  <stdio>
+    <regex match="Error|error"
+     source="stdout"
+           level="fatal"
+           description="Unknown error"/>
+    <regex match="Error|error"
+     source="stderr"
+           level="fatal"
+           description="Unknown error"/>
+  </stdio>
+
+  <tests>
+    <test>
+      <param name="input" value="fa_gc_content_input.fa"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+  <help>
+SAINT Output to Protein Interaction File
+----------------------------------------
+
+This tool reads in a network sif file and calculates the specified centrality
+metric and perform community detection based on the specified algorithm.
+
+**1) Network File **
+    This file must be a two column sif file (tab delimited)
+	e.g. EGFR_HUMAN	GRB2_HUMAN
+
+**2) Centrality**
+    Specify centrality metric measuring influence or bottlenecks in the network
+
+**3) Modularity**
+    Please specify community detection algorithm.
+	**NOTE:** Optimal community detection computational time scales exponentially
+	with the number of nodes. Use with caution if number of nodes > 30.
+  </help>
+</tool>
