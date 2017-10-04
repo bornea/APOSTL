@@ -1,6 +1,6 @@
 import sys
 def readTab(infile): # read in txt file
-    with open(infile, 'r') as input_file: 
+    with open(infile, 'r') as input_file:
     # read in tab-delim text
         output = []
         for input_line in input_file:
@@ -11,7 +11,7 @@ def readTab(infile): # read in txt file
 def network2JSON(nodes_att_file, edge_file):
 	nodes = readTab(nodes_att_file)
 	edges = readTab(edge_file)
-	
+
 	start = """{"nodes":  ["""
   	node_numbers = {}
   	cnt=0
@@ -74,11 +74,11 @@ var color = d3.scale.category20()
 
 var highlight_color = "red";
 var highlight_trans = 0.1;
-  
+
 var size = d3.scale.pow().exponent(1)
   .domain([1,100])
   .range([8,24]);
-	
+
 var force = d3.layout.force()
   .linkDistance(60)
   .charge(-700)
@@ -119,7 +119,7 @@ var linkedByIndex = {};
 		}
 	return false;
 	}
-	
+
   force
     .nodes(graph.nodes)
     .links(graph.links)
@@ -130,7 +130,7 @@ var linkedByIndex = {};
     .enter().append("line")
     .attr("class", "link")
 	.style("stroke-width",nominal_stroke)
-	.style("stroke", function(d) { 
+	.style("stroke", function(d) {
 	if (isNumber(d.score) && d.score>=0) return color(d.score);
 	else return default_link_color; })
 
@@ -139,46 +139,46 @@ var linkedByIndex = {};
     .data(graph.nodes)
     .enter().append("g")
     .attr("class", "node")
-	
+
     .call(force.drag)
 
-	
+
 	node.on("dblclick.zoom", function(d) { d3.event.stopPropagation();
 	var dcx = (window.innerWidth/2-d.x*zoom.scale());
 	var dcy = (window.innerHeight/2-d.y*zoom.scale());
 	zoom.translate([dcx,dcy]);
 	 g.attr("transform", "translate("+ dcx + "," + dcy  + ")scale(" + zoom.scale() + ")");
-	 
-	 
+
+
 	});
-	
 
 
-	
+
+
 	var tocolor = "fill";
 	var towhite = "stroke";
 	if (outline) {
 		tocolor = "stroke"
 		towhite = "fill"
 	}
-		
-	
-	
+
+
+
   var circle = node.append("path")
-  
-  
+
+
       .attr("d", d3.svg.symbol()
         .size(function(d) { return Math.PI*Math.pow(size(d.size)||nominal_base_node_size,2); })
         .type(function(d) { return d.type; }))
-  
-	.style(tocolor, function(d) { 
+
+	.style(tocolor, function(d) {
 	if (isNumber(d.score) && d.score>=0) return color(d.score);
 	else return default_node_color; })
     //.attr("r", function(d) { return size(d.size)||nominal_base_node_size; })
 	.style("stroke-width", nominal_stroke)
 	.style(towhite, "white");
-  	
-				
+
+
   var text = g.selectAll(".text")
     .data(graph.nodes)
     .enter().append("text")
@@ -188,7 +188,7 @@ var linkedByIndex = {};
 	if (text_center)
 	 text.text(function(d) { return d.id; })
 	.style("text-anchor", "middle");
-	else 
+	else
 	text.attr("dx", function(d) {return (size(d.size)||nominal_base_node_size);})
     .text(function(d) { return '\u2002'+d.id; });
 
@@ -199,26 +199,26 @@ var linkedByIndex = {};
   	focus_node = d;
 	set_focus(d)
 	if (highlight_node === null) set_highlight(d)
-	
+
 }	).on("mouseout", function(d) {
 		exit_highlight();
 
 }	);
 
-		d3.select(window).on("mouseup",  
+		d3.select(window).on("mouseup",
 		function() {
 		if (focus_node!==null)
 		{
 			focus_node = null;
 			if (highlight_trans<1)
 			{
-	
+
 		circle.style("opacity", 1);
 	  text.style("opacity", 1);
 	  link.style("opacity", 1);
 	}
 		}
-	
+
 	if (highlight_node === null) exit_highlight();
 		});
 
@@ -234,12 +234,12 @@ function exit_highlight()
 	  text.style("font-weight", "normal");
 	  link.style("stroke", function(o) {return (isNumber(o.score) && o.score>=0)?color(o.score):default_link_color});
  }
-			
+
 	}
 }
 
 function set_focus(d)
-{	
+{
 if (highlight_trans<1)  {
     circle.style("opacity", function(o) {
                 return isConnected(d, o) ? 1 : highlight_trans;
@@ -248,10 +248,10 @@ if (highlight_trans<1)  {
 			text.style("opacity", function(o) {
                 return isConnected(d, o) ? 1 : highlight_trans;
             });
-			
+
             link.style("opacity", function(o) {
                 return o.source.index == d.index || o.target.index == d.index ? 1 : highlight_trans;
-            });		
+            });
 	}
 }
 
@@ -274,60 +274,60 @@ function set_highlight(d)
             });
 	}
 }
- 	
- 	
+
+
   zoom.on("zoom", function() {
-  
+
     var stroke = nominal_stroke;
     if (nominal_stroke*zoom.scale()>max_stroke) stroke = max_stroke/zoom.scale();
     link.style("stroke-width",stroke);
     circle.style("stroke-width",stroke);
-	   
+
 	var base_radius = nominal_base_node_size;
     if (nominal_base_node_size*zoom.scale()>max_base_node_size) base_radius = max_base_node_size/zoom.scale();
         circle.attr("d", d3.svg.symbol()
         .size(function(d) { return Math.PI*Math.pow(size(d.size)*base_radius/nominal_base_node_size||base_radius,2); })
         .type(function(d) { return d.type; }))
-		
+
 	//circle.attr("r", function(d) { return (size(d.size)*base_radius/nominal_base_node_size||base_radius); })
 	if (!text_center) text.attr("dx", function(d) { return (size(d.size)*base_radius/nominal_base_node_size||base_radius); });
-	
+
 	var text_size = nominal_text_size;
     if (nominal_text_size*zoom.scale()>max_text_size) text_size = max_text_size/zoom.scale();
     text.style("font-size",text_size + "px");
 
 	g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 	});
-	 
-  svg.call(zoom);	  
-	
+
+  svg.call(zoom);
+
   resize();
   //window.focus();
   d3.select(window).on("resize", resize).on("keydown", keydown);
-	  
+
   force.on("tick", function() {
-  	
+
     node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
     text.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-  
+
     link.attr("x1", function(d) { return d.source.x; })
       .attr("y1", function(d) { return d.source.y; })
       .attr("x2", function(d) { return d.target.x; })
       .attr("y2", function(d) { return d.target.y; });
-		
+
     node.attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; });
 	});
-  
+
   function resize() {
     var width = window.innerWidth, height = window.innerHeight;
 	svg.attr("width", width).attr("height", height);
-    
+
 	force.size([force.size()[0]+(width-w)/zoom.scale(),force.size()[1]+(height-h)/zoom.scale()]).resume();
     w = width;
 	h = height;
 	}
-	
+
 	function keydown() {
 	if (d3.event.keyCode==32) {  force.stop();}
 	else if (d3.event.keyCode>=48 && d3.event.keyCode<=90 && !d3.event.ctrlKey && !d3.event.altKey && !d3.event.metaKey)
@@ -347,7 +347,7 @@ function set_highlight(d)
 	case "3": key3 = !key3; break;
 	case "0": key0 = !key0; break;
   }
-  	
+
   link.style("display", function(d) {
 				var flag  = vis_by_type(d.source.type)&&vis_by_type(d.target.type)&&vis_by_node_score(d.source.score)&&vis_by_node_score(d.target.score)&&vis_by_link_score(d.score);
 				linkedByIndex[d.source.index + "," + d.target.index] = flag;
@@ -356,19 +356,19 @@ function set_highlight(d)
 				return (key0||hasConnections(d))&&vis_by_type(d.type)&&vis_by_node_score(d.score)?"inline":"none";});
   text.style("display", function(d) {
                 return (key0||hasConnections(d))&&vis_by_type(d.type)&&vis_by_node_score(d.score)?"inline":"none";});
-				
+
 				if (highlight_node !== null)
 				{
-					if ((key0||hasConnections(highlight_node))&&vis_by_type(highlight_node.type)&&vis_by_node_score(highlight_node.score)) { 
+					if ((key0||hasConnections(highlight_node))&&vis_by_type(highlight_node.type)&&vis_by_node_score(highlight_node.score)) {
 					if (focus_node!==null) set_focus(focus_node);
 					set_highlight(highlight_node);
 					}
 					else {exit_highlight();}
 				}
 
-}	
 }
- 
+}
+
 };
 
 function vis_by_type(type)
@@ -407,13 +407,10 @@ function vis_by_link_score(score)
 
 function isNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
-}	
+}
 plot_graph(data)
 
 </script>"""
 
-with open("EV_Force_directed_network.html","w") as x:
+with open(sys.argv[3],"w") as x:
 	x.write(output)
-
-
-
