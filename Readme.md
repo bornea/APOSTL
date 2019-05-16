@@ -6,7 +6,11 @@ Automated Processing of SAINT Templated Layouts (APOSTL)
 APOSTL is a Galaxy-based analysis pipeline for reproducible analysis of affinity proteomics (AP) data. APOSTL utilizes Significance Analysis of INTeractome (SAINT), a popular command-line software for analyzing AP data. APOSTL can process AP results from MaxQuant, Scaffold, PeptideShaker, or any software that can export mzIdentML. APOSTL can create a number of publication-quality visualizations including interactive bubble plots, protein-protein interaction networks through Cytoscape.js integration, and pathway enrichment/gene ontology plots. All visualizations are accomplished through Shiny, an interactive and open-source visualization package for the R programming language. APOSTL is open-source software released under GPLv3, and it is freely available through the Galaxy ToolShed, GitHub, and Docker.
 
 #### APOSTL Citation
-APOSTL has been published! It is available via this link to the [Journal of Proteome Research](https://dx.doi.org/10.1021/acs.jproteome.6b00660). Please cite our paper if you have found APOSTL helpful in your work.
+APOSTL has been published! The paper is available [via this link](https://dx.doi.org/10.1021/acs.jproteome.6b00660) to the Journal of Proteome Research. Please cite our paper if you have found APOSTL helpful in your work.
+
+We published a book chapter on APOSTL! This tutorial chapter utilizes a combined workflow from the GalaxyP and APOSTL Galaxy servers. The chapter can be found [via this link](https://link.springer.com/protocol/10.1007%2F978-1-4939-9232-4_16).
+
+Please contact the authors (see below) if you would like to request a PDF copy of the APOSTL paper or chapter.
 
 APOSTL Overview
 -------------
