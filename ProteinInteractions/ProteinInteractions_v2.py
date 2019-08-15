@@ -23,6 +23,7 @@
 #       - high: >0.7
 #       - very high: >0.9
 # 4) Species: Human, Yeast, or Mouse
+# 5) .fasta file
 ################################################################################
 
 
@@ -30,14 +31,16 @@ import urllib2
 import itertools
 import sys
 import os
-
+import re
 
 listfile = sys.argv[1]
 SAINT_cutoff = sys.argv[2]
 Int_conf = sys.argv[3]
 Species = sys.argv[4]
 cyto_file = sys.argv[5]
+fasta_file = sys.argv[6]
 db_path = r"/galaxy-apostl-docker/tools/Moffitt_Tools/"
+uniprot_dict = {}
 
 class ReturnValue1(object):
     def __init__(self, uniprot_acc, gene, swissprot):
@@ -50,10 +53,29 @@ class ReturnValue2(object):
         self.proteins = getproteins
         self.header = getheader
 
-
 def main(listfile, SAINT_cutoff, Int_conf, Species):
+    make_uniprot_dict(fasta_file)
     cytoscape(dd_network(listfile, SAINT_cutoff, Int_conf), listfile, SAINT_cutoff)
 
+def make_uniprot_dict(fasta_file):
+    # make a dictionary and populate with fasta data
+    with open(fasta_file) as f:
+        content = f.readlines()
+        #strip new lines
+        content = [x.strip() for x in content] 
+
+        #get uniprot alphanumeric identifier, entry ID (e.g. P53_HUMAN), and gene name (if applicable, else "NA")
+        for lines in content:
+            if ">" in lines:
+                hit = lines.split("|")
+                uniprot_acc = hit[1]
+                swissprot = hit[2].split(' ')[0]
+                try:
+                    genename = re.search(r'(GN=)([a-zA-Z0-9]*)', hit[2]).group(2)
+                except:
+                    genename = "NA"
+                uniprot_dict[uniprot_acc] = [uniprot_acc, genename, swissprot]
+    return(uniprot_dict)
 
 def readtab(infile):
     with open(infile, 'r') as file_to_read:
@@ -64,7 +86,6 @@ def readtab(infile):
             temp = line.split('\t')
             output.append(temp)
     return output
-
 
 def read_listfile(listfile): 
     # Get data, proteins and header from scaffold output
@@ -78,55 +99,9 @@ def read_listfile(listfile):
         proteins.append(protein[prot_start])
     return ReturnValue2(data, proteins, header)
 
-
 def get_info(uniprot_accession_in): 
-    # Get aa lengths and gene name.
-    error = open('error proteins.txt', 'a+')
-    i = 0
-    while i == 0:
-        try:
-            data = urllib2.urlopen("http://www.uniprot.org/uniprot/" + uniprot_accession_in
-                + ".fasta")
-            break
-        except urllib2.HTTPError, err:
-            i = i + 1
-            if i == 50:
-                sys.exit("More than 50 errors. Check your file or try again later.")
-            if err.code == 404:
-                error.write(uniprot_accession_in + '\t' + "Invalid URL. Check protein" + '\n')
-                seqlength = 'NA'
-                genename = 'NA'
-                return ReturnValue1(seqlength, genename)
-            elif err.code == 302:
-                sys.exit("Request timed out. Check connection and try again.")
-            else:
-                sys.exit("Uniprot had some other error")
-    lines = data.readlines()
-    header = lines[0]
-    lst = header.split('|')
-    lst2 = lst[2].split(' ')
-    swissprot = lst2[0]
-    uniprot_acc = lst[1]
-    if lines == []:
-        error.write(uniprot_accession_in + '\t' + "Blank Fasta" + '\n')
-        error.close
-        uniprot_acc = 'NA'
-        genename = 'NA'
-        return ReturnValue1(uniprot_acc, genename, swissprot)
-    if lines != []:
-        seqlength = 0
-        header = lines[0]
-        if 'GN=' in header:
-            lst = header.split('GN=')
-            lst2 = lst[1].split(' ')
-            genename = lst2[0]
-            error.close
-            return ReturnValue1(uniprot_acc, genename, swissprot)
-        if 'GN=' not in header:
-            genename = 'NA'
-            error.close
-            return ReturnValue1(uniprot_acc, genename, swissprot)
-
+    uniprot_list = uniprot_dict[uniprot_accession_in]
+    return ReturnValue1(uniprot_list[0], uniprot_list[1], uniprot_list[2])
 
 def dd_network(listfile, SAINTscore, CPDB_filter): 
     # Filter by SS and CPDB.

@@ -1,6 +1,6 @@
 <tool id="SAINT_ProteinInteractions_v2" name="SAINT Output to Protein Interaction File">
   <description></description>
-  <command interpreter="python">ProteinInteractions_v2.py $input $saint_cutoff $CPDB_cutoff $species $Cytoscape_File \$INSTALL_RUN_PATH/</command>
+  <command interpreter="python">ProteinInteractions_v2.py $input $saint_cutoff $CPDB_cutoff $species $Cytoscape_File $fasta_input \$INSTALL_RUN_PATH/</command>
   <requirements>
     <requirement type="set_environment">INSTALL_RUN_PATH</requirement>
   </requirements>
@@ -13,6 +13,7 @@
       <option value="Yeast">Yeast</option>
       <option value="Mouse">Mouse</option>
     </param>
+    <param format="fasta" name="fasta_input" type="data" label="FASTA Database"/>
   </inputs>
   <outputs>
     <data format="sif" name="Cytoscape_File" label="Cytoscape File"/>    
